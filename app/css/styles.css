@@ -533,6 +533,23 @@ body {
   font-weight: 600;
 }
 
+/* Excel Inline Cell Inputs */
+.excel-inline-input {
+  background: #111520;
+  border: 1px solid #2a3142;
+  color: var(--text-white);
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.excel-inline-input:focus {
+  border-color: var(--accent-red);
+  background: #161b29;
+}
+
 /* ==============================================================================
    TAB 3: EXCEL DATA MANAGER
 ============================================================================== */

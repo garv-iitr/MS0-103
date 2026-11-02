@@ -111,28 +111,47 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             params = {}
 
         if path == "/api/solve/amruta":
-            # Solve using Python AmrutaHeuristicSolver
             schools_type = params.get("dataset", "demo")
             filename = "vasanthapura_schools_530.csv" if schools_type == "full" else "vasanthapura_demo_45.csv"
             schools = load_csv_data(os.path.join(DATA_DIR, filename))
             fleet = load_csv_data(os.path.join(DATA_DIR, "fleet_config.csv"))
 
-            k = int(params.get("k", 27))
+            k = int(params.get("k", 10))
+            cap = float(params.get("vehicle_capacity", 65.0))
+            speed = float(params.get("delivery_speed", 24.0))
+            cutoff = float(params.get("cutoff_minutes", 270.0))
+            circuity = float(params.get("circuity_factor", 1.35))
             diesel = float(params.get("diesel_price", 45.0))
-            solver = AmrutaHeuristicSolver(schools, fleet, k_vehicles=k, diesel_price=diesel)
+
+            solver = AmrutaHeuristicSolver(
+                schools, fleet,
+                k_vehicles=k, vehicle_capacity=cap,
+                delivery_speed=speed, cutoff_minutes=cutoff,
+                circuity_factor=circuity, diesel_price=diesel
+            )
             result = solver.solve()
             self.send_json_response(result)
             return
 
         elif path == "/api/solve/modern":
-            # Solve using Python ModernORSolver
             schools_type = params.get("dataset", "demo")
             filename = "vasanthapura_schools_530.csv" if schools_type == "full" else "vasanthapura_demo_45.csv"
             schools = load_csv_data(os.path.join(DATA_DIR, filename))
             fleet = load_csv_data(os.path.join(DATA_DIR, "fleet_config.csv"))
 
+            k = int(params.get("k", 10))
+            cap = float(params.get("vehicle_capacity", 65.0))
+            speed = float(params.get("delivery_speed", 24.0))
+            cutoff = float(params.get("cutoff_minutes", 270.0))
+            circuity = float(params.get("circuity_factor", 1.35))
             diesel = float(params.get("diesel_price", 45.0))
-            solver = ModernORSolver(schools, fleet, diesel_price=diesel)
+
+            solver = ModernORSolver(
+                schools, fleet,
+                k_vehicles=k, vehicle_capacity=cap,
+                delivery_speed=speed, cutoff_minutes=cutoff,
+                circuity_factor=circuity, diesel_price=diesel
+            )
             result = solver.solve()
             self.send_json_response(result)
             return

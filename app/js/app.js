@@ -1,19 +1,21 @@
 /**
  * Main Application Orchestrator
- * Matches the exact authentic architecture from user video screenshots
+ * High-performance real-time simulation updates, strict fleet constraint enforcement,
+ * and seamless coordination between UI, Solvers, MapView, and Spreadsheets.
  */
 
 const App = {
   activeTab: "map",
   currentModel: "modern", // "modern", "amruta", "baseline"
   currentScale: 100,
+  debounceTimer: null,
 
   // Operational Simulation Parameters
   simParams: {
     k_vehicles: 10,
     vehicle_capacity: 65.0,
     delivery_speed: 24.0,
-    cutoff_minutes: 270.0, // 12:30 PM
+    cutoff_minutes: 270.0, // 12:30 PM (270 min from 08:00 AM)
     circuity_factor: 1.35,
     diesel_price: 45.00
   },
@@ -25,12 +27,12 @@ const App = {
   },
 
   async init() {
-    console.log("Initializing AMRUTA Logistics Decision Support System...");
+    console.log("Initializing AMRUTA Decision Support Engine...");
 
     // 1. Initialize DataManager
     await DataManager.init();
 
-    // 2. Load fleet & default 100-school dataset
+    // 2. Load default 100-school dataset & fleet
     await this.switchDatasetByScale(100);
 
     // 3. Initialize Map View
@@ -46,13 +48,20 @@ const App = {
     this.runCurrentSimulation();
   },
 
+  debounceSimulation(delay = 40) {
+    clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => {
+      this.runCurrentSimulation();
+    }, delay);
+  },
+
   async switchDatasetByScale(scale = 100) {
     this.currentScale = scale;
 
     if (typeof EMBEDDED_DATA !== "undefined") {
       const allSchools = EMBEDDED_DATA.fullSchools || EMBEDDED_DATA.demoSchools;
-      DataManager.currentSchools = allSchools.slice(0, Math.min(scale, allSchools.length));
-      DataManager.currentFleet = EMBEDDED_DATA.fleet || [];
+      DataManager.currentSchools = allSchools.slice(0, Math.min(scale, allSchools.length)).map(s => ({ ...s }));
+      DataManager.currentFleet = (EMBEDDED_DATA.fleet || []).map(v => ({ ...v }));
     } else {
       const filename = scale > 200 ? "vasanthapura_schools_530.csv" : "vasanthapura_demo_45.csv";
       try {
@@ -60,10 +69,10 @@ const App = {
         if (resp.ok) {
           const text = await resp.text();
           const parsed = DataManager.parseCSV(text);
-          DataManager.currentSchools = parsed.slice(0, Math.min(scale, parsed.length));
+          DataManager.currentSchools = parsed.slice(0, Math.min(scale, parsed.length)).map(s => ({ ...s }));
         }
       } catch (e) {
-        console.warn("Failed fetching CSV, using available memory state.", e);
+        console.warn("Failed fetching CSV, using memory state.", e);
       }
     }
 
@@ -94,7 +103,7 @@ const App = {
       });
     }
 
-    // Capacity Slider
+    // Capacity Slider (real-time input event)
     const sliderCap = document.getElementById("slider-cap-limit");
     const valCap = document.getElementById("val-cap-limit");
     if (sliderCap && valCap) {
@@ -102,22 +111,22 @@ const App = {
         const val = parseFloat(e.target.value).toFixed(2);
         valCap.textContent = val;
         this.simParams.vehicle_capacity = parseFloat(val);
+        this.debounceSimulation();
       });
-      sliderCap.addEventListener("change", () => this.runCurrentSimulation());
     }
 
-    // Fleet k Slider
+    // Fleet k Slider (real-time input event)
     const sliderK = document.getElementById("slider-k-fleet");
     const valK = document.getElementById("val-k-fleet");
     if (sliderK && valK) {
       sliderK.addEventListener("input", (e) => {
         valK.textContent = e.target.value;
         this.simParams.k_vehicles = parseInt(e.target.value, 10);
+        this.debounceSimulation();
       });
-      sliderK.addEventListener("change", () => this.runCurrentSimulation());
     }
 
-    // Delivery Speed Slider
+    // Delivery Speed Slider (real-time input event)
     const sliderSpeed = document.getElementById("slider-speed");
     const valSpeed = document.getElementById("val-speed");
     if (sliderSpeed && valSpeed) {
@@ -125,11 +134,11 @@ const App = {
         const val = parseFloat(e.target.value).toFixed(2);
         valSpeed.textContent = val;
         this.simParams.delivery_speed = parseFloat(val);
+        this.debounceSimulation();
       });
-      sliderSpeed.addEventListener("change", () => this.runCurrentSimulation());
     }
 
-    // Lunch Cutoff Slider
+    // Lunch Cutoff Slider (real-time input event)
     const sliderCutoff = document.getElementById("slider-cutoff");
     const valCutoff = document.getElementById("val-cutoff");
     if (sliderCutoff && valCutoff) {
@@ -140,19 +149,19 @@ const App = {
         const remMins = mins % 60;
         const clockStr = `${hours > 12 ? hours - 12 : hours}:${String(remMins).padStart(2, '0')} ${hours >= 12 ? 'PM' : 'AM'}`;
         valCutoff.textContent = clockStr;
+        this.debounceSimulation();
       });
-      sliderCutoff.addEventListener("change", () => this.runCurrentSimulation());
     }
 
-    // Road Circuity Slider
+    // Road Circuity Slider (real-time input event)
     const sliderCircuity = document.getElementById("slider-circuity");
     const valCircuity = document.getElementById("val-circuity");
     if (sliderCircuity && valCircuity) {
       sliderCircuity.addEventListener("input", (e) => {
         valCircuity.textContent = parseFloat(e.target.value).toFixed(2);
         this.simParams.circuity_factor = parseFloat(e.target.value);
+        this.debounceSimulation();
       });
-      sliderCircuity.addEventListener("change", () => this.runCurrentSimulation());
     }
 
     // Diesel Stepper
@@ -165,13 +174,13 @@ const App = {
         if (cur < 20) cur = 20;
         inputDiesel.value = cur.toFixed(2);
         this.simParams.diesel_price = cur;
-        this.runCurrentSimulation();
+        this.debounceSimulation();
       });
       btnPlus.addEventListener("click", () => {
         let cur = parseFloat(inputDiesel.value) + 1.0;
         inputDiesel.value = cur.toFixed(2);
         this.simParams.diesel_price = cur;
-        this.runCurrentSimulation();
+        this.debounceSimulation();
       });
     }
 
@@ -192,31 +201,8 @@ const App = {
     if (checkZoom) {
       checkZoom.addEventListener("change", (e) => {
         if (MapView.leafletMap) {
-          if (e.target.checked) {
-            MapView.leafletMap.scrollWheelZoom.enable();
-          } else {
-            MapView.leafletMap.scrollWheelZoom.disable();
-          }
-        }
-      });
-    }
-
-    // Optional Custom Map Key Input
-    const inputMapKey = document.getElementById("input-map-key");
-    if (inputMapKey) {
-      inputMapKey.addEventListener("change", (e) => {
-        const key = e.target.value.trim();
-        if (key && MapView.leafletMap) {
-          try {
-            const customLayer = L.tileLayer(
-              `https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${key}`,
-              { tileSize: 512, zoomOffset: -1, attribution: '&copy; Mapbox', maxZoom: 19 }
-            );
-            customLayer.addTo(MapView.leafletMap);
-            alert("Custom Mapbox tile layer activated successfully!");
-          } catch (err) {
-            console.warn("Could not activate custom map layer:", err);
-          }
+          if (e.target.checked) MapView.leafletMap.scrollWheelZoom.enable();
+          else MapView.leafletMap.scrollWheelZoom.disable();
         }
       });
     }
@@ -225,7 +211,7 @@ const App = {
     const btnSync = document.getElementById("btn-sync-excel");
     if (btnSync) {
       btnSync.addEventListener("click", () => {
-        alert("Synced data.xlsx successfully. Local changes merged.");
+        alert("Synced data.xlsx successfully. Changes updated in model.");
         ExcelManagerView.updateStatusBar();
       });
     }
@@ -256,9 +242,6 @@ const App = {
     contents.forEach(c => {
       const el = document.getElementById(`tab-content-${c}`);
       if (el) el.style.display = (c === tabName) ? "flex" : "none";
-      if (c === tabName && (c === "excel" || c === "manifests")) {
-        el.style.display = "flex";
-      }
     });
 
     if (tabName === "map") {
@@ -282,36 +265,37 @@ const App = {
     const fleet = DataManager.currentFleet;
     if (!schools || schools.length === 0 || !fleet || fleet.length === 0) return;
 
-    // Apply active vehicle capacity parameter to fleet
-    fleet.forEach(v => {
-      v.equivalent_capacity = this.simParams.vehicle_capacity;
-    });
+    const options = {
+      k_vehicles: this.simParams.k_vehicles,
+      vehicle_capacity: this.simParams.vehicle_capacity,
+      delivery_speed: this.simParams.delivery_speed,
+      cutoff_minutes: this.simParams.cutoff_minutes,
+      circuity_factor: this.simParams.circuity_factor,
+      dieselPriceInr: this.simParams.diesel_price
+    };
 
-    // 1. Run Modern Solver (Google OR-Tools style)
-    const modernSol = ModernORSolver.solve(schools, fleet, {
-      dieselPriceInr: this.simParams.diesel_price,
-      roadSpeedFactor: this.simParams.delivery_speed / 24.0
-    });
+    // 1. Run Modern OR Solver (Google OR-Tools metaheuristic)
+    const modernSol = ModernORSolver.solve(schools, fleet, options);
     this.results.modern = modernSol;
 
-    // 2. Run Classical AMRUTA
-    const amrutaSol = AmrutaEngine.solve(schools, fleet, {
-      k_vehicles: this.simParams.k_vehicles,
-      dieselPriceInr: this.simParams.diesel_price,
-      roadSpeedFactor: this.simParams.delivery_speed / 24.0
-    });
+    // 2. Run Classical AMRUTA 3-Stage Heuristic
+    const amrutaSol = AmrutaEngine.solve(schools, fleet, options);
     this.results.amruta = amrutaSol;
 
-    // 3. Generate Historical Baseline
-    const k = Math.min(35, schools.length);
+    // 3. Generate Historical Baseline (naively partitions into k routes)
+    const kBase = Math.min(this.simParams.k_vehicles, schools.length);
     const baseRoutes = [];
-    const chunkSize = Math.ceil(schools.length / k);
-    for (let i = 0; i < k; i++) {
+    const chunkSize = Math.ceil(schools.length / kBase);
+    for (let i = 0; i < kBase; i++) {
       const slice = schools.slice(i * chunkSize, (i + 1) * chunkSize);
       if (slice.length === 0) continue;
       const veh = fleet[i % fleet.length];
-      const sheet = AmrutaEngine.computeRouteSchedule(slice, veh, i + 1, {
-        dieselPrice: this.simParams.diesel_price
+      const sheet = ModernORSolver.computeRouteSchedule(slice, veh, i + 1, {
+        speedKmh: this.simParams.delivery_speed,
+        cutoffMins: this.simParams.cutoff_minutes,
+        circuityFactor: this.simParams.circuity_factor,
+        dieselPrice: this.simParams.diesel_price,
+        workingDays: 22
       });
       baseRoutes.push(sheet);
     }
@@ -319,17 +303,21 @@ const App = {
       model: "Pre-AMRUTA (Ad-Hoc Baseline)",
       kDeployed: baseRoutes.length,
       routes: baseRoutes,
-      summary: CostEvaluator.evaluateSolution(baseRoutes, { dieselPriceInr: this.simParams.diesel_price })
+      summary: ModernORSolver.evaluateSolution(baseRoutes, [], {
+        dieselPriceInr: this.simParams.diesel_price,
+        workingDaysPerMonth: 22,
+        cutoffMins: this.simParams.cutoff_minutes
+      })
     };
 
-    // Update active model presentation
+    // Active Model Resolution
     const activeSol = this.results[this.currentModel] || this.results.modern;
     MapView.updateRoutes(activeSol.routes, this.currentModel);
 
-    // Update KPI Header Cards
-    this.updateKPICards(activeSol.summary);
+    // Update Top KPI Header Cards
+    this.updateKPICards(activeSol.summary, activeSol.routes);
 
-    // Update subviews if active
+    // Update active subviews
     if (this.activeTab === "manifests") {
       TripSheetView.render(activeSol.routes);
     } else if (this.activeTab === "benchmarks") {
@@ -337,7 +325,7 @@ const App = {
     }
   },
 
-  updateKPICards(summary) {
+  updateKPICards(summary, routes) {
     if (!summary) return;
 
     const elSchools = document.getElementById("kpi-schools");
@@ -349,18 +337,43 @@ const App = {
     const elCostSub = document.getElementById("kpi-cost-sub");
     const elImpact = document.getElementById("kpi-impact");
 
-    const totalDemand = Math.round(DataManager.currentSchools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0) * 10) / 10;
-    const isLate = summary.maxElapsedMinutes > this.simParams.cutoff_minutes;
+    const totalRequiredDemand = Math.round(DataManager.currentSchools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0) * 10) / 10;
+    const totalServedDemand = Math.round((routes || []).reduce((acc, r) => acc + (r.total_demand || 0), 0) * 10) / 10;
+    const unservedCount = summary.unassignedSchoolsCount || 0;
 
-    if (elSchools) elSchools.textContent = summary.totalSchoolsServed || DataManager.currentSchools.length;
-    if (elDemand) elDemand.textContent = `Demand: ${totalDemand} Units`;
+    if (elSchools) {
+      if (unservedCount > 0) {
+        elSchools.textContent = `${summary.totalSchoolsServed} / ${DataManager.currentSchools.length}`;
+      } else {
+        elSchools.textContent = `${summary.totalSchoolsServed}`;
+      }
+    }
+
+    if (elDemand) {
+      if (unservedCount > 0) {
+        elDemand.textContent = `Demand: ${totalServedDemand} / ${totalRequiredDemand} U (${unservedCount} Unserved)`;
+        elDemand.style.color = "#f87171";
+      } else {
+        elDemand.textContent = `Demand: ${totalServedDemand} Units`;
+        elDemand.style.color = "var(--text-dim)";
+      }
+    }
 
     if (elFleet) elFleet.textContent = `${summary.totalVehicles} Vans`;
     if (elCap) elCap.textContent = `Cap: ${this.simParams.vehicle_capacity} units/van`;
 
+    const totalRoutes = (routes || []).length;
+    const onTimeRoutes = totalRoutes - (summary.lateRoutesCount || 0);
+    const onTimePct = totalRoutes > 0 ? Math.round((onTimeRoutes / totalRoutes) * 100) : 100;
+
     if (elDeadline) {
-      elDeadline.textContent = isLate ? `${summary.lateRoutesCount} Vans Delayed` : "100% On-Time";
-      elDeadline.style.color = isLate ? "#f87171" : "#34d399";
+      if (onTimePct === 100) {
+        elDeadline.textContent = "100% On-Time";
+        elDeadline.style.color = "#34d399";
+      } else {
+        elDeadline.textContent = `${onTimePct}% On-Time (${summary.lateRoutesCount} Late)`;
+        elDeadline.style.color = "#f87171";
+      }
     }
 
     if (elCost) elCost.textContent = `INR ${Math.round(summary.totalMonthlyCostInr).toLocaleString()}`;
