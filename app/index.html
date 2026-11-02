@@ -473,20 +473,20 @@
         </div>
 
         <!-- Spreadsheet Table Grid -->
-        <div class="manifest-table-wrapper" style="max-height: 480px; overflow-y: auto;">
-          <table class="dark-table">
+        <div class="manifest-table-wrapper" style="max-height: 520px;">
+          <table class="dark-table" id="excel-manager-table">
             <thead>
               <tr>
-                <th>School ID</th>
-                <th>School Name</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Rice (Big)</th>
-                <th>Sambar (Med)</th>
-                <th>Curd (Small)</th>
-                <th>Equivalent Demand</th>
-                <th>Student Count</th>
-                <th style="min-width: 115px; text-align: center;">Holiday / Active</th>
+                <th style="width: 48px; text-align: center;">ID</th>
+                <th style="min-width: 175px;">School Name</th>
+                <th style="min-width: 125px; text-align: center;">Holiday / Active</th>
+                <th style="width: 75px; text-align: right;">Demand</th>
+                <th style="width: 65px; text-align: right;">Rice</th>
+                <th style="width: 65px; text-align: right;">Sambar</th>
+                <th style="width: 65px; text-align: right;">Curd</th>
+                <th style="width: 75px; text-align: right;">Students</th>
+                <th style="width: 82px;">Latitude</th>
+                <th style="width: 82px;">Longitude</th>
               </tr>
             </thead>
             <tbody id="excel-grid-tbody">

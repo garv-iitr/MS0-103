@@ -65,19 +65,19 @@ const ExcelManagerView = {
           <strong style="color: #ffffff;">${depot.name}</strong>
           <span style="font-size: 11px; color: #94a3b8; display: block;">Central Cooking & Dispatch Hub</span>
         </td>
-        <td>
-          <input type="number" step="0.0001" id="excel-depot-lat" class="excel-inline-input" value="${Number(depot.lat).toFixed(5)}" style="width: 90px; font-weight: bold; color: var(--accent-red);">
-        </td>
-        <td>
-          <input type="number" step="0.0001" id="excel-depot-lng" class="excel-inline-input" value="${Number(depot.lng).toFixed(5)}" style="width: 90px; font-weight: bold; color: var(--accent-red);">
-        </td>
-        <td style="text-align: right; color: var(--text-dim);">-</td>
-        <td style="text-align: right; color: var(--text-dim);">-</td>
-        <td style="text-align: right; color: var(--text-dim);">-</td>
-        <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--accent-red);">0.00</td>
-        <td style="text-align: right; color: var(--text-dim);">-</td>
         <td style="text-align: center;">
           <span class="pill-badge pill-badge-teal" style="font-size: 11px; padding: 3px 8px;">DEPOT HUB</span>
+        </td>
+        <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--accent-red);">0.00</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td>
+          <input type="number" step="0.0001" id="excel-depot-lat" class="excel-inline-input" value="${Number(depot.lat).toFixed(5)}" style="width: 82px; font-weight: bold; color: var(--accent-red);">
+        </td>
+        <td>
+          <input type="number" step="0.0001" id="excel-depot-lng" class="excel-inline-input" value="${Number(depot.lng).toFixed(5)}" style="width: 82px; font-weight: bold; color: var(--accent-red);">
         </td>
       </tr>
     `;
@@ -91,34 +91,34 @@ const ExcelManagerView = {
         <tr data-school-idx="${actualIdx}" class="${isHol ? 'row-school-holiday' : ''}">
           <td style="font-family: var(--font-mono); color: var(--text-muted); text-align: center;">${s.school_id || idx + 1}</td>
           <td>
-            <input type="text" class="excel-inline-input text-school-name" value="${s.school_name}" style="width: 100%; min-width: 180px;">
+            <input type="text" class="excel-inline-input text-school-name" value="${s.school_name}" style="width: 100%; min-width: 175px;">
           </td>
-          <td>
-            <input type="number" step="0.0001" class="excel-inline-input num-lat" value="${Number(s.latitude).toFixed(4)}" style="width: 82px;">
-          </td>
-          <td>
-            <input type="number" step="0.0001" class="excel-inline-input num-lng" value="${Number(s.longitude).toFixed(4)}" style="width: 82px;">
-          </td>
-          <td>
-            <input type="number" step="0.5" min="0" class="excel-inline-input num-rice" value="${s.rice_vessels || 0}" style="width: 55px; text-align: right;">
-          </td>
-          <td>
-            <input type="number" step="0.5" min="0" class="excel-inline-input num-sambar" value="${s.sambar_vessels || 0}" style="width: 55px; text-align: right;">
-          </td>
-          <td>
-            <input type="number" step="0.25" min="0" class="excel-inline-input num-curd" value="${s.curd_vessels || 0}" style="width: 55px; text-align: right;">
+          <td style="text-align: center;">
+            <select class="excel-inline-input select-status ${isHol ? 'status-holiday' : 'status-active'}" style="width: 112px; font-size: 12px; font-weight: 700; border-radius: 4px; padding: 4px 6px; cursor: pointer; text-align: center;" title="Click to toggle between Active and Holiday for this school">
+              <option value="Active" ${!isHol ? 'selected' : ''}>🟢 Active</option>
+              <option value="Holiday" ${isHol ? 'selected' : ''}>🔴 Holiday</option>
+            </select>
           </td>
           <td class="cell-eq-demand" style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-red); text-align: right;">
             ${Number(s.equivalent_demand || 0).toFixed(2)}
           </td>
+          <td>
+            <input type="number" step="0.5" min="0" class="excel-inline-input num-rice" value="${s.rice_vessels || 0}" style="width: 52px; text-align: right;">
+          </td>
+          <td>
+            <input type="number" step="0.5" min="0" class="excel-inline-input num-sambar" value="${s.sambar_vessels || 0}" style="width: 52px; text-align: right;">
+          </td>
+          <td>
+            <input type="number" step="0.25" min="0" class="excel-inline-input num-curd" value="${s.curd_vessels || 0}" style="width: 52px; text-align: right;">
+          </td>
           <td class="cell-headcount" style="font-family: var(--font-mono); text-align: right; color: var(--text-muted);">
             ${studentHeadcount}
           </td>
-          <td style="text-align: center;">
-            <select class="excel-inline-input select-status ${isHol ? 'status-holiday' : 'status-active'}" style="width: 105px; font-size: 11.5px; font-weight: 700; border-radius: 4px; padding: 4px 6px; cursor: pointer; text-align: center;" title="Toggle between Active and Holiday for this school">
-              <option value="Active" ${!isHol ? 'selected' : ''}>🟢 Active</option>
-              <option value="Holiday" ${isHol ? 'selected' : ''}>🔴 Holiday</option>
-            </select>
+          <td>
+            <input type="number" step="0.0001" class="excel-inline-input num-lat" value="${Number(s.latitude).toFixed(4)}" style="width: 78px;">
+          </td>
+          <td>
+            <input type="number" step="0.0001" class="excel-inline-input num-lng" value="${Number(s.longitude).toFixed(4)}" style="width: 78px;">
           </td>
         </tr>
       `;
