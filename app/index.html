@@ -128,6 +128,41 @@
         </div>
       </div>
 
+      <!-- Section: Central Kitchen (Depot Hub) Coordinates -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Central Kitchen Hub (Depot)</div>
+
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Depot Latitude (N)
+              <span class="help-icon" title="Geographic latitude of central cooking kitchen">?</span>
+            </span>
+            <span id="display-depot-lat" class="control-val-display">12.88812</span>
+          </div>
+          <input type="number" id="input-depot-lat" step="0.001" min="12.700" max="13.150" value="12.88812" class="form-coord-input">
+        </div>
+
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Depot Longitude (E)
+              <span class="help-icon" title="Geographic longitude of central cooking kitchen">?</span>
+            </span>
+            <span id="display-depot-lng" class="control-val-display">77.54838</span>
+          </div>
+          <input type="number" id="input-depot-lng" step="0.001" min="77.350" max="77.750" value="77.54838" class="form-coord-input">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px;">
+          <button id="btn-reset-depot" class="btn-sidebar-outline" style="font-size: 11.5px; padding: 7px 4px;">Vasanthapura Hub</button>
+          <button id="btn-depot-preset-hkhill" class="btn-sidebar-outline" style="font-size: 11.5px; padding: 7px 4px;">HK Hill Hub</button>
+        </div>
+        <div style="font-size: 11.5px; color: var(--text-dim); margin-top: 8px; line-height: 1.35;">
+          Interactive: Drag the red DEPOT pin on the map or edit coordinates to watch routes recalculate live!
+        </div>
+      </div>
+
       <!-- Bottom Action Buttons -->
       <div class="sidebar-footer-buttons">
         <button id="btn-sync-excel" class="btn-sidebar-outline">Sync data.xlsx</button>
@@ -146,7 +181,7 @@
         <div class="header-banner-sub">The Akshaya Patra Foundation — Vehicle Routing with Time Windows (VRPTW)</div>
         <div class="header-badges-row">
           <span id="badge-active-file" class="pill-badge pill-badge-green">Active: data.xlsx (100 Schools, 32,880 Children)</span>
-          <span class="pill-badge pill-badge-slate">Depot: Vasanthapura Central Kitchen</span>
+          <span id="badge-depot" class="pill-badge pill-badge-slate">Depot: Vasanthapura Central Kitchen (12.8881, 77.5484)</span>
           <span id="badge-active-engine" class="pill-badge pill-badge-teal">Google OR-Tools</span>
         </div>
       </div>

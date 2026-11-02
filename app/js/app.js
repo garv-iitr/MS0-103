@@ -31,6 +31,7 @@ const App = {
 
     // 1. Initialize DataManager
     await DataManager.init();
+    DataManager.setDepotCoordinates(DataManager.depot.lat, DataManager.depot.lng);
 
     // 2. Load default 100-school dataset & fleet
     await this.switchDatasetByScale(100);
@@ -222,6 +223,50 @@ const App = {
           if (e.target.checked) MapView.leafletMap.scrollWheelZoom.enable();
           else MapView.leafletMap.scrollWheelZoom.disable();
         }
+      });
+    }
+
+    // Central Kitchen Depot Coordinates Controls
+    const inputDepotLat = document.getElementById("input-depot-lat");
+    const inputDepotLng = document.getElementById("input-depot-lng");
+    const dispDepotLat = document.getElementById("display-depot-lat");
+    const dispDepotLng = document.getElementById("display-depot-lng");
+
+    if (inputDepotLat) {
+      inputDepotLat.addEventListener("input", (e) => {
+        const lat = parseFloat(e.target.value);
+        if (!isNaN(lat)) {
+          if (dispDepotLat) dispDepotLat.textContent = lat.toFixed(5);
+          DataManager.setDepotCoordinates(lat, DataManager.depot.lng, "sidebar");
+          this.debounceSimulation(50);
+        }
+      });
+    }
+
+    if (inputDepotLng) {
+      inputDepotLng.addEventListener("input", (e) => {
+        const lng = parseFloat(e.target.value);
+        if (!isNaN(lng)) {
+          if (dispDepotLng) dispDepotLng.textContent = lng.toFixed(5);
+          DataManager.setDepotCoordinates(DataManager.depot.lat, lng, "sidebar");
+          this.debounceSimulation(50);
+        }
+      });
+    }
+
+    const btnResetDepot = document.getElementById("btn-reset-depot");
+    if (btnResetDepot) {
+      btnResetDepot.addEventListener("click", () => {
+        DataManager.setDepotCoordinates(12.88812, 77.54838);
+        this.debounceSimulation(20);
+      });
+    }
+
+    const btnHkHill = document.getElementById("btn-depot-preset-hkhill");
+    if (btnHkHill) {
+      btnHkHill.addEventListener("click", () => {
+        DataManager.setDepotCoordinates(12.99040, 77.55180);
+        this.debounceSimulation(20);
       });
     }
 

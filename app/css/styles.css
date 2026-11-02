@@ -215,6 +215,24 @@ body {
   border-color: var(--accent-red);
 }
 
+/* Coordinate Inputs */
+.form-coord-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-card);
+  color: var(--text-white);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form-coord-input:focus {
+  border-color: var(--accent-red);
+}
+
 /* Stepper Input */
 .stepper-input {
   display: flex;

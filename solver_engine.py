@@ -28,8 +28,13 @@ def calculate_service_time(rice_vessels, sambar_vessels, curd_vessels, fixed_min
 # ==============================================================================
 
 class AmrutaHeuristicSolver:
-    def __init__(self, schools, fleet, k_vehicles=10, vehicle_capacity=65.0, delivery_speed=24.0, cutoff_minutes=270.0, circuity_factor=1.35, diesel_price=45.0, working_days=22):
-        self.depot = {"lat": DEPOT_LAT, "lng": DEPOT_LNG, "name": "Vasanthapura Central Kitchen", "school_id": 0}
+    def __init__(self, schools, fleet, k_vehicles=10, vehicle_capacity=65.0, delivery_speed=24.0, cutoff_minutes=270.0, circuity_factor=1.35, diesel_price=45.0, working_days=22, depot_lat=None, depot_lng=None):
+        self.depot = {
+            "lat": depot_lat if depot_lat is not None else DEPOT_LAT,
+            "lng": depot_lng if depot_lng is not None else DEPOT_LNG,
+            "name": "Vasanthapura Central Kitchen",
+            "school_id": 0
+        }
         self.schools = copy.deepcopy(schools)
         self.fleet = copy.deepcopy(fleet)
         self.k_vehicles = min(k_vehicles, len(self.fleet), len(self.schools)) if self.schools else 0
@@ -344,8 +349,13 @@ class AmrutaHeuristicSolver:
 # ==============================================================================
 
 class ModernORSolver:
-    def __init__(self, schools, fleet, k_vehicles=10, vehicle_capacity=65.0, delivery_speed=24.0, cutoff_minutes=270.0, circuity_factor=1.35, diesel_price=45.0, working_days=22):
-        self.depot = {"lat": DEPOT_LAT, "lng": DEPOT_LNG, "name": "Vasanthapura Central Kitchen", "school_id": 0}
+    def __init__(self, schools, fleet, k_vehicles=10, vehicle_capacity=65.0, delivery_speed=24.0, cutoff_minutes=270.0, circuity_factor=1.35, diesel_price=45.0, working_days=22, depot_lat=None, depot_lng=None):
+        self.depot = {
+            "lat": depot_lat if depot_lat is not None else DEPOT_LAT,
+            "lng": depot_lng if depot_lng is not None else DEPOT_LNG,
+            "name": "Vasanthapura Central Kitchen",
+            "school_id": 0
+        }
         self.schools = copy.deepcopy(schools)
         self.fleet = copy.deepcopy(fleet)
         self.k_vehicles = min(k_vehicles, len(self.fleet), len(self.schools)) if self.schools else 0

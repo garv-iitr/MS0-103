@@ -35,6 +35,31 @@ const ExcelManagerView = {
       displayed = schools.filter((_, idx) => idx % 10 === 0);
     }
 
+    const depot = DataManager.depot;
+    const depotRowHtml = `
+      <tr class="excel-depot-row" style="background: rgba(255, 75, 75, 0.12); border-left: 3px solid var(--accent-red);">
+        <td style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-red); text-align: center;">0</td>
+        <td>
+          <strong style="color: #ffffff;">${depot.name}</strong>
+          <span style="font-size: 11px; color: #94a3b8; display: block;">Central Cooking & Dispatch Hub</span>
+        </td>
+        <td>
+          <input type="number" step="0.0001" id="excel-depot-lat" class="excel-inline-input" value="${Number(depot.lat).toFixed(5)}" style="width: 90px; font-weight: bold; color: var(--accent-red);">
+        </td>
+        <td>
+          <input type="number" step="0.0001" id="excel-depot-lng" class="excel-inline-input" value="${Number(depot.lng).toFixed(5)}" style="width: 90px; font-weight: bold; color: var(--accent-red);">
+        </td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--accent-red);">0.00</td>
+        <td style="text-align: right; color: var(--text-dim);">-</td>
+        <td style="text-align: center;">
+          <span class="pill-badge pill-badge-teal" style="font-size: 11px; padding: 3px 8px;">DEPOT HUB</span>
+        </td>
+      </tr>
+    `;
+
     const rowsHtml = displayed.map((s, idx) => {
       const isClosed = idx % 10 === 0 && this.filterMode === "all";
       const studentHeadcount = Math.round((s.equivalent_demand || 10) * 32);
@@ -46,8 +71,12 @@ const ExcelManagerView = {
           <td>
             <input type="text" class="excel-inline-input text-school-name" value="${s.school_name}" style="width: 100%; min-width: 180px;">
           </td>
-          <td style="font-family: var(--font-mono); font-size: 11px;">${Number(s.latitude).toFixed(4)}</td>
-          <td style="font-family: var(--font-mono); font-size: 11px;">${Number(s.longitude).toFixed(4)}</td>
+          <td>
+            <input type="number" step="0.0001" class="excel-inline-input num-lat" value="${Number(s.latitude).toFixed(4)}" style="width: 82px;">
+          </td>
+          <td>
+            <input type="number" step="0.0001" class="excel-inline-input num-lng" value="${Number(s.longitude).toFixed(4)}" style="width: 82px;">
+          </td>
           <td>
             <input type="number" step="0.5" min="0" class="excel-inline-input num-rice" value="${s.rice_vessels || 0}" style="width: 55px; text-align: right;">
           </td>
@@ -73,7 +102,7 @@ const ExcelManagerView = {
       `;
     }).join("");
 
-    tbody.innerHTML = rowsHtml;
+    tbody.innerHTML = depotRowHtml + rowsHtml;
     this.bindCellInputEvents();
   },
 
@@ -81,13 +110,37 @@ const ExcelManagerView = {
     const tbody = document.getElementById("excel-grid-tbody");
     if (!tbody) return;
 
-    // Listen for live cell changes
-    tbody.querySelectorAll("tr").forEach(row => {
+    // Depot live coordinate editing
+    const excelDepotLat = document.getElementById("excel-depot-lat");
+    const excelDepotLng = document.getElementById("excel-depot-lng");
+    if (excelDepotLat) {
+      excelDepotLat.addEventListener("input", (e) => {
+        const lat = parseFloat(e.target.value);
+        if (!isNaN(lat)) {
+          DataManager.setDepotCoordinates(lat, DataManager.depot.lng, "excel");
+          App.debounceSimulation(50);
+        }
+      });
+    }
+    if (excelDepotLng) {
+      excelDepotLng.addEventListener("input", (e) => {
+        const lng = parseFloat(e.target.value);
+        if (!isNaN(lng)) {
+          DataManager.setDepotCoordinates(DataManager.depot.lat, lng, "excel");
+          App.debounceSimulation(50);
+        }
+      });
+    }
+
+    // Listen for live school cell changes
+    tbody.querySelectorAll("tr[data-school-idx]").forEach(row => {
       const actualIdx = parseInt(row.getAttribute("data-school-idx"), 10);
       const school = DataManager.currentSchools[actualIdx];
       if (!school) return;
 
       const inputName = row.querySelector(".text-school-name");
+      const inputLat = row.querySelector(".num-lat");
+      const inputLng = row.querySelector(".num-lng");
       const inputRice = row.querySelector(".num-rice");
       const inputSambar = row.querySelector(".num-sambar");
       const inputCurd = row.querySelector(".num-curd");
@@ -109,6 +162,26 @@ const ExcelManagerView = {
         // Live debounced recalculation
         App.debounceSimulation();
       };
+
+      if (inputLat) {
+        inputLat.addEventListener("input", () => {
+          const lat = parseFloat(inputLat.value);
+          if (!isNaN(lat)) {
+            school.latitude = lat;
+            App.debounceSimulation(60);
+          }
+        });
+      }
+
+      if (inputLng) {
+        inputLng.addEventListener("input", () => {
+          const lng = parseFloat(inputLng.value);
+          if (!isNaN(lng)) {
+            school.longitude = lng;
+            App.debounceSimulation(60);
+          }
+        });
+      }
 
       inputName.addEventListener("change", updateDemand);
       inputRice.addEventListener("input", updateDemand);

@@ -83,35 +83,68 @@ const MapView = {
 
     this.routeLayerGroup = L.layerGroup().addTo(this.leafletMap);
     this.markerLayerGroup = L.layerGroup().addTo(this.leafletMap);
+    this.depotLayerGroup = L.layerGroup().addTo(this.leafletMap);
 
     this.renderDepotMarker();
   },
 
   renderDepotMarker() {
     const depot = DataManager.depot;
-    if (this.leafletMap) {
+    if (!this.leafletMap) return;
+
+    if (!this.depotMarker) {
       const depotIcon = L.divIcon({
         className: "custom-depot-pin",
         html: `
-          <div style="background:#ff4b4b; color:#ffffff; border:2px solid #ffffff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(0,0,0,0.5); font-weight:bold; font-size:11px;">
+          <div style="background:#ff4b4b; color:#ffffff; border:2.5px solid #ffffff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 10px rgba(255,75,75,0.7); font-weight:800; font-size:10px; cursor:grab; text-shadow:0 1px 2px rgba(0,0,0,0.5);">
             DEPOT
           </div>
         `,
-        iconSize: [30, 30],
-        iconAnchor: [15, 15]
+        iconSize: [34, 34],
+        iconAnchor: [17, 17]
       });
 
-      L.marker([depot.lat, depot.lng], { icon: depotIcon })
-        .bindPopup(`
-          <div style="font-family:sans-serif; padding:4px; color:#0f172a;">
-            <strong style="font-size:13px;">${depot.name}</strong><br>
-            <span style="font-size:11px; color:#475569;">Central Kitchen Hub (Depot 0)</span><br>
-            <div style="margin-top:6px; font-size:11px; background:#f1f5f9; padding:4px 6px; border-radius:4px;">
-              Dispatch start: <strong>08:00 AM</strong> | Lunch cutoff: <strong>12:30 PM</strong>
-            </div>
+      this.depotMarker = L.marker([depot.lat, depot.lng], {
+        icon: depotIcon,
+        draggable: true,
+        title: "Central Kitchen Hub (Drag to relocate live)"
+      });
+
+      this.depotMarker.bindPopup(`
+        <div style="font-family:sans-serif; padding:4px; color:#0f172a; min-width: 200px;">
+          <strong style="font-size:13px; color:#b91c1c;">${depot.name}</strong><br>
+          <span style="font-size:11.5px; color:#475569;">Central Kitchen Hub (Depot 0)</span><br>
+          <div style="margin-top:6px; font-size:11px; background:#f1f5f9; padding:6px 8px; border-radius:4px;">
+            Latitude: <strong id="popup-depot-lat">${depot.lat.toFixed(5)}</strong><br>
+            Longitude: <strong id="popup-depot-lng">${depot.lng.toFixed(5)}</strong><br>
+            <span style="color:#059669; font-weight:600;">Drag this pin anywhere to test live re-routing!</span>
           </div>
-        `)
-        .addTo(this.markerLayerGroup);
+        </div>
+      `);
+
+      this.depotMarker.on("drag", (e) => {
+        const pos = e.target.getLatLng();
+        const pLat = document.getElementById("popup-depot-lat");
+        const pLng = document.getElementById("popup-depot-lng");
+        if (pLat) pLat.textContent = pos.lat.toFixed(5);
+        if (pLng) pLng.textContent = pos.lng.toFixed(5);
+      });
+
+      this.depotMarker.on("dragend", (e) => {
+        const pos = e.target.getLatLng();
+        DataManager.setDepotCoordinates(pos.lat, pos.lng, "map");
+        App.debounceSimulation(20);
+      });
+
+      this.depotMarker.addTo(this.depotLayerGroup);
+    } else {
+      this.depotMarker.setLatLng([depot.lat, depot.lng]);
+    }
+  },
+
+  setDepotPosition(lat, lng) {
+    if (this.depotMarker) {
+      this.depotMarker.setLatLng([lat, lng]);
     }
   },
 

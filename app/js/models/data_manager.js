@@ -41,6 +41,49 @@ const DataManager = {
   },
 
   /**
+   * Updates Central Kitchen Depot coordinates live and syncs UI components
+   */
+  setDepotCoordinates(lat, lng, source = null) {
+    const parsedLat = parseFloat(lat);
+    const parsedLng = parseFloat(lng);
+    if (isNaN(parsedLat) || isNaN(parsedLng)) return;
+
+    this.depot.lat = Number(parsedLat.toFixed(6));
+    this.depot.lng = Number(parsedLng.toFixed(6));
+
+    // Update Header Badge
+    const badgeDepot = document.getElementById("badge-depot");
+    if (badgeDepot) {
+      badgeDepot.textContent = `Depot: ${this.depot.name} (${this.depot.lat.toFixed(4)}, ${this.depot.lng.toFixed(4)})`;
+    }
+
+    // Update Sidebar controls if not the source
+    if (source !== "sidebar") {
+      const inputLat = document.getElementById("input-depot-lat");
+      const inputLng = document.getElementById("input-depot-lng");
+      const dispLat = document.getElementById("display-depot-lat");
+      const dispLng = document.getElementById("display-depot-lng");
+      if (inputLat) inputLat.value = this.depot.lat;
+      if (inputLng) inputLng.value = this.depot.lng;
+      if (dispLat) dispLat.textContent = this.depot.lat.toFixed(5);
+      if (dispLng) dispLng.textContent = this.depot.lng.toFixed(5);
+    }
+
+    // Update Excel Row 0 if not the source
+    if (source !== "excel") {
+      const excelLat = document.getElementById("excel-depot-lat");
+      const excelLng = document.getElementById("excel-depot-lng");
+      if (excelLat) excelLat.value = this.depot.lat.toFixed(5);
+      if (excelLng) excelLng.value = this.depot.lng.toFixed(5);
+    }
+
+    // Update Map Marker position if not the source
+    if (source !== "map" && typeof MapView !== "undefined" && MapView.setDepotPosition) {
+      MapView.setDepotPosition(this.depot.lat, this.depot.lng);
+    }
+  },
+
+  /**
    * Calculates road-adjusted distance in km with 1.25x empirical factor
    */
   calculateDistance(lat1, lng1, lat2, lng2, correctionFactor = 1.25) {
