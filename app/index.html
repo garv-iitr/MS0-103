@@ -44,28 +44,44 @@
           </select>
         </div>
 
-        <!-- Vehicle Capacity Limit Slider -->
+        <!-- Vehicle Capacity Limit Control (Slider + Manual Input) -->
         <div class="control-group">
           <div class="control-header">
             <span class="control-label">
-              Vehicle Capacity Limit (Units/Van)
-              <span class="help-icon" title="Rack capacity threshold per vehicle">?</span>
+              Vehicle Capacity Limit
+              <span class="help-icon" title="Rack capacity threshold per vehicle (Units)">?</span>
             </span>
+            <div class="control-input-pill">
+              <input type="number" id="input-cap-limit" min="20" max="500" step="1" value="65" class="control-num-input" title="Type to set capacity manually">
+              <span class="control-unit-badge">U</span>
+            </div>
           </div>
-          <div id="val-cap-limit" class="control-val-display">65.00</div>
+          <div id="val-cap-limit" style="display: none;">65.00</div>
           <input type="range" id="slider-cap-limit" min="24" max="420" value="65" step="5" class="range-slider">
+          <div class="slider-limits-hint">
+            <span>24</span>
+            <span>420</span>
+          </div>
         </div>
 
-        <!-- Fleet Vehicles Available (k) Slider -->
+        <!-- Fleet Vehicles Available (k) Control (Slider + Manual Input) -->
         <div class="control-group">
           <div class="control-header">
             <span class="control-label">
-              Fleet Vehicles Available (k)
+              Fleet Vehicles (k)
               <span class="help-icon" title="Number of delivery vans deployed from the fixed fleet">?</span>
             </span>
+            <div class="control-input-pill">
+              <input type="number" id="input-k-fleet" min="1" max="50" step="1" value="10" class="control-num-input" title="Type to set fleet size manually">
+              <span class="control-unit-badge">vans</span>
+            </div>
           </div>
-          <div id="val-k-fleet" class="control-val-display">10</div>
+          <div id="val-k-fleet" style="display: none;">10</div>
           <input type="range" id="slider-k-fleet" min="5" max="35" value="10" step="1" class="range-slider">
+          <div class="slider-limits-hint">
+            <span>5</span>
+            <span>35</span>
+          </div>
         </div>
       </div>
 
@@ -73,28 +89,44 @@
       <div class="sidebar-section">
         <div class="sidebar-section-title">Logistics Parameters</div>
 
-        <!-- Average Delivery Speed Slider -->
+        <!-- Average Delivery Speed Control (Slider + Manual Input) -->
         <div class="control-group">
           <div class="control-header">
             <span class="control-label">
-              Average Delivery Speed (km/h)
-              <span class="help-icon" title="Empirical road transit speed accounting for urban congestion">?</span>
+              Average Delivery Speed
+              <span class="help-icon" title="Empirical road transit speed accounting for urban congestion (km/h)">?</span>
             </span>
+            <div class="control-input-pill">
+              <input type="number" id="input-speed" min="10" max="60" step="0.5" value="24" class="control-num-input" title="Type to set delivery speed manually">
+              <span class="control-unit-badge">km/h</span>
+            </div>
           </div>
-          <div id="val-speed" class="control-val-display">24.00</div>
+          <div id="val-speed" style="display: none;">24.00</div>
           <input type="range" id="slider-speed" min="15" max="40" value="24" step="1" class="range-slider">
+          <div class="slider-limits-hint">
+            <span>15</span>
+            <span>40</span>
+          </div>
         </div>
 
-        <!-- Lunch Delivery Cutoff Time Slider -->
+        <!-- Lunch Delivery Cutoff Time Control (Slider + Manual Time Input) -->
         <div class="control-group">
           <div class="control-header">
             <span class="control-label">
-              Lunch Delivery Cutoff Time
+              Delivery Cutoff Time
               <span class="help-icon" title="All vans must complete deliveries before schools break for lunch">?</span>
             </span>
+            <div class="control-input-pill" title="Click or type to set cutoff time manually">
+              <input type="time" id="input-cutoff" min="11:00" max="14:00" step="900" value="12:30" class="control-time-input">
+              <span id="val-cutoff-text" class="control-unit-badge">12:30 PM</span>
+            </div>
           </div>
-          <div id="val-cutoff" class="control-val-display">12:30 PM</div>
+          <div id="val-cutoff" style="display: none;">12:30 PM</div>
           <input type="range" id="slider-cutoff" min="240" max="330" value="270" step="15" class="range-slider">
+          <div class="slider-limits-hint">
+            <span>12:00 PM</span>
+            <span>1:30 PM</span>
+          </div>
         </div>
 
         <!-- Collapsible Accordion: Fuel & Map Settings -->
@@ -104,20 +136,30 @@
             <span id="accordion-arrow">&#9662;</span>
           </div>
           <div id="accordion-fuel-content" class="collapsible-content">
-            <!-- Road Circuity Multiplier -->
-            <div class="control-group" style="margin-bottom: 10px;">
-              <span class="control-label">Road Circuity Multiplier</span>
-              <div id="val-circuity" class="control-val-display">1.35</div>
+            <!-- Road Circuity Multiplier Control (Slider + Manual Input) -->
+            <div class="control-group" style="margin-bottom: 12px;">
+              <div class="control-header">
+                <span class="control-label">Road Circuity Multiplier</span>
+                <div class="control-input-pill">
+                  <input type="number" id="input-circuity" min="1.0" max="2.5" step="0.01" value="1.35" class="control-num-input" style="width: 44px;" title="Type to set circuity factor manually">
+                  <span class="control-unit-badge">x</span>
+                </div>
+              </div>
+              <div id="val-circuity" style="display: none;">1.35</div>
               <input type="range" id="slider-circuity" min="1.0" max="1.8" value="1.35" step="0.05" class="range-slider">
+              <div class="slider-limits-hint">
+                <span>1.0x</span>
+                <span>1.8x</span>
+              </div>
             </div>
 
-            <!-- Diesel Price Input -->
-            <div class="control-group" style="margin-bottom: 10px;">
+            <!-- Diesel Price Input (Directly Editable with Keyboard + Steppers) -->
+            <div class="control-group" style="margin-bottom: 12px;">
               <span class="control-label">Diesel Price (INR/L)</span>
               <div class="stepper-input">
-                <button id="btn-diesel-minus" class="stepper-btn">-</button>
-                <input type="text" id="input-diesel" value="45.00" class="stepper-val" readonly>
-                <button id="btn-diesel-plus" class="stepper-btn">+</button>
+                <button id="btn-diesel-minus" class="stepper-btn" type="button" title="Decrease price by 1">-</button>
+                <input type="number" id="input-diesel" min="20" max="200" step="0.5" value="45.00" class="stepper-val" title="Click or type to edit diesel price manually">
+                <button id="btn-diesel-plus" class="stepper-btn" type="button" title="Increase price by 1">+</button>
               </div>
             </div>
 

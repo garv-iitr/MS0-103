@@ -198,17 +198,37 @@ const PlaygroundView = {
         </div>
 
         <div style="background: #111520; border: 1px solid var(--border-card); border-radius: 6px; padding: 16px;">
-          <div style="font-size: 12px; font-weight: 700; color: var(--text-white); margin-bottom: 12px;">Interactive Metric Calculator</div>
+          <div style="font-size: 12px; font-weight: 700; color: var(--text-white); margin-bottom: 12px;">Interactive Metric Calculator (Manual & Slider Controls)</div>
           <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: center;">
             <div>
-              <span class="control-label">Distance to Centroid (km)</span>
-              <div id="sim-d-val" class="control-val-display">6.00 km</div>
+              <div class="control-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span class="control-label">Distance to Centroid</span>
+                <div class="control-input-pill" style="background: #161c2b; border: 1px solid var(--border-card); border-radius: 4px; padding: 2px 6px; display: inline-flex; align-items: center; gap: 3px;">
+                  <input type="number" id="sim-d-num" min="0.5" max="30" step="0.5" value="6" class="control-num-input" style="width: 44px; text-align: right; background: transparent; border: none; color: #ff4b4b; font-family: var(--font-mono); font-weight: 700; font-size: 12px; outline: none;">
+                  <span class="control-unit-badge" style="font-size: 11px; color: var(--text-muted);">km</span>
+                </div>
+              </div>
+              <div id="sim-d-val" style="display: none;">6.00 km</div>
               <input type="range" id="sim-d-input" min="1" max="25" value="6" step="0.5" class="range-slider">
+              <div class="slider-limits-hint">
+                <span>1 km</span>
+                <span>25 km</span>
+              </div>
             </div>
             <div>
-              <span class="control-label">School Demand (Units)</span>
-              <div id="sim-q-val" class="control-val-display">15.00 units</div>
+              <div class="control-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <span class="control-label">School Demand</span>
+                <div class="control-input-pill" style="background: #161c2b; border: 1px solid var(--border-card); border-radius: 4px; padding: 2px 6px; display: inline-flex; align-items: center; gap: 3px;">
+                  <input type="number" id="sim-q-num" min="1" max="50" step="1" value="15" class="control-num-input" style="width: 44px; text-align: right; background: transparent; border: none; color: #ff4b4b; font-family: var(--font-mono); font-weight: 700; font-size: 12px; outline: none;">
+                  <span class="control-unit-badge" style="font-size: 11px; color: var(--text-muted);">units</span>
+                </div>
+              </div>
+              <div id="sim-q-val" style="display: none;">15.00 units</div>
               <input type="range" id="sim-q-input" min="1" max="40" value="15" step="1" class="range-slider">
+              <div class="slider-limits-hint">
+                <span>1 unit</span>
+                <span>40 units</span>
+              </div>
             </div>
             <div style="background: #161c2b; border: 1px solid var(--border-card); border-radius: 6px; padding: 12px; text-align: center;">
               <span style="font-size: 11px; color: var(--text-muted); display: block;">Computed Priority (P_i)</span>
@@ -221,21 +241,52 @@ const PlaygroundView = {
     `;
 
     const dIn = document.getElementById("sim-d-input");
+    const dNum = document.getElementById("sim-d-num");
     const qIn = document.getElementById("sim-q-input");
+    const qNum = document.getElementById("sim-q-num");
     const dVal = document.getElementById("sim-d-val");
     const qVal = document.getElementById("sim-q-val");
     const resVal = document.getElementById("sim-res-val");
 
-    const update = () => {
-      const d = parseFloat(dIn.value);
-      const q = parseFloat(qIn.value);
-      dVal.textContent = `${d.toFixed(2)} km`;
-      qVal.textContent = `${q.toFixed(2)} units`;
-      resVal.textContent = (d / q).toFixed(2);
+    const update = (source) => {
+      let d = dIn ? parseFloat(dIn.value) : 6.0;
+      let q = qIn ? parseFloat(qIn.value) : 15.0;
+
+      if (source === "dNum" && dNum) {
+        const val = parseFloat(dNum.value);
+        if (!isNaN(val) && val > 0) {
+          d = val;
+          if (dIn) dIn.value = Math.min(Math.max(val, 1), 25);
+        }
+      } else if (source === "dIn" && dIn && dNum) {
+        dNum.value = d;
+      }
+
+      if (source === "qNum" && qNum) {
+        const val = parseFloat(qNum.value);
+        if (!isNaN(val) && val > 0) {
+          q = val;
+          if (qIn) qIn.value = Math.min(Math.max(val, 1), 40);
+        }
+      } else if (source === "qIn" && qIn && qNum) {
+        qNum.value = q;
+      }
+
+      if (dVal) dVal.textContent = `${d.toFixed(2)} km`;
+      if (qVal) qVal.textContent = `${q.toFixed(2)} units`;
+      if (resVal) resVal.textContent = q > 0 ? (d / q).toFixed(2) : "0.00";
     };
 
-    dIn.addEventListener("input", update);
-    qIn.addEventListener("input", update);
+    if (dIn) dIn.addEventListener("input", () => update("dIn"));
+    if (dNum) {
+      dNum.addEventListener("input", () => update("dNum"));
+      dNum.addEventListener("change", () => update("dNum"));
+    }
+    if (qIn) qIn.addEventListener("input", () => update("qIn"));
+    if (qNum) {
+      qNum.addEventListener("input", () => update("qNum"));
+      qNum.addEventListener("change", () => update("qNum"));
+    }
   },
 
   renderTwoOptTab(container) {

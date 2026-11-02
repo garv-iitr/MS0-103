@@ -182,68 +182,166 @@ const App = {
       });
     }
 
-    // Capacity Slider (real-time input event)
+    // Helper to format minutes from 8:00 AM into 24h & 12h clock strings
+    const formatTimeFromMins = (mins) => {
+      const hours = 8 + Math.floor(mins / 60);
+      const remMins = mins % 60;
+      const timeStr24 = `${String(hours).padStart(2, '0')}:${String(remMins).padStart(2, '0')}`;
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const dispHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+      const clockStr12 = `${dispHours}:${String(remMins).padStart(2, '0')} ${ampm}`;
+      return { timeStr24, clockStr12 };
+    };
+
+    // 1. Vehicle Capacity Dual Control (Slider + Manual Input)
     const sliderCap = document.getElementById("slider-cap-limit");
+    const inputCap = document.getElementById("input-cap-limit");
     const valCap = document.getElementById("val-cap-limit");
-    if (sliderCap && valCap) {
+    if (sliderCap) {
       sliderCap.addEventListener("input", (e) => {
-        const val = parseFloat(e.target.value).toFixed(2);
-        valCap.textContent = val;
-        this.simParams.vehicle_capacity = parseFloat(val);
+        const val = parseFloat(e.target.value);
+        if (inputCap) inputCap.value = val;
+        if (valCap) valCap.textContent = val.toFixed(2);
+        this.simParams.vehicle_capacity = val;
         this.debounceSimulation();
       });
     }
+    if (inputCap) {
+      const onCapManualChange = (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val) && val > 0) {
+          if (sliderCap) sliderCap.value = Math.min(Math.max(val, 24), 420);
+          if (valCap) valCap.textContent = val.toFixed(2);
+          this.simParams.vehicle_capacity = val;
+          this.debounceSimulation();
+        }
+      };
+      inputCap.addEventListener("input", onCapManualChange);
+      inputCap.addEventListener("change", onCapManualChange);
+    }
 
-    // Fleet k Slider (real-time input event)
+    // 2. Fleet Vehicles k Dual Control (Slider + Manual Input)
     const sliderK = document.getElementById("slider-k-fleet");
+    const inputK = document.getElementById("input-k-fleet");
     const valK = document.getElementById("val-k-fleet");
-    if (sliderK && valK) {
+    if (sliderK) {
       sliderK.addEventListener("input", (e) => {
-        valK.textContent = e.target.value;
-        this.simParams.k_vehicles = parseInt(e.target.value, 10);
+        const val = parseInt(e.target.value, 10);
+        if (inputK) inputK.value = val;
+        if (valK) valK.textContent = val;
+        this.simParams.k_vehicles = val;
         this.debounceSimulation();
       });
     }
+    if (inputK) {
+      const onKManualChange = (e) => {
+        const val = parseInt(e.target.value, 10);
+        if (!isNaN(val) && val >= 1) {
+          if (sliderK) sliderK.value = Math.min(Math.max(val, 5), 35);
+          if (valK) valK.textContent = val;
+          this.simParams.k_vehicles = val;
+          this.debounceSimulation();
+        }
+      };
+      inputK.addEventListener("input", onKManualChange);
+      inputK.addEventListener("change", onKManualChange);
+    }
 
-    // Delivery Speed Slider (real-time input event)
+    // 3. Delivery Speed Dual Control (Slider + Manual Input)
     const sliderSpeed = document.getElementById("slider-speed");
+    const inputSpeed = document.getElementById("input-speed");
     const valSpeed = document.getElementById("val-speed");
-    if (sliderSpeed && valSpeed) {
+    if (sliderSpeed) {
       sliderSpeed.addEventListener("input", (e) => {
-        const val = parseFloat(e.target.value).toFixed(2);
-        valSpeed.textContent = val;
-        this.simParams.delivery_speed = parseFloat(val);
+        const val = parseFloat(e.target.value);
+        if (inputSpeed) inputSpeed.value = val;
+        if (valSpeed) valSpeed.textContent = val.toFixed(2);
+        this.simParams.delivery_speed = val;
         this.debounceSimulation();
       });
     }
+    if (inputSpeed) {
+      const onSpeedManualChange = (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val) && val > 0) {
+          if (sliderSpeed) sliderSpeed.value = Math.min(Math.max(val, 15), 40);
+          if (valSpeed) valSpeed.textContent = val.toFixed(2);
+          this.simParams.delivery_speed = val;
+          this.debounceSimulation();
+        }
+      };
+      inputSpeed.addEventListener("input", onSpeedManualChange);
+      inputSpeed.addEventListener("change", onSpeedManualChange);
+    }
 
-    // Lunch Cutoff Slider (real-time input event)
+    // 4. Lunch Cutoff Dual Control (Slider + Manual Time Input)
     const sliderCutoff = document.getElementById("slider-cutoff");
+    const inputCutoff = document.getElementById("input-cutoff");
+    const valCutoffText = document.getElementById("val-cutoff-text");
     const valCutoff = document.getElementById("val-cutoff");
-    if (sliderCutoff && valCutoff) {
+    if (sliderCutoff) {
       sliderCutoff.addEventListener("input", (e) => {
         const mins = parseInt(e.target.value, 10);
         this.simParams.cutoff_minutes = mins;
-        const hours = 8 + Math.floor(mins / 60);
-        const remMins = mins % 60;
-        const clockStr = `${hours > 12 ? hours - 12 : hours}:${String(remMins).padStart(2, '0')} ${hours >= 12 ? 'PM' : 'AM'}`;
-        valCutoff.textContent = clockStr;
+        const t = formatTimeFromMins(mins);
+        if (inputCutoff) inputCutoff.value = t.timeStr24;
+        if (valCutoffText) valCutoffText.textContent = t.clockStr12;
+        if (valCutoff) valCutoff.textContent = t.clockStr12;
         this.debounceSimulation();
       });
     }
+    if (inputCutoff) {
+      const onCutoffManualChange = (e) => {
+        if (!e.target.value) return;
+        const parts = e.target.value.split(":");
+        if (parts.length >= 2) {
+          const h = parseInt(parts[0], 10);
+          const m = parseInt(parts[1], 10);
+          if (!isNaN(h) && !isNaN(m)) {
+            const mins = (h - 8) * 60 + m;
+            if (mins >= 120 && mins <= 480) {
+              this.simParams.cutoff_minutes = mins;
+              if (sliderCutoff) sliderCutoff.value = Math.min(Math.max(mins, 240), 330);
+              const t = formatTimeFromMins(mins);
+              if (valCutoffText) valCutoffText.textContent = t.clockStr12;
+              if (valCutoff) valCutoff.textContent = t.clockStr12;
+              this.debounceSimulation();
+            }
+          }
+        }
+      };
+      inputCutoff.addEventListener("input", onCutoffManualChange);
+      inputCutoff.addEventListener("change", onCutoffManualChange);
+    }
 
-    // Road Circuity Slider (real-time input event)
+    // 5. Road Circuity Dual Control (Slider + Manual Input)
     const sliderCircuity = document.getElementById("slider-circuity");
+    const inputCircuity = document.getElementById("input-circuity");
     const valCircuity = document.getElementById("val-circuity");
-    if (sliderCircuity && valCircuity) {
+    if (sliderCircuity) {
       sliderCircuity.addEventListener("input", (e) => {
-        valCircuity.textContent = parseFloat(e.target.value).toFixed(2);
-        this.simParams.circuity_factor = parseFloat(e.target.value);
+        const val = parseFloat(e.target.value);
+        if (inputCircuity) inputCircuity.value = val.toFixed(2);
+        if (valCircuity) valCircuity.textContent = val.toFixed(2);
+        this.simParams.circuity_factor = val;
         this.debounceSimulation();
       });
     }
+    if (inputCircuity) {
+      const onCircuityManualChange = (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val) && val >= 1.0) {
+          if (sliderCircuity) sliderCircuity.value = Math.min(Math.max(val, 1.0), 1.8);
+          if (valCircuity) valCircuity.textContent = val.toFixed(2);
+          this.simParams.circuity_factor = val;
+          this.debounceSimulation();
+        }
+      };
+      inputCircuity.addEventListener("input", onCircuityManualChange);
+      inputCircuity.addEventListener("change", onCircuityManualChange);
+    }
 
-    // Diesel Stepper
+    // 6. Diesel Stepper & Direct Typing Input
     const btnMinus = document.getElementById("btn-diesel-minus");
     const btnPlus = document.getElementById("btn-diesel-plus");
     const inputDiesel = document.getElementById("input-diesel");
@@ -261,6 +359,15 @@ const App = {
         this.simParams.diesel_price = cur;
         this.debounceSimulation();
       });
+      const onDieselChange = (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val) && val > 0) {
+          this.simParams.diesel_price = val;
+          this.debounceSimulation();
+        }
+      };
+      inputDiesel.addEventListener("input", onDieselChange);
+      inputDiesel.addEventListener("change", onDieselChange);
     }
 
     // Accordion Toggle
