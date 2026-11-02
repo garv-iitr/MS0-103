@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amruta - Rice Team | Logistics Decision Support System</title>
+  
+  <!-- Leaflet CSS & JS for OpenStreetMap tile rendering -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Modern Dark Theme Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- =====================================================================
+         LEFT SIDEBAR: Simulation Controls & Logistics Parameters
+         ===================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-title">Amruta - Rice Team</div>
+
+      <!-- Section: Interactive Simulation Controls -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Interactive Simulation Controls</div>
+
+        <!-- Optimization Engine Selector -->
+        <div class="control-group">
+          <label for="sidebar-engine" class="control-label">Optimization Engine</label>
+          <select id="sidebar-engine" class="styled-select">
+            <option value="modern" selected>Google OR-Tools (Guided Local)</option>
+            <option value="amruta">Classical AMRUTA (3-Stage)</option>
+            <option value="baseline">Pre-AMRUTA (Ad-Hoc Baseline)</option>
+          </select>
+        </div>
+
+        <!-- Vehicle Capacity Limit Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Vehicle Capacity Limit (Units/Van)
+              <span class="help-icon" title="Rack capacity threshold per vehicle">?</span>
+            </span>
+          </div>
+          <div id="val-cap-limit" class="control-val-display">65.00</div>
+          <input type="range" id="slider-cap-limit" min="24" max="420" value="65" step="5" class="range-slider">
+        </div>
+
+        <!-- Fleet Vehicles Available (k) Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Fleet Vehicles Available (k)
+              <span class="help-icon" title="Number of delivery vans deployed from the fixed fleet">?</span>
+            </span>
+          </div>
+          <div id="val-k-fleet" class="control-val-display">10</div>
+          <input type="range" id="slider-k-fleet" min="5" max="35" value="10" step="1" class="range-slider">
+        </div>
+      </div>
+
+      <!-- Section: Logistics Parameters -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Logistics Parameters</div>
+
+        <!-- Average Delivery Speed Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Average Delivery Speed (km/h)
+              <span class="help-icon" title="Empirical road transit speed accounting for urban congestion">?</span>
+            </span>
+          </div>
+          <div id="val-speed" class="control-val-display">24.00</div>
+          <input type="range" id="slider-speed" min="15" max="40" value="24" step="1" class="range-slider">
+        </div>
+
+        <!-- Lunch Delivery Cutoff Time Slider -->
+        <div class="control-group">
+          <div class="control-header">
+            <span class="control-label">
+              Lunch Delivery Cutoff Time
+              <span class="help-icon" title="All vans must complete deliveries before schools break for lunch">?</span>
+            </span>
+          </div>
+          <div id="val-cutoff" class="control-val-display">12:30 PM</div>
+          <input type="range" id="slider-cutoff" min="240" max="330" value="270" step="15" class="range-slider">
+        </div>
+
+        <!-- Collapsible Accordion: Fuel & Map Settings -->
+        <div class="control-group">
+          <div id="accordion-fuel-header" class="collapsible-header">
+            <span>Fuel & Map Settings</span>
+            <span id="accordion-arrow">&#9662;</span>
+          </div>
+          <div id="accordion-fuel-content" class="collapsible-content">
+            <!-- Road Circuity Multiplier -->
+            <div class="control-group" style="margin-bottom: 10px;">
+              <span class="control-label">Road Circuity Multiplier</span>
+              <div id="val-circuity" class="control-val-display">1.35</div>
+              <input type="range" id="slider-circuity" min="1.0" max="1.8" value="1.35" step="0.05" class="range-slider">
+            </div>
+
+            <!-- Diesel Price Input -->
+            <div class="control-group" style="margin-bottom: 10px;">
+              <span class="control-label">Diesel Price (INR/L)</span>
+              <div class="stepper-input">
+                <button id="btn-diesel-minus" class="stepper-btn">-</button>
+                <input type="text" id="input-diesel" value="45.00" class="stepper-val" readonly>
+                <button id="btn-diesel-plus" class="stepper-btn">+</button>
+              </div>
+            </div>
+
+            <!-- Mouse Zoom Checkbox -->
+            <label class="control-label" style="cursor: pointer; margin-top: 4px;">
+              <input type="checkbox" id="check-mouse-zoom" checked style="accent-color: var(--accent-red);">
+              Enable Mouse Wheel Zoom
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action Buttons -->
+      <div class="sidebar-footer-buttons">
+        <button id="btn-sync-excel" class="btn-sidebar-outline">Sync data.xlsx</button>
+        <button id="btn-open-excel" class="btn-sidebar-outline">Open data.xlsx</button>
+      </div>
+    </aside>
+
+    <!-- =====================================================================
+         MAIN CONTENT AREA
+         ===================================================================== -->
+    <main class="main-content">
+
+      <!-- Top Executive Banner Card -->
+      <div class="header-banner-card">
+        <h1 class="header-banner-title">AMRUTA Logistics Decision Support System</h1>
+        <div class="header-banner-sub">The Akshaya Patra Foundation — Vehicle Routing with Time Windows (VRPTW)</div>
+        <div class="header-badges-row">
+          <span id="badge-active-file" class="pill-badge pill-badge-green">Active: data.xlsx (100 Schools, 32,880 Children)</span>
+          <span class="pill-badge pill-badge-slate">Depot: Vasanthapura Central Kitchen</span>
+          <span id="badge-active-engine" class="pill-badge pill-badge-teal">Google OR-Tools</span>
+        </div>
+      </div>
+
+      <!-- 5 KPI Cards Strip -->
+      <div class="kpi-cards-grid">
+        <div class="kpi-card">
+          <span class="kpi-card-label">Schools Serviced</span>
+          <div id="kpi-schools" class="kpi-card-value">100</div>
+          <div id="kpi-demand-sub" class="kpi-card-sub">Demand: 586.9 Units</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card-label">Fleet Deployed</span>
+          <div id="kpi-fleet" class="kpi-card-value">10 Vans</div>
+          <div id="kpi-cap-sub" class="kpi-card-sub">Cap: 65 units/van</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card-label">Delivery Deadline</span>
+          <div id="kpi-deadline" class="kpi-card-value" style="color: #34d399;">100% On-Time</div>
+          <div class="kpi-card-sub">Cutoff: 12:30 PM</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card-label">Monthly Operating Cost</span>
+          <div id="kpi-cost" class="kpi-card-value">INR 299,290</div>
+          <div id="kpi-cost-sub" class="kpi-card-sub" style="color: #38bdf8;">-53.7% Savings vs Baseline</div>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-card-label">Social Impact (SROI)</span>
+          <div id="kpi-impact" class="kpi-card-value" style="color: #34d399;">+2,628</div>
+          <div class="kpi-card-sub">Hungry Children Fed Daily</div>
+        </div>
+      </div>
+
+      <!-- Horizontal Navigation Tabs -->
+      <nav class="nav-tabs-bar">
+        <button class="nav-tab-item active" data-tab="map">Operations Map & Routes</button>
+        <button class="nav-tab-item" data-tab="playground">Playground & Algorithm Lab</button>
+        <button class="nav-tab-item" data-tab="excel">Excel Data Manager</button>
+        <button class="nav-tab-item" data-tab="benchmarks">Algorithmic Benchmarks</button>
+        <button class="nav-tab-item" data-tab="manifests">Driver Trip Manifests</button>
+      </nav>
+
+      <!-- TAB 1: OPERATIONS MAP & ROUTES -->
+      <div id="tab-content-map" class="map-view-container">
+        <div class="map-wrapper">
+          <div id="map-container" style="width: 100%; height: 100%;"></div>
+        </div>
+
+        <div class="manifest-section">
+          <div class="section-heading">Route Fleet Manifest</div>
+          <div class="manifest-table-wrapper">
+            <table class="dark-table">
+              <thead>
+                <tr>
+                  <th>Route</th>
+                  <th>Assigned Vehicle</th>
+                  <th>Schools</th>
+                  <th>Total Demand</th>
+                  <th>Distance</th>
+                  <th>Duration</th>
+                  <th>Last Delivery ETA</th>
+                  <th>Cutoff Compliance</th>
+                </tr>
+              </thead>
+              <tbody id="map-manifest-tbody">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: PLAYGROUND & ALGORITHM LAB -->
+      <div id="tab-content-playground" style="display: none;">
+        <div id="playground-container"></div>
+      </div>
+
+      <!-- TAB 3: EXCEL DATA MANAGER -->
+      <div id="tab-content-excel" class="excel-manager-container" style="display: none;">
+        <div>
+          <div class="section-heading">Spreadsheet Operations Management</div>
+          <p class="text-muted" style="font-size: 12px; margin-bottom: 14px;">
+            Operations managers maintain daily demand in <code style="color: #34d399; font-family: var(--font-mono);">data.xlsx</code>. You can edit records directly in the table below and click <strong>Save Changes</strong>, or open <code style="color: #34d399; font-family: var(--font-mono);">data.xlsx</code> in Excel, make edits, and save.
+          </p>
+        </div>
+
+        <!-- Green Connection Status Bar -->
+        <div class="connected-status-banner">
+          <span id="excel-status-banner" class="connected-status-text">
+            Connected File: data.xlsx | Last Synced: 05:01:02 PM | Total Schools: 100
+          </span>
+          <div class="connected-actions">
+            <button id="btn-excel-open-direct" class="btn-dark-secondary">Open data.xlsx in Excel</button>
+            <button id="btn-excel-reload-direct" class="btn-dark-secondary">Reload from data.xlsx</button>
+          </div>
+        </div>
+
+        <!-- Scale Buttons Row -->
+        <div style="margin-top: 6px;">
+          <div class="control-label" style="color: var(--text-white); font-weight: 700; margin-bottom: 6px;">
+            Change Spreadsheet Dataset Scale
+          </div>
+          <div class="scale-buttons-row">
+            <button class="btn-scale-template active" data-scale="100">Reset to 100 Schools Template</button>
+            <button class="btn-scale-template" data-scale="250">Expand to 250 Schools Template</button>
+            <button class="btn-scale-template" data-scale="500">Expand to 500 Schools Template (IJAA)</button>
+          </div>
+        </div>
+
+        <!-- Display View Radio Filter -->
+        <div class="radio-filter-group" style="margin-top: 6px;">
+          <span>Display View:</span>
+          <label><input type="radio" name="display-view" value="all" checked> All Schools</label>
+          <label><input type="radio" name="display-view" value="active"> Active Only</label>
+          <label><input type="radio" name="display-view" value="closed"> Holidays / Closed Only</label>
+        </div>
+
+        <!-- Spreadsheet Table Grid -->
+        <div class="manifest-table-wrapper" style="max-height: 480px; overflow-y: auto;">
+          <table class="dark-table">
+            <thead>
+              <tr>
+                <th>School ID</th>
+                <th>School Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Rice (Big)</th>
+                <th>Sambar (Med)</th>
+                <th>Curd (Small)</th>
+                <th>Equivalent Demand</th>
+                <th>Student Count</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="excel-grid-tbody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: ALGORITHMIC BENCHMARKS -->
+      <div id="tab-content-benchmarks" style="display: none;">
+        <div id="comparison-container"></div>
+      </div>
+
+      <!-- TAB 5: DRIVER TRIP MANIFESTS -->
+      <div id="tab-content-manifests" class="driver-manifest-container" style="display: none;">
+        <div>
+          <div class="section-heading">Daily Vehicle Trip Sheets (Driver Manifest)</div>
+          <div class="route-select-wrapper" style="margin-bottom: 12px;">
+            <label for="select-manifest-route" class="control-label" style="margin-bottom: 6px; color: var(--text-white);">Select Vehicle Route:</label>
+            <select id="select-manifest-route" class="styled-select">
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Blue Summary Banner -->
+        <div id="manifest-vehicle-banner" class="vehicle-info-banner">
+          Vehicle: Max Pikup | Schools: 12 | Total Distance: 34.98 km | Final Depot Return: 10:40 AM
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="manifest-actions-row">
+          <button id="btn-export-trip-excel" class="btn-dark-secondary">Export to Excel (.xlsx)</button>
+          <button id="btn-export-trip-csv" class="btn-dark-secondary">Export CSV</button>
+          <button id="btn-print-trip-slip" class="btn-dark-secondary" style="border-color: #3b82f6; color: #93c5fd;">Print Driver Trip Sheet</button>
+        </div>
+
+        <!-- Stop-by-Stop Table -->
+        <div class="manifest-table-wrapper">
+          <table class="dark-table">
+            <thead>
+              <tr>
+                <th style="width: 70px;">Stop #</th>
+                <th>School / Stop Name</th>
+                <th style="width: 140px;">Arrival Clock</th>
+                <th style="width: 110px;">Late Status</th>
+              </tr>
+            </thead>
+            <tbody id="manifest-stops-tbody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Application Modules -->
+  <script src="js/models/embedded_data.js"></script>
+  <script src="js/models/data_manager.js"></script>
+  <script src="js/models/cost_evaluator.js"></script>
+  <script src="js/algorithms/amruta_engine.js"></script>
+  <script src="js/algorithms/modern_solver.js"></script>
+  <script src="js/views/map_view.js"></script>
+  <script src="js/views/trip_sheet_view.js"></script>
+  <script src="js/views/excel_manager_view.js"></script>
+  <script src="js/views/comparison_view.js"></script>
+  <script src="js/views/playground_view.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

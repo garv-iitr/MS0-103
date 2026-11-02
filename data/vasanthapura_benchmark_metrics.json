@@ -1,0 +1,337 @@
+{
+  "kitchen": {
+    "name": "TAPF Central Kitchen (Vasanthapura)",
+    "lat": 12.88812,
+    "lng": 77.54838,
+    "address": "Vasanthapura, Subramanyapura Post, South Bangalore, Karnataka 560061"
+  },
+  "clusters": [
+    {
+      "cluster_id": 1,
+      "schools_count": 15,
+      "demand": 122,
+      "dist": 72.8,
+      "travel_time": 136.97,
+      "service_time": 57.0,
+      "total_time": 193.97,
+      "vehicle_type": "Max Pikup",
+      "zone": "Kaggalipura / Harohalli"
+    },
+    {
+      "cluster_id": 2,
+      "schools_count": 34,
+      "demand": 337,
+      "dist": 42.33,
+      "travel_time": 77.53,
+      "service_time": 125.0,
+      "total_time": 202.53,
+      "vehicle_type": "Tata",
+      "zone": "Jayanagar / JP Nagar"
+    },
+    {
+      "cluster_id": 3,
+      "schools_count": 24,
+      "demand": 224,
+      "dist": 76.87,
+      "travel_time": 148.31,
+      "service_time": 95.0,
+      "total_time": 243.31,
+      "vehicle_type": "Swaraj Mazda",
+      "zone": "Thavarekere / Magadi Road"
+    },
+    {
+      "cluster_id": 4,
+      "schools_count": 34,
+      "demand": 296,
+      "dist": 56.82,
+      "travel_time": 102.59,
+      "service_time": 113.25,
+      "total_time": 215.84,
+      "vehicle_type": "Tata",
+      "zone": "Wilson Garden / Audugodi"
+    },
+    {
+      "cluster_id": 5,
+      "schools_count": 23,
+      "demand": 208,
+      "dist": 28.73,
+      "travel_time": 55.24,
+      "service_time": 79.0,
+      "total_time": 134.24,
+      "vehicle_type": "Swaraj Mazda",
+      "zone": "Uttarahalli / Chikkalasandra"
+    },
+    {
+      "cluster_id": 6,
+      "schools_count": 14,
+      "demand": 188,
+      "dist": 24.79,
+      "travel_time": 52.25,
+      "service_time": 55.75,
+      "total_time": 108.0,
+      "vehicle_type": "Swaraj Mazda",
+      "zone": "Konanakunte / Puttenahalli / Sarakki"
+    },
+    {
+      "cluster_id": 7,
+      "schools_count": 19,
+      "demand": 277,
+      "dist": 64.86,
+      "travel_time": 130.62,
+      "service_time": 73.5,
+      "total_time": 204.12,
+      "vehicle_type": "Swaraj Mazda",
+      "zone": "Sarjapura Road / Carmelaram"
+    },
+    {
+      "cluster_id": 8,
+      "schools_count": 5,
+      "demand": 84,
+      "dist": 37.5,
+      "travel_time": 71.61,
+      "service_time": 23.25,
+      "total_time": 94.86,
+      "vehicle_type": "Max Pikup",
+      "zone": "Somanahalli / Gabbadi"
+    },
+    {
+      "cluster_id": 9,
+      "schools_count": 23,
+      "demand": 340,
+      "dist": 51.16,
+      "travel_time": 99.91,
+      "service_time": 95.25,
+      "total_time": 195.16,
+      "vehicle_type": "Tata",
+      "zone": "Mudalapalya / Vijayanagar"
+    },
+    {
+      "cluster_id": 10,
+      "schools_count": 6,
+      "demand": 78,
+      "dist": 43.12,
+      "travel_time": 71.67,
+      "service_time": 26.0,
+      "total_time": 97.67,
+      "vehicle_type": "Max Pikup",
+      "zone": "P Agrahara Rural"
+    },
+    {
+      "cluster_id": 11,
+      "schools_count": 27,
+      "demand": 295,
+      "dist": 66.37,
+      "travel_time": 139.17,
+      "service_time": 107.5,
+      "total_time": 246.67,
+      "vehicle_type": "Tata",
+      "zone": "Domlur / Austin Town"
+    },
+    {
+      "cluster_id": 12,
+      "schools_count": 14,
+      "demand": 199,
+      "dist": 91.48,
+      "travel_time": 154.95,
+      "service_time": 62.75,
+      "total_time": 217.7,
+      "vehicle_type": "Swaraj Mazda",
+      "zone": "Whitefield Outer Corridor"
+    },
+    {
+      "cluster_id": 13,
+      "schools_count": 32,
+      "demand": 307,
+      "dist": 57.71,
+      "travel_time": 111.63,
+      "service_time": 98.5,
+      "total_time": 210.13,
+      "vehicle_type": "Tata",
+      "zone": "HAL / Marathahalli"
+    },
+    {
+      "cluster_id": 14,
+      "schools_count": 13,
+      "demand": 189,
+      "dist": 94.05,
+      "travel_time": 162.23,
+      "service_time": 58.75,
+      "total_time": 220.98,
+      "vehicle_type": "Load King",
+      "zone": "Varthur / Gunjur Rural"
+    },
+    {
+      "cluster_id": 15,
+      "schools_count": 19,
+      "demand": 240,
+      "dist": 32.59,
+      "travel_time": 59.58,
+      "service_time": 73.75,
+      "total_time": 133.33,
+      "vehicle_type": "Load King",
+      "zone": "Banashankari 2nd & 3rd Stage"
+    },
+    {
+      "cluster_id": 16,
+      "schools_count": 25,
+      "demand": 367,
+      "dist": 48.1,
+      "travel_time": 95.97,
+      "service_time": 103.75,
+      "total_time": 199.72,
+      "vehicle_type": "Tata",
+      "zone": "Akkipet / Cottonpet / City Market"
+    },
+    {
+      "cluster_id": 17,
+      "schools_count": 28,
+      "demand": 292,
+      "dist": 32.05,
+      "travel_time": 64.39,
+      "service_time": 104.5,
+      "total_time": 168.89,
+      "vehicle_type": "Tata",
+      "zone": "Basavanagudi / Hanumanthanagar"
+    },
+    {
+      "cluster_id": 18,
+      "schools_count": 35,
+      "demand": 321,
+      "dist": 41.71,
+      "travel_time": 77.8,
+      "service_time": 106.75,
+      "total_time": 184.55,
+      "vehicle_type": "Tata",
+      "zone": "Koramangala / BTM Layout"
+    },
+    {
+      "cluster_id": 19,
+      "schools_count": 3,
+      "demand": 34,
+      "dist": 15.7,
+      "travel_time": 26.15,
+      "service_time": 13.0,
+      "total_time": 39.15,
+      "vehicle_type": "Max Pikup",
+      "zone": "Subramanyapura Local"
+    },
+    {
+      "cluster_id": 20,
+      "schools_count": 5,
+      "demand": 84,
+      "dist": 21.17,
+      "travel_time": 36.07,
+      "service_time": 17.25,
+      "total_time": 53.32,
+      "vehicle_type": "Max Pikup",
+      "zone": "Kothnur / Gottigere"
+    },
+    {
+      "cluster_id": 21,
+      "schools_count": 6,
+      "demand": 96,
+      "dist": 30.9,
+      "travel_time": 55.13,
+      "service_time": 24.75,
+      "total_time": 79.88,
+      "vehicle_type": "Load King",
+      "zone": "Anjanapura / Hulimavu"
+    },
+    {
+      "cluster_id": 22,
+      "schools_count": 20,
+      "demand": 219,
+      "dist": 50.17,
+      "travel_time": 97.09,
+      "service_time": 78.25,
+      "total_time": 175.34,
+      "vehicle_type": "Load King",
+      "zone": "Bannerghatta / Jigani Link"
+    },
+    {
+      "cluster_id": 23,
+      "schools_count": 17,
+      "demand": 191,
+      "dist": 83.87,
+      "travel_time": 147.57,
+      "service_time": 63.25,
+      "total_time": 210.82,
+      "vehicle_type": "Load King",
+      "zone": "Anekal / Attibele Border"
+    },
+    {
+      "cluster_id": 24,
+      "schools_count": 34,
+      "demand": 355,
+      "dist": 61.82,
+      "travel_time": 112.12,
+      "service_time": 128.5,
+      "total_time": 240.62,
+      "vehicle_type": "Tata",
+      "zone": "K Upanagara / Rajajinagar"
+    },
+    {
+      "cluster_id": 25,
+      "schools_count": 25,
+      "demand": 280,
+      "dist": 69.19,
+      "travel_time": 127.93,
+      "service_time": 94.0,
+      "total_time": 221.93,
+      "vehicle_type": "Tata",
+      "zone": "JB Nagara / Indiranagar"
+    },
+    {
+      "cluster_id": 26,
+      "schools_count": 19,
+      "demand": 286,
+      "dist": 14.75,
+      "travel_time": 33.74,
+      "service_time": 77.5,
+      "total_time": 111.24,
+      "vehicle_type": "Tata",
+      "zone": "Padmanabhanagar / Kumaraswamy Layout"
+    },
+    {
+      "cluster_id": 27,
+      "schools_count": 10,
+      "demand": 117,
+      "dist": 14.49,
+      "travel_time": 33.42,
+      "service_time": 42.5,
+      "total_time": 75.92,
+      "vehicle_type": "Eicher",
+      "zone": "Yellukunte / Arekere"
+    }
+  ],
+  "table2_summary": {
+    "solution_20": {
+      "vehicles": 20,
+      "distance_km": 1195.69,
+      "elapsed_min": 305.73,
+      "cost_inr": 1106841,
+      "cost_usd": 22137
+    },
+    "solution_27": {
+      "vehicles": 27,
+      "distance_km": 1325.11,
+      "elapsed_min": 246.67,
+      "cost_inr": 1376167,
+      "cost_usd": 27523
+    },
+    "solution_35": {
+      "vehicles": 35,
+      "distance_km": 1538.0,
+      "elapsed_min": 244.38,
+      "cost_inr": 1739354,
+      "cost_usd": 34787
+    },
+    "baseline_adhoc": {
+      "vehicles": 35,
+      "distance_km": 1400.0,
+      "elapsed_min": 310.0,
+      "cost_inr": 1690900,
+      "cost_usd": 33818
+    }
+  }
+}

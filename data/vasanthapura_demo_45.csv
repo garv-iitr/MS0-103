@@ -1,0 +1,118 @@
+school_id,school_name,latitude,longitude,rice_vessels,sambar_vessels,curd_vessels,equivalent_demand,cluster_zone,target_cluster
+16,RV Girls HS—Jayanagar,12.940608,77.583289,3.0,3.5,0.75,4.94,Jayanagar / JP Nagar,2
+17,CNS—Jayanagar,12.942947,77.583208,0.13,0.13,1.0,0.45,Jayanagar / JP Nagar,2
+18,Parikrama—Jayanagar (P),12.941275,77.585586,2.5,3.0,0.5,4.12,Jayanagar / JP Nagar,2
+19,Rani HPS—Jayanagar,12.938536,77.585992,5.0,5.0,1.0,7.75,Jayanagar / JP Nagar,2
+20,Rani HS—Jayanagar,12.938536,77.585992,6.0,6.0,1.0,9.25,Jayanagar / JP Nagar,2
+21,Model School Jayanagar #021,12.913131,77.612083,6.9,8.1,6.2,12.5,Jayanagar / JP Nagar,2
+22,GHS Jayanagar #022,12.928599,77.614342,6.8,8.0,6.0,12.3,Jayanagar / JP Nagar,2
+23,GHPS Jayanagar #023,12.936114,77.611368,3.7,4.4,3.2,6.7,Jayanagar / JP Nagar,2
+24,GHS Jayanagar #024,12.936802,77.619849,6.5,7.7,6.2,11.9,Jayanagar / JP Nagar,2
+25,GLPS Jayanagar #025,12.912686,77.613027,6.1,7.2,5.2,11.0,Jayanagar / JP Nagar,2
+26,BHS Jayanagar #026,12.919679,77.600178,4.6,5.4,4.0,8.3,Jayanagar / JP Nagar,2
+27,Adarsha Vidyalaya Jayanagar #027,12.938024,77.60316,5.7,6.7,5.0,10.3,Jayanagar / JP Nagar,2
+28,GLPS Jayanagar #028,12.918908,77.587784,4.7,5.5,4.2,8.5,Jayanagar / JP Nagar,2
+29,Vidyalaya Jayanagar #029,12.913169,77.601933,8.0,9.4,7.2,14.5,Jayanagar / JP Nagar,2
+30,Vidyalaya Jayanagar #030,12.918475,77.618837,6.8,8.1,6.2,12.4,Jayanagar / JP Nagar,2
+31,St. Anthony Primary Jayanagar #031,12.917644,77.608105,4.5,5.3,3.8,8.1,Jayanagar / JP Nagar,2
+32,GMS Jayanagar #032,12.925398,77.623273,5.0,5.9,4.2,9.0,Jayanagar / JP Nagar,2
+33,GLPS Jayanagar #033,12.911362,77.604495,7.2,8.5,6.6,13.1,Jayanagar / JP Nagar,2
+34,Saraswathi Vidyamandira Jayanagar #034,12.921634,77.622412,3.6,4.3,3.4,6.6,Jayanagar / JP Nagar,2
+35,KPS Jayanagar #035,12.93033,77.615944,7.5,8.8,6.8,13.6,Jayanagar / JP Nagar,2
+36,Vivekananda School Jayanagar #036,12.911808,77.601354,7.4,8.7,6.6,13.4,Jayanagar / JP Nagar,2
+37,Model School Jayanagar #037,12.942934,77.595987,5.3,6.3,5.0,9.7,Jayanagar / JP Nagar,2
+38,Jnana Deepa Jayanagar #038,12.93446,77.606224,3.7,4.4,3.2,6.7,Jayanagar / JP Nagar,2
+39,Vivekananda School Jayanagar #039,12.935182,77.604476,7.9,9.4,7.2,14.4,Jayanagar / JP Nagar,2
+40,Jnana Deepa Jayanagar #040,12.933737,77.607952,6.2,7.3,5.8,11.3,Jayanagar / JP Nagar,2
+41,St. Anthony Primary Jayanagar #041,12.937457,77.611135,6.9,8.2,6.4,12.6,Jayanagar / JP Nagar,2
+42,Vivekananda School Jayanagar #042,12.936451,77.609837,4.4,5.2,4.0,8.0,Jayanagar / JP Nagar,2
+43,Saraswathi Vidyamandira Jayanagar #043,12.934898,77.61359,5.8,6.9,5.4,10.6,Jayanagar / JP Nagar,2
+44,Vidyalaya Jayanagar #044,12.917013,77.601986,7.8,9.2,7.2,14.2,Jayanagar / JP Nagar,2
+45,GJC Jayanagar #045,12.918009,77.59805,6.6,7.8,6.0,12.0,Jayanagar / JP Nagar,2
+46,St. Anthony Primary Jayanagar #046,12.927488,77.586222,4.1,4.8,3.6,7.4,Jayanagar / JP Nagar,2
+47,Saraswathi Vidyamandira Jayanagar #047,12.924823,77.610428,4.1,4.8,3.6,7.4,Jayanagar / JP Nagar,2
+48,GMS Jayanagar #048,12.914373,77.610531,7.1,8.4,6.4,12.9,Jayanagar / JP Nagar,2
+49,GLPS Jayanagar #049,12.927006,77.615477,6.1,7.2,5.2,11.0,Jayanagar / JP Nagar,2
+74,SESS HPS—LalBhagh Siddapura,12.946556,77.591197,0.75,0.75,0.5,1.25,Wilson Garden / Audugodi,4
+75,St. Andrees KHPS—L.Siddapura,12.944728,77.589717,3.75,3.5,0.75,5.69,Wilson Garden / Audugodi,4
+76,GHPS—LalBhagh,12.945567,77.589019,0.5,0.5,0.3,0.82,Wilson Garden / Audugodi,4
+77,s/c—Dayanada Nagar,12.944206,77.593283,2.0,2.0,0.5,3.12,Wilson Garden / Audugodi,4
+78,Hombegowda BHS—W.Garden,12.946958,77.596081,7.5,7.0,1.0,11.25,Wilson Garden / Audugodi,4
+79,GHPS—W.Garden,12.948381,77.596917,1.5,1.5,0.25,2.31,Wilson Garden / Audugodi,4
+80,GHS—W.Garden,12.948336,77.596648,3.0,3.0,0.75,4.69,Wilson Garden / Audugodi,4
+81,Gangamma GHS—W.Garden,12.947819,77.596018,5.0,3.0,1.0,6.75,Wilson Garden / Audugodi,4
+82,CNS—Lakkasandra,12.946944,77.597778,0.5,0.5,0.5,0.88,Wilson Garden / Audugodi,4
+83,CPS—Lakkasandra,12.946944,77.597778,1.25,1.25,0.25,1.94,Wilson Garden / Audugodi,4
+84,Vivekananda School Wilson Garden #084,12.949483,77.603277,6.7,7.9,6.2,12.2,Wilson Garden / Audugodi,4
+85,Adarsha Vidyalaya Wilson Garden #085,12.955837,77.604718,5.4,6.4,4.8,9.8,Wilson Garden / Audugodi,4
+86,GLPS Wilson Garden #086,12.952995,77.598992,5.1,6.0,4.4,9.2,Wilson Garden / Audugodi,4
+87,GLPS Wilson Garden #087,12.95471,77.618407,7.3,8.6,6.8,13.3,Wilson Garden / Audugodi,4
+88,GHS Wilson Garden #088,12.941418,77.585725,5.3,6.3,5.0,9.7,Wilson Garden / Audugodi,4
+89,St. Anthony Primary Wilson Garden #089,12.936962,77.599812,5.1,6.0,4.8,9.3,Wilson Garden / Audugodi,4
+90,Adarsha Vidyalaya Wilson Garden #090,12.939214,77.596455,4.3,5.1,4.2,7.9,Wilson Garden / Audugodi,4
+91,Jnana Deepa Wilson Garden #091,12.935727,77.604517,7.2,8.5,6.2,13.0,Wilson Garden / Audugodi,4
+92,Saraswathi Vidyamandira Wilson Garden #092,12.959515,77.60989,6.2,7.3,5.4,11.2,Wilson Garden / Audugodi,4
+93,GHPS Wilson Garden #093,12.940694,77.613592,8.7,10.3,8.2,15.9,Wilson Garden / Audugodi,4
+94,Vidyalaya Wilson Garden #094,12.947586,77.609913,8.7,10.3,8.2,15.9,Wilson Garden / Audugodi,4
+95,St. Anthony Primary Wilson Garden #095,12.937866,77.605763,3.7,4.4,3.2,6.7,Wilson Garden / Audugodi,4
+96,GLPS Wilson Garden #096,12.951758,77.604625,7.0,8.3,6.6,12.8,Wilson Garden / Audugodi,4
+97,GHS Wilson Garden #097,12.935448,77.585993,6.7,7.9,6.2,12.2,Wilson Garden / Audugodi,4
+98,Model School Wilson Garden #098,12.948164,77.593726,4.2,4.9,3.8,7.6,Wilson Garden / Audugodi,4
+99,GHPS Wilson Garden #099,12.931636,77.609192,6.6,7.8,6.0,12.0,Wilson Garden / Audugodi,4
+100,Vivekananda School Wilson Garden #100,12.948191,77.599549,6.4,7.6,6.0,11.7,Wilson Garden / Audugodi,4
+101,KPS Wilson Garden #101,12.960983,77.608957,4.3,5.1,4.2,7.9,Wilson Garden / Audugodi,4
+102,GLPS Wilson Garden #102,12.942284,77.609774,5.6,6.6,4.8,10.1,Wilson Garden / Audugodi,4
+103,Adarsha Vidyalaya Wilson Garden #103,12.934665,77.600945,4.0,4.7,3.8,7.3,Wilson Garden / Audugodi,4
+104,GHS Wilson Garden #104,12.935643,77.597584,5.0,5.9,4.6,9.1,Wilson Garden / Audugodi,4
+105,GHS Wilson Garden #105,12.943806,77.622962,5.2,6.2,4.8,9.5,Wilson Garden / Audugodi,4
+106,Jnana Deepa Wilson Garden #106,12.949493,77.585538,6.1,7.2,5.2,11.0,Wilson Garden / Audugodi,4
+107,Jnana Deepa Wilson Garden #107,12.946232,77.6126,6.6,7.8,6.0,12.0,Wilson Garden / Audugodi,4
+131,GHPS—Chandra Nagar (8),12.905,77.562,9.0,10.0,8.0,16.0,Konanakunte / Puttenahalli / Sarakki,6
+132,GHS and BHS—Dayananda,12.9045,77.564,5.0,6.0,8.0,10.0,Konanakunte / Puttenahalli / Sarakki,6
+133,Dayananda LPS,12.9045,77.564,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
+134,GMPS Konanakunte [8],12.889,77.572,7.0,10.0,8.0,14.0,Konanakunte / Puttenahalli / Sarakki,6
+135,JSS HS—Konanakunte,12.891,77.571,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
+136,S/C—Doresani Palya,12.903,77.595,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
+137,GHPS—Puttenahalli (8),12.898,77.58,16.0,24.0,16.0,32.0,Konanakunte / Puttenahalli / Sarakki,6
+138,S/C Puttenahalli,12.906,77.581,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
+139,GHS—Sarakki,12.913,77.576,17.0,26.0,16.0,34.0,Konanakunte / Puttenahalli / Sarakki,6
+140,S/C—Pragathipura,12.92,77.571,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
+141,GHPS—Kadirenahalli (A),12.924,77.56,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
+142,Banashankari HS—Bendrenagara (A),12.922,77.559,5.0,7.0,6.0,10.0,Konanakunte / Puttenahalli / Sarakki,6
+143,Banashankari HPS—Bendrenagara (A),12.922,77.559,4.0,6.0,4.0,8.0,Konanakunte / Puttenahalli / Sarakki,6
+144,Bhuvanashweri HPS—Bendrenagar (A),12.921,77.56,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
+356,St. Anthony Primary Koramangala #356,12.911483,77.618337,4.3,5.1,4.2,7.9,Koramangala / BTM Layout,18
+357,SVM Koramangala #357,12.919109,77.637192,6.2,7.3,5.4,11.2,Koramangala / BTM Layout,18
+358,Vivekananda School Koramangala #358,12.921401,77.625901,5.3,6.3,5.0,9.7,Koramangala / BTM Layout,18
+359,St. Anthony Primary Koramangala #359,12.904101,77.628719,5.1,6.0,4.8,9.3,Koramangala / BTM Layout,18
+360,Adarsha Vidyalaya Koramangala #360,12.938015,77.633836,4.3,5.1,4.2,7.9,Koramangala / BTM Layout,18
+361,SVM Koramangala #361,12.918976,77.625405,6.6,7.8,6.0,12.0,Koramangala / BTM Layout,18
+362,Vidyalaya Koramangala #362,12.91347,77.630944,3.6,4.3,3.4,6.6,Koramangala / BTM Layout,18
+363,Vivekananda School Koramangala #363,12.925094,77.63932,5.1,6.0,4.4,9.2,Koramangala / BTM Layout,18
+364,GLPS Koramangala #364,12.917566,77.623579,4.4,5.2,4.0,8.0,Koramangala / BTM Layout,18
+365,Vivekananda School Koramangala #365,12.926309,77.634866,6.2,7.3,5.8,11.3,Koramangala / BTM Layout,18
+366,Adarsha Vidyalaya Koramangala #366,12.921239,77.615668,5.3,6.3,5.0,9.7,Koramangala / BTM Layout,18
+367,GLPS Koramangala #367,12.930438,77.634955,6.2,7.3,5.4,11.2,Koramangala / BTM Layout,18
+368,Model School Koramangala #368,12.923831,77.628221,3.3,3.9,3.0,6.0,Koramangala / BTM Layout,18
+369,GLPS Koramangala #369,12.922648,77.619231,4.9,5.8,4.4,8.9,Koramangala / BTM Layout,18
+370,BHS Koramangala #370,12.923101,77.618826,5.9,7.0,5.2,10.7,Koramangala / BTM Layout,18
+371,Model School Koramangala #371,12.913029,77.619834,3.1,3.7,3.0,5.7,Koramangala / BTM Layout,18
+372,Model School Koramangala #372,12.931175,77.619243,4.5,5.3,4.2,8.2,Koramangala / BTM Layout,18
+373,KPS Koramangala #373,12.935726,77.622743,4.1,4.8,3.6,7.4,Koramangala / BTM Layout,18
+374,GHS Koramangala #374,12.910274,77.611105,3.7,4.4,3.6,6.8,Koramangala / BTM Layout,18
+375,Saraswathi Vidyamandira Koramangala #375,12.912846,77.625845,4.3,5.1,3.8,7.8,Koramangala / BTM Layout,18
+376,GHPS Koramangala #376,12.921266,77.631276,4.6,5.5,4.2,8.4,Koramangala / BTM Layout,18
+377,BHS Koramangala #377,12.929661,77.627667,3.1,3.7,3.0,5.7,Koramangala / BTM Layout,18
+378,Adarsha Vidyalaya Koramangala #378,12.931702,77.627482,6.5,7.7,6.2,11.9,Koramangala / BTM Layout,18
+379,Adarsha Vidyalaya Koramangala #379,12.9181,77.618251,3.9,4.6,3.6,7.1,Koramangala / BTM Layout,18
+380,SVM Koramangala #380,12.919539,77.621942,4.8,5.7,4.6,8.8,Koramangala / BTM Layout,18
+381,Vivekananda School Koramangala #381,12.912832,77.620418,6.3,7.5,5.8,11.5,Koramangala / BTM Layout,18
+382,Jnana Deepa Koramangala #382,12.937003,77.627866,5.4,6.4,4.8,9.8,Koramangala / BTM Layout,18
+383,KPS Koramangala #383,12.912904,77.610162,6.9,8.2,6.4,12.6,Koramangala / BTM Layout,18
+384,GHPS Koramangala #384,12.909684,77.623793,6.8,8.1,6.2,12.4,Koramangala / BTM Layout,18
+385,Adarsha Vidyalaya Koramangala #385,12.926094,77.61445,3.4,4.0,3.2,6.2,Koramangala / BTM Layout,18
+386,GMS Koramangala #386,12.92061,77.615899,7.1,8.4,6.4,12.9,Koramangala / BTM Layout,18
+387,St. Anthony Primary Koramangala #387,12.935426,77.62727,3.3,3.9,3.0,6.0,Koramangala / BTM Layout,18
+388,GMS Koramangala #388,12.91339,77.627605,3.2,3.8,2.8,5.8,Koramangala / BTM Layout,18
+389,Jnana Deepa Koramangala #389,12.913995,77.633825,7.4,8.7,6.6,13.4,Koramangala / BTM Layout,18
+390,KPS Koramangala #390,12.91659,77.627751,7.1,8.4,6.4,12.9,Koramangala / BTM Layout,18
