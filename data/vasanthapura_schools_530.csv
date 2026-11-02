@@ -1,530 +1,531 @@
-school_id,school_name,latitude,longitude,rice_vessels,sambar_vessels,curd_vessels,equivalent_demand,cluster_zone,target_cluster
-1,Model School Kaggalipura #001,12.70402,77.490447,5.6,6.6,5.2,10.2,Kaggalipura / Harohalli,1
-2,Vivekananda School Kaggalipura #002,12.706517,77.473583,3.0,3.5,2.6,5.4,Kaggalipura / Harohalli,1
-3,KPS Kaggalipura #003,12.69665,77.462817,4.1,4.8,3.6,7.4,Kaggalipura / Harohalli,1
-4,Vivekananda School Kaggalipura #004,12.703347,77.485541,3.9,4.5,3.4,7.0,Kaggalipura / Harohalli,1
-5,GLPS Kaggalipura #005,12.708443,77.483159,6.1,7.2,5.2,11.0,Kaggalipura / Harohalli,1
-6,Vidyalaya Kaggalipura #006,12.697271,77.48577,5.8,6.8,5.2,10.5,Kaggalipura / Harohalli,1
-7,GMS Kaggalipura #007,12.699799,77.462047,6.7,7.9,6.2,12.2,Kaggalipura / Harohalli,1
-8,GLPS Kaggalipura #008,12.705452,77.476756,3.2,3.8,3.2,5.9,Kaggalipura / Harohalli,1
-9,Model School Kaggalipura #009,12.707496,77.468106,4.7,5.5,4.2,8.5,Kaggalipura / Harohalli,1
-10,GJC Kaggalipura #010,12.690417,77.49265,3.0,3.5,2.6,5.4,Kaggalipura / Harohalli,1
-11,GJC Kaggalipura #011,12.715775,77.48294,3.8,4.5,3.4,6.9,Kaggalipura / Harohalli,1
-12,Adarsha Vidyalaya Kaggalipura #012,12.717538,77.47721,5.1,6.0,4.4,9.2,Kaggalipura / Harohalli,1
-13,Vidyalaya Kaggalipura #013,12.706703,77.482363,3.0,3.5,2.6,5.4,Kaggalipura / Harohalli,1
-14,GHS Kaggalipura #014,12.706902,77.469859,3.7,4.4,3.6,6.8,Kaggalipura / Harohalli,1
-15,Vidyalaya Kaggalipura #015,12.704007,77.487136,5.7,6.7,5.0,10.3,Kaggalipura / Harohalli,1
-16,RV Girls HS—Jayanagar,12.940608,77.583289,3.0,3.5,0.75,4.94,Jayanagar / JP Nagar,2
-17,CNS—Jayanagar,12.942947,77.583208,0.13,0.13,1.0,0.45,Jayanagar / JP Nagar,2
-18,Parikrama—Jayanagar (P),12.941275,77.585586,2.5,3.0,0.5,4.12,Jayanagar / JP Nagar,2
-19,Rani HPS—Jayanagar,12.938536,77.585992,5.0,5.0,1.0,7.75,Jayanagar / JP Nagar,2
-20,Rani HS—Jayanagar,12.938536,77.585992,6.0,6.0,1.0,9.25,Jayanagar / JP Nagar,2
-21,Model School Jayanagar #021,12.913131,77.612083,6.9,8.1,6.2,12.5,Jayanagar / JP Nagar,2
-22,GHS Jayanagar #022,12.928599,77.614342,6.8,8.0,6.0,12.3,Jayanagar / JP Nagar,2
-23,GHPS Jayanagar #023,12.936114,77.611368,3.7,4.4,3.2,6.7,Jayanagar / JP Nagar,2
-24,GHS Jayanagar #024,12.936802,77.619849,6.5,7.7,6.2,11.9,Jayanagar / JP Nagar,2
-25,GLPS Jayanagar #025,12.912686,77.613027,6.1,7.2,5.2,11.0,Jayanagar / JP Nagar,2
-26,BHS Jayanagar #026,12.919679,77.600178,4.6,5.4,4.0,8.3,Jayanagar / JP Nagar,2
-27,Adarsha Vidyalaya Jayanagar #027,12.938024,77.60316,5.7,6.7,5.0,10.3,Jayanagar / JP Nagar,2
-28,GLPS Jayanagar #028,12.918908,77.587784,4.7,5.5,4.2,8.5,Jayanagar / JP Nagar,2
-29,Vidyalaya Jayanagar #029,12.913169,77.601933,8.0,9.4,7.2,14.5,Jayanagar / JP Nagar,2
-30,Vidyalaya Jayanagar #030,12.918475,77.618837,6.8,8.1,6.2,12.4,Jayanagar / JP Nagar,2
-31,St. Anthony Primary Jayanagar #031,12.917644,77.608105,4.5,5.3,3.8,8.1,Jayanagar / JP Nagar,2
-32,GMS Jayanagar #032,12.925398,77.623273,5.0,5.9,4.2,9.0,Jayanagar / JP Nagar,2
-33,GLPS Jayanagar #033,12.911362,77.604495,7.2,8.5,6.6,13.1,Jayanagar / JP Nagar,2
-34,Saraswathi Vidyamandira Jayanagar #034,12.921634,77.622412,3.6,4.3,3.4,6.6,Jayanagar / JP Nagar,2
-35,KPS Jayanagar #035,12.93033,77.615944,7.5,8.8,6.8,13.6,Jayanagar / JP Nagar,2
-36,Vivekananda School Jayanagar #036,12.911808,77.601354,7.4,8.7,6.6,13.4,Jayanagar / JP Nagar,2
-37,Model School Jayanagar #037,12.942934,77.595987,5.3,6.3,5.0,9.7,Jayanagar / JP Nagar,2
-38,Jnana Deepa Jayanagar #038,12.93446,77.606224,3.7,4.4,3.2,6.7,Jayanagar / JP Nagar,2
-39,Vivekananda School Jayanagar #039,12.935182,77.604476,7.9,9.4,7.2,14.4,Jayanagar / JP Nagar,2
-40,Jnana Deepa Jayanagar #040,12.933737,77.607952,6.2,7.3,5.8,11.3,Jayanagar / JP Nagar,2
-41,St. Anthony Primary Jayanagar #041,12.937457,77.611135,6.9,8.2,6.4,12.6,Jayanagar / JP Nagar,2
-42,Vivekananda School Jayanagar #042,12.936451,77.609837,4.4,5.2,4.0,8.0,Jayanagar / JP Nagar,2
-43,Saraswathi Vidyamandira Jayanagar #043,12.934898,77.61359,5.8,6.9,5.4,10.6,Jayanagar / JP Nagar,2
-44,Vidyalaya Jayanagar #044,12.917013,77.601986,7.8,9.2,7.2,14.2,Jayanagar / JP Nagar,2
-45,GJC Jayanagar #045,12.918009,77.59805,6.6,7.8,6.0,12.0,Jayanagar / JP Nagar,2
-46,St. Anthony Primary Jayanagar #046,12.927488,77.586222,4.1,4.8,3.6,7.4,Jayanagar / JP Nagar,2
-47,Saraswathi Vidyamandira Jayanagar #047,12.924823,77.610428,4.1,4.8,3.6,7.4,Jayanagar / JP Nagar,2
-48,GMS Jayanagar #048,12.914373,77.610531,7.1,8.4,6.4,12.9,Jayanagar / JP Nagar,2
-49,GLPS Jayanagar #049,12.927006,77.615477,6.1,7.2,5.2,11.0,Jayanagar / JP Nagar,2
-50,Saraswathi Vidyamandira Thavarekere #050,12.953274,77.406472,4.7,5.5,4.2,8.5,Thavarekere / Magadi Road,3
-51,KPS Thavarekere #051,12.957266,77.42219,5.8,6.9,5.4,10.6,Thavarekere / Magadi Road,3
-52,GJC Thavarekere #052,12.972742,77.430652,4.2,4.9,3.8,7.6,Thavarekere / Magadi Road,3
-53,SVM Thavarekere #053,12.955233,77.421785,4.1,4.9,3.8,7.5,Thavarekere / Magadi Road,3
-54,Adarsha Vidyalaya Thavarekere #054,12.955224,77.421301,3.4,4.0,3.2,6.2,Thavarekere / Magadi Road,3
-55,Adarsha Vidyalaya Thavarekere #055,12.942919,77.426708,6.0,7.1,5.4,10.9,Thavarekere / Magadi Road,3
-56,Saraswathi Vidyamandira Thavarekere #056,12.974259,77.430296,4.1,4.9,3.8,7.5,Thavarekere / Magadi Road,3
-57,GLPS Thavarekere #057,12.970384,77.402625,7.3,8.6,6.4,13.2,Thavarekere / Magadi Road,3
-58,GHS Thavarekere #058,12.970939,77.404612,7.1,8.4,6.4,12.9,Thavarekere / Magadi Road,3
-59,Adarsha Vidyalaya Thavarekere #059,12.95113,77.421176,3.4,4.0,3.2,6.2,Thavarekere / Magadi Road,3
-60,SVM Thavarekere #060,12.968614,77.423422,4.2,4.9,3.8,7.6,Thavarekere / Magadi Road,3
-61,Jnana Deepa Thavarekere #061,12.958771,77.421282,6.2,7.3,5.8,11.3,Thavarekere / Magadi Road,3
-62,SVM Thavarekere #062,12.944895,77.424647,4.1,4.8,3.6,7.4,Thavarekere / Magadi Road,3
-63,Vivekananda School Thavarekere #063,12.958438,77.405439,3.7,4.4,3.2,6.7,Thavarekere / Magadi Road,3
-64,GHS Thavarekere #064,12.957862,77.408175,7.4,8.8,6.8,13.5,Thavarekere / Magadi Road,3
-65,GHPS Thavarekere #065,12.961245,77.425338,5.7,6.8,5.2,10.4,Thavarekere / Magadi Road,3
-66,St. Anthony Primary Thavarekere #066,12.948382,77.416784,5.3,6.2,4.8,9.6,Thavarekere / Magadi Road,3
-67,BHS Thavarekere #067,12.967278,77.422453,6.7,7.9,6.2,12.2,Thavarekere / Magadi Road,3
-68,GHS Thavarekere #068,12.966726,77.411162,6.8,8.1,6.2,12.4,Thavarekere / Magadi Road,3
-69,Adarsha Vidyalaya Thavarekere #069,12.957369,77.419937,4.0,4.7,3.4,7.2,Thavarekere / Magadi Road,3
-70,Saraswathi Vidyamandira Thavarekere #070,12.955933,77.417104,3.5,4.2,3.2,6.4,Thavarekere / Magadi Road,3
-71,Jnana Deepa Thavarekere #071,12.945934,77.430205,5.1,6.0,4.8,9.3,Thavarekere / Magadi Road,3
-72,GHPS Thavarekere #072,12.949579,77.414179,5.1,6.0,4.4,9.2,Thavarekere / Magadi Road,3
-73,Model School Thavarekere #073,12.948864,77.426555,5.3,6.2,4.8,9.6,Thavarekere / Magadi Road,3
-74,SESS HPS—LalBhagh Siddapura,12.946556,77.591197,0.75,0.75,0.5,1.25,Wilson Garden / Audugodi,4
-75,St. Andrees KHPS—L.Siddapura,12.944728,77.589717,3.75,3.5,0.75,5.69,Wilson Garden / Audugodi,4
-76,GHPS—LalBhagh,12.945567,77.589019,0.5,0.5,0.3,0.82,Wilson Garden / Audugodi,4
-77,s/c—Dayanada Nagar,12.944206,77.593283,2.0,2.0,0.5,3.12,Wilson Garden / Audugodi,4
-78,Hombegowda BHS—W.Garden,12.946958,77.596081,7.5,7.0,1.0,11.25,Wilson Garden / Audugodi,4
-79,GHPS—W.Garden,12.948381,77.596917,1.5,1.5,0.25,2.31,Wilson Garden / Audugodi,4
-80,GHS—W.Garden,12.948336,77.596648,3.0,3.0,0.75,4.69,Wilson Garden / Audugodi,4
-81,Gangamma GHS—W.Garden,12.947819,77.596018,5.0,3.0,1.0,6.75,Wilson Garden / Audugodi,4
-82,CNS—Lakkasandra,12.946944,77.597778,0.5,0.5,0.5,0.88,Wilson Garden / Audugodi,4
-83,CPS—Lakkasandra,12.946944,77.597778,1.25,1.25,0.25,1.94,Wilson Garden / Audugodi,4
-84,Vivekananda School Wilson Garden #084,12.949483,77.603277,6.7,7.9,6.2,12.2,Wilson Garden / Audugodi,4
-85,Adarsha Vidyalaya Wilson Garden #085,12.955837,77.604718,5.4,6.4,4.8,9.8,Wilson Garden / Audugodi,4
-86,GLPS Wilson Garden #086,12.952995,77.598992,5.1,6.0,4.4,9.2,Wilson Garden / Audugodi,4
-87,GLPS Wilson Garden #087,12.95471,77.618407,7.3,8.6,6.8,13.3,Wilson Garden / Audugodi,4
-88,GHS Wilson Garden #088,12.941418,77.585725,5.3,6.3,5.0,9.7,Wilson Garden / Audugodi,4
-89,St. Anthony Primary Wilson Garden #089,12.936962,77.599812,5.1,6.0,4.8,9.3,Wilson Garden / Audugodi,4
-90,Adarsha Vidyalaya Wilson Garden #090,12.939214,77.596455,4.3,5.1,4.2,7.9,Wilson Garden / Audugodi,4
-91,Jnana Deepa Wilson Garden #091,12.935727,77.604517,7.2,8.5,6.2,13.0,Wilson Garden / Audugodi,4
-92,Saraswathi Vidyamandira Wilson Garden #092,12.959515,77.60989,6.2,7.3,5.4,11.2,Wilson Garden / Audugodi,4
-93,GHPS Wilson Garden #093,12.940694,77.613592,8.7,10.3,8.2,15.9,Wilson Garden / Audugodi,4
-94,Vidyalaya Wilson Garden #094,12.947586,77.609913,8.7,10.3,8.2,15.9,Wilson Garden / Audugodi,4
-95,St. Anthony Primary Wilson Garden #095,12.937866,77.605763,3.7,4.4,3.2,6.7,Wilson Garden / Audugodi,4
-96,GLPS Wilson Garden #096,12.951758,77.604625,7.0,8.3,6.6,12.8,Wilson Garden / Audugodi,4
-97,GHS Wilson Garden #097,12.935448,77.585993,6.7,7.9,6.2,12.2,Wilson Garden / Audugodi,4
-98,Model School Wilson Garden #098,12.948164,77.593726,4.2,4.9,3.8,7.6,Wilson Garden / Audugodi,4
-99,GHPS Wilson Garden #099,12.931636,77.609192,6.6,7.8,6.0,12.0,Wilson Garden / Audugodi,4
-100,Vivekananda School Wilson Garden #100,12.948191,77.599549,6.4,7.6,6.0,11.7,Wilson Garden / Audugodi,4
-101,KPS Wilson Garden #101,12.960983,77.608957,4.3,5.1,4.2,7.9,Wilson Garden / Audugodi,4
-102,GLPS Wilson Garden #102,12.942284,77.609774,5.6,6.6,4.8,10.1,Wilson Garden / Audugodi,4
-103,Adarsha Vidyalaya Wilson Garden #103,12.934665,77.600945,4.0,4.7,3.8,7.3,Wilson Garden / Audugodi,4
-104,GHS Wilson Garden #104,12.935643,77.597584,5.0,5.9,4.6,9.1,Wilson Garden / Audugodi,4
-105,GHS Wilson Garden #105,12.943806,77.622962,5.2,6.2,4.8,9.5,Wilson Garden / Audugodi,4
-106,Jnana Deepa Wilson Garden #106,12.949493,77.585538,6.1,7.2,5.2,11.0,Wilson Garden / Audugodi,4
-107,Jnana Deepa Wilson Garden #107,12.946232,77.6126,6.6,7.8,6.0,12.0,Wilson Garden / Audugodi,4
-108,GMS Uttarahalli #108,12.932169,77.526453,4.1,4.8,3.6,7.4,Uttarahalli / Chikkalasandra,5
-109,Jnana Deepa Uttarahalli #109,12.930881,77.528924,6.5,7.7,5.8,11.8,Uttarahalli / Chikkalasandra,5
-110,Vidyalaya Uttarahalli #110,12.931598,77.545406,6.0,7.1,5.4,10.9,Uttarahalli / Chikkalasandra,5
-111,KPS Uttarahalli #111,12.921183,77.526087,6.2,7.3,5.8,11.3,Uttarahalli / Chikkalasandra,5
-112,Model School Uttarahalli #112,12.917414,77.541678,6.0,7.1,5.4,10.9,Uttarahalli / Chikkalasandra,5
-113,Jnana Deepa Uttarahalli #113,12.937831,77.540886,3.8,4.5,3.4,6.9,Uttarahalli / Chikkalasandra,5
-114,St. Anthony Primary Uttarahalli #114,12.922867,77.540071,5.9,7.0,5.6,10.8,Uttarahalli / Chikkalasandra,5
-115,Vivekananda School Uttarahalli #115,12.913646,77.526307,3.1,3.7,3.0,5.7,Uttarahalli / Chikkalasandra,5
-116,St. Anthony Primary Uttarahalli #116,12.921033,77.515941,6.3,7.4,5.6,11.4,Uttarahalli / Chikkalasandra,5
-117,SVM Uttarahalli #117,12.928156,77.542197,6.2,7.3,5.8,11.3,Uttarahalli / Chikkalasandra,5
-118,KPS Uttarahalli #118,12.921658,77.524845,3.6,4.3,3.4,6.6,Uttarahalli / Chikkalasandra,5
-119,GLPS Uttarahalli #119,12.916483,77.516089,6.1,7.2,5.2,11.0,Uttarahalli / Chikkalasandra,5
-120,Vidyalaya Uttarahalli #120,12.918636,77.541975,4.6,5.4,4.0,8.3,Uttarahalli / Chikkalasandra,5
-121,St. Anthony Primary Uttarahalli #121,12.916865,77.540152,4.0,4.7,3.4,7.2,Uttarahalli / Chikkalasandra,5
-122,SVM Uttarahalli #122,12.928197,77.532802,5.9,7.0,5.6,10.8,Uttarahalli / Chikkalasandra,5
-123,St. Anthony Primary Uttarahalli #123,12.913233,77.537299,3.6,4.3,3.4,6.6,Uttarahalli / Chikkalasandra,5
-124,Vidyalaya Uttarahalli #124,12.909714,77.515221,2.8,3.3,2.6,5.1,Uttarahalli / Chikkalasandra,5
-125,Vidyalaya Uttarahalli #125,12.927808,77.519442,3.5,4.2,3.2,6.4,Uttarahalli / Chikkalasandra,5
-126,Model School Uttarahalli #126,12.916923,77.530602,4.1,4.8,3.6,7.4,Uttarahalli / Chikkalasandra,5
-127,BHS Uttarahalli #127,12.917646,77.539308,6.2,7.3,5.8,11.3,Uttarahalli / Chikkalasandra,5
-128,BHS Uttarahalli #128,12.925438,77.537327,6.7,7.9,5.8,12.1,Uttarahalli / Chikkalasandra,5
-129,St. Anthony Primary Uttarahalli #129,12.938822,77.523414,3.9,4.5,3.4,7.0,Uttarahalli / Chikkalasandra,5
-130,GMS Uttarahalli #130,12.927415,77.530083,5.3,6.3,5.0,9.7,Uttarahalli / Chikkalasandra,5
-131,GHPS—Chandra Nagar (8),12.905,77.562,9.0,10.0,8.0,16.0,Konanakunte / Puttenahalli / Sarakki,6
-132,GHS and BHS—Dayananda,12.9045,77.564,5.0,6.0,8.0,10.0,Konanakunte / Puttenahalli / Sarakki,6
-133,Dayananda LPS,12.9045,77.564,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
-134,GMPS Konanakunte [8],12.889,77.572,7.0,10.0,8.0,14.0,Konanakunte / Puttenahalli / Sarakki,6
-135,JSS HS—Konanakunte,12.891,77.571,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
-136,S/C—Doresani Palya,12.903,77.595,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
-137,GHPS—Puttenahalli (8),12.898,77.58,16.0,24.0,16.0,32.0,Konanakunte / Puttenahalli / Sarakki,6
-138,S/C Puttenahalli,12.906,77.581,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
-139,GHS—Sarakki,12.913,77.576,17.0,26.0,16.0,34.0,Konanakunte / Puttenahalli / Sarakki,6
-140,S/C—Pragathipura,12.92,77.571,3.5,5.0,4.0,7.0,Konanakunte / Puttenahalli / Sarakki,6
-141,GHPS—Kadirenahalli (A),12.924,77.56,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
-142,Banashankari HS—Bendrenagara (A),12.922,77.559,5.0,7.0,6.0,10.0,Konanakunte / Puttenahalli / Sarakki,6
-143,Banashankari HPS—Bendrenagara (A),12.922,77.559,4.0,6.0,4.0,8.0,Konanakunte / Puttenahalli / Sarakki,6
-144,Bhuvanashweri HPS—Bendrenagar (A),12.921,77.56,6.0,8.0,8.0,12.0,Konanakunte / Puttenahalli / Sarakki,6
-145,Adarsha Vidyalaya Sarjapura Road #145,12.885071,77.705304,9.0,10.7,8.2,16.4,Sarjapura Road / Carmelaram,7
-146,SVM Sarjapura Road #146,12.886277,77.724414,8.7,10.3,8.2,15.9,Sarjapura Road / Carmelaram,7
-147,St. Anthony Primary Sarjapura Road #147,12.875902,77.708846,5.2,6.1,4.6,9.4,Sarjapura Road / Carmelaram,7
-148,GJC Sarjapura Road #148,12.884571,77.717964,11.0,13.0,10.0,20.0,Sarjapura Road / Carmelaram,7
-149,GHS Sarjapura Road #149,12.887243,77.727427,6.1,7.2,5.6,11.1,Sarjapura Road / Carmelaram,7
-150,GMS Sarjapura Road #150,12.865946,77.699908,6.6,7.8,6.0,12.0,Sarjapura Road / Carmelaram,7
-151,Jnana Deepa Sarjapura Road #151,12.885905,77.710436,10.0,11.8,9.2,18.2,Sarjapura Road / Carmelaram,7
-152,Jnana Deepa Sarjapura Road #152,12.87787,77.705191,5.5,6.5,5.0,10.0,Sarjapura Road / Carmelaram,7
-153,GMS Sarjapura Road #153,12.87927,77.704618,4.8,5.7,4.6,8.8,Sarjapura Road / Carmelaram,7
-154,Adarsha Vidyalaya Sarjapura Road #154,12.879301,77.722919,11.2,13.2,10.0,20.3,Sarjapura Road / Carmelaram,7
-155,GJC Sarjapura Road #155,12.873389,77.725037,8.7,10.3,7.8,15.8,Sarjapura Road / Carmelaram,7
-156,Vivekananda School Sarjapura Road #156,12.871095,77.731562,9.7,11.5,9.0,17.7,Sarjapura Road / Carmelaram,7
-157,Vidyalaya Sarjapura Road #157,12.866158,77.706188,7.6,9.0,6.8,13.8,Sarjapura Road / Carmelaram,7
-158,GJC Sarjapura Road #158,12.871778,77.704676,10.5,12.4,9.6,19.1,Sarjapura Road / Carmelaram,7
-159,GMS Sarjapura Road #159,12.871146,77.720646,8.4,9.9,7.8,15.3,Sarjapura Road / Carmelaram,7
-160,SVM Sarjapura Road #160,12.875885,77.717128,9.4,11.1,8.6,17.1,Sarjapura Road / Carmelaram,7
-161,GLPS Sarjapura Road #161,12.870118,77.700257,7.2,8.5,6.2,13.0,Sarjapura Road / Carmelaram,7
-162,BHS Sarjapura Road #162,12.869473,77.722742,7.2,8.5,6.6,13.1,Sarjapura Road / Carmelaram,7
-163,SVM Sarjapura Road #163,12.876476,77.723615,5.5,6.5,5.0,10.0,Sarjapura Road / Carmelaram,7
-164,KPS Somanahalli #164,12.751863,77.527674,7.7,9.1,7.0,14.0,Somanahalli / Gabbadi,8
-165,Jnana Deepa Somanahalli #165,12.758376,77.530576,10.5,12.3,9.4,19.0,Somanahalli / Gabbadi,8
-166,St. Anthony Primary Somanahalli #166,12.747334,77.535373,11.8,13.9,10.6,21.4,Somanahalli / Gabbadi,8
-167,Jnana Deepa Somanahalli #167,12.768545,77.511166,5.0,5.9,4.6,9.1,Somanahalli / Gabbadi,8
-168,SVM Somanahalli #168,12.765013,77.531697,11.3,13.3,10.2,20.5,Somanahalli / Gabbadi,8
-169,BHS Mudalapalya #169,12.961912,77.480546,7.5,8.8,6.8,13.6,Mudalapalya / Vijayanagar,9
-170,KPS Mudalapalya #170,12.955048,77.488321,6.8,8.1,6.2,12.4,Mudalapalya / Vijayanagar,9
-171,Saraswathi Vidyamandira Mudalapalya #171,12.96244,77.491372,8.6,10.2,8.0,15.7,Mudalapalya / Vijayanagar,9
-172,GJC Mudalapalya #172,12.959612,77.489366,9.5,11.2,8.4,17.2,Mudalapalya / Vijayanagar,9
-173,GHS Mudalapalya #173,12.962483,77.489571,9.0,10.7,8.2,16.4,Mudalapalya / Vijayanagar,9
-174,GLPS Mudalapalya #174,12.951117,77.489899,9.7,11.5,9.0,17.7,Mudalapalya / Vijayanagar,9
-175,St. Anthony Primary Mudalapalya #175,12.959525,77.50091,10.3,12.2,9.2,18.7,Mudalapalya / Vijayanagar,9
-176,Model School Mudalapalya #176,12.952772,77.493703,10.7,12.6,9.6,19.4,Mudalapalya / Vijayanagar,9
-177,GLPS Mudalapalya #177,12.956967,77.475767,7.8,9.2,6.8,14.1,Mudalapalya / Vijayanagar,9
-178,Vidyalaya Mudalapalya #178,12.965289,77.50279,10.2,12.0,9.2,18.5,Mudalapalya / Vijayanagar,9
-179,Vidyalaya Mudalapalya #179,12.960834,77.489482,8.1,9.6,7.6,14.8,Mudalapalya / Vijayanagar,9
-180,SVM Mudalapalya #180,12.967332,77.482026,8.6,10.2,8.0,15.7,Mudalapalya / Vijayanagar,9
-181,GLPS Mudalapalya #181,12.955182,77.479887,4.8,5.7,4.6,8.8,Mudalapalya / Vijayanagar,9
-182,GJC Mudalapalya #182,12.96318,77.477654,7.1,8.4,6.4,12.9,Mudalapalya / Vijayanagar,9
-183,Adarsha Vidyalaya Mudalapalya #183,12.957645,77.485161,10.0,11.8,8.8,18.1,Mudalapalya / Vijayanagar,9
-184,Vivekananda School Mudalapalya #184,12.961964,77.475214,5.5,6.5,5.0,10.0,Mudalapalya / Vijayanagar,9
-185,KPS Mudalapalya #185,12.961109,77.469212,6.0,7.1,5.4,10.9,Mudalapalya / Vijayanagar,9
-186,GLPS Mudalapalya #186,12.951116,77.47891,6.4,7.6,6.0,11.7,Mudalapalya / Vijayanagar,9
-187,Adarsha Vidyalaya Mudalapalya #187,12.951212,77.49829,7.3,8.6,6.4,13.2,Mudalapalya / Vijayanagar,9
-188,SVM Mudalapalya #188,12.94778,77.489455,6.5,7.7,5.8,11.8,Mudalapalya / Vijayanagar,9
-189,Adarsha Vidyalaya Mudalapalya #189,12.944546,77.47408,10.0,11.8,9.2,18.2,Mudalapalya / Vijayanagar,9
-190,GHS Mudalapalya #190,12.962907,77.497362,6.1,7.2,5.6,11.1,Mudalapalya / Vijayanagar,9
-191,Vidyalaya Mudalapalya #191,12.971804,77.485539,10.5,12.3,9.4,19.0,Mudalapalya / Vijayanagar,9
-192,Jnana Deepa P Agrahara Rural #192,12.7555,77.460601,6.7,7.9,6.2,12.2,P Agrahara Rural,10
-193,GJC P Agrahara Rural #193,12.75776,77.450444,8.3,9.8,7.6,15.1,P Agrahara Rural,10
-194,Saraswathi Vidyamandira P Agrahara Rural #194,12.741413,77.446092,7.5,8.9,7.0,13.7,P Agrahara Rural,10
-195,Adarsha Vidyalaya P Agrahara Rural #195,12.763775,77.454375,5.9,7.0,5.6,10.8,P Agrahara Rural,10
-196,KPS P Agrahara Rural #196,12.74765,77.453399,7.8,9.2,7.2,14.2,P Agrahara Rural,10
-197,Jnana Deepa P Agrahara Rural #197,12.746587,77.466803,6.6,7.8,6.0,12.0,P Agrahara Rural,10
-198,Vivekananda School Domlur #198,12.957276,77.625808,6.8,8.0,6.0,12.3,Domlur / Austin Town,11
-199,St. Anthony Primary Domlur #199,12.962723,77.647153,8.2,9.8,7.6,15.0,Domlur / Austin Town,11
-200,Vivekananda School Domlur #200,12.955937,77.622815,6.5,7.7,6.2,11.9,Domlur / Austin Town,11
-201,GLPS Domlur #201,12.955294,77.644816,6.3,7.5,5.8,11.5,Domlur / Austin Town,11
-202,KPS Domlur #202,12.952796,77.650043,4.6,5.4,4.0,8.3,Domlur / Austin Town,11
-203,GMS Domlur #203,12.962626,77.633955,4.8,5.7,4.6,8.8,Domlur / Austin Town,11
-204,GHPS Domlur #204,12.961527,77.63468,5.7,6.8,5.2,10.4,Domlur / Austin Town,11
-205,GHS Domlur #205,12.953792,77.622051,6.5,7.7,6.2,11.9,Domlur / Austin Town,11
-206,GLPS Domlur #206,12.957844,77.619834,4.8,5.7,4.6,8.8,Domlur / Austin Town,11
-207,BHS Domlur #207,12.941948,77.625413,6.1,7.2,5.6,11.1,Domlur / Austin Town,11
-208,GHPS Domlur #208,12.951984,77.642519,7.4,8.7,6.6,13.4,Domlur / Austin Town,11
-209,GLPS Domlur #209,12.961712,77.628512,5.9,7.0,5.6,10.8,Domlur / Austin Town,11
-210,GLPS Domlur #210,12.944126,77.643472,3.7,4.4,3.2,6.7,Domlur / Austin Town,11
-211,GHS Domlur #211,12.952868,77.621945,5.1,6.0,4.8,9.3,Domlur / Austin Town,11
-212,Vidyalaya Domlur #212,12.953466,77.631721,5.7,6.8,5.2,10.4,Domlur / Austin Town,11
-213,GMS Domlur #213,12.957648,77.636925,4.9,5.8,4.4,8.9,Domlur / Austin Town,11
-214,Vivekananda School Domlur #214,12.945383,77.62358,7.1,8.4,6.4,12.9,Domlur / Austin Town,11
-215,SVM Domlur #215,12.959691,77.620365,5.6,6.6,4.8,10.1,Domlur / Austin Town,11
-216,Adarsha Vidyalaya Domlur #216,12.948327,77.637086,6.5,7.7,6.2,11.9,Domlur / Austin Town,11
-217,Model School Domlur #217,12.946425,77.63901,5.4,6.4,4.8,9.8,Domlur / Austin Town,11
-218,St. Anthony Primary Domlur #218,12.947581,77.625009,8.9,10.5,8.2,16.2,Domlur / Austin Town,11
-219,Saraswathi Vidyamandira Domlur #219,12.957898,77.629818,6.5,7.7,5.8,11.8,Domlur / Austin Town,11
-220,GHS Domlur #220,12.95462,77.628625,5.4,6.4,5.2,9.9,Domlur / Austin Town,11
-221,GHS Domlur #221,12.951811,77.631476,6.0,7.1,5.4,10.9,Domlur / Austin Town,11
-222,Model School Domlur #222,12.955849,77.634078,5.2,6.2,4.8,9.5,Domlur / Austin Town,11
-223,Vidyalaya Domlur #223,12.967664,77.635645,4.8,5.7,4.2,8.7,Domlur / Austin Town,11
-224,BHS Domlur #224,12.953378,77.6192,7.4,8.8,6.8,13.5,Domlur / Austin Town,11
-225,Jnana Deepa Whitefield Outer Corridor #225,12.94505,77.733647,5.8,6.8,5.2,10.5,Whitefield Outer Corridor,12
-226,St. Anthony Primary Whitefield Outer Corridor #226,12.944389,77.750211,7.0,8.3,6.6,12.8,Whitefield Outer Corridor,12
-227,Vidyalaya Whitefield Outer Corridor #227,12.93346,77.749445,7.3,8.6,6.4,13.2,Whitefield Outer Corridor,12
-228,GLPS Whitefield Outer Corridor #228,12.928606,77.745576,11.4,13.5,10.2,20.7,Whitefield Outer Corridor,12
-229,St. Anthony Primary Whitefield Outer Corridor #229,12.949079,77.736867,9.8,11.6,8.8,17.8,Whitefield Outer Corridor,12
-230,GLPS Whitefield Outer Corridor #230,12.9394,77.752963,11.5,13.6,10.4,20.9,Whitefield Outer Corridor,12
-231,Adarsha Vidyalaya Whitefield Outer Corridor #231,12.936704,77.739728,6.8,8.0,6.0,12.3,Whitefield Outer Corridor,12
-232,Vivekananda School Whitefield Outer Corridor #232,12.951006,77.741338,6.1,7.2,5.6,11.1,Whitefield Outer Corridor,12
-233,GHPS Whitefield Outer Corridor #233,12.937716,77.759337,6.9,8.2,6.4,12.6,Whitefield Outer Corridor,12
-234,GMS Whitefield Outer Corridor #234,12.946461,77.759393,6.4,7.5,5.8,11.6,Whitefield Outer Corridor,12
-235,GHS Whitefield Outer Corridor #235,12.951119,77.738139,7.3,8.6,6.4,13.2,Whitefield Outer Corridor,12
-236,Adarsha Vidyalaya Whitefield Outer Corridor #236,12.921235,77.753106,6.3,7.5,5.8,11.5,Whitefield Outer Corridor,12
-237,KPS Whitefield Outer Corridor #237,12.948375,77.751086,5.7,6.7,5.0,10.3,Whitefield Outer Corridor,12
-238,GLPS Whitefield Outer Corridor #238,12.935463,77.753634,11.4,13.5,10.2,20.7,Whitefield Outer Corridor,12
-239,GLPS HAL #239,12.937937,77.678762,6.6,7.8,6.0,12.0,HAL / Marathahalli,13
-240,GLPS HAL #240,12.952216,77.6776,4.3,5.1,3.8,7.8,HAL / Marathahalli,13
-241,Adarsha Vidyalaya HAL #241,12.956522,77.689644,5.9,7.0,5.2,10.7,HAL / Marathahalli,13
-242,Vidyalaya HAL #242,12.95321,77.680717,4.1,4.9,3.8,7.5,HAL / Marathahalli,13
-243,Adarsha Vidyalaya HAL #243,12.947429,77.693801,7.0,8.3,6.2,12.7,HAL / Marathahalli,13
-244,BHS HAL #244,12.938702,77.684521,6.4,7.6,6.0,11.7,HAL / Marathahalli,13
-245,Jnana Deepa HAL #245,12.940305,77.690704,5.3,6.2,4.8,9.6,HAL / Marathahalli,13
-246,GHS HAL #246,12.948744,77.6697,4.8,5.7,4.6,8.8,HAL / Marathahalli,13
-247,Vivekananda School HAL #247,12.946186,77.700258,4.2,5.0,4.0,7.7,HAL / Marathahalli,13
-248,Vivekananda School HAL #248,12.939835,77.697578,4.3,5.1,3.8,7.8,HAL / Marathahalli,13
-249,Vidyalaya HAL #249,12.953735,77.672481,7.1,8.4,6.4,12.9,HAL / Marathahalli,13
-250,Model School HAL #250,12.956813,77.669604,4.6,5.5,4.2,8.4,HAL / Marathahalli,13
-251,GHS HAL #251,12.92928,77.683972,5.1,6.0,4.8,9.3,HAL / Marathahalli,13
-252,KPS HAL #252,12.939238,77.683642,7.2,8.5,6.2,13.0,HAL / Marathahalli,13
-253,BHS HAL #253,12.937726,77.679394,5.7,6.8,5.2,10.4,HAL / Marathahalli,13
-254,St. Anthony Primary HAL #254,12.961743,77.668672,5.2,6.2,4.8,9.5,HAL / Marathahalli,13
-255,Adarsha Vidyalaya HAL #255,12.944511,77.686857,4.7,5.5,4.2,8.5,HAL / Marathahalli,13
-256,St. Anthony Primary HAL #256,12.964224,77.687039,3.7,4.4,3.2,6.7,HAL / Marathahalli,13
-257,SVM HAL #257,12.957872,77.677157,4.5,5.3,3.8,8.1,HAL / Marathahalli,13
-258,Adarsha Vidyalaya HAL #258,12.944518,77.674938,6.2,7.3,5.4,11.2,HAL / Marathahalli,13
-259,GHPS HAL #259,12.956857,77.694022,5.6,6.6,5.2,10.2,HAL / Marathahalli,13
-260,KPS HAL #260,12.953018,77.681743,6.2,7.3,5.4,11.2,HAL / Marathahalli,13
-261,BHS HAL #261,12.96133,77.669886,3.7,4.4,3.6,6.8,HAL / Marathahalli,13
-262,GHPS HAL #262,12.952082,77.680675,5.3,6.2,4.8,9.6,HAL / Marathahalli,13
-263,Saraswathi Vidyamandira HAL #263,12.936527,77.69081,6.9,8.1,6.2,12.5,HAL / Marathahalli,13
-264,Vivekananda School HAL #264,12.966225,77.691624,4.8,5.7,4.2,8.7,HAL / Marathahalli,13
-265,St. Anthony Primary HAL #265,12.938863,77.699461,5.9,7.0,5.2,10.7,HAL / Marathahalli,13
-266,KPS HAL #266,12.956884,77.687102,3.4,4.0,3.2,6.2,HAL / Marathahalli,13
-267,SVM HAL #267,12.959921,77.669013,7.1,8.4,6.4,12.9,HAL / Marathahalli,13
-268,Jnana Deepa HAL #268,12.93576,77.668689,5.5,6.5,5.0,10.0,HAL / Marathahalli,13
-269,GHPS HAL #269,12.959806,77.671211,3.9,4.6,3.6,7.1,HAL / Marathahalli,13
-270,Saraswathi Vidyamandira HAL #270,12.950273,77.695873,3.6,4.2,3.2,6.5,HAL / Marathahalli,13
-271,GMS Varthur #271,12.909043,77.739828,10.0,11.8,8.8,18.1,Varthur / Gunjur Rural,14
-272,GHS Varthur #272,12.89999,77.724235,10.5,12.3,9.4,19.0,Varthur / Gunjur Rural,14
-273,Adarsha Vidyalaya Varthur #273,12.908102,77.735241,8.9,10.5,7.8,16.1,Varthur / Gunjur Rural,14
-274,BHS Varthur #274,12.900277,77.724702,6.9,8.2,6.4,12.6,Varthur / Gunjur Rural,14
-275,BHS Varthur #275,12.915179,77.747544,4.8,5.7,4.2,8.7,Varthur / Gunjur Rural,14
-276,Saraswathi Vidyamandira Varthur #276,12.890955,77.736295,8.2,9.7,7.4,14.9,Varthur / Gunjur Rural,14
-277,Jnana Deepa Varthur #277,12.904487,77.730953,9.7,11.4,8.8,17.6,Varthur / Gunjur Rural,14
-278,GLPS Varthur #278,12.897137,77.730789,7.0,8.3,6.2,12.7,Varthur / Gunjur Rural,14
-279,Model School Varthur #279,12.898309,77.741138,8.5,10.1,7.8,15.5,Varthur / Gunjur Rural,14
-280,St. Anthony Primary Varthur #280,12.910812,77.731114,9.8,11.6,9.2,17.9,Varthur / Gunjur Rural,14
-281,GJC Varthur #281,12.907379,77.727505,4.5,5.3,3.8,8.1,Varthur / Gunjur Rural,14
-282,GLPS Varthur #282,12.9158,77.716644,9.2,10.9,8.2,16.7,Varthur / Gunjur Rural,14
-283,Model School Varthur #283,12.898358,77.730134,6.1,7.2,5.2,11.0,Varthur / Gunjur Rural,14
-284,Saraswathi Vidyamandira Banashankari 2nd & 3rd Stage #284,12.93417,77.540671,5.4,6.4,5.2,9.9,Banashankari 2nd & 3rd Stage,15
-285,Jnana Deepa Banashankari 2nd & 3rd Stage #285,12.920772,77.543884,7.7,9.1,7.0,14.0,Banashankari 2nd & 3rd Stage,15
-286,Vivekananda School Banashankari 2nd & 3rd Stage #286,12.945188,77.559722,3.9,4.6,3.6,7.1,Banashankari 2nd & 3rd Stage,15
-287,St. Anthony Primary Banashankari 2nd & 3rd Stage #287,12.923929,77.551618,8.5,10.0,7.6,15.4,Banashankari 2nd & 3rd Stage,15
-288,KPS Banashankari 2nd & 3rd Stage #288,12.935996,77.554115,6.0,7.1,5.4,10.9,Banashankari 2nd & 3rd Stage,15
-289,GHS Banashankari 2nd & 3rd Stage #289,12.939358,77.570431,3.8,4.5,3.4,6.9,Banashankari 2nd & 3rd Stage,15
-290,KPS Banashankari 2nd & 3rd Stage #290,12.943879,77.544918,8.6,10.2,8.0,15.7,Banashankari 2nd & 3rd Stage,15
-291,Adarsha Vidyalaya Banashankari 2nd & 3rd Stage #291,12.942209,77.550377,8.1,9.6,7.6,14.8,Banashankari 2nd & 3rd Stage,15
-292,BHS Banashankari 2nd & 3rd Stage #292,12.936569,77.5539,9.2,10.9,8.6,16.8,Banashankari 2nd & 3rd Stage,15
-293,Adarsha Vidyalaya Banashankari 2nd & 3rd Stage #293,12.927099,77.575396,8.9,10.5,8.2,16.2,Banashankari 2nd & 3rd Stage,15
-294,GLPS Banashankari 2nd & 3rd Stage #294,12.938405,77.561798,8.0,9.4,7.2,14.5,Banashankari 2nd & 3rd Stage,15
-295,Adarsha Vidyalaya Banashankari 2nd & 3rd Stage #295,12.936723,77.555488,8.5,10.0,7.6,15.4,Banashankari 2nd & 3rd Stage,15
-296,SVM Banashankari 2nd & 3rd Stage #296,12.926084,77.543634,8.9,10.5,7.8,16.1,Banashankari 2nd & 3rd Stage,15
-297,KPS Banashankari 2nd & 3rd Stage #297,12.938948,77.537806,8.1,9.6,7.6,14.8,Banashankari 2nd & 3rd Stage,15
-298,Vidyalaya Banashankari 2nd & 3rd Stage #298,12.929777,77.558587,5.1,6.0,4.4,9.2,Banashankari 2nd & 3rd Stage,15
-299,Saraswathi Vidyamandira Banashankari 2nd & 3rd Stage #299,12.921471,77.559723,8.3,9.8,7.6,15.1,Banashankari 2nd & 3rd Stage,15
-300,SVM Banashankari 2nd & 3rd Stage #300,12.931313,77.572096,5.0,5.9,4.6,9.1,Banashankari 2nd & 3rd Stage,15
-301,GLPS Banashankari 2nd & 3rd Stage #301,12.947945,77.55016,4.8,5.7,4.6,8.8,Banashankari 2nd & 3rd Stage,15
-302,Model School Banashankari 2nd & 3rd Stage #302,12.918743,77.558977,5.2,6.1,4.6,9.4,Banashankari 2nd & 3rd Stage,15
-303,Vidyalaya Akkipet #303,12.974945,77.580698,10.7,12.6,9.6,19.4,Akkipet / Cottonpet / City Market,16
-304,BHS Akkipet #304,12.9822,77.576527,8.4,9.9,7.8,15.3,Akkipet / Cottonpet / City Market,16
-305,KPS Akkipet #305,12.984698,77.58479,10.8,12.8,10.0,19.7,Akkipet / Cottonpet / City Market,16
-306,GMS Akkipet #306,12.98243,77.571347,6.1,7.2,5.6,11.1,Akkipet / Cottonpet / City Market,16
-307,GHPS Akkipet #307,12.972765,77.560096,5.0,5.9,4.6,9.1,Akkipet / Cottonpet / City Market,16
-308,GLPS Akkipet #308,12.987157,77.583314,10.2,12.1,9.4,18.6,Akkipet / Cottonpet / City Market,16
-309,GLPS Akkipet #309,12.992338,77.557388,10.8,12.8,10.0,19.7,Akkipet / Cottonpet / City Market,16
-310,Model School Akkipet #310,12.975196,77.563762,6.7,7.9,5.8,12.1,Akkipet / Cottonpet / City Market,16
-311,KPS Akkipet #311,13.002175,77.580939,7.4,8.7,6.6,13.4,Akkipet / Cottonpet / City Market,16
-312,Model School Akkipet #312,12.988194,77.579266,5.6,6.6,4.8,10.1,Akkipet / Cottonpet / City Market,16
-313,GMS Akkipet #313,12.986486,77.569785,11.1,13.1,9.8,20.1,Akkipet / Cottonpet / City Market,16
-314,Adarsha Vidyalaya Akkipet #314,12.985017,77.5803,6.7,7.9,5.8,12.1,Akkipet / Cottonpet / City Market,16
-315,Vivekananda School Akkipet #315,12.984757,77.568647,8.0,9.4,7.2,14.5,Akkipet / Cottonpet / City Market,16
-316,Adarsha Vidyalaya Akkipet #316,13.001867,77.575071,5.2,6.2,4.8,9.5,Akkipet / Cottonpet / City Market,16
-317,GMS Akkipet #317,13.003314,77.57317,10.7,12.6,9.6,19.4,Akkipet / Cottonpet / City Market,16
-318,Saraswathi Vidyamandira Akkipet #318,12.986729,77.580518,5.5,6.5,5.0,10.0,Akkipet / Cottonpet / City Market,16
-319,KPS Akkipet #319,12.995618,77.587926,7.7,9.1,7.0,14.0,Akkipet / Cottonpet / City Market,16
-320,KPS Akkipet #320,12.985057,77.591175,9.2,10.9,8.2,16.7,Akkipet / Cottonpet / City Market,16
-321,GHS Akkipet #321,12.983641,77.576875,9.7,11.4,8.8,17.6,Akkipet / Cottonpet / City Market,16
-322,St. Anthony Primary Akkipet #322,12.96888,77.572198,11.1,13.1,9.8,20.1,Akkipet / Cottonpet / City Market,16
-323,KPS Akkipet #323,12.98105,77.575708,7.5,8.8,6.8,13.6,Akkipet / Cottonpet / City Market,16
-324,GMS Akkipet #324,12.992398,77.581928,9.7,11.4,8.8,17.6,Akkipet / Cottonpet / City Market,16
-325,St. Anthony Primary Akkipet #325,12.979499,77.5708,5.7,6.7,5.0,10.3,Akkipet / Cottonpet / City Market,16
-326,GMS Akkipet #326,12.994514,77.562608,7.4,8.8,6.8,13.5,Akkipet / Cottonpet / City Market,16
-327,GHPS Akkipet #327,12.979348,77.568912,5.3,6.2,4.8,9.6,Akkipet / Cottonpet / City Market,16
-328,GLPS Basavanagudi #328,12.942997,77.577294,3.7,4.4,3.2,6.7,Basavanagudi / Hanumanthanagar,17
-329,Vidyalaya Basavanagudi #329,12.948767,77.579189,5.8,6.8,5.2,10.5,Basavanagudi / Hanumanthanagar,17
-330,Jnana Deepa Basavanagudi #330,12.956521,77.579322,5.4,6.4,4.8,9.8,Basavanagudi / Hanumanthanagar,17
-331,GLPS Basavanagudi #331,12.960306,77.577899,6.8,8.1,6.2,12.4,Basavanagudi / Hanumanthanagar,17
-332,St. Anthony Primary Basavanagudi #332,12.954473,77.574172,5.8,6.9,5.4,10.6,Basavanagudi / Hanumanthanagar,17
-333,GHPS Basavanagudi #333,12.957438,77.578516,7.9,9.4,7.2,14.4,Basavanagudi / Hanumanthanagar,17
-334,KPS Basavanagudi #334,12.940159,77.567334,3.7,4.4,3.6,6.8,Basavanagudi / Hanumanthanagar,17
-335,Adarsha Vidyalaya Basavanagudi #335,12.939861,77.579711,3.7,4.4,3.6,6.8,Basavanagudi / Hanumanthanagar,17
-336,Adarsha Vidyalaya Basavanagudi #336,12.951637,77.557958,6.4,7.6,6.0,11.7,Basavanagudi / Hanumanthanagar,17
-337,Vidyalaya Basavanagudi #337,12.968968,77.578107,3.7,4.4,3.2,6.7,Basavanagudi / Hanumanthanagar,17
-338,Model School Basavanagudi #338,12.94409,77.582545,4.7,5.6,4.4,8.6,Basavanagudi / Hanumanthanagar,17
-339,BHS Basavanagudi #339,12.95778,77.581424,6.5,7.7,6.2,11.9,Basavanagudi / Hanumanthanagar,17
-340,Adarsha Vidyalaya Basavanagudi #340,12.956156,77.575907,6.1,7.2,5.6,11.1,Basavanagudi / Hanumanthanagar,17
-341,Vidyalaya Basavanagudi #341,12.960488,77.580162,5.0,5.9,4.6,9.1,Basavanagudi / Hanumanthanagar,17
-342,Adarsha Vidyalaya Basavanagudi #342,12.955886,77.560446,8.4,9.9,7.4,15.2,Basavanagudi / Hanumanthanagar,17
-343,Model School Basavanagudi #343,12.952915,77.559965,6.1,7.2,5.2,11.0,Basavanagudi / Hanumanthanagar,17
-344,GHPS Basavanagudi #344,12.943586,77.561808,5.7,6.7,5.0,10.3,Basavanagudi / Hanumanthanagar,17
-345,St. Anthony Primary Basavanagudi #345,12.944621,77.561143,6.4,7.5,5.8,11.6,Basavanagudi / Hanumanthanagar,17
-346,St. Anthony Primary Basavanagudi #346,12.954416,77.578296,3.9,4.5,3.4,7.0,Basavanagudi / Hanumanthanagar,17
-347,KPS Basavanagudi #347,12.965301,77.564573,6.9,8.1,6.2,12.5,Basavanagudi / Hanumanthanagar,17
-348,Model School Basavanagudi #348,12.95292,77.570698,7.6,9.0,7.2,13.9,Basavanagudi / Hanumanthanagar,17
-349,St. Anthony Primary Basavanagudi #349,12.963975,77.57807,6.7,7.9,5.8,12.1,Basavanagudi / Hanumanthanagar,17
-350,St. Anthony Primary Basavanagudi #350,12.964579,77.574731,7.2,8.5,6.6,13.1,Basavanagudi / Hanumanthanagar,17
-351,BHS Basavanagudi #351,12.94352,77.580325,7.0,8.3,6.2,12.7,Basavanagudi / Hanumanthanagar,17
-352,St. Anthony Primary Basavanagudi #352,12.946173,77.578081,4.5,5.3,3.8,8.1,Basavanagudi / Hanumanthanagar,17
-353,Model School Basavanagudi #353,12.958747,77.569303,5.6,6.6,5.2,10.2,Basavanagudi / Hanumanthanagar,17
-354,GHS Basavanagudi #354,12.954765,77.573243,4.5,5.3,4.2,8.2,Basavanagudi / Hanumanthanagar,17
-355,GLPS Basavanagudi #355,12.966262,77.576998,5.1,6.0,4.4,9.2,Basavanagudi / Hanumanthanagar,17
-356,St. Anthony Primary Koramangala #356,12.911483,77.618337,4.3,5.1,4.2,7.9,Koramangala / BTM Layout,18
-357,SVM Koramangala #357,12.919109,77.637192,6.2,7.3,5.4,11.2,Koramangala / BTM Layout,18
-358,Vivekananda School Koramangala #358,12.921401,77.625901,5.3,6.3,5.0,9.7,Koramangala / BTM Layout,18
-359,St. Anthony Primary Koramangala #359,12.904101,77.628719,5.1,6.0,4.8,9.3,Koramangala / BTM Layout,18
-360,Adarsha Vidyalaya Koramangala #360,12.938015,77.633836,4.3,5.1,4.2,7.9,Koramangala / BTM Layout,18
-361,SVM Koramangala #361,12.918976,77.625405,6.6,7.8,6.0,12.0,Koramangala / BTM Layout,18
-362,Vidyalaya Koramangala #362,12.91347,77.630944,3.6,4.3,3.4,6.6,Koramangala / BTM Layout,18
-363,Vivekananda School Koramangala #363,12.925094,77.63932,5.1,6.0,4.4,9.2,Koramangala / BTM Layout,18
-364,GLPS Koramangala #364,12.917566,77.623579,4.4,5.2,4.0,8.0,Koramangala / BTM Layout,18
-365,Vivekananda School Koramangala #365,12.926309,77.634866,6.2,7.3,5.8,11.3,Koramangala / BTM Layout,18
-366,Adarsha Vidyalaya Koramangala #366,12.921239,77.615668,5.3,6.3,5.0,9.7,Koramangala / BTM Layout,18
-367,GLPS Koramangala #367,12.930438,77.634955,6.2,7.3,5.4,11.2,Koramangala / BTM Layout,18
-368,Model School Koramangala #368,12.923831,77.628221,3.3,3.9,3.0,6.0,Koramangala / BTM Layout,18
-369,GLPS Koramangala #369,12.922648,77.619231,4.9,5.8,4.4,8.9,Koramangala / BTM Layout,18
-370,BHS Koramangala #370,12.923101,77.618826,5.9,7.0,5.2,10.7,Koramangala / BTM Layout,18
-371,Model School Koramangala #371,12.913029,77.619834,3.1,3.7,3.0,5.7,Koramangala / BTM Layout,18
-372,Model School Koramangala #372,12.931175,77.619243,4.5,5.3,4.2,8.2,Koramangala / BTM Layout,18
-373,KPS Koramangala #373,12.935726,77.622743,4.1,4.8,3.6,7.4,Koramangala / BTM Layout,18
-374,GHS Koramangala #374,12.910274,77.611105,3.7,4.4,3.6,6.8,Koramangala / BTM Layout,18
-375,Saraswathi Vidyamandira Koramangala #375,12.912846,77.625845,4.3,5.1,3.8,7.8,Koramangala / BTM Layout,18
-376,GHPS Koramangala #376,12.921266,77.631276,4.6,5.5,4.2,8.4,Koramangala / BTM Layout,18
-377,BHS Koramangala #377,12.929661,77.627667,3.1,3.7,3.0,5.7,Koramangala / BTM Layout,18
-378,Adarsha Vidyalaya Koramangala #378,12.931702,77.627482,6.5,7.7,6.2,11.9,Koramangala / BTM Layout,18
-379,Adarsha Vidyalaya Koramangala #379,12.9181,77.618251,3.9,4.6,3.6,7.1,Koramangala / BTM Layout,18
-380,SVM Koramangala #380,12.919539,77.621942,4.8,5.7,4.6,8.8,Koramangala / BTM Layout,18
-381,Vivekananda School Koramangala #381,12.912832,77.620418,6.3,7.5,5.8,11.5,Koramangala / BTM Layout,18
-382,Jnana Deepa Koramangala #382,12.937003,77.627866,5.4,6.4,4.8,9.8,Koramangala / BTM Layout,18
-383,KPS Koramangala #383,12.912904,77.610162,6.9,8.2,6.4,12.6,Koramangala / BTM Layout,18
-384,GHPS Koramangala #384,12.909684,77.623793,6.8,8.1,6.2,12.4,Koramangala / BTM Layout,18
-385,Adarsha Vidyalaya Koramangala #385,12.926094,77.61445,3.4,4.0,3.2,6.2,Koramangala / BTM Layout,18
-386,GMS Koramangala #386,12.92061,77.615899,7.1,8.4,6.4,12.9,Koramangala / BTM Layout,18
-387,St. Anthony Primary Koramangala #387,12.935426,77.62727,3.3,3.9,3.0,6.0,Koramangala / BTM Layout,18
-388,GMS Koramangala #388,12.91339,77.627605,3.2,3.8,2.8,5.8,Koramangala / BTM Layout,18
-389,Jnana Deepa Koramangala #389,12.913995,77.633825,7.4,8.7,6.6,13.4,Koramangala / BTM Layout,18
-390,KPS Koramangala #390,12.91659,77.627751,7.1,8.4,6.4,12.9,Koramangala / BTM Layout,18
-391,GMS Subramanyapura Local #391,12.873099,77.535394,7.5,8.8,6.8,13.6,Subramanyapura Local,19
-392,St. Anthony Primary Subramanyapura Local #392,12.873873,77.542417,4.0,4.7,3.8,7.3,Subramanyapura Local,19
-393,Model School Subramanyapura Local #393,12.893577,77.524425,7.2,8.5,6.6,13.1,Subramanyapura Local,19
-394,SVM Kothnur #394,12.857226,77.573738,12.7,15.0,11.2,23.0,Kothnur / Gottigere,20
-395,GLPS Kothnur #395,12.86229,77.588384,8.2,9.8,7.6,15.0,Kothnur / Gottigere,20
-396,Vivekananda School Kothnur #396,12.858072,77.59779,10.3,12.2,9.2,18.7,Kothnur / Gottigere,20
-397,St. Anthony Primary Kothnur #397,12.868708,77.598191,6.7,7.9,5.8,12.1,Kothnur / Gottigere,20
-398,Saraswathi Vidyamandira Kothnur #398,12.862166,77.575323,8.4,9.9,7.4,15.2,Kothnur / Gottigere,20
-399,Vivekananda School Anjanapura #399,12.83294,77.603388,12.8,15.1,11.8,23.3,Anjanapura / Hulimavu,21
-400,GHS Anjanapura #400,12.844813,77.597805,6.2,7.3,5.4,11.2,Anjanapura / Hulimavu,21
-401,Vivekananda School Anjanapura #401,12.841958,77.591593,10.8,12.8,10.0,19.7,Anjanapura / Hulimavu,21
-402,Adarsha Vidyalaya Anjanapura #402,12.843736,77.583373,9.5,11.2,8.8,17.3,Anjanapura / Hulimavu,21
-403,Saraswathi Vidyamandira Anjanapura #403,12.82836,77.584489,5.6,6.6,4.8,10.1,Anjanapura / Hulimavu,21
-404,GHS Anjanapura #404,12.844066,77.57902,7.9,9.4,7.2,14.4,Anjanapura / Hulimavu,21
-405,BHS Bannerghatta #405,12.77402,77.602394,6.2,7.3,5.4,11.2,Bannerghatta / Jigani Link,22
-406,SVM Bannerghatta #406,12.784687,77.61876,4.0,4.7,3.8,7.3,Bannerghatta / Jigani Link,22
-407,GHS Bannerghatta #407,12.777218,77.614026,4.1,4.9,3.8,7.5,Bannerghatta / Jigani Link,22
-408,GHS Bannerghatta #408,12.791923,77.592459,6.6,7.8,6.0,12.0,Bannerghatta / Jigani Link,22
-409,BHS Bannerghatta #409,12.803291,77.614367,6.3,7.4,5.6,11.4,Bannerghatta / Jigani Link,22
-410,GLPS Bannerghatta #410,12.770162,77.602504,7.6,9.0,7.2,13.9,Bannerghatta / Jigani Link,22
-411,GLPS Bannerghatta #411,12.772147,77.607066,6.8,8.0,6.0,12.3,Bannerghatta / Jigani Link,22
-412,Vidyalaya Bannerghatta #412,12.787265,77.601459,3.5,4.1,3.0,6.3,Bannerghatta / Jigani Link,22
-413,Adarsha Vidyalaya Bannerghatta #413,12.776831,77.607713,5.0,5.9,4.6,9.1,Bannerghatta / Jigani Link,22
-414,GJC Bannerghatta #414,12.795834,77.605277,6.8,8.0,6.0,12.3,Bannerghatta / Jigani Link,22
-415,Jnana Deepa Bannerghatta #415,12.799058,77.597309,8.0,9.4,7.2,14.5,Bannerghatta / Jigani Link,22
-416,GMS Bannerghatta #416,12.788849,77.609336,6.2,7.3,5.8,11.3,Bannerghatta / Jigani Link,22
-417,GLPS Bannerghatta #417,12.780247,77.614321,6.9,8.1,6.2,12.5,Bannerghatta / Jigani Link,22
-418,Jnana Deepa Bannerghatta #418,12.795117,77.610115,7.0,8.3,6.6,12.8,Bannerghatta / Jigani Link,22
-419,KPS Bannerghatta #419,12.785905,77.604969,4.4,5.2,4.0,8.0,Bannerghatta / Jigani Link,22
-420,Vidyalaya Bannerghatta #420,12.797117,77.621124,4.4,5.2,4.0,8.0,Bannerghatta / Jigani Link,22
-421,Adarsha Vidyalaya Bannerghatta #421,12.768636,77.61181,7.9,9.4,7.2,14.4,Bannerghatta / Jigani Link,22
-422,BHS Bannerghatta #422,12.785507,77.604315,7.0,8.3,6.6,12.8,Bannerghatta / Jigani Link,22
-423,GHPS Bannerghatta #423,12.797393,77.601178,7.6,9.0,7.2,13.9,Bannerghatta / Jigani Link,22
-424,GMS Bannerghatta #424,12.789957,77.602891,4.2,4.9,3.8,7.6,Bannerghatta / Jigani Link,22
-425,Model School Anekal #425,12.709904,77.677343,8.4,9.9,7.8,15.3,Anekal / Attibele Border,23
-426,GLPS Anekal #426,12.706237,77.667627,6.7,7.9,5.8,12.1,Anekal / Attibele Border,23
-427,GMS Anekal #427,12.703812,77.68471,5.7,6.8,5.2,10.4,Anekal / Attibele Border,23
-428,GMS Anekal #428,12.713638,77.664225,7.5,8.9,7.0,13.7,Anekal / Attibele Border,23
-429,BHS Anekal #429,12.701903,77.683536,4.7,5.6,4.4,8.6,Anekal / Attibele Border,23
-430,KPS Anekal #430,12.709046,77.677576,4.1,4.9,3.8,7.5,Anekal / Attibele Border,23
-431,Vivekananda School Anekal #431,12.717345,77.676509,4.7,5.6,4.4,8.6,Anekal / Attibele Border,23
-432,Saraswathi Vidyamandira Anekal #432,12.711174,77.67894,6.8,8.1,6.2,12.4,Anekal / Attibele Border,23
-433,St. Anthony Primary Anekal #433,12.712773,77.662478,6.8,8.0,6.0,12.3,Anekal / Attibele Border,23
-434,KPS Anekal #434,12.721329,77.687636,3.8,4.5,3.4,6.9,Anekal / Attibele Border,23
-435,GHS Anekal #435,12.715529,77.664818,7.9,9.3,7.0,14.3,Anekal / Attibele Border,23
-436,St. Anthony Primary Anekal #436,12.704318,77.660043,6.1,7.2,5.6,11.1,Anekal / Attibele Border,23
-437,GHS Anekal #437,12.715309,77.6856,6.3,7.4,5.6,11.4,Anekal / Attibele Border,23
-438,BHS Anekal #438,12.711487,77.672862,6.8,8.0,6.0,12.3,Anekal / Attibele Border,23
-439,Vivekananda School Anekal #439,12.711745,77.678262,6.5,7.7,5.8,11.8,Anekal / Attibele Border,23
-440,Jnana Deepa Anekal #440,12.716216,77.677285,7.3,8.6,6.4,13.2,Anekal / Attibele Border,23
-441,Adarsha Vidyalaya Anekal #441,12.705077,77.680373,5.0,5.9,4.6,9.1,Anekal / Attibele Border,23
-442,SVM K Upanagara #442,12.982045,77.533984,5.8,6.9,5.4,10.6,K Upanagara / Rajajinagar,24
-443,GHPS K Upanagara #443,12.99924,77.518754,4.4,5.2,4.0,8.0,K Upanagara / Rajajinagar,24
-444,KPS K Upanagara #444,12.990496,77.517157,6.8,8.1,6.2,12.4,K Upanagara / Rajajinagar,24
-445,GHS K Upanagara #445,12.992537,77.508269,4.1,4.9,3.8,7.5,K Upanagara / Rajajinagar,24
-446,Model School K Upanagara #446,13.004379,77.534859,4.9,5.8,4.4,8.9,K Upanagara / Rajajinagar,24
-447,GHS K Upanagara #447,12.979569,77.52508,7.0,8.3,6.2,12.7,K Upanagara / Rajajinagar,24
-448,KPS K Upanagara #448,12.993081,77.516575,7.4,8.7,6.6,13.4,K Upanagara / Rajajinagar,24
-449,GHPS K Upanagara #449,13.000455,77.51695,4.8,5.7,4.2,8.7,K Upanagara / Rajajinagar,24
-450,KPS K Upanagara #450,12.987067,77.507841,3.8,4.5,3.4,6.9,K Upanagara / Rajajinagar,24
-451,Model School K Upanagara #451,12.993243,77.510911,5.0,5.9,4.2,9.0,K Upanagara / Rajajinagar,24
-452,KPS K Upanagara #452,12.989673,77.522888,7.5,8.8,6.8,13.6,K Upanagara / Rajajinagar,24
-453,GLPS K Upanagara #453,12.992577,77.533503,6.8,8.0,6.0,12.3,K Upanagara / Rajajinagar,24
-454,GMS K Upanagara #454,12.993432,77.521768,7.5,8.8,6.8,13.6,K Upanagara / Rajajinagar,24
-455,Vidyalaya K Upanagara #455,12.98442,77.516215,5.1,6.0,4.4,9.2,K Upanagara / Rajajinagar,24
-456,GJC K Upanagara #456,12.988055,77.50409,7.9,9.3,7.0,14.3,K Upanagara / Rajajinagar,24
-457,Jnana Deepa K Upanagara #457,12.988165,77.53942,5.6,6.6,5.2,10.2,K Upanagara / Rajajinagar,24
-458,GHS K Upanagara #458,12.99864,77.538979,5.6,6.6,5.2,10.2,K Upanagara / Rajajinagar,24
-459,Jnana Deepa K Upanagara #459,12.97615,77.524859,7.6,9.0,7.2,13.9,K Upanagara / Rajajinagar,24
-460,Vivekananda School K Upanagara #460,13.007198,77.519363,5.7,6.8,5.2,10.4,K Upanagara / Rajajinagar,24
-461,KPS K Upanagara #461,13.000502,77.507673,7.0,8.3,6.6,12.8,K Upanagara / Rajajinagar,24
-462,GMS K Upanagara #462,12.989065,77.50586,6.7,7.9,6.2,12.2,K Upanagara / Rajajinagar,24
-463,Adarsha Vidyalaya K Upanagara #463,13.001521,77.512119,3.6,4.2,3.2,6.5,K Upanagara / Rajajinagar,24
-464,St. Anthony Primary K Upanagara #464,12.991378,77.515007,6.1,7.2,5.6,11.1,K Upanagara / Rajajinagar,24
-465,GMS K Upanagara #465,12.996148,77.506473,7.2,8.5,6.2,13.0,K Upanagara / Rajajinagar,24
-466,Vivekananda School K Upanagara #466,12.998361,77.519062,5.8,6.9,5.4,10.6,K Upanagara / Rajajinagar,24
-467,GHPS K Upanagara #467,12.993625,77.51534,4.7,5.6,4.4,8.6,K Upanagara / Rajajinagar,24
-468,BHS K Upanagara #468,12.985082,77.515878,3.6,4.2,3.2,6.5,K Upanagara / Rajajinagar,24
-469,Model School K Upanagara #469,12.977112,77.514287,6.4,7.5,5.8,11.6,K Upanagara / Rajajinagar,24
-470,SVM K Upanagara #470,13.008787,77.52694,4.7,5.5,4.2,8.5,K Upanagara / Rajajinagar,24
-471,GMS K Upanagara #471,12.988694,77.499648,6.1,7.2,5.6,11.1,K Upanagara / Rajajinagar,24
-472,Model School K Upanagara #472,12.984791,77.524719,5.3,6.2,4.8,9.6,K Upanagara / Rajajinagar,24
-473,Saraswathi Vidyamandira K Upanagara #473,12.995628,77.519067,6.5,7.7,6.2,11.9,K Upanagara / Rajajinagar,24
-474,GMS K Upanagara #474,12.989478,77.520309,4.9,5.8,4.4,8.9,K Upanagara / Rajajinagar,24
-475,Vivekananda School K Upanagara #475,12.998312,77.513911,3.4,4.0,3.2,6.2,K Upanagara / Rajajinagar,24
-476,Jnana Deepa JB Nagara #476,12.956996,77.651027,6.4,7.5,5.8,11.6,JB Nagara / Indiranagar,25
-477,Model School JB Nagara #477,12.96744,77.643654,6.5,7.7,6.2,11.9,JB Nagara / Indiranagar,25
-478,GLPS JB Nagara #478,12.962131,77.652592,7.5,8.8,6.8,13.6,JB Nagara / Indiranagar,25
-479,Model School JB Nagara #479,12.958811,77.652475,4.2,4.9,3.8,7.6,JB Nagara / Indiranagar,25
-480,Model School JB Nagara #480,12.962065,77.661116,6.1,7.2,5.6,11.1,JB Nagara / Indiranagar,25
-481,BHS JB Nagara #481,12.954485,77.647234,8.0,9.5,7.4,14.6,JB Nagara / Indiranagar,25
-482,Saraswathi Vidyamandira JB Nagara #482,12.943369,77.649393,7.8,9.2,7.2,14.2,JB Nagara / Indiranagar,25
-483,Vivekananda School JB Nagara #483,12.941533,77.656659,6.2,7.3,5.8,11.3,JB Nagara / Indiranagar,25
-484,BHS JB Nagara #484,12.946879,77.663915,5.1,6.0,4.4,9.2,JB Nagara / Indiranagar,25
-485,BHS JB Nagara #485,12.963361,77.655744,4.3,5.1,4.2,7.9,JB Nagara / Indiranagar,25
-486,KPS JB Nagara #486,12.951403,77.656682,8.4,9.9,7.4,15.2,JB Nagara / Indiranagar,25
-487,St. Anthony Primary JB Nagara #487,12.955584,77.666654,4.7,5.5,4.2,8.5,JB Nagara / Indiranagar,25
-488,KPS JB Nagara #488,12.967997,77.653983,8.4,9.9,7.8,15.3,JB Nagara / Indiranagar,25
-489,KPS JB Nagara #489,12.973659,77.669149,6.2,7.3,5.8,11.3,JB Nagara / Indiranagar,25
-490,GJC JB Nagara #490,12.969168,77.661613,5.0,5.9,4.2,9.0,JB Nagara / Indiranagar,25
-491,GJC JB Nagara #491,12.959345,77.664993,3.9,4.6,3.6,7.1,JB Nagara / Indiranagar,25
-492,SVM JB Nagara #492,12.964586,77.655961,4.5,5.3,4.2,8.2,JB Nagara / Indiranagar,25
-493,Adarsha Vidyalaya JB Nagara #493,12.945339,77.663351,8.5,10.0,7.6,15.4,JB Nagara / Indiranagar,25
-494,Jnana Deepa JB Nagara #494,12.967476,77.637462,4.9,5.8,4.4,8.9,JB Nagara / Indiranagar,25
-495,Vivekananda School JB Nagara #495,12.955775,77.666154,6.8,8.0,6.0,12.3,JB Nagara / Indiranagar,25
-496,BHS JB Nagara #496,12.965134,77.654445,6.7,7.9,6.2,12.2,JB Nagara / Indiranagar,25
-497,GHPS JB Nagara #497,12.956584,77.664913,4.0,4.7,3.4,7.2,JB Nagara / Indiranagar,25
-498,BHS JB Nagara #498,12.957781,77.656754,6.8,8.1,6.2,12.4,JB Nagara / Indiranagar,25
-499,KPS JB Nagara #499,12.964639,77.673848,6.6,7.8,6.0,12.0,JB Nagara / Indiranagar,25
-500,Model School JB Nagara #500,12.959939,77.657266,6.5,7.7,6.2,11.9,JB Nagara / Indiranagar,25
-501,GLPS Padmanabhanagar #501,12.929853,77.555369,10.3,12.2,9.6,18.8,Padmanabhanagar / Kumaraswamy Layout,26
-502,KPS Padmanabhanagar #502,12.922009,77.536771,8.8,10.4,8.0,16.0,Padmanabhanagar / Kumaraswamy Layout,26
-503,GHS Padmanabhanagar #503,12.911659,77.554663,7.6,9.0,6.8,13.8,Padmanabhanagar / Kumaraswamy Layout,26
-504,GMS Padmanabhanagar #504,12.914152,77.545238,8.0,9.5,7.4,14.6,Padmanabhanagar / Kumaraswamy Layout,26
-505,St. Anthony Primary Padmanabhanagar #505,12.921983,77.546184,10.1,12.0,9.2,18.4,Padmanabhanagar / Kumaraswamy Layout,26
-506,BHS Padmanabhanagar #506,12.911835,77.546872,7.3,8.6,6.8,13.3,Padmanabhanagar / Kumaraswamy Layout,26
-507,GHS Padmanabhanagar #507,12.923043,77.542687,10.3,12.2,9.6,18.8,Padmanabhanagar / Kumaraswamy Layout,26
-508,GHS Padmanabhanagar #508,12.913686,77.540387,9.3,11.0,8.4,16.9,Padmanabhanagar / Kumaraswamy Layout,26
-509,Adarsha Vidyalaya Padmanabhanagar #509,12.912925,77.539454,9.6,11.3,8.6,17.4,Padmanabhanagar / Kumaraswamy Layout,26
-510,Adarsha Vidyalaya Padmanabhanagar #510,12.915817,77.551886,6.9,8.1,6.2,12.5,Padmanabhanagar / Kumaraswamy Layout,26
-511,Model School Padmanabhanagar #511,12.908568,77.546275,7.2,8.5,6.2,13.0,Padmanabhanagar / Kumaraswamy Layout,26
-512,KPS Padmanabhanagar #512,12.922423,77.538775,8.2,9.8,7.6,15.0,Padmanabhanagar / Kumaraswamy Layout,26
-513,SVM Padmanabhanagar #513,12.925531,77.550631,5.8,6.8,5.2,10.5,Padmanabhanagar / Kumaraswamy Layout,26
-514,St. Anthony Primary Padmanabhanagar #514,12.923099,77.533437,8.1,9.6,7.6,14.8,Padmanabhanagar / Kumaraswamy Layout,26
-515,Model School Padmanabhanagar #515,12.907482,77.53249,5.0,5.9,4.2,9.0,Padmanabhanagar / Kumaraswamy Layout,26
-516,Vivekananda School Padmanabhanagar #516,12.929664,77.54337,7.8,9.2,7.2,14.2,Padmanabhanagar / Kumaraswamy Layout,26
-517,GJC Padmanabhanagar #517,12.902516,77.536159,9.6,11.3,8.6,17.4,Padmanabhanagar / Kumaraswamy Layout,26
-518,GHS Padmanabhanagar #518,12.906723,77.537934,6.3,7.5,5.8,11.5,Padmanabhanagar / Kumaraswamy Layout,26
-519,Vivekananda School Padmanabhanagar #519,12.917506,77.534185,11.1,13.1,9.8,20.1,Padmanabhanagar / Kumaraswamy Layout,26
-520,Jnana Deepa Yellukunte #520,12.881735,77.584638,9.1,10.8,8.4,16.6,Yellukunte / Arekere,27
-521,St. Anthony Primary Yellukunte #521,12.886266,77.585346,5.0,5.9,4.2,9.0,Yellukunte / Arekere,27
-522,GJC Yellukunte #522,12.882189,77.596265,8.2,9.7,7.4,14.9,Yellukunte / Arekere,27
-523,BHS Yellukunte #523,12.892205,77.593829,4.2,5.0,4.0,7.7,Yellukunte / Arekere,27
-524,GHS Yellukunte #524,12.875903,77.604639,9.8,11.6,8.8,17.8,Yellukunte / Arekere,27
-525,GMS Yellukunte #525,12.870432,77.591831,4.7,5.6,4.4,8.6,Yellukunte / Arekere,27
-526,St. Anthony Primary Yellukunte #526,12.881425,77.58564,4.2,4.9,3.8,7.6,Yellukunte / Arekere,27
-527,Vidyalaya Yellukunte #527,12.884951,77.580328,5.9,7.0,5.6,10.8,Yellukunte / Arekere,27
-528,GJC Yellukunte #528,12.884838,77.606267,5.0,5.9,4.2,9.0,Yellukunte / Arekere,27
-529,Vidyalaya Yellukunte #529,12.878249,77.600668,8.2,9.8,7.6,15.0,Yellukunte / Arekere,27
+school_id,school_name,latitude,longitude,rice_vessels,sambar_vessels,curd_vessels,equivalent_demand,student_headcount,cluster_zone,corridor_id,status
+1,RV Girls HS - Jayanagar,12.940608,77.583289,3.0,3.5,0.75,4.94,277,Jayanagar & Basavanagudi,4,Active
+2,CNS - Jayanagar,12.942947,77.583208,0.13,0.13,1.0,0.45,25,Jayanagar & Basavanagudi,4,Active
+49,Parikrama Humanity Foundation - Jayanagar,12.941275,77.585586,2.5,3.0,0.5,4.12,231,Jayanagar & Basavanagudi,4,Active
+4,Rani HPS - Jayanagar,12.938536,77.585992,5.0,5.0,1.0,7.75,434,Jayanagar & Basavanagudi,4,Active
+5,Rani HS - Jayanagar,12.938536,77.585992,6.0,6.0,1.0,9.25,518,Jayanagar & Basavanagudi,4,Active
+6,SESS HPS - Lalbagh Siddapura,12.946556,77.591197,0.75,0.75,0.5,1.25,70,Jayanagar & Basavanagudi,4,Active
+7,St. Andrees KHPS - L.Siddapura,12.944728,77.589717,3.75,3.5,0.75,5.69,319,Jayanagar & Basavanagudi,4,Active
+8,GHPS - Lalbagh Fort Road,12.945567,77.589019,0.5,0.5,0.3,0.82,46,Jayanagar & Basavanagudi,4,Active
+9,Dayananda Nagar School - Siddapura,12.944206,77.593283,2.0,2.0,0.5,3.12,175,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+10,Hombegowda BHS - Wilson Garden,12.946958,77.596081,7.5,7.0,1.0,11.25,630,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+11,GHPS - Wilson Garden 10th Cross,12.948381,77.596917,1.5,1.5,0.25,2.31,129,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+12,GHS - Wilson Garden Main,12.948336,77.596648,3.0,3.0,0.75,4.69,263,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+13,Gangamma GHS - Wilson Garden,12.947819,77.596018,5.0,3.0,1.0,6.75,378,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+14,CNS Primary School - Lakkasandra Main Road,12.946944,77.597778,2.5,2.5,0.5,3.88,217,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+15,Govt Composite PS - Lakkasandra 7th Cross,12.9472,77.5982,3.0,3.0,0.5,4.62,259,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+16,Govt High School - Adugodi Post Office Rd,12.943,77.6075,4.5,4.0,1.0,6.75,378,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+17,Govt High School - Adugodi Police Quarters,12.945,77.6095,5.0,5.0,1.0,7.75,434,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+18,Govt Primary School - Neelasandra,12.9515,77.6105,4.0,4.0,0.75,6.19,347,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+19,Govt High School - Austin Town,12.9585,77.6135,6.0,5.5,1.25,9.06,507,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+20,Govt Urdu High School - Victoria Road,12.962,77.611,5.5,5.0,1.0,8.25,462,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+64,St. Joseph's Indian High School - Vittal Mallya Rd,12.968,77.601,7.0,6.5,1.5,10.62,595,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+22,GHPS - Chandra Nagar,12.905,77.562,4.5,4.0,1.0,6.75,378,Padmanabhanagar & Banashankari,7,Active
+23,GHS and BHS - Dayananda Nagar,12.9045,77.564,4.0,3.5,0.75,5.94,333,Padmanabhanagar & Banashankari,7,Active
+24,Dayananda LPS - Chandra Nagar,12.9048,77.5642,2.5,2.0,0.5,3.62,203,Padmanabhanagar & Banashankari,7,Active
+25,GMPS Konanakunte [8],12.889,77.572,5.5,5.0,1.0,8.25,462,"Konanakunte, Sarakki & JP Nagar",3,Active
+26,JSS HS - Konanakunte Cross,12.891,77.571,3.5,3.0,0.75,5.19,291,"Konanakunte, Sarakki & JP Nagar",3,Active
+27,S/C - Doresani Palya,12.903,77.595,4.5,4.0,1.0,6.75,378,"Konanakunte, Sarakki & JP Nagar",3,Active
+28,GHPS - Puttenahalli Lake Road,12.898,77.58,6.5,6.0,1.25,9.81,549,"Konanakunte, Sarakki & JP Nagar",3,Active
+29,S/C Puttenahalli Higher School,12.906,77.581,3.5,3.0,0.75,5.19,291,"Konanakunte, Sarakki & JP Nagar",3,Active
+30,GHS - Sarakki Main Road,12.913,77.576,7.0,6.5,1.5,10.62,595,"Konanakunte, Sarakki & JP Nagar",3,Active
+31,S/C - Pragathipura School,12.92,77.571,3.5,3.0,0.75,5.19,291,Padmanabhanagar & Banashankari,7,Active
+32,GHPS - Kadirenahalli Cross,12.924,77.56,4.5,4.0,1.0,6.75,378,Padmanabhanagar & Banashankari,7,Active
+33,Banashankari HS - Bendrenagara,12.922,77.559,4.0,3.5,0.75,5.94,333,Padmanabhanagar & Banashankari,7,Active
+86,Banashankari HPS - Bendrenagara,12.9225,77.5595,3.5,3.0,0.5,5.12,287,Padmanabhanagar & Banashankari,7,Active
+35,Bhuvaneshwari HPS - Bendrenagar,12.9215,77.5605,4.5,4.0,1.0,6.75,378,Padmanabhanagar & Banashankari,7,Active
+1,GHPS Subramanyapura Main,12.885,77.542,3.5,3.0,0.75,5.19,291,Kanakapura Road Radial,1,Active
+37,Govt High School Thalaghattapura Junction,12.868,77.535,5.0,4.5,1.0,7.5,420,Kanakapura Road Radial,1,Active
+38,Govt Primary School Doddakallasandra,12.881,77.555,4.0,3.5,0.75,5.94,333,Kanakapura Road Radial,1,Active
+3,GHPS Yelachenahalli Kanakapura Rd,12.894,77.568,4.5,4.0,1.0,6.75,378,Kanakapura Road Radial,1,Active
+40,Vajarahalli Govt Higher Primary School,12.861,77.528,3.0,2.5,0.5,4.38,245,Kanakapura Road Radial,1,Active
+2,Govt High School Raghuvanahalli,12.875,77.537,4.0,3.5,0.75,5.94,333,Kanakapura Road Radial,1,Active
+42,Govt High School Kaggalipura Grama,12.835,77.518,5.5,5.0,1.0,8.25,462,Kanakapura Road Radial,1,Active
+43,Govt Composite High School Somanahalli,12.825,77.512,4.0,3.5,0.75,5.94,333,Kanakapura Road Radial,1,Active
+44,GHPS Arekere Mico Layout,12.887,77.595,4.5,4.0,1.0,6.75,378,Bannerghatta Road Corridor,2,Active
+21,Govt Model Primary School Hulimavu Gate,12.878,77.601,5.0,4.5,1.0,7.5,420,Bannerghatta Road Corridor,2,Active
+46,Govt High School Gottigere Junction,12.859,77.592,6.0,5.5,1.25,9.06,507,Bannerghatta Road Corridor,2,Active
+47,GHPS Kalena Agrahara Ward,12.869,77.597,3.5,3.0,0.75,5.19,291,Bannerghatta Road Corridor,2,Active
+19,St. Philomena High School Bannerghatta Rd,12.882,77.599,4.5,4.0,1.0,6.75,378,Bannerghatta Road Corridor,2,Active
+49,Govt High School Kothnur Dinne Main Rd,12.873,77.584,4.0,3.5,0.75,5.94,333,Bannerghatta Road Corridor,2,Active
+26,Govt Primary School Doddakammanahalli,12.854,77.608,3.0,2.5,0.5,4.38,245,Bannerghatta Road Corridor,2,Active
+17,Govt High School Meenakshi Temple Ward,12.876,77.594,4.5,4.0,1.0,6.75,378,Bannerghatta Road Corridor,2,Active
+52,Govt High School BTM 1st Stage 16th Main,12.916,77.605,5.0,4.5,1.0,7.5,420,BTM Layout & Koramangala,6,Active
+67,GHPS BTM 2nd Stage Near Udupi Garden,12.918,77.612,4.5,4.0,1.0,6.75,378,BTM Layout & Koramangala,6,Active
+54,Govt High School Tavarekere Main Road,12.926,77.615,5.5,5.0,1.0,8.25,462,BTM Layout & Koramangala,6,Active
+55,Koramangala Govt High School 5th Block,12.934,77.621,6.0,5.5,1.25,9.06,507,BTM Layout & Koramangala,6,Active
+56,Govt Primary School Koramangala 8th Block,12.938,77.627,4.0,3.5,0.75,5.94,333,BTM Layout & Koramangala,6,Active
+57,Bethany High School Ward Koramangala,12.936,77.618,4.5,4.0,1.0,6.75,378,BTM Layout & Koramangala,6,Active
+58,Govt Model School Madiwala Market,12.921,77.619,5.0,4.5,1.0,7.5,420,BTM Layout & Koramangala,6,Active
+59,Govt High School Uttarahalli Main Road,12.902,77.536,5.0,4.5,1.0,7.5,420,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+91,GHPS Chikkalasandra Near Subbaiah Circle,12.911,77.541,4.5,4.0,1.0,6.75,378,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+61,Govt Model School Poorna Pragna Layout,12.908,77.532,4.0,3.5,0.75,5.94,333,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+62,Govt High School Ittamadu BSK 3rd Stage,12.919,77.544,5.5,5.0,1.0,8.25,462,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+63,GHPS Rajarajeshwari Nagar Ideal Homes,12.924,77.521,5.0,4.5,1.0,7.5,420,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+64,Govt Model School BEML Layout RR Nagar,12.917,77.518,4.0,3.5,0.75,5.94,333,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+65,Govt Model School Nayandahalli Mysore Road,12.939,77.525,5.5,5.0,1.0,8.25,462,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+66,Govt High School Kengeri Satellite Town,12.915,77.502,5.0,4.5,1.0,7.5,420,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+67,Govt High School - Yelachenahalli 1st Stage,12.883743,77.530058,4.0,5.0,4.7,7.67,430,Kanakapura Road Radial,1,Active
+68,Govt High School - Raghuvanahalli Police Quarters,12.86426,77.530219,1.6,2.0,1.9,3.08,172,Kanakapura Road Radial,1,Active
+69,GHPS - Subramanyapura Junction,12.838349,77.542327,4.8,6.0,5.7,9.23,517,Kanakapura Road Radial,1,Active
+70,Govt Model Primary School - Vajarahalli Near Temple,12.866487,77.535037,4.4,5.5,5.5,8.53,478,Kanakapura Road Radial,1,Active
+71,Govt Higher Primary School - Yelachenahalli Cross Road,12.859845,77.537201,2.6,3.3,3.3,5.08,284,Kanakapura Road Radial,1,Active
+5,GHS - Somanahalli Lake Ward,12.85982,77.546214,4.6,5.8,5.4,8.85,496,Kanakapura Road Radial,1,Active
+73,Saraswathi Vidyamandira - Somanahalli Junction,12.870466,77.532432,3.9,4.8,4.6,7.46,418,Kanakapura Road Radial,1,Active
+10,Govt Model Primary School - Doddakallasandra Near Temple,12.842789,77.530892,3.2,4.0,3.6,6.09,341,Kanakapura Road Radial,1,Active
+75,Govt High School - Raghuvanahalli 2nd Stage,12.880172,77.53088,3.8,4.8,4.8,7.4,414,Kanakapura Road Radial,1,Active
+76,Govt High School - Thalaghattapura Near Temple,12.830403,77.53101,2.4,3.0,2.6,4.54,254,Kanakapura Road Radial,1,Active
+77,National Primary School - Kaggalipura Police Quarters,12.857996,77.534699,2.3,2.8,2.5,4.33,242,Kanakapura Road Radial,1,Active
+78,GLPS - Subramanyapura 2nd Stage,12.878344,77.520826,2.4,3.0,2.7,4.57,256,Kanakapura Road Radial,1,Active
+79,Govt Higher Primary School - Yelachenahalli Junction,12.825604,77.522908,4.7,5.9,5.6,9.04,506,Kanakapura Road Radial,1,Active
+80,GHPS - Kaggalipura Police Quarters,12.834243,77.517786,3.0,3.7,3.3,5.68,318,Kanakapura Road Radial,1,Active
+81,GLPS - Subramanyapura Lake Ward,12.83034,77.519798,3.8,4.7,4.6,7.29,408,Kanakapura Road Radial,1,Active
+82,GHS - Somanahalli Near Temple,12.875938,77.532702,4.6,5.8,5.8,8.94,501,Kanakapura Road Radial,1,Active
+11,Adarsha Vidyalaya - Subramanyapura BDA Complex,12.835914,77.526993,1.8,2.2,2.2,3.44,193,Kanakapura Road Radial,1,Active
+84,National Primary School - Subramanyapura 2nd Stage,12.863838,77.539696,4.0,5.0,4.6,7.64,428,Kanakapura Road Radial,1,Active
+8,Saraswathi Vidyamandira - Vajarahalli BDA Complex,12.849624,77.542214,2.8,3.5,3.4,5.4,302,Kanakapura Road Radial,1,Active
+86,GLPS - Somanahalli Near Temple,12.841015,77.516117,1.8,2.3,2.2,3.49,195,Kanakapura Road Radial,1,Active
+87,Govt High School - Subramanyapura Police Quarters,12.85251,77.529647,4.6,5.8,5.8,8.94,501,Kanakapura Road Radial,1,Active
+6,National Primary School - Somanahalli Cross Road,12.874857,77.52,2.3,2.8,2.5,4.33,242,Kanakapura Road Radial,1,Active
+13,GHPS - Thalaghattapura Ring Road Ward,12.825704,77.547969,4.7,5.9,5.6,9.04,506,Kanakapura Road Radial,1,Active
+90,Saraswathi Vidyamandira - Subramanyapura Lake Ward,12.856761,77.543382,3.8,4.8,4.6,7.35,412,Kanakapura Road Radial,1,Active
+91,GHS - Thalaghattapura Near Temple,12.840196,77.547569,3.4,4.3,4.0,6.56,367,Kanakapura Road Radial,1,Active
+9,Govt Higher Primary School - Somanahalli BDA Complex,12.853605,77.52141,1.7,2.1,2.0,3.25,182,Kanakapura Road Radial,1,Active
+93,Govt High School - Vajarahalli Police Quarters,12.842248,77.535228,3.0,3.7,3.5,5.73,321,Kanakapura Road Radial,1,Active
+94,Adarsha Vidyalaya - Vajarahalli Main Road,12.870913,77.516726,1.8,2.2,2.2,3.44,193,Kanakapura Road Radial,1,Active
+95,Govt Higher Primary School - Thalaghattapura BDA Complex,12.835662,77.540476,2.4,3.0,2.6,4.54,254,Kanakapura Road Radial,1,Active
+96,Govt High School - Thalaghattapura Cross Road,12.864759,77.52585,3.7,4.6,4.2,7.05,395,Kanakapura Road Radial,1,Active
+97,Govt Model Primary School - Vajarahalli Police Quarters,12.84383,77.52997,4.5,5.6,5.4,8.65,484,Kanakapura Road Radial,1,Active
+98,Govt High School - Vajarahalli Market Road,12.877784,77.538619,2.8,3.4,3.2,5.3,297,Kanakapura Road Radial,1,Active
+99,Govt Model Primary School - Vajarahalli Police Quarters,12.831588,77.537108,2.5,3.1,3.2,4.84,271,Kanakapura Road Radial,1,Active
+100,Saraswathi Vidyamandira - Somanahalli 2nd Stage,12.869639,77.525573,2.3,2.9,2.6,4.4,246,Kanakapura Road Radial,1,Active
+101,National Primary School - Doddakallasandra Main Road,12.867101,77.531188,4.9,6.1,5.5,9.33,522,Kanakapura Road Radial,1,Active
+102,National Primary School - Raghuvanahalli Cross Road,12.863143,77.542169,2.3,2.8,2.7,4.37,245,Kanakapura Road Radial,1,Active
+103,GHPS - Subramanyapura Police Quarters,12.831612,77.523334,4.9,6.2,5.9,9.48,531,Kanakapura Road Radial,1,Active
+104,GHS - Raghuvanahalli Cross Road,12.836563,77.524367,4.5,5.6,5.4,8.64,484,Kanakapura Road Radial,1,Active
+105,GLPS - Vajarahalli 2nd Stage,12.86852,77.542008,1.9,2.3,2.2,3.59,201,Kanakapura Road Radial,1,Active
+106,Govt Higher Primary School - Yelachenahalli Lake Ward,12.852377,77.528541,3.4,4.3,4.1,6.58,368,Kanakapura Road Radial,1,Active
+107,GLPS - Somanahalli Cross Road,12.870512,77.547922,4.1,5.2,5.0,7.94,445,Kanakapura Road Radial,1,Active
+108,Adarsha Vidyalaya - Doddakallasandra 2nd Stage,12.842965,77.522788,4.2,5.2,4.9,8.03,450,Kanakapura Road Radial,1,Active
+4,Govt Model Primary School - Vajarahalli Lake Ward,12.864136,77.539505,2.1,2.7,2.7,4.13,231,Kanakapura Road Radial,1,Active
+12,Saraswathi Vidyamandira - Somanahalli BDA Complex,12.832078,77.529785,1.6,2.0,2.1,3.12,175,Kanakapura Road Radial,1,Active
+111,Saraswathi Vidyamandira - Raghuvanahalli Junction,12.827877,77.519014,2.8,3.4,3.2,5.29,296,Kanakapura Road Radial,1,Active
+7,GHPS - Somanahalli Ring Road Ward,12.868027,77.520888,2.2,2.7,2.5,4.17,234,Kanakapura Road Radial,1,Active
+113,Govt Higher Primary School - Kaggalipura Junction,12.884938,77.537964,1.7,2.1,1.9,3.23,181,Kanakapura Road Radial,1,Active
+114,Govt Model Primary School - Somanahalli 1st Stage,12.867419,77.528972,1.4,1.7,1.7,2.68,150,Kanakapura Road Radial,1,Active
+115,Adarsha Vidyalaya - Thalaghattapura Near Temple,12.848172,77.545576,3.7,4.6,4.3,7.07,396,Kanakapura Road Radial,1,Active
+116,Adarsha Vidyalaya - Doddakallasandra Lake Ward,12.832559,77.531107,2.2,2.7,2.4,4.15,232,Kanakapura Road Radial,1,Active
+117,GHS - Thalaghattapura Junction,12.867144,77.52494,4.8,6.0,5.8,9.25,518,Kanakapura Road Radial,1,Active
+118,GHS - Somanahalli Main Road,12.866537,77.515581,3.1,3.9,4.0,6.04,338,Kanakapura Road Radial,1,Active
+119,National Primary School - Kaggalipura 2nd Stage,12.84717,77.534059,2.4,3.0,3.0,4.64,260,Kanakapura Road Radial,1,Active
+120,Govt Model Primary School - Vajarahalli Near Temple,12.874818,77.53964,3.9,4.9,4.6,7.49,419,Kanakapura Road Radial,1,Active
+121,Govt High School - Doddakallasandra Junction,12.835948,77.545075,4.0,5.0,5.0,7.75,434,Kanakapura Road Radial,1,Active
+122,Adarsha Vidyalaya - Raghuvanahalli Main Road,12.849292,77.519366,3.0,3.7,3.4,5.7,319,Kanakapura Road Radial,1,Active
+123,Govt High School - Raghuvanahalli 2nd Stage,12.828372,77.524534,4.4,5.5,5.0,8.4,470,Kanakapura Road Radial,1,Active
+124,National Primary School - Kaggalipura 2nd Stage,12.852824,77.545806,4.3,5.4,5.0,8.24,461,Kanakapura Road Radial,1,Active
+125,GLPS - Somanahalli Main Road,12.8681,77.520256,3.4,4.3,4.1,6.58,368,Kanakapura Road Radial,1,Active
+23,GLPS - Kalena Agrahara Main Road,12.889967,77.611516,3.5,4.4,4.2,6.75,378,Bannerghatta Road Corridor,2,Active
+127,Saraswathi Vidyamandira - Doddakammanahalli Ring Road Ward,12.873435,77.612091,3.9,4.9,4.7,7.53,422,Bannerghatta Road Corridor,2,Active
+128,Govt High School - Meenakshi Layout 1st Stage,12.845638,77.604216,3.8,4.8,4.8,7.4,414,Bannerghatta Road Corridor,2,Active
+129,Govt Model Primary School - Doddakammanahalli 2nd Stage,12.885153,77.601635,4.6,5.8,5.8,8.94,501,Bannerghatta Road Corridor,2,Active
+130,Govt Model Primary School - Meenakshi Layout Market Road,12.8848,77.601939,1.9,2.4,2.6,3.74,209,Bannerghatta Road Corridor,2,Active
+131,Saraswathi Vidyamandira - Doddakammanahalli Police Quarters,12.842619,77.600844,3.8,4.7,4.6,7.29,408,Bannerghatta Road Corridor,2,Active
+132,Govt Model Primary School - Gottigere Cross Road,12.885775,77.583611,3.5,4.3,4.0,6.66,373,Bannerghatta Road Corridor,2,Active
+133,GLPS - Hulimavu Main Road,12.843147,77.594798,3.6,4.5,4.4,6.95,389,Bannerghatta Road Corridor,2,Active
+134,Govt High School - Kothnur Dinne BDA Complex,12.848115,77.612646,3.5,4.4,4.5,6.82,382,Bannerghatta Road Corridor,2,Active
+135,Saraswathi Vidyamandira - Gottigere Market Road,12.873095,77.613557,4.9,6.1,5.6,9.34,523,Bannerghatta Road Corridor,2,Active
+15,Adarsha Vidyalaya - Meenakshi Layout Ring Road Ward,12.892835,77.587347,3.0,3.8,3.8,5.84,327,Bannerghatta Road Corridor,2,Active
+137,GHS - Hulimavu Police Quarters,12.879957,77.599229,2.1,2.7,2.6,4.11,230,Bannerghatta Road Corridor,2,Active
+25,Govt High School - Basavanapura Near Temple,12.871467,77.61266,4.8,6.0,5.8,9.26,519,Bannerghatta Road Corridor,2,Active
+139,Saraswathi Vidyamandira - Basavanapura Near Temple,12.865553,77.588913,1.5,1.8,1.7,2.82,158,Bannerghatta Road Corridor,2,Active
+140,Govt Model Primary School - Doddakammanahalli Ring Road Ward,12.886589,77.602495,4.5,5.7,5.5,8.73,489,Bannerghatta Road Corridor,2,Active
+141,Adarsha Vidyalaya - Hulimavu Near Temple,12.887246,77.59662,1.7,2.1,2.0,3.24,181,Bannerghatta Road Corridor,2,Active
+142,National Primary School - Meenakshi Layout 2nd Stage,12.870156,77.584981,2.5,3.1,2.8,4.76,267,Bannerghatta Road Corridor,2,Active
+143,GLPS - Basavanapura 1st Stage,12.87205,77.5987,1.6,1.9,1.8,2.99,167,Bannerghatta Road Corridor,2,Active
+18,Adarsha Vidyalaya - Gottigere Police Quarters,12.886805,77.598035,3.2,3.9,3.6,6.06,339,Bannerghatta Road Corridor,2,Active
+24,GLPS - Kothnur Dinne 2nd Stage,12.889841,77.613683,2.2,2.8,2.6,4.25,238,Bannerghatta Road Corridor,2,Active
+146,GHPS - Arekere BDA Complex,12.872802,77.590585,4.5,5.7,5.5,8.72,488,Bannerghatta Road Corridor,2,Active
+147,Govt Model Primary School - Basavanapura Ring Road Ward,12.847575,77.603105,3.9,4.8,4.6,7.44,417,Bannerghatta Road Corridor,2,Active
+148,GHS - Gottigere Near Temple,12.840557,77.592077,3.7,4.7,4.5,7.17,402,Bannerghatta Road Corridor,2,Active
+16,Govt Higher Primary School - Doddakammanahalli Cross Road,12.868481,77.589586,3.7,4.6,4.2,7.05,395,Bannerghatta Road Corridor,2,Active
+150,Govt High School - Kalena Agrahara Lake Ward,12.879887,77.585062,1.6,2.0,1.8,3.04,170,Bannerghatta Road Corridor,2,Active
+151,Adarsha Vidyalaya - Kalena Agrahara Ring Road Ward,12.874269,77.600021,2.0,2.4,2.2,3.75,210,Bannerghatta Road Corridor,2,Active
+152,GHPS - Basavanapura 1st Stage,12.846267,77.580945,2.2,2.7,2.4,4.15,232,Bannerghatta Road Corridor,2,Active
+153,Saraswathi Vidyamandira - Gottigere BDA Complex,12.854638,77.605349,4.4,5.5,5.2,8.46,474,Bannerghatta Road Corridor,2,Active
+154,Govt High School - Kalena Agrahara Near Temple,12.875947,77.597651,3.1,3.9,4.0,6.05,339,Bannerghatta Road Corridor,2,Active
+155,GHPS - Arekere 1st Stage,12.854431,77.585609,1.6,2.0,2.2,3.14,176,Bannerghatta Road Corridor,2,Active
+156,Saraswathi Vidyamandira - Meenakshi Layout Cross Road,12.854984,77.581797,2.5,3.1,3.1,4.83,270,Bannerghatta Road Corridor,2,Active
+157,Govt Higher Primary School - Basavanapura BDA Complex,12.863421,77.610644,1.5,1.8,1.6,2.81,157,Bannerghatta Road Corridor,2,Active
+22,Saraswathi Vidyamandira - Doddakammanahalli Lake Ward,12.847675,77.586787,4.8,6.0,6.0,9.29,520,Bannerghatta Road Corridor,2,Active
+159,Adarsha Vidyalaya - Meenakshi Layout Police Quarters,12.885033,77.605597,4.3,5.4,5.1,8.28,464,Bannerghatta Road Corridor,2,Active
+160,GLPS - Doddakammanahalli Lake Ward,12.855318,77.600886,1.6,1.9,1.8,2.99,167,Bannerghatta Road Corridor,2,Active
+161,Govt Model Primary School - Hulimavu Police Quarters,12.893005,77.594666,2.9,3.7,3.5,5.63,315,Bannerghatta Road Corridor,2,Active
+162,Govt High School - Kothnur Dinne 2nd Stage,12.844281,77.603518,2.0,2.5,2.3,3.82,214,Bannerghatta Road Corridor,2,Active
+163,Govt Model Primary School - Basavanapura Main Road,12.870704,77.599928,3.8,4.7,4.3,7.23,405,Bannerghatta Road Corridor,2,Active
+164,GHPS - Meenakshi Layout Main Road,12.881142,77.60566,2.2,2.7,2.4,4.14,232,Bannerghatta Road Corridor,2,Active
+165,Adarsha Vidyalaya - Arekere Junction,12.849488,77.599817,2.1,2.6,2.3,3.98,223,Bannerghatta Road Corridor,2,Active
+166,Govt High School - Kalena Agrahara Cross Road,12.890502,77.60017,3.0,3.8,3.6,5.81,325,Bannerghatta Road Corridor,2,Active
+167,Saraswathi Vidyamandira - Arekere Near Temple,12.856508,77.587693,4.0,4.9,4.6,7.6,426,Bannerghatta Road Corridor,2,Active
+168,GHS - Arekere Cross Road,12.883492,77.596652,2.1,2.6,2.5,4.03,226,Bannerghatta Road Corridor,2,Active
+169,GHPS - Arekere 2nd Stage,12.886222,77.589131,4.8,6.1,5.9,9.32,522,Bannerghatta Road Corridor,2,Active
+170,Govt High School - Doddakammanahalli Police Quarters,12.875939,77.591963,4.7,5.9,5.8,9.11,510,Bannerghatta Road Corridor,2,Active
+171,GHPS - Kothnur Dinne Cross Road,12.85561,77.584738,2.5,3.1,2.8,4.75,266,Bannerghatta Road Corridor,2,Active
+14,GHPS - Hulimavu Junction,12.891256,77.582778,1.9,2.4,2.6,3.74,209,Bannerghatta Road Corridor,2,Active
+173,Saraswathi Vidyamandira - Doddakammanahalli Police Quarters,12.89221,77.584204,1.5,1.9,2.1,2.98,167,Bannerghatta Road Corridor,2,Active
+174,National Primary School - Gottigere 1st Stage,12.846449,77.580043,1.8,2.3,2.3,3.52,197,Bannerghatta Road Corridor,2,Active
+175,Govt Model Primary School - Kothnur Dinne Police Quarters,12.859907,77.609177,3.2,4.0,3.8,6.14,344,Bannerghatta Road Corridor,2,Active
+176,Govt Higher Primary School - Kothnur Dinne Junction,12.885962,77.598873,4.6,5.7,5.6,8.84,495,Bannerghatta Road Corridor,2,Active
+177,National Primary School - Kothnur Dinne 2nd Stage,12.86157,77.586868,3.2,4.1,4.0,6.24,349,Bannerghatta Road Corridor,2,Active
+178,GLPS - Doddakammanahalli Market Road,12.878216,77.61101,2.4,3.0,2.8,4.59,257,Bannerghatta Road Corridor,2,Active
+179,Govt High School - Meenakshi Layout Police Quarters,12.880853,77.612161,3.3,4.1,3.7,6.27,351,Bannerghatta Road Corridor,2,Active
+180,Govt High School - Basavanapura Market Road,12.843675,77.60829,1.7,2.2,2.1,3.33,186,Bannerghatta Road Corridor,2,Active
+181,Govt Higher Primary School - Gottigere Near Temple,12.874035,77.603434,2.6,3.2,2.8,4.91,275,Bannerghatta Road Corridor,2,Active
+20,Govt Model Primary School - Arekere Main Road,12.877789,77.600004,4.0,5.0,4.7,7.67,430,Bannerghatta Road Corridor,2,Active
+183,National Primary School - Meenakshi Layout Cross Road,12.891136,77.613371,1.7,2.1,2.1,3.28,184,Bannerghatta Road Corridor,2,Active
+184,GHS - Meenakshi Layout Lake Ward,12.888773,77.600518,2.1,2.7,2.6,4.1,230,Bannerghatta Road Corridor,2,Active
+185,GHPS - Konanakunte Junction,12.88711,77.586377,3.7,4.6,4.3,7.07,396,"Konanakunte, Sarakki & JP Nagar",3,Active
+186,Saraswathi Vidyamandira - Sarakki Market Road,12.901418,77.59479,1.4,1.7,1.7,2.68,150,"Konanakunte, Sarakki & JP Nagar",3,Active
+187,GHS - Puttenahalli Market Road,12.899807,77.587107,2.7,3.3,3.0,5.11,286,"Konanakunte, Sarakki & JP Nagar",3,Active
+188,Adarsha Vidyalaya - Doresani Palya Cross Road,12.913741,77.589261,2.2,2.7,2.6,4.21,236,"Konanakunte, Sarakki & JP Nagar",3,Active
+189,Govt Model Primary School - JP Nagar 2nd Phase 1st Stage,12.889915,77.585782,2.5,3.1,2.7,4.72,264,"Konanakunte, Sarakki & JP Nagar",3,Active
+190,GHPS - Sarakki Lake Ward,12.907957,77.569642,3.3,4.1,3.7,6.28,352,"Konanakunte, Sarakki & JP Nagar",3,Active
+191,Adarsha Vidyalaya - Rose Garden Police Quarters,12.915029,77.582766,2.7,3.3,3.2,5.14,288,"Konanakunte, Sarakki & JP Nagar",3,Active
+192,Adarsha Vidyalaya - Konanakunte Near Temple,12.915209,77.59115,4.7,5.9,5.7,9.08,508,"Konanakunte, Sarakki & JP Nagar",3,Active
+38,GHS - JP Nagar 6th Phase 2nd Stage,12.900206,77.594695,1.5,1.9,2.0,2.95,165,"Konanakunte, Sarakki & JP Nagar",3,Active
+194,GHPS - JP Nagar 6th Phase Ring Road Ward,12.911639,77.572054,4.8,6.0,5.8,9.24,517,"Konanakunte, Sarakki & JP Nagar",3,Active
+195,Govt Model Primary School - Jaraganahalli 2nd Stage,12.90597,77.577006,2.2,2.7,2.6,4.19,235,"Konanakunte, Sarakki & JP Nagar",3,Active
+27,GHPS - Sarakki Cross Road,12.890807,77.565995,4.3,5.4,5.3,8.33,466,"Konanakunte, Sarakki & JP Nagar",3,Active
+197,Adarsha Vidyalaya - Konanakunte Market Road,12.90813,77.592896,4.1,5.1,4.7,7.82,438,"Konanakunte, Sarakki & JP Nagar",3,Active
+198,Govt Model Primary School - Jaraganahalli 1st Stage,12.904733,77.588031,3.2,4.1,4.0,6.24,349,"Konanakunte, Sarakki & JP Nagar",3,Active
+35,GHPS - JP Nagar 6th Phase BDA Complex,12.886567,77.591256,3.1,3.8,3.5,5.88,329,"Konanakunte, Sarakki & JP Nagar",3,Active
+200,GLPS - Puttenahalli Near Temple,12.912729,77.584779,2.5,3.1,2.7,4.73,265,"Konanakunte, Sarakki & JP Nagar",3,Active
+201,Govt Higher Primary School - JP Nagar 2nd Phase BDA Complex,12.890594,77.567494,3.6,4.5,4.4,6.96,390,"Konanakunte, Sarakki & JP Nagar",3,Active
+202,Govt High School - Doresani Palya 1st Stage,12.889919,77.579089,2.4,3.0,2.8,4.61,258,"Konanakunte, Sarakki & JP Nagar",3,Active
+203,National Primary School - JP Nagar 6th Phase 2nd Stage,12.893089,77.567962,3.1,3.9,3.6,5.96,334,"Konanakunte, Sarakki & JP Nagar",3,Active
+204,Govt High School - Doresani Palya Market Road,12.900081,77.580336,1.9,2.4,2.3,3.67,206,"Konanakunte, Sarakki & JP Nagar",3,Active
+205,GHPS - Doresani Palya Lake Ward,12.890517,77.586304,3.8,4.8,4.4,7.31,409,"Konanakunte, Sarakki & JP Nagar",3,Active
+206,GHS - JP Nagar 6th Phase Ring Road Ward,12.891432,77.582164,1.7,2.2,2.2,3.36,188,"Konanakunte, Sarakki & JP Nagar",3,Active
+207,GLPS - Doresani Palya Main Road,12.898137,77.588089,3.8,4.7,4.5,7.27,407,"Konanakunte, Sarakki & JP Nagar",3,Active
+33,Adarsha Vidyalaya - JP Nagar 6th Phase Lake Ward,12.896096,77.583272,1.5,1.9,1.9,2.92,164,"Konanakunte, Sarakki & JP Nagar",3,Active
+209,Govt High School - Rose Garden 1st Stage,12.906964,77.569031,3.9,4.8,4.4,7.41,415,"Konanakunte, Sarakki & JP Nagar",3,Active
+210,National Primary School - Doresani Palya Near Temple,12.887706,77.569364,2.9,3.7,3.6,5.65,316,"Konanakunte, Sarakki & JP Nagar",3,Active
+211,Adarsha Vidyalaya - Konanakunte 2nd Stage,12.899652,77.593758,3.3,4.1,3.7,6.27,351,"Konanakunte, Sarakki & JP Nagar",3,Active
+212,Govt Higher Primary School - Rose Garden 1st Stage,12.912319,77.586934,1.7,2.1,1.9,3.22,180,"Konanakunte, Sarakki & JP Nagar",3,Active
+213,National Primary School - Rose Garden 2nd Stage,12.914609,77.5947,2.4,3.0,2.8,4.61,258,"Konanakunte, Sarakki & JP Nagar",3,Active
+34,GLPS - Doresani Palya Junction,12.895217,77.586852,3.6,4.5,4.5,6.97,390,"Konanakunte, Sarakki & JP Nagar",3,Active
+215,GLPS - Rose Garden 2nd Stage,12.902276,77.576993,2.9,3.7,3.5,5.62,315,"Konanakunte, Sarakki & JP Nagar",3,Active
+216,GHS - JP Nagar 6th Phase 1st Stage,12.914768,77.581969,3.3,4.1,3.8,6.3,353,"Konanakunte, Sarakki & JP Nagar",3,Active
+217,Govt Higher Primary School - Doresani Palya Ring Road Ward,12.891748,77.582107,1.4,1.8,1.6,2.71,152,"Konanakunte, Sarakki & JP Nagar",3,Active
+218,GLPS - Puttenahalli Police Quarters,12.894711,77.581825,4.9,6.1,5.6,9.34,523,"Konanakunte, Sarakki & JP Nagar",3,Active
+219,Govt Model Primary School - Sarakki BDA Complex,12.909897,77.571283,2.9,3.6,3.6,5.6,314,"Konanakunte, Sarakki & JP Nagar",3,Active
+220,Adarsha Vidyalaya - Jaraganahalli Ring Road Ward,12.90674,77.592246,3.2,4.0,3.9,6.18,346,"Konanakunte, Sarakki & JP Nagar",3,Active
+36,Govt Model Primary School - JP Nagar 6th Phase 2nd Stage,12.902919,77.590337,1.6,2.0,2.0,3.09,173,"Konanakunte, Sarakki & JP Nagar",3,Active
+222,GLPS - Konanakunte Junction,12.88852,77.580047,3.9,4.8,4.6,7.46,418,"Konanakunte, Sarakki & JP Nagar",3,Active
+223,Govt Higher Primary School - Konanakunte Police Quarters,12.892082,77.59485,3.0,3.7,3.5,5.72,320,"Konanakunte, Sarakki & JP Nagar",3,Active
+224,National Primary School - JP Nagar 6th Phase Ring Road Ward,12.897281,77.57137,4.4,5.5,5.4,8.5,476,"Konanakunte, Sarakki & JP Nagar",3,Active
+225,Saraswathi Vidyamandira - Rose Garden 2nd Stage,12.897913,77.570873,3.3,4.1,3.7,6.28,352,"Konanakunte, Sarakki & JP Nagar",3,Active
+37,GHPS - Doresani Palya BDA Complex,12.901695,77.593063,4.4,5.5,5.2,8.45,473,"Konanakunte, Sarakki & JP Nagar",3,Active
+32,Govt High School - Konanakunte Ring Road Ward,12.914073,77.569523,2.8,3.6,3.5,5.48,307,"Konanakunte, Sarakki & JP Nagar",3,Active
+228,GHS - Doresani Palya Market Road,12.888664,77.588561,3.3,4.2,4.0,6.39,358,"Konanakunte, Sarakki & JP Nagar",3,Active
+229,GHS - Konanakunte BDA Complex,12.890961,77.580215,3.2,4.0,3.6,6.09,341,"Konanakunte, Sarakki & JP Nagar",3,Active
+230,National Primary School - Sarakki 2nd Stage,12.905963,77.573394,3.1,3.8,3.7,5.92,332,"Konanakunte, Sarakki & JP Nagar",3,Active
+231,GHS - JP Nagar 2nd Phase Junction,12.89586,77.582554,3.9,4.9,4.7,7.52,421,"Konanakunte, Sarakki & JP Nagar",3,Active
+28,Saraswathi Vidyamandira - Puttenahalli Market Road,12.890174,77.570303,3.5,4.3,4.2,6.69,375,"Konanakunte, Sarakki & JP Nagar",3,Active
+31,Saraswathi Vidyamandira - Puttenahalli Police Quarters,12.914508,77.566427,1.4,1.8,1.8,2.74,153,"Konanakunte, Sarakki & JP Nagar",3,Active
+234,GHPS - Puttenahalli Lake Ward,12.892244,77.567485,4.7,5.8,5.5,8.97,502,"Konanakunte, Sarakki & JP Nagar",3,Active
+235,National Primary School - JP Nagar 6th Phase Market Road,12.910464,77.589689,1.8,2.3,2.3,3.53,198,"Konanakunte, Sarakki & JP Nagar",3,Active
+30,National Primary School - Puttenahalli Main Road,12.894067,77.578959,2.4,3.0,2.6,4.55,255,"Konanakunte, Sarakki & JP Nagar",3,Active
+237,GHPS - Rose Garden 1st Stage,12.899401,77.59165,3.4,4.3,4.2,6.61,370,"Konanakunte, Sarakki & JP Nagar",3,Active
+238,GHS - Rose Garden 2nd Stage,12.902935,77.584875,1.5,1.9,1.7,2.87,161,"Konanakunte, Sarakki & JP Nagar",3,Active
+239,Saraswathi Vidyamandira - Jaraganahalli Market Road,12.91195,77.591541,2.6,3.2,3.0,4.95,277,"Konanakunte, Sarakki & JP Nagar",3,Active
+240,Adarsha Vidyalaya - Puttenahalli Lake Ward,12.914119,77.588448,1.8,2.3,2.3,3.53,198,"Konanakunte, Sarakki & JP Nagar",3,Active
+39,Govt Higher Primary School - Sarakki 2nd Stage,12.917117,77.587172,3.0,3.8,3.8,5.85,328,"Konanakunte, Sarakki & JP Nagar",3,Active
+242,GLPS - Doresani Palya Main Road,12.904857,77.590783,3.9,4.8,4.6,7.46,418,"Konanakunte, Sarakki & JP Nagar",3,Active
+243,Adarsha Vidyalaya - JP Nagar 2nd Phase Near Temple,12.913843,77.58943,3.7,4.7,4.5,7.18,402,"Konanakunte, Sarakki & JP Nagar",3,Active
+29,Adarsha Vidyalaya - Sarakki Market Road,12.895627,77.572391,3.7,4.6,4.4,7.1,398,"Konanakunte, Sarakki & JP Nagar",3,Active
+245,Saraswathi Vidyamandira - Doresani Palya Police Quarters,12.91062,77.590103,4.0,5.0,4.8,7.71,432,"Konanakunte, Sarakki & JP Nagar",3,Active
+246,National Primary School - Siddapura 1st Stage,12.926255,77.577855,2.5,3.1,2.8,4.76,267,Jayanagar & Basavanagudi,4,Active
+247,GHS - NR Colony Near Temple,12.923872,77.572316,1.6,2.0,2.0,3.09,173,Jayanagar & Basavanagudi,4,Active
+248,GLPS - Basavanagudi Cross Road,12.941595,77.586846,1.8,2.3,2.3,3.53,198,Jayanagar & Basavanagudi,4,Active
+249,GHS - Lalbagh Cross Road,12.948045,77.582001,3.2,3.9,3.7,6.07,340,Jayanagar & Basavanagudi,4,Active
+250,Saraswathi Vidyamandira - Jayanagar 3rd Block Junction,12.931829,77.574269,2.0,2.5,2.4,3.84,215,Jayanagar & Basavanagudi,4,Active
+45,Govt High School - Siddapura Junction,12.93192,77.585292,1.5,1.8,1.6,2.81,157,Jayanagar & Basavanagudi,4,Active
+252,GHPS - NR Colony Police Quarters,12.931348,77.582431,3.5,4.4,4.2,6.75,378,Jayanagar & Basavanagudi,4,Active
+253,GHPS - Basavanagudi Near Temple,12.925723,77.570424,2.2,2.8,2.8,4.29,240,Jayanagar & Basavanagudi,4,Active
+254,Adarsha Vidyalaya - NR Colony 2nd Stage,12.941285,77.57832,4.8,6.0,5.6,9.21,516,Jayanagar & Basavanagudi,4,Active
+255,Govt Higher Primary School - Jayanagar 4th Block 2nd Stage,12.923406,77.58331,4.1,5.1,4.7,7.82,438,Jayanagar & Basavanagudi,4,Active
+256,Govt High School - NR Colony Police Quarters,12.951132,77.571995,3.9,4.9,4.8,7.54,422,Jayanagar & Basavanagudi,4,Active
+257,GLPS - Basavanagudi Police Quarters,12.946933,77.58952,2.1,2.6,2.6,4.05,227,Jayanagar & Basavanagudi,4,Active
+258,GHPS - Siddapura BDA Complex,12.943367,77.58261,1.6,2.0,2.0,3.11,174,Jayanagar & Basavanagudi,4,Active
+259,Govt Higher Primary School - Jayanagar 9th Block Market Road,12.930645,77.578976,3.7,4.6,4.5,7.12,399,Jayanagar & Basavanagudi,4,Active
+260,GHPS - Jayanagar 3rd Block Cross Road,12.925627,77.57194,3.5,4.4,4.2,6.74,377,Jayanagar & Basavanagudi,4,Active
+261,Adarsha Vidyalaya - Jayanagar 3rd Block Market Road,12.95135,77.576376,3.4,4.3,4.3,6.62,371,Jayanagar & Basavanagudi,4,Active
+44,GHS - Jayanagar 3rd Block Police Quarters,12.932777,77.578661,2.3,2.8,2.7,4.37,245,Jayanagar & Basavanagudi,4,Active
+263,Saraswathi Vidyamandira - Basavanagudi Lake Ward,12.947893,77.586104,4.4,5.5,5.4,8.49,475,Jayanagar & Basavanagudi,4,Active
+264,GHPS - Jayanagar 4th Block Market Road,12.942099,77.577713,4.7,5.8,5.5,8.97,502,Jayanagar & Basavanagudi,4,Active
+265,Govt Higher Primary School - Basavanagudi Cross Road,12.944579,77.589781,4.3,5.4,5.2,8.3,465,Jayanagar & Basavanagudi,4,Active
+266,GLPS - Gandhi Bazaar Cross Road,12.947674,77.567956,3.1,3.9,3.9,6.03,338,Jayanagar & Basavanagudi,4,Active
+267,National Primary School - Lalbagh 1st Stage,12.927794,77.565532,4.3,5.4,5.2,8.3,465,Jayanagar & Basavanagudi,4,Active
+268,Govt High School - NR Colony Lake Ward,12.929451,77.589378,4.1,5.2,4.9,7.93,444,Jayanagar & Basavanagudi,4,Active
+269,Govt Model Primary School - Siddapura Ring Road Ward,12.946528,77.569558,3.6,4.5,4.1,6.88,385,Jayanagar & Basavanagudi,4,Active
+270,GHS - Jayanagar 4th Block BDA Complex,12.946577,77.582657,4.6,5.8,5.8,8.94,501,Jayanagar & Basavanagudi,4,Active
+271,Govt Model Primary School - Basavanagudi Near Temple,12.925142,77.575902,4.2,5.3,4.9,8.08,452,Jayanagar & Basavanagudi,4,Active
+272,GHS - Siddapura 2nd Stage,12.925229,77.585679,3.4,4.3,4.2,6.6,370,Jayanagar & Basavanagudi,4,Active
+51,Saraswathi Vidyamandira - Lalbagh Near Temple,12.945468,77.586124,2.5,3.2,3.0,4.85,272,Jayanagar & Basavanagudi,4,Active
+274,National Primary School - Jayanagar 3rd Block Main Road,12.930335,77.588631,3.4,4.2,4.1,6.53,366,Jayanagar & Basavanagudi,4,Active
+43,National Primary School - NR Colony Near Temple,12.938217,77.566297,1.5,1.8,1.7,2.82,158,Jayanagar & Basavanagudi,4,Active
+276,Govt Higher Primary School - Jayanagar 3rd Block Junction,12.951013,77.573801,2.3,2.9,2.9,4.48,251,Jayanagar & Basavanagudi,4,Active
+47,GLPS - Basavanagudi Junction,12.942049,77.577319,4.7,5.8,5.5,8.98,503,Jayanagar & Basavanagudi,4,Active
+278,Govt Higher Primary School - Basavanagudi BDA Complex,12.931563,77.583042,2.0,2.6,2.5,3.93,220,Jayanagar & Basavanagudi,4,Active
+279,Govt High School - Gandhi Bazaar Junction,12.93602,77.581815,2.9,3.7,3.5,5.63,315,Jayanagar & Basavanagudi,4,Active
+40,GHS - Jayanagar 9th Block BDA Complex,12.922248,77.567052,2.6,3.3,3.1,5.03,282,Jayanagar & Basavanagudi,4,Active
+41,GHS - Jayanagar 9th Block Junction,12.926345,77.571344,2.4,3.0,2.6,4.56,255,Jayanagar & Basavanagudi,4,Active
+282,Govt Model Primary School - Jayanagar 4th Block Cross Road,12.939358,77.570893,1.3,1.7,1.7,2.57,144,Jayanagar & Basavanagudi,4,Active
+283,Saraswathi Vidyamandira - Siddapura Police Quarters,12.926029,77.586873,2.0,2.5,2.6,3.89,218,Jayanagar & Basavanagudi,4,Active
+284,GHS - Siddapura Lake Ward,12.944217,77.586873,3.0,3.8,3.8,5.86,328,Jayanagar & Basavanagudi,4,Active
+285,Saraswathi Vidyamandira - Siddapura Market Road,12.946754,77.567646,1.6,2.0,1.9,3.07,172,Jayanagar & Basavanagudi,4,Active
+48,GLPS - Gandhi Bazaar 2nd Stage,12.945513,77.572526,4.8,6.0,6.0,9.3,521,Jayanagar & Basavanagudi,4,Active
+287,National Primary School - Gandhi Bazaar Junction,12.946253,77.568864,3.0,3.8,3.5,5.77,323,Jayanagar & Basavanagudi,4,Active
+46,National Primary School - Basavanagudi Cross Road,12.938106,77.579052,2.7,3.3,3.1,5.13,287,Jayanagar & Basavanagudi,4,Active
+289,GHPS - Basavanagudi BDA Complex,12.936539,77.585006,4.8,6.0,5.6,9.19,515,Jayanagar & Basavanagudi,4,Active
+290,Adarsha Vidyalaya - Lalbagh Ring Road Ward,12.940663,77.573928,3.9,4.9,4.8,7.55,423,Jayanagar & Basavanagudi,4,Active
+291,GLPS - Gandhi Bazaar Police Quarters,12.936514,77.571083,3.5,4.4,4.0,6.7,375,Jayanagar & Basavanagudi,4,Active
+292,Govt Higher Primary School - Jayanagar 3rd Block Ring Road Ward,12.938218,77.56633,2.0,2.6,2.5,3.93,220,Jayanagar & Basavanagudi,4,Active
+293,Govt Higher Primary School - NR Colony Near Temple,12.939228,77.580611,4.4,5.5,5.4,8.5,476,Jayanagar & Basavanagudi,4,Active
+294,GHS - Basavanagudi Market Road,12.928056,77.572382,1.7,2.2,2.1,3.33,186,Jayanagar & Basavanagudi,4,Active
+295,GHS - Jayanagar 3rd Block Junction,12.937197,77.570932,3.2,3.9,3.7,6.07,340,Jayanagar & Basavanagudi,4,Active
+52,Govt Higher Primary School - Siddapura Ring Road Ward,12.951213,77.578507,3.0,3.8,3.5,5.78,324,Jayanagar & Basavanagudi,4,Active
+50,Govt Model Primary School - Siddapura Lake Ward,12.949503,77.573375,4.3,5.3,4.9,8.18,458,Jayanagar & Basavanagudi,4,Active
+298,Govt High School - Gandhi Bazaar Cross Road,12.925218,77.580122,3.9,4.9,4.6,7.5,420,Jayanagar & Basavanagudi,4,Active
+299,Adarsha Vidyalaya - Basavanagudi Police Quarters,12.945161,77.56923,2.6,3.3,3.2,5.04,282,Jayanagar & Basavanagudi,4,Active
+300,Govt Higher Primary School - Jayanagar 3rd Block Market Road,12.948361,77.586612,2.2,2.8,2.6,4.24,237,Jayanagar & Basavanagudi,4,Active
+301,Adarsha Vidyalaya - Jayanagar 9th Block Ring Road Ward,12.933782,77.587766,4.6,5.7,5.3,8.78,492,Jayanagar & Basavanagudi,4,Active
+302,Govt High School - Gandhi Bazaar BDA Complex,12.934464,77.57532,3.7,4.7,4.5,7.18,402,Jayanagar & Basavanagudi,4,Active
+42,Govt Higher Primary School - Siddapura Cross Road,12.931906,77.570873,4.1,5.1,4.9,7.87,441,Jayanagar & Basavanagudi,4,Active
+304,Adarsha Vidyalaya - Lalbagh BDA Complex,12.948964,77.571268,2.7,3.4,3.2,5.19,291,Jayanagar & Basavanagudi,4,Active
+305,National Primary School - Wilson Garden Near Temple,12.94766,77.597137,1.5,1.8,1.6,2.81,157,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+306,Govt High School - Austin Town 1st Stage,12.944603,77.608518,2.1,2.6,2.4,4.0,224,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+307,GLPS - Neelasandra Cross Road,12.967839,77.600861,4.5,5.6,5.0,8.56,479,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+308,GHS - Dayananda Nagar BDA Complex,12.967515,77.596454,2.2,2.7,2.7,4.23,237,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+309,National Primary School - Adugodi Main Road,12.945142,77.613324,2.3,2.8,2.6,4.36,244,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+310,GHPS - Dayananda Nagar Cross Road,12.96092,77.606044,3.0,3.8,3.5,5.78,324,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+311,GLPS - Wilson Garden Police Quarters,12.941635,77.600377,4.3,5.4,5.2,8.29,464,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+312,Adarsha Vidyalaya - Dayananda Nagar Police Quarters,12.962571,77.601326,3.6,4.5,4.4,6.95,389,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+313,Adarsha Vidyalaya - Neelasandra Ring Road Ward,12.952193,77.605533,1.5,1.9,1.7,2.88,161,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+314,Govt High School - Lakkasandra Lake Ward,12.941972,77.593075,2.2,2.8,2.6,4.25,238,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+58,GHS - Austin Town 2nd Stage,12.94198,77.610229,3.1,3.9,3.8,6.0,336,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+316,Saraswathi Vidyamandira - Victoria Road BDA Complex,12.960279,77.599477,3.2,4.0,3.6,6.1,342,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+317,Govt Higher Primary School - Wilson Garden 1st Stage,12.958959,77.594164,4.6,5.7,5.4,8.8,493,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+318,GHPS - Adugodi Main Road,12.945589,77.59222,3.2,4.0,3.5,6.08,340,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+319,Govt Higher Primary School - Richmond Town Main Road,12.953875,77.608751,4.2,5.3,5.0,8.09,453,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+60,GLPS - Adugodi Market Road,12.946326,77.613048,1.4,1.8,1.7,2.73,153,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+321,Govt Model Primary School - Neelasandra Ring Road Ward,12.944196,77.596206,3.1,3.9,3.6,5.94,333,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+322,GLPS - Lakkasandra Near Temple,12.953883,77.605564,3.3,4.1,4.1,6.37,357,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+323,Govt High School - Austin Town Cross Road,12.949836,77.612268,3.3,4.2,4.2,6.44,361,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+324,Adarsha Vidyalaya - Victoria Road Junction,12.966436,77.614751,2.2,2.8,2.7,4.27,239,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+325,Govt Model Primary School - Wilson Garden 2nd Stage,12.940448,77.596887,2.5,3.1,3.0,4.8,269,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+326,GHS - Neelasandra Main Road,12.940774,77.601912,4.0,5.0,4.8,7.7,431,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+327,GLPS - Victoria Road Cross Road,12.950196,77.608023,4.0,5.0,5.0,7.76,435,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+328,GHS - Neelasandra 2nd Stage,12.942761,77.611986,3.4,4.2,3.8,6.46,362,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+61,Saraswathi Vidyamandira - Wilson Garden Police Quarters,12.951351,77.611034,4.9,6.2,6.0,9.49,531,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+330,Govt Model Primary School - Victoria Road BDA Complex,12.941899,77.605891,2.6,3.2,3.2,5.0,280,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+331,Govt High School - Lakkasandra BDA Complex,12.95343,77.604113,4.3,5.4,5.0,8.25,462,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+332,GHS - Lakkasandra 2nd Stage,12.949838,77.598898,1.4,1.7,1.6,2.65,148,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+333,GHPS - Adugodi Ring Road Ward,12.94887,77.602535,1.5,1.9,2.0,2.94,165,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+334,Govt Higher Primary School - Adugodi Main Road,12.964117,77.606692,4.0,5.0,4.6,7.64,428,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+335,Saraswathi Vidyamandira - Neelasandra Near Temple,12.956761,77.615475,4.7,5.9,5.4,9.01,505,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+336,National Primary School - Adugodi Cross Road,12.946871,77.595857,2.5,3.2,3.2,4.89,274,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+337,Saraswathi Vidyamandira - Adugodi Lake Ward,12.955692,77.612083,4.9,6.1,5.9,9.42,528,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+338,GLPS - Adugodi 1st Stage,12.946653,77.60504,3.9,4.9,4.9,7.57,424,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+55,Adarsha Vidyalaya - Neelasandra BDA Complex,12.94351,77.599347,2.2,2.8,2.8,4.31,241,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+340,GLPS - Dayananda Nagar 2nd Stage,12.94992,77.615319,1.5,1.8,1.6,2.79,156,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+62,GHS - Victoria Road Cross Road,12.962441,77.602519,1.4,1.8,1.7,2.72,152,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+54,GLPS - Neelasandra Ring Road Ward,12.945545,77.592394,4.5,5.6,5.0,8.56,479,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+343,Saraswathi Vidyamandira - Lakkasandra 1st Stage,12.940168,77.602906,1.9,2.4,2.5,3.72,208,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+63,National Primary School - Adugodi Main Road,12.95435,77.616551,1.6,2.0,2.1,3.13,175,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+345,Govt Higher Primary School - Neelasandra Market Road,12.945793,77.611841,1.3,1.6,1.7,2.52,141,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+346,Adarsha Vidyalaya - Richmond Town Ring Road Ward,12.966548,77.614411,1.4,1.7,1.4,2.6,146,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+347,GHPS - Austin Town Ring Road Ward,12.966436,77.595672,3.5,4.3,4.2,6.69,375,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+348,Govt High School - Austin Town Market Road,12.9589,77.614687,1.6,2.0,1.9,3.07,172,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+349,Govt Model Primary School - Adugodi Near Temple,12.958419,77.603945,2.4,3.0,3.1,4.67,262,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+350,GLPS - Richmond Town Market Road,12.956197,77.61492,2.1,2.6,2.2,3.95,221,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+53,National Primary School - Austin Town 1st Stage,12.940284,77.594676,3.9,4.9,4.9,7.57,424,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+59,Adarsha Vidyalaya - Richmond Town Junction,12.954874,77.601628,2.1,2.6,2.6,4.06,227,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+353,National Primary School - Richmond Town Market Road,12.953592,77.61353,3.7,4.6,4.1,7.03,394,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+354,Govt Higher Primary School - Lakkasandra Market Road,12.950348,77.603923,4.4,5.5,5.0,8.39,470,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+56,Govt High School - Richmond Town Ring Road Ward,12.949491,77.594569,2.8,3.5,3.2,5.36,300,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+356,Adarsha Vidyalaya - Dayananda Nagar Market Road,12.967079,77.611111,2.7,3.3,3.0,5.11,286,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+57,Govt Higher Primary School - Dayananda Nagar Junction,12.949021,77.598388,2.8,3.5,3.1,5.32,298,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+358,Saraswathi Vidyamandira - Adugodi Near Temple,12.946978,77.5944,4.7,5.9,5.8,9.11,510,"Wilson Garden, Audugodi & Lakkasandra",5,Active
+76,National Primary School - Udupi Garden 1st Stage,12.934833,77.62893,4.6,5.7,5.4,8.8,493,BTM Layout & Koramangala,6,Active
+66,GHPS - BTM 2nd Stage Market Road,12.915105,77.609282,2.1,2.6,2.7,4.07,228,BTM Layout & Koramangala,6,Active
+361,Govt Higher Primary School - Koramangala 5th Block Ring Road Ward,12.921036,77.603516,1.5,1.9,2.0,2.96,166,BTM Layout & Koramangala,6,Active
+362,Govt Higher Primary School - Koramangala 8th Block 1st Stage,12.920852,77.628895,2.8,3.4,3.2,5.29,296,BTM Layout & Koramangala,6,Active
+72,GLPS - Madiwala 1st Stage,12.931722,77.61969,1.7,2.1,2.0,3.24,181,BTM Layout & Koramangala,6,Active
+71,GHS - Ejipura Near Temple,12.941516,77.60961,3.3,4.1,3.7,6.28,352,BTM Layout & Koramangala,6,Active
+365,GHPS - Udupi Garden Near Temple,12.91766,77.628558,4.9,6.1,6.0,9.44,529,BTM Layout & Koramangala,6,Active
+366,National Primary School - Madiwala Ring Road Ward,12.944693,77.602071,1.6,2.0,1.7,3.03,170,BTM Layout & Koramangala,6,Active
+73,Adarsha Vidyalaya - Madiwala Main Road,12.919859,77.627724,2.2,2.7,2.4,4.15,232,BTM Layout & Koramangala,6,Active
+368,GHPS - Koramangala 5th Block Lake Ward,12.931516,77.621831,1.5,1.8,1.6,2.81,157,BTM Layout & Koramangala,6,Active
+369,Saraswathi Vidyamandira - Tavarekere 2nd Stage,12.933401,77.599327,1.9,2.3,2.2,3.59,201,BTM Layout & Koramangala,6,Active
+370,GHPS - BTM 2nd Stage BDA Complex,12.941594,77.60388,2.0,2.5,2.2,3.81,213,BTM Layout & Koramangala,6,Active
+371,Govt Model Primary School - Madiwala BDA Complex,12.939345,77.610513,3.2,4.0,3.5,6.08,340,BTM Layout & Koramangala,6,Active
+372,GLPS - Udupi Garden Ring Road Ward,12.940921,77.607018,4.8,6.0,6.0,9.29,520,BTM Layout & Koramangala,6,Active
+373,Adarsha Vidyalaya - Koramangala 5th Block 2nd Stage,12.926211,77.607363,3.3,4.1,4.1,6.38,357,BTM Layout & Koramangala,6,Active
+70,GHPS - Madiwala 2nd Stage,12.936993,77.609525,2.8,3.5,3.6,5.44,305,BTM Layout & Koramangala,6,Active
+375,Govt High School - Tavarekere Junction,12.938066,77.616897,2.9,3.6,3.3,5.52,309,BTM Layout & Koramangala,6,Active
+376,GLPS - Tavarekere Junction,12.932483,77.622194,4.0,5.0,4.8,7.69,431,BTM Layout & Koramangala,6,Active
+377,Govt High School - Madiwala Near Temple,12.924648,77.630005,4.4,5.5,5.2,8.45,473,BTM Layout & Koramangala,6,Active
+74,National Primary School - BTM 2nd Stage Ring Road Ward,12.924559,77.626383,4.5,5.6,5.6,8.69,487,BTM Layout & Koramangala,6,Active
+379,Govt Model Primary School - Tavarekere Police Quarters,12.935573,77.623665,2.1,2.6,2.3,3.97,222,BTM Layout & Koramangala,6,Active
+380,Govt Higher Primary School - Madiwala BDA Complex,12.940008,77.611146,4.6,5.8,5.4,8.86,496,BTM Layout & Koramangala,6,Active
+381,Govt Model Primary School - BTM 2nd Stage Ring Road Ward,12.941931,77.628744,2.8,3.5,3.4,5.39,302,BTM Layout & Koramangala,6,Active
+382,GHS - BTM 2nd Stage Junction,12.936122,77.625723,3.7,4.6,4.5,7.13,399,BTM Layout & Koramangala,6,Active
+383,Govt Model Primary School - Tavarekere Main Road,12.934594,77.620093,4.4,5.5,5.4,8.49,475,BTM Layout & Koramangala,6,Active
+384,National Primary School - Udupi Garden Police Quarters,12.914716,77.624125,2.8,3.5,3.3,5.38,301,BTM Layout & Koramangala,6,Active
+385,GHPS - Ejipura Cross Road,12.936181,77.614816,3.2,3.9,3.6,6.06,339,BTM Layout & Koramangala,6,Active
+386,Adarsha Vidyalaya - Koramangala 5th Block Lake Ward,12.943763,77.629202,4.1,5.1,4.7,7.82,438,BTM Layout & Koramangala,6,Active
+387,Govt High School - Koramangala 8th Block Junction,12.924635,77.608924,2.3,2.9,2.6,4.41,247,BTM Layout & Koramangala,6,Active
+388,Govt Higher Primary School - BTM 2nd Stage Cross Road,12.91807,77.617902,4.9,6.1,6.0,9.44,529,BTM Layout & Koramangala,6,Active
+389,GLPS - BTM 1st Stage Cross Road,12.915497,77.613143,1.9,2.4,2.4,3.69,207,BTM Layout & Koramangala,6,Active
+75,GHS - BTM 2nd Stage Near Temple,12.930731,77.623782,4.4,5.5,5.0,8.4,470,BTM Layout & Koramangala,6,Active
+391,GHPS - Ejipura Ring Road Ward,12.919594,77.609039,2.1,2.6,2.6,4.06,227,BTM Layout & Koramangala,6,Active
+392,GHPS - Madiwala Market Road,12.920977,77.598491,2.5,3.2,3.2,4.89,274,BTM Layout & Koramangala,6,Active
+65,GLPS - Koramangala 5th Block Market Road,12.918884,77.598399,4.7,5.8,5.4,8.96,502,BTM Layout & Koramangala,6,Active
+69,Govt High School - Udupi Garden Main Road,12.93853,77.607293,4.0,5.1,4.9,7.77,435,BTM Layout & Koramangala,6,Active
+395,Govt High School - Udupi Garden Market Road,12.931242,77.619692,2.1,2.6,2.2,3.96,222,BTM Layout & Koramangala,6,Active
+396,National Primary School - Koramangala 8th Block Cross Road,12.920626,77.609799,3.4,4.3,4.2,6.61,370,BTM Layout & Koramangala,6,Active
+397,Adarsha Vidyalaya - BTM 2nd Stage Lake Ward,12.928296,77.59856,3.5,4.3,4.1,6.68,374,BTM Layout & Koramangala,6,Active
+398,Govt Higher Primary School - Koramangala 5th Block BDA Complex,12.943789,77.613197,3.8,4.8,4.8,7.4,414,BTM Layout & Koramangala,6,Active
+399,GLPS - Koramangala 5th Block 1st Stage,12.925886,77.618346,4.2,5.3,5.0,8.1,454,BTM Layout & Koramangala,6,Active
+400,GHPS - BTM 2nd Stage Junction,12.939278,77.607133,4.4,5.4,5.1,8.37,469,BTM Layout & Koramangala,6,Active
+401,GHPS - Tavarekere Ring Road Ward,12.934302,77.610935,2.1,2.6,2.5,4.03,226,BTM Layout & Koramangala,6,Active
+402,GLPS - Madiwala BDA Complex,12.925704,77.608754,2.0,2.5,2.6,3.91,219,BTM Layout & Koramangala,6,Active
+403,GHPS - Tavarekere Ring Road Ward,12.93114,77.612897,4.0,5.0,4.5,7.62,427,BTM Layout & Koramangala,6,Active
+404,GLPS - BTM 2nd Stage Cross Road,12.91207,77.61652,3.7,4.6,4.6,7.15,400,BTM Layout & Koramangala,6,Active
+405,Govt High School - Koramangala 5th Block Main Road,12.919341,77.626953,4.5,5.7,5.5,8.72,488,BTM Layout & Koramangala,6,Active
+406,Govt Higher Primary School - Udupi Garden Cross Road,12.943757,77.608822,4.0,5.0,5.0,7.76,435,BTM Layout & Koramangala,6,Active
+407,National Primary School - Tavarekere Ring Road Ward,12.923077,77.619232,4.8,6.0,5.6,9.21,516,BTM Layout & Koramangala,6,Active
+408,Adarsha Vidyalaya - Ejipura 1st Stage,12.941526,77.627535,1.4,1.7,1.5,2.62,147,BTM Layout & Koramangala,6,Active
+409,GHPS - BTM 2nd Stage BDA Complex,12.918622,77.628369,2.2,2.8,2.6,4.24,237,BTM Layout & Koramangala,6,Active
+410,Govt Higher Primary School - Tavarekere Market Road,12.936402,77.619173,3.0,3.8,3.8,5.86,328,BTM Layout & Koramangala,6,Active
+411,GLPS - BTM 2nd Stage 2nd Stage,12.942542,77.630411,2.4,3.0,3.1,4.67,262,BTM Layout & Koramangala,6,Active
+412,Adarsha Vidyalaya - BTM 2nd Stage Cross Road,12.920847,77.606367,4.2,5.3,5.1,8.13,455,BTM Layout & Koramangala,6,Active
+413,Govt Higher Primary School - Udupi Garden Ring Road Ward,12.92484,77.628907,2.6,3.2,3.0,4.96,278,BTM Layout & Koramangala,6,Active
+414,GLPS - Ejipura 2nd Stage,12.933016,77.618121,3.7,4.6,4.6,7.15,400,BTM Layout & Koramangala,6,Active
+415,Govt High School - Koramangala 5th Block BDA Complex,12.937719,77.618814,4.5,5.6,5.0,8.56,479,BTM Layout & Koramangala,6,Active
+416,GHPS - BTM 2nd Stage Cross Road,12.941723,77.60484,3.7,4.6,4.3,7.07,396,BTM Layout & Koramangala,6,Active
+417,GHS - Ejipura Ring Road Ward,12.938082,77.618788,3.3,4.1,3.7,6.27,351,BTM Layout & Koramangala,6,Active
+68,National Primary School - BTM 1st Stage Junction,12.942072,77.598933,2.5,3.1,2.8,4.76,267,BTM Layout & Koramangala,6,Active
+77,Govt Model Primary School - ISRO Layout Market Road,12.898031,77.554139,4.0,5.0,5.0,7.76,435,Padmanabhanagar & Banashankari,7,Active
+420,GHPS - Kadirenahalli Ring Road Ward,12.905701,77.562432,2.1,2.6,2.4,4.0,224,Padmanabhanagar & Banashankari,7,Active
+421,GHPS - Padmanabhanagar Near Temple,12.910355,77.556318,2.0,2.5,2.3,3.83,214,Padmanabhanagar & Banashankari,7,Active
+422,Adarsha Vidyalaya - Banashankari 2nd Stage Ring Road Ward,12.903149,77.562804,4.6,5.7,5.3,8.78,492,Padmanabhanagar & Banashankari,7,Active
+85,National Primary School - Banashankari 3rd Stage Market Road,12.912314,77.571884,3.4,4.3,4.0,6.54,366,Padmanabhanagar & Banashankari,7,Active
+424,Saraswathi Vidyamandira - Bendrenagara Market Road,12.912224,77.551546,3.3,4.2,4.2,6.44,361,Padmanabhanagar & Banashankari,7,Active
+425,GHS - Kadirenahalli Lake Ward,12.922433,77.552382,1.8,2.2,1.9,3.37,189,Padmanabhanagar & Banashankari,7,Active
+87,National Primary School - ISRO Layout Near Temple,12.930532,77.55579,2.1,2.7,2.7,4.12,231,Padmanabhanagar & Banashankari,7,Active
+79,Govt High School - Padmanabhanagar 1st Stage,12.90861,77.556029,4.1,5.2,5.0,7.94,445,Padmanabhanagar & Banashankari,7,Active
+82,National Primary School - Hanumanthanagar 2nd Stage,12.914431,77.549387,4.2,5.3,5.3,8.17,458,Padmanabhanagar & Banashankari,7,Active
+88,GHS - Padmanabhanagar Cross Road,12.932329,77.551648,1.3,1.6,1.7,2.52,141,Padmanabhanagar & Banashankari,7,Active
+430,Govt High School - Banashankari 2nd Stage Main Road,12.921257,77.563787,2.3,2.9,3.0,4.51,253,Padmanabhanagar & Banashankari,7,Active
+431,Govt High School - Padmanabhanagar Near Temple,12.900386,77.561323,4.6,5.7,5.4,8.81,493,Padmanabhanagar & Banashankari,7,Active
+432,National Primary School - ISRO Layout 2nd Stage,12.902389,77.570692,1.4,1.7,1.7,2.67,150,Padmanabhanagar & Banashankari,7,Active
+433,GHPS - Banashankari 3rd Stage BDA Complex,12.934335,77.560559,1.3,1.6,1.6,2.51,141,Padmanabhanagar & Banashankari,7,Active
+84,Saraswathi Vidyamandira - Banashankari 2nd Stage Market Road,12.917242,77.558809,3.7,4.6,4.3,7.08,396,Padmanabhanagar & Banashankari,7,Active
+435,National Primary School - Kumaraswamy Layout 2nd Stage,12.929257,77.565052,2.8,3.4,3.2,5.3,297,Padmanabhanagar & Banashankari,7,Active
+78,National Primary School - Bendrenagara 1st Stage,12.905086,77.552591,3.2,4.0,4.0,6.21,348,Padmanabhanagar & Banashankari,7,Active
+437,GHPS - Padmanabhanagar Police Quarters,12.899227,77.569113,2.4,3.0,2.6,4.54,254,Padmanabhanagar & Banashankari,7,Active
+438,Govt Higher Primary School - Kumaraswamy Layout 2nd Stage,12.911061,77.552231,4.5,5.7,5.4,8.7,487,Padmanabhanagar & Banashankari,7,Active
+439,GHPS - Hanumanthanagar BDA Complex,12.904828,77.55977,2.7,3.3,3.1,5.13,287,Padmanabhanagar & Banashankari,7,Active
+440,GHS - Kadirenahalli Junction,12.914217,77.548949,1.8,2.3,2.2,3.51,197,Padmanabhanagar & Banashankari,7,Active
+441,Govt High School - Bendrenagara Main Road,12.933596,77.560907,1.9,2.4,2.3,3.67,206,Padmanabhanagar & Banashankari,7,Active
+442,Govt High School - Bendrenagara Near Temple,12.919151,77.551717,2.4,3.0,3.0,4.64,260,Padmanabhanagar & Banashankari,7,Active
+443,National Primary School - ISRO Layout 1st Stage,12.931772,77.554605,1.9,2.3,2.1,3.58,200,Padmanabhanagar & Banashankari,7,Active
+83,GHPS - Bendrenagara Near Temple,12.915707,77.555509,3.7,4.7,4.6,7.19,403,Padmanabhanagar & Banashankari,7,Active
+445,National Primary School - Bendrenagara Market Road,12.911434,77.563819,3.5,4.3,4.1,6.68,374,Padmanabhanagar & Banashankari,7,Active
+446,National Primary School - Kadirenahalli Market Road,12.931162,77.551872,1.4,1.8,1.8,2.74,153,Padmanabhanagar & Banashankari,7,Active
+447,Govt Model Primary School - Kumaraswamy Layout Market Road,12.899479,77.550963,1.9,2.3,2.0,3.56,199,Padmanabhanagar & Banashankari,7,Active
+448,Adarsha Vidyalaya - Banashankari 2nd Stage Ring Road Ward,12.934897,77.557395,2.7,3.4,3.2,5.2,291,Padmanabhanagar & Banashankari,7,Active
+449,GLPS - Hanumanthanagar BDA Complex,12.92972,77.563469,2.0,2.4,2.2,3.76,211,Padmanabhanagar & Banashankari,7,Active
+450,Govt High School - Bendrenagara Main Road,12.928098,77.548049,2.7,3.3,3.1,5.12,287,Padmanabhanagar & Banashankari,7,Active
+451,National Primary School - Banashankari 2nd Stage Ring Road Ward,12.918048,77.562444,2.0,2.5,2.6,3.91,219,Padmanabhanagar & Banashankari,7,Active
+452,Adarsha Vidyalaya - Kadirenahalli Junction,12.913062,77.549123,3.1,3.9,3.7,5.97,334,Padmanabhanagar & Banashankari,7,Active
+453,Govt Higher Primary School - Padmanabhanagar 2nd Stage,12.901968,77.548137,1.6,1.9,1.8,2.99,167,Padmanabhanagar & Banashankari,7,Active
+454,Saraswathi Vidyamandira - Padmanabhanagar Junction,12.907728,77.561166,2.3,2.9,2.6,4.41,247,Padmanabhanagar & Banashankari,7,Active
+455,Govt Higher Primary School - Padmanabhanagar Market Road,12.918612,77.552175,3.5,4.3,4.1,6.68,374,Padmanabhanagar & Banashankari,7,Active
+456,Govt Model Primary School - Kumaraswamy Layout Police Quarters,12.915622,77.554338,1.7,2.1,1.9,3.23,181,Padmanabhanagar & Banashankari,7,Active
+457,Saraswathi Vidyamandira - Banashankari 2nd Stage Lake Ward,12.911002,77.561612,2.2,2.7,2.7,4.23,237,Padmanabhanagar & Banashankari,7,Active
+458,Govt High School - Bendrenagara Junction,12.900638,77.558753,3.9,4.8,4.4,7.41,415,Padmanabhanagar & Banashankari,7,Active
+459,National Primary School - Kadirenahalli Junction,12.921733,77.560629,4.6,5.8,5.7,8.92,500,Padmanabhanagar & Banashankari,7,Active
+460,Govt Higher Primary School - Banashankari 3rd Stage Police Quarters,12.905643,77.57092,4.5,5.7,5.5,8.73,489,Padmanabhanagar & Banashankari,7,Active
+461,Adarsha Vidyalaya - Banashankari 2nd Stage Market Road,12.910225,77.564618,4.5,5.6,5.4,8.65,484,Padmanabhanagar & Banashankari,7,Active
+462,GHPS - Kadirenahalli BDA Complex,12.922647,77.549133,3.0,3.8,3.7,5.82,326,Padmanabhanagar & Banashankari,7,Active
+81,Govt High School - Padmanabhanagar 2nd Stage,12.90508,77.567838,4.5,5.6,5.1,8.58,480,Padmanabhanagar & Banashankari,7,Active
+464,Govt Higher Primary School - Padmanabhanagar Police Quarters,12.905718,77.5583,2.2,2.7,2.5,4.18,234,Padmanabhanagar & Banashankari,7,Active
+465,GLPS - Bendrenagara Police Quarters,12.918615,77.548283,1.4,1.7,1.5,2.63,147,Padmanabhanagar & Banashankari,7,Active
+466,GLPS - Hanumanthanagar Police Quarters,12.911825,77.571114,3.9,4.9,4.6,7.5,420,Padmanabhanagar & Banashankari,7,Active
+467,GHS - Bendrenagara 1st Stage,12.918419,77.559389,3.3,4.1,4.0,6.36,356,Padmanabhanagar & Banashankari,7,Active
+468,Saraswathi Vidyamandira - Kumaraswamy Layout Cross Road,12.916868,77.549205,1.6,2.1,2.0,3.16,177,Padmanabhanagar & Banashankari,7,Active
+469,GLPS - Bendrenagara Police Quarters,12.918717,77.550087,2.3,2.9,3.0,4.49,251,Padmanabhanagar & Banashankari,7,Active
+470,Govt Higher Primary School - Banashankari 2nd Stage Market Road,12.934041,77.564842,2.2,2.8,2.9,4.32,242,Padmanabhanagar & Banashankari,7,Active
+471,GHPS - Banashankari 2nd Stage Market Road,12.903207,77.569725,4.3,5.4,5.2,8.31,465,Padmanabhanagar & Banashankari,7,Active
+472,Govt Higher Primary School - Bendrenagara Lake Ward,12.904799,77.548534,4.0,5.0,4.8,7.7,431,Padmanabhanagar & Banashankari,7,Active
+473,GHS - Hanumanthanagar Police Quarters,12.929601,77.562349,2.1,2.6,2.3,3.97,222,Padmanabhanagar & Banashankari,7,Active
+474,Govt High School - Padmanabhanagar Lake Ward,12.917049,77.555114,3.4,4.3,4.2,6.61,370,Padmanabhanagar & Banashankari,7,Active
+475,Adarsha Vidyalaya - Bendrenagara Ring Road Ward,12.905869,77.569068,2.3,2.8,2.7,4.37,245,Padmanabhanagar & Banashankari,7,Active
+476,Govt Model Primary School - ISRO Layout Market Road,12.929449,77.567604,2.1,2.7,2.6,4.09,229,Padmanabhanagar & Banashankari,7,Active
+80,Govt High School - Kumaraswamy Layout 1st Stage,12.911259,77.548992,2.9,3.6,3.4,5.56,311,Padmanabhanagar & Banashankari,7,Active
+478,Adarsha Vidyalaya - Poorna Pragna Layout Main Road,12.925535,77.521983,1.3,1.6,1.7,2.53,142,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+479,Saraswathi Vidyamandira - Poorna Pragna Layout Cross Road,12.901609,77.530825,4.6,5.7,5.5,8.83,494,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+480,Govt Model Primary School - Ittamadu Near Temple,12.900696,77.52078,3.6,4.5,4.6,6.99,391,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+481,Saraswathi Vidyamandira - Poorna Pragna Layout 1st Stage,12.927369,77.543899,4.5,5.7,5.4,8.71,488,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+482,GHPS - Uttarahalli Market Road,12.897483,77.531031,2.1,2.6,2.2,3.95,221,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+483,Govt High School - Poorna Pragna Layout Market Road,12.911394,77.517328,2.7,3.4,3.0,5.16,289,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+92,National Primary School - Kengeri Satellite Town Lake Ward,12.902313,77.520878,4.1,5.1,4.7,7.83,438,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+485,Govt High School - Uttarahalli BDA Complex,12.924955,77.537266,2.6,3.2,3.1,4.97,278,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+486,GHPS - Nayandahalli Near Temple,12.931968,77.542292,4.5,5.7,5.5,8.73,489,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+487,National Primary School - Rajarajeshwari Nagar Lake Ward,12.903603,77.544609,2.0,2.5,2.2,3.79,212,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+488,Govt Model Primary School - Poorna Pragna Layout BDA Complex,12.916136,77.524025,4.9,6.2,5.9,9.47,530,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+89,GHS - Ideal Homes Near Temple,12.902824,77.542164,1.5,1.9,2.0,2.95,165,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+490,Govt Model Primary School - Nayandahalli Lake Ward,12.896214,77.532279,4.6,5.8,5.5,8.88,497,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+491,Adarsha Vidyalaya - Rajarajeshwari Nagar Market Road,12.902828,77.523987,4.4,5.5,5.4,8.51,477,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+492,Govt Higher Primary School - Rajarajeshwari Nagar Near Temple,12.927406,77.538631,2.0,2.5,2.4,3.85,216,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+493,Govt High School - Chikkalasandra Lake Ward,12.929583,77.513504,2.4,3.0,2.6,4.55,255,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+494,Adarsha Vidyalaya - Nayandahalli Police Quarters,12.929785,77.53265,3.3,4.1,4.1,6.37,357,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+97,Govt High School - Poorna Pragna Layout Ring Road Ward,12.918455,77.514985,1.5,1.8,1.6,2.79,156,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+496,Adarsha Vidyalaya - Chikkalasandra BDA Complex,12.917732,77.50529,1.7,2.1,1.7,3.18,178,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+497,Govt Higher Primary School - Chikkalasandra Near Temple,12.932678,77.537792,2.2,2.8,2.7,4.27,239,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+498,Govt Higher Primary School - Kengeri Satellite Town Police Quarters,12.897725,77.506079,3.9,4.9,4.8,7.56,423,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+499,GLPS - Poorna Pragna Layout Lake Ward,12.937957,77.502541,2.2,2.7,2.7,4.23,237,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+500,Saraswathi Vidyamandira - Poorna Pragna Layout 1st Stage,12.911434,77.51564,4.1,5.1,5.0,7.91,443,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+501,Adarsha Vidyalaya - Chikkalasandra Market Road,12.930358,77.534917,1.9,2.3,2.2,3.61,202,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+98,GHS - Nayandahalli 2nd Stage,12.930306,77.522342,1.4,1.8,1.8,2.76,155,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+503,GLPS - Chikkalasandra BDA Complex,12.906975,77.538248,4.1,5.1,5.0,7.89,442,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+93,Adarsha Vidyalaya - Chikkalasandra 1st Stage,12.908031,77.519289,1.9,2.4,2.4,3.71,208,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+505,Adarsha Vidyalaya - Ideal Homes Market Road,12.934854,77.516006,1.6,2.0,1.6,3.0,168,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+506,National Primary School - Ideal Homes BDA Complex,12.897423,77.506667,2.3,2.9,3.0,4.51,253,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+507,Govt Higher Primary School - Ittamadu Main Road,12.936813,77.525082,2.1,2.7,2.6,4.09,229,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+94,GHS - Uttarahalli Police Quarters,12.92559,77.542999,2.3,2.8,2.7,4.38,245,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+509,Saraswathi Vidyamandira - Chikkalasandra BDA Complex,12.894695,77.533502,3.3,4.1,3.8,6.29,352,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+510,Govt High School - Uttarahalli BDA Complex,12.930812,77.51673,1.8,2.3,2.1,3.48,195,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+99,Adarsha Vidyalaya - Ittamadu 2nd Stage,12.934271,77.52105,2.5,3.2,3.1,4.87,273,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+100,GLPS - Chikkalasandra BDA Complex,12.935762,77.51562,1.4,1.7,1.4,2.6,146,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+513,National Primary School - Poorna Pragna Layout Police Quarters,12.916889,77.533701,4.9,6.2,5.9,9.48,531,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+514,National Primary School - Kengeri Satellite Town Market Road,12.9074,77.522566,4.7,5.9,5.8,9.11,510,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+515,Saraswathi Vidyamandira - Ittamadu Main Road,12.900828,77.53122,1.3,1.7,1.6,2.54,142,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+516,Adarsha Vidyalaya - Ittamadu Ring Road Ward,12.919777,77.511166,1.5,1.9,2.0,2.95,165,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+95,GLPS - Kengeri Satellite Town 1st Stage,12.910011,77.514297,4.3,5.3,5.0,8.19,459,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+90,Govt Model Primary School - Uttarahalli 2nd Stage,12.904513,77.538438,4.7,5.9,5.6,9.06,507,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+519,GLPS - Poorna Pragna Layout Junction,12.909455,77.511436,1.6,2.0,1.8,3.04,170,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+520,National Primary School - Poorna Pragna Layout Ring Road Ward,12.907261,77.515372,2.2,2.8,2.8,4.29,240,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+521,National Primary School - Ideal Homes Junction,12.900272,77.512011,3.3,4.2,4.0,6.4,358,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+522,Saraswathi Vidyamandira - Kengeri Satellite Town Ring Road Ward,12.917782,77.527669,2.0,2.5,2.2,3.8,213,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+523,Govt High School - Ittamadu Junction,12.936317,77.502391,2.1,2.6,2.4,4.0,224,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+524,Saraswathi Vidyamandira - Chikkalasandra Lake Ward,12.902533,77.518557,4.0,5.0,4.9,7.72,432,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+525,GHS - Nayandahalli Main Road,12.935616,77.508165,3.2,4.0,3.5,6.08,340,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+526,National Primary School - Chikkalasandra Main Road,12.937902,77.530349,2.4,3.1,3.0,4.71,264,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+527,Govt Model Primary School - Uttarahalli 1st Stage,12.913701,77.533603,4.7,5.9,5.8,9.1,510,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+96,Govt Higher Primary School - Nayandahalli Near Temple,12.926344,77.53033,1.5,1.9,2.0,2.94,165,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+529,Saraswathi Vidyamandira - Uttarahalli Ring Road Ward,12.93385,77.51285,3.1,3.8,3.5,5.88,329,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active
+530,Govt High School - Nayandahalli Junction,12.928815,77.503352,4.8,6.0,5.6,9.2,515,"Uttarahalli, Chikkalasandra & RR Nagar",8,Active

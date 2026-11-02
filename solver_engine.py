@@ -19,7 +19,7 @@ def calculate_distance(lat1, lng1, lat2, lng2, correction_factor=1.35):
     return round(euclidean * correction_factor, 2)
 
 def calculate_service_time(rice_vessels, sambar_vessels, curd_vessels, fixed_min=3.5, per_vessel_min=0.35):
-    total_containers = (rice_vessels or 0) + (sambar_vessels or 0) + (curd_vessels or 0)
+    total_containers = float(rice_vessels or 0) + float(sambar_vessels or 0) + float(curd_vessels or 0)
     service_min = fixed_min + (total_containers * per_vessel_min)
     return round(service_min, 2)
 
@@ -60,9 +60,40 @@ class AmrutaHeuristicSolver:
     def _stage1_clustering(self):
         k = self.k_vehicles
         cap = self.vehicle_capacity
-        sorted_schools = sorted(self.schools, key=lambda s: s["equivalent_demand"], reverse=True)
-        seeds = sorted_schools[:k]
-        unassigned = sorted_schools[k:]
+        depot = self.depot
+
+        # Compute radial angle around depot for each school
+        schools_with_angle = []
+        for s in self.schools:
+            ang = math.atan2(s["latitude"] - depot["lat"], s["longitude"] - depot["lng"])
+            if ang < 0:
+                ang += 2 * math.pi
+            sc = dict(s)
+            sc["_angle"] = ang
+            schools_with_angle.append(sc)
+
+        sector_size = (2 * math.pi) / k
+        seeds = []
+        assigned_ids = set()
+
+        for i in range(k):
+            s_min = i * sector_size
+            s_max = (i + 1) * sector_size
+            in_sec = [s for s in schools_with_angle if s_min <= s["_angle"] < s_max and s["school_id"] not in assigned_ids]
+            if in_sec:
+                in_sec.sort(key=lambda s: s["equivalent_demand"], reverse=True)
+                seeds.append(in_sec[0])
+                assigned_ids.add(in_sec[0]["school_id"])
+
+        if len(seeds) < k:
+            leftovers = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
+            leftovers.sort(key=lambda s: s["equivalent_demand"], reverse=True)
+            while len(seeds) < k and leftovers:
+                s = leftovers.pop(0)
+                seeds.append(s)
+                assigned_ids.add(s["school_id"])
+
+        unassigned = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
 
         clusters = []
         for i in range(k):
@@ -331,12 +362,40 @@ class ModernORSolver:
 
         k = self.k_vehicles
         cap = self.vehicle_capacity
-        sorted_schools = sorted(self.schools, key=lambda s: s["equivalent_demand"], reverse=True)
-        seeds = sorted_schools[:k]
-        unassigned = sorted_schools[k:]
+        depot = self.depot
+
+        schools_with_angle = []
+        for s in self.schools:
+            ang = math.atan2(s["latitude"] - depot["lat"], s["longitude"] - depot["lng"])
+            if ang < 0:
+                ang += 2 * math.pi
+            sc = dict(s)
+            sc["_angle"] = ang
+            schools_with_angle.append(sc)
+
+        sector_size = (2 * math.pi) / k
+        seeds = []
+        assigned_ids = set()
+
+        for i in range(k):
+            s_min = i * sector_size
+            s_max = (i + 1) * sector_size
+            in_sec = [s for s in schools_with_angle if s_min <= s["_angle"] < s_max and s["school_id"] not in assigned_ids]
+            if in_sec:
+                in_sec.sort(key=lambda s: s["equivalent_demand"], reverse=True)
+                seeds.append(in_sec[0])
+                assigned_ids.add(in_sec[0]["school_id"])
+
+        if len(seeds) < k:
+            leftovers = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
+            leftovers.sort(key=lambda s: s["equivalent_demand"], reverse=True)
+            while len(seeds) < k and leftovers:
+                s = leftovers.pop(0)
+                seeds.append(s)
+                assigned_ids.add(s["school_id"])
 
         routes = []
-        for i in range(k):
+        for i in range(len(seeds)):
             s = seeds[i]
             veh = self.fleet[i % len(self.fleet)]
             veh["equivalent_capacity"] = cap
@@ -346,6 +405,8 @@ class ModernORSolver:
                 "schools": [s],
                 "total_demand": s["equivalent_demand"]
             })
+
+        unassigned = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
 
         unassigned_schools = []
         for s in unassigned:

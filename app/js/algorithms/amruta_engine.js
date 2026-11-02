@@ -55,11 +55,42 @@ const AmrutaEngine = {
 
   stage1Clustering(schools, fleet, kRequested, capacityLimit, circuityFactor) {
     const k = Math.min(kRequested, fleet.length, schools.length);
-    const sortedByDemand = [...schools].sort((a, b) => b.equivalent_demand - a.equivalent_demand);
+    const depot = DataManager.depot;
 
-    // Initial Seeds: Top k demand schools become cluster seeds
-    const seeds = sortedByDemand.slice(0, k);
-    const unassigned = sortedByDemand.slice(k);
+    // Calculate radial bearing from depot for each school
+    const schoolsWithAngle = schools.map(s => {
+      const angle = Math.atan2(s.latitude - depot.lat, s.longitude - depot.lng);
+      return { ...s, angle: angle < 0 ? angle + 2 * Math.PI : angle };
+    });
+
+    // Partition angular space into k radial sectors to seed routes evenly around Vasanthapura
+    const seeds = [];
+    const assignedIds = new Set();
+    const sectorSize = (2 * Math.PI) / k;
+
+    for (let i = 0; i < k; i++) {
+      const secMin = i * sectorSize;
+      const secMax = (i + 1) * sectorSize;
+      const inSector = schoolsWithAngle.filter(s => s.angle >= secMin && s.angle < secMax && !assignedIds.has(s.school_id));
+      if (inSector.length > 0) {
+        inSector.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
+        seeds.push(inSector[0]);
+        assignedIds.add(inSector[0].school_id);
+      }
+    }
+
+    // Fill any remaining seeds if some sectors were empty
+    if (seeds.length < k) {
+      const leftovers = schoolsWithAngle.filter(s => !assignedIds.has(s.school_id));
+      leftovers.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
+      while (seeds.length < k && leftovers.length > 0) {
+        const s = leftovers.shift();
+        seeds.push(s);
+        assignedIds.add(s.school_id);
+      }
+    }
+
+    const unassigned = schoolsWithAngle.filter(s => !assignedIds.has(s.school_id));
 
     const sortedFleet = [...fleet].slice(0, k).map((v, i) => ({
       ...v,

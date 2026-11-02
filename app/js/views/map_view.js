@@ -181,6 +181,21 @@ const MapView = {
         `);
       });
     });
+
+    // Auto-frame map bounds around all routes and depot for optimal presentation
+    const allCoords = [[depot.lat, depot.lng]];
+    this.currentRoutes.forEach(route => {
+      (route.stops || []).forEach(s => {
+        allCoords.push([s.latitude, s.longitude]);
+      });
+    });
+    if (allCoords.length > 1 && this.leafletMap) {
+      try {
+        this.leafletMap.fitBounds(allCoords, { padding: [35, 35], maxZoom: 13 });
+      } catch (e) {
+        // Safe fallback
+      }
+    }
   },
 
   renderManifestTable() {

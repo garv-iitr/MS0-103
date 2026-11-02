@@ -136,13 +136,18 @@ def csv_to_rows(csv_path):
 
 if __name__ == "__main__":
     os.makedirs('data', exist_ok=True)
-    # Convert CSVs to local Excel files
-    for name in ['vasanthapura_schools_530', 'vasanthapura_demo_45', 'fleet_config']:
+    # Convert CSVs to local Excel files in data/ directory
+    for name in ['vasanthapura_schools_530', 'vasanthapura_demo_100', 'vasanthapura_demo_45', 'fleet_config']:
         csv_file = f'data/{name}.csv'
         if os.path.exists(csv_file):
             headers, rows = csv_to_rows(csv_file)
             create_simple_xlsx(f'data/{name}.xlsx', 'Sheet1', headers, rows)
-            # Also create in root directory for instant manager access
-            create_simple_xlsx(f'{name}.xlsx', 'Sheet1', headers, rows)
+
+    # data.xlsx is the primary operational file initialized with 100 schools (in data/ and root)
+    if os.path.exists('data/vasanthapura_demo_100.csv'):
+        headers, rows = csv_to_rows('data/vasanthapura_demo_100.csv')
+        create_simple_xlsx('data/data.xlsx', 'Sheet1', headers, rows)
+        create_simple_xlsx('data.xlsx', 'Sheet1', headers, rows)
+        print("Generated primary operational data.xlsx")
 
     print("All Excel workbooks created successfully!")

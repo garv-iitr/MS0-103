@@ -59,11 +59,29 @@ const App = {
     this.currentScale = scale;
 
     if (typeof EMBEDDED_DATA !== "undefined") {
-      const allSchools = EMBEDDED_DATA.fullSchools || EMBEDDED_DATA.demoSchools;
-      DataManager.currentSchools = allSchools.slice(0, Math.min(scale, allSchools.length)).map(s => ({ ...s }));
+      let selectedSchools = [];
+      if (scale <= 45 && EMBEDDED_DATA.schools45) {
+        selectedSchools = EMBEDDED_DATA.schools45;
+      } else if (scale <= 100 && EMBEDDED_DATA.schools100) {
+        selectedSchools = EMBEDDED_DATA.schools100.slice(0, scale);
+      } else {
+        const full = EMBEDDED_DATA.fullSchools || EMBEDDED_DATA.demoSchools || [];
+        // Sample balanced schools across the full database
+        if (scale >= full.length) {
+          selectedSchools = full;
+        } else {
+          // Sample proportionally across corridors
+          const step = full.length / scale;
+          selectedSchools = [];
+          for (let i = 0; i < scale; i++) {
+            selectedSchools.push(full[Math.floor(i * step)]);
+          }
+        }
+      }
+      DataManager.currentSchools = selectedSchools.map(s => ({ ...s }));
       DataManager.currentFleet = (EMBEDDED_DATA.fleet || []).map(v => ({ ...v }));
     } else {
-      const filename = scale > 200 ? "vasanthapura_schools_530.csv" : "vasanthapura_demo_45.csv";
+      const filename = scale > 100 ? "vasanthapura_schools_530.csv" : "vasanthapura_demo_100.csv";
       try {
         const resp = await fetch(`/data/${filename}`);
         if (resp.ok) {

@@ -34,17 +34,40 @@ const ModernORSolver = {
       vehicle_id: v.vehicle_id || `V-${String(i + 1).padStart(2, "0")}`
     }));
 
-    // Step 1: Initialize k vehicle routes with top k geographically distributed / demand seeds
-    // Sort by equivalent demand descending to pick highest demand anchors
-    const sortedSchools = [...allSchools].sort((a, b) => b.equivalent_demand - a.equivalent_demand);
-    
-    // Select k seeds that are well spaced
-    const routes = [];
+    // Step 1: Initialize k vehicle routes with k radial angular seeds around Vasanthapura Central Kitchen
+    const schoolsWithAngle = allSchools.map(s => {
+      const angle = Math.atan2(s.latitude - depot.lat, s.longitude - depot.lng);
+      return { ...s, angle: angle < 0 ? angle + 2 * Math.PI : angle };
+    });
+
+    const seeds = [];
     const assignedSchoolIds = new Set();
+    const sectorSize = (2 * Math.PI) / k;
 
     for (let i = 0; i < k; i++) {
-      const seedSchool = sortedSchools[i];
-      assignedSchoolIds.add(seedSchool.school_id);
+      const secMin = i * sectorSize;
+      const secMax = (i + 1) * sectorSize;
+      const inSector = schoolsWithAngle.filter(s => s.angle >= secMin && s.angle < secMax && !assignedSchoolIds.has(s.school_id));
+      if (inSector.length > 0) {
+        inSector.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
+        seeds.push(inSector[0]);
+        assignedSchoolIds.add(inSector[0].school_id);
+      }
+    }
+
+    if (seeds.length < k) {
+      const leftovers = schoolsWithAngle.filter(s => !assignedSchoolIds.has(s.school_id));
+      leftovers.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
+      while (seeds.length < k && leftovers.length > 0) {
+        const s = leftovers.shift();
+        seeds.push(s);
+        assignedSchoolIds.add(s.school_id);
+      }
+    }
+
+    const routes = [];
+    for (let i = 0; i < seeds.length; i++) {
+      const seedSchool = seeds[i];
       routes.push({
         vehicle: deployedVehicles[i],
         cluster_id: i + 1,
@@ -53,7 +76,7 @@ const ModernORSolver = {
       });
     }
 
-    const unassignedSchools = sortedSchools.slice(k);
+    const unassignedSchools = schoolsWithAngle.filter(s => !assignedSchoolIds.has(s.school_id));
     const failedToAssign = [];
 
     // Step 2: Parallel Best-Fit / Regret Insertion into the k routes
