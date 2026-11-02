@@ -45,11 +45,41 @@ const MapView = {
       scrollWheelZoom: true
     });
 
-    // Standard OpenStreetMap tiles (same as Folium/Streamlit default - 100% free, no API key, no watermark)
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    // 1. Esri World Street Map (100% Free, No API key needed, Never blocks localhost/file://, Fast CDN)
+    const esriStreets = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, TomTom',
+      maxZoom: 18
+    });
+
+    // 2. OpenStreetMap Humanitarian (HOT mirror - No 403 block, matching video screenshot)
+    const osmHot = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      subdomains: ['a', 'b'],
       maxZoom: 19
-    }).addTo(this.leafletMap);
+    });
+
+    // 3. Esri Dark Canvas (Matches dark dashboard theme)
+    const esriDark = L.layerGroup([
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16 }),
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16 })
+    ]);
+
+    // 4. Esri World Imagery (Satellite)
+    const esriSatellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      attribution: 'Tiles &copy; Esri',
+      maxZoom: 18
+    });
+
+    // Add default streets layer
+    esriStreets.addTo(this.leafletMap);
+
+    // Layer switcher control in top-right of map
+    L.control.layers({
+      "Streets (Esri)": esriStreets,
+      "OpenStreetMap (HOT)": osmHot,
+      "Dark Canvas": esriDark,
+      "Satellite": esriSatellite
+    }, null, { position: "topright" }).addTo(this.leafletMap);
 
     this.routeLayerGroup = L.layerGroup().addTo(this.leafletMap);
     this.markerLayerGroup = L.layerGroup().addTo(this.leafletMap);

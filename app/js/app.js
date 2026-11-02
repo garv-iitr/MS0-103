@@ -201,6 +201,26 @@ const App = {
       });
     }
 
+    // Optional Custom Map Key Input
+    const inputMapKey = document.getElementById("input-map-key");
+    if (inputMapKey) {
+      inputMapKey.addEventListener("change", (e) => {
+        const key = e.target.value.trim();
+        if (key && MapView.leafletMap) {
+          try {
+            const customLayer = L.tileLayer(
+              `https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${key}`,
+              { tileSize: 512, zoomOffset: -1, attribution: '&copy; Mapbox', maxZoom: 19 }
+            );
+            customLayer.addTo(MapView.leafletMap);
+            alert("Custom Mapbox tile layer activated successfully!");
+          } catch (err) {
+            console.warn("Could not activate custom map layer:", err);
+          }
+        }
+      });
+    }
+
     // Sidebar Excel Action Buttons
     const btnSync = document.getElementById("btn-sync-excel");
     if (btnSync) {
