@@ -213,6 +213,39 @@
         </div>
       </div>
 
+      <!-- Section: School Status & Holiday Override -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">School Status & Holiday Override</div>
+        <div class="control-group">
+          <label for="select-sidebar-school" class="control-label">
+            Select School
+            <span class="help-icon" title="Choose a school to inspect or override daily dispatch status">?</span>
+          </label>
+          <select id="select-sidebar-school" class="styled-select" style="font-size: 12px; margin-top: 3px;">
+            <!-- Populated dynamically with all schools -->
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 6px; margin-top: 8px;">
+          <button id="btn-toggle-school-status" class="btn-sidebar-outline" style="flex: 1; padding: 6px 8px; font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 6px;" title="Click to toggle between Active and Closed (Holiday)">
+            <span id="school-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #34d399;"></span>
+            <span id="school-status-text">Status: Active</span>
+          </button>
+          <button id="btn-zoom-to-school" class="btn-sidebar-outline" title="Pan and zoom to school on map" style="padding: 6px 10px; font-size: 11.5px;">
+            Map 📍
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 6px; margin-top: 8px;">
+          <button id="btn-holiday-random5" class="btn-sidebar-outline" style="flex: 1; font-size: 10.5px; padding: 5px 4px;" title="Simulate 5 random school holidays">
+            🎲 Holiday 5
+          </button>
+          <button id="btn-activate-all-schools" class="btn-sidebar-outline" style="flex: 1; font-size: 10.5px; padding: 5px 4px;" title="Re-activate all schools in current dataset">
+            ✓ Activate All
+          </button>
+        </div>
+      </div>
+
       <!-- Bottom Action Buttons -->
       <div class="sidebar-footer-buttons">
         <button id="btn-sync-excel" class="btn-sidebar-outline">Sync data.xlsx</button>

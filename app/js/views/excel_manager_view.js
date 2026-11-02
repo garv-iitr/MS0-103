@@ -30,9 +30,9 @@ const ExcelManagerView = {
     let displayed = schools;
 
     if (this.filterMode === "active") {
-      displayed = schools.filter((_, idx) => idx % 10 !== 0);
+      displayed = schools.filter(s => (s.status || "active").toLowerCase() !== "closed");
     } else if (this.filterMode === "closed") {
-      displayed = schools.filter((_, idx) => idx % 10 === 0);
+      displayed = schools.filter(s => (s.status || "active").toLowerCase() === "closed");
     }
 
     const depot = DataManager.depot;
@@ -190,8 +190,11 @@ const ExcelManagerView = {
 
       if (selectStatus) {
         selectStatus.addEventListener("change", (e) => {
-          school.status = e.target.value;
-          App.debounceSimulation(30);
+          school.status = e.target.value === "closed" ? "Closed" : "Active";
+          if (typeof App !== "undefined" && App.updateSidebarSchoolSelector) {
+            App.updateSidebarSchoolSelector();
+          }
+          App.debounceSimulation(20);
         });
       }
 

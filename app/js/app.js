@@ -45,6 +45,7 @@ const App = {
     this.bindNavTabs();
     TripSheetView.bindEvents();
     ExcelManagerView.bindEvents();
+    this.updateSidebarSchoolSelector();
 
     // 5. Initial Simulation Run
     this.runCurrentSimulation();
@@ -106,6 +107,7 @@ const App = {
       else badgeFile.textContent = label;
     }
 
+    this.updateSidebarSchoolSelector();
     this.runCurrentSimulation();
     ExcelManagerView.render();
   },
@@ -437,6 +439,78 @@ const App = {
       });
     }
 
+    // School Status & Holiday Override Controls
+    const selectSchool = document.getElementById("select-sidebar-school");
+    const btnToggleStatus = document.getElementById("btn-toggle-school-status");
+    const btnZoomSchool = document.getElementById("btn-zoom-to-school");
+    const btnHoliday5 = document.getElementById("btn-holiday-random5");
+    const btnActivateAll = document.getElementById("btn-activate-all-schools");
+
+    if (selectSchool) {
+      selectSchool.addEventListener("change", () => {
+        this.syncSchoolStatusDisplay();
+      });
+    }
+
+    if (btnToggleStatus) {
+      btnToggleStatus.addEventListener("click", () => {
+        if (!selectSchool) return;
+        const schoolId = parseInt(selectSchool.value, 10);
+        const school = (DataManager.currentSchools || []).find(s => s.school_id === schoolId);
+        if (!school) return;
+        const isClosed = (school.status || "active").toLowerCase() === "closed";
+        school.status = isClosed ? "Active" : "Closed";
+        this.updateSidebarSchoolSelector();
+        this.runCurrentSimulation();
+        if (typeof ExcelManagerView !== "undefined") {
+          ExcelManagerView.renderGrid();
+        }
+      });
+    }
+
+    if (btnZoomSchool) {
+      btnZoomSchool.addEventListener("click", () => {
+        if (!selectSchool) return;
+        const schoolId = parseInt(selectSchool.value, 10);
+        if (this.activeTab !== "map") {
+          const mapTabBtn = document.querySelector('.nav-tab-item[data-tab="map"]');
+          if (mapTabBtn) mapTabBtn.click();
+        }
+        if (typeof MapView !== "undefined" && MapView.zoomToSchool) {
+          MapView.zoomToSchool(schoolId);
+        }
+      });
+    }
+
+    if (btnHoliday5) {
+      btnHoliday5.addEventListener("click", () => {
+        const schools = DataManager.currentSchools || [];
+        if (schools.length === 0) return;
+        schools.forEach(s => { s.status = "Active"; });
+        const shuffled = [...schools].sort(() => 0.5 - Math.random());
+        for (let i = 0; i < Math.min(5, shuffled.length); i++) {
+          shuffled[i].status = "Closed";
+        }
+        this.updateSidebarSchoolSelector();
+        this.runCurrentSimulation();
+        if (typeof ExcelManagerView !== "undefined") {
+          ExcelManagerView.renderGrid();
+        }
+      });
+    }
+
+    if (btnActivateAll) {
+      btnActivateAll.addEventListener("click", () => {
+        const schools = DataManager.currentSchools || [];
+        schools.forEach(s => { s.status = "Active"; });
+        this.updateSidebarSchoolSelector();
+        this.runCurrentSimulation();
+        if (typeof ExcelManagerView !== "undefined") {
+          ExcelManagerView.renderGrid();
+        }
+      });
+    }
+
     // Sidebar Excel Action Buttons
     const btnSync = document.getElementById("btn-sync-excel");
     if (btnSync) {
@@ -633,6 +707,55 @@ const App = {
 
     if (elImpact) {
       elImpact.innerHTML = `+${(summary.additionalChildrenFed || 0).toLocaleString('en-IN')}`;
+    }
+  },
+
+  updateSidebarSchoolSelector() {
+    const selectSchool = document.getElementById("select-sidebar-school");
+    if (!selectSchool) return;
+
+    const schools = DataManager.currentSchools || [];
+    const prevVal = selectSchool.value;
+
+    selectSchool.innerHTML = schools.map(s => {
+      const isClosed = (s.status || "active").toLowerCase() === "closed";
+      const statusTag = isClosed ? " [CLOSED]" : "";
+      return `<option value="${s.school_id}">${s.school_name}${statusTag}</option>`;
+    }).join("");
+
+    if (prevVal && schools.some(s => String(s.school_id) === String(prevVal))) {
+      selectSchool.value = prevVal;
+    }
+
+    this.syncSchoolStatusDisplay();
+  },
+
+  syncSchoolStatusDisplay() {
+    const selectSchool = document.getElementById("select-sidebar-school");
+    const statusDot = document.getElementById("school-status-dot");
+    const statusText = document.getElementById("school-status-text");
+    const btnToggle = document.getElementById("btn-toggle-school-status");
+
+    if (!selectSchool || !statusDot || !statusText) return;
+    const schoolId = parseInt(selectSchool.value, 10);
+    const school = (DataManager.currentSchools || []).find(s => s.school_id === schoolId);
+    if (!school) return;
+
+    const isClosed = (school.status || "active").toLowerCase() === "closed";
+    if (isClosed) {
+      statusDot.style.background = "#f87171";
+      statusText.textContent = "Status: Closed (Holiday)";
+      if (btnToggle) {
+        btnToggle.style.borderColor = "#f87171";
+        btnToggle.style.color = "#f87171";
+      }
+    } else {
+      statusDot.style.background = "#34d399";
+      statusText.textContent = "Status: Active (Dispatched)";
+      if (btnToggle) {
+        btnToggle.style.borderColor = "var(--border-card)";
+        btnToggle.style.color = "var(--text-white)";
+      }
     }
   }
 };

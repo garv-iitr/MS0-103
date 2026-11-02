@@ -10,6 +10,9 @@ const MapView = {
   leafletMap: null,
   routeLayerGroup: null,
   markerLayerGroup: null,
+  depotLayerGroup: null,
+  depotMarker: null,
+  schoolMarkers: {},
   currentRoutes: [],
   activeModelName: "modern",
 
@@ -165,6 +168,7 @@ const MapView = {
   renderLeafletRoutes() {
     this.routeLayerGroup.clearLayers();
     this.markerLayerGroup.clearLayers();
+    this.schoolMarkers = {};
     this.renderDepotMarker();
 
     const depot = DataManager.depot;
@@ -190,10 +194,10 @@ const MapView = {
         Schools: ${route.schools_count} | Demand: ${route.total_demand} units
       `, { sticky: true });
 
-      // School circle markers
+      // Active school circle markers
       stops.slice(1).forEach(stop => {
         const marker = L.circleMarker([stop.latitude, stop.longitude], {
-          radius: 5,
+          radius: 5.5,
           fillColor: color,
           color: "#ffffff",
           weight: 1.5,
@@ -201,18 +205,65 @@ const MapView = {
           fillOpacity: 0.95
         }).addTo(this.markerLayerGroup);
 
+        this.schoolMarkers[stop.school_id] = marker;
+
         marker.bindPopup(`
-          <div style="font-family:sans-serif; min-width:200px; font-size:12px; color:#0f172a;">
-            <strong>${stop.school_name}</strong><br>
-            <span style="color:#64748b; font-size:11px;">Route #${route.cluster_id} · Stop #${stop.stop_seq}</span>
-            <table style="width:100%; margin-top:4px; font-size:11px;">
-              <tr><td style="color:#64748b;">Arrival:</td><td><strong>${stop.arrival_clock}</strong></td></tr>
-              <tr><td style="color:#64748b;">Demand:</td><td><strong>${stop.demand}</strong> units</td></tr>
-              <tr><td style="color:#64748b;">Distance:</td><td>${stop.distance_km} km</td></tr>
+          <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width:215px; font-size:12px; color:#0f172a; padding:2px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:6px;">
+              <strong style="color:#0f172a; font-size:12.5px;">${stop.school_name}</strong>
+              <span style="font-size:10px; font-weight:700; padding:1px 6px; border-radius:3px; background:#ecfdf5; color:#059669; border:1px solid #a7f3d0;">ACTIVE</span>
+            </div>
+            <div style="color:#64748b; font-size:11px; margin-top:2px;">Route #${route.cluster_id} · Stop #${stop.stop_seq}</div>
+            <table style="width:100%; margin-top:6px; font-size:11px; border-collapse:collapse;">
+              <tr><td style="color:#64748b; padding:2px 0;">Arrival:</td><td><strong>${stop.arrival_clock}</strong></td></tr>
+              <tr><td style="color:#64748b; padding:2px 0;">Demand:</td><td><strong>${stop.demand}</strong> units (~${Math.round(stop.demand * 56)} meals)</td></tr>
+              <tr><td style="color:#64748b; padding:2px 0;">Distance:</td><td>${stop.distance_km} km</td></tr>
             </table>
+            <div style="margin-top:8px; padding-top:6px; border-top:1px solid #e2e8f0;">
+              <button onclick="MapView.toggleSchoolStatusById(${stop.school_id})" style="width:100%; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; font-size:11px; font-weight:600; padding:4px 6px; border-radius:4px; cursor:pointer;">
+                ⏸ Mark as Closed (Holiday)
+              </button>
+            </div>
           </div>
         `);
       });
+    });
+
+    // Render Closed/Holiday schools with distinctive dashed gray/red markers
+    const allSchools = DataManager.currentSchools || [];
+    allSchools.forEach(s => {
+      if ((s.status || "active").toLowerCase() === "closed") {
+        const closedMarker = L.circleMarker([s.latitude, s.longitude], {
+          radius: 6,
+          fillColor: "#334155",
+          color: "#ef4444",
+          weight: 2,
+          dashArray: "3, 3",
+          opacity: 0.9,
+          fillOpacity: 0.8
+        }).addTo(this.markerLayerGroup);
+
+        this.schoolMarkers[s.school_id] = closedMarker;
+
+        closedMarker.bindPopup(`
+          <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width:215px; font-size:12px; color:#0f172a; padding:2px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:6px;">
+              <strong style="color:#0f172a; font-size:12.5px;">${s.school_name}</strong>
+              <span style="font-size:10px; font-weight:700; padding:1px 6px; border-radius:3px; background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">CLOSED</span>
+            </div>
+            <div style="color:#ef4444; font-size:11px; font-weight:600; margin-top:2px;">Excluded from vehicle dispatch (Holiday)</div>
+            <table style="width:100%; margin-top:6px; font-size:11px; border-collapse:collapse;">
+              <tr><td style="color:#64748b; padding:2px 0;">Base Demand:</td><td><strong>${s.equivalent_demand || 0}</strong> units</td></tr>
+              <tr><td style="color:#64748b; padding:2px 0;">Corridor:</td><td>${s.cluster_zone || 'South Radial'}</td></tr>
+            </table>
+            <div style="margin-top:8px; padding-top:6px; border-top:1px solid #e2e8f0;">
+              <button onclick="MapView.toggleSchoolStatusById(${s.school_id})" style="width:100%; background:#dcfce7; border:1px solid #86efac; color:#166534; font-size:11px; font-weight:600; padding:4px 6px; border-radius:4px; cursor:pointer;">
+                ▶ Mark as Active (Include in Routes)
+              </button>
+            </div>
+          </div>
+        `);
+      }
     });
 
     // Auto-frame map bounds around all routes and depot for optimal presentation
@@ -264,6 +315,30 @@ const MapView = {
     }).join("");
 
     tbody.innerHTML = rowsHtml;
+  },
+
+  toggleSchoolStatusById(schoolId) {
+    const school = (DataManager.currentSchools || []).find(s => s.school_id === Number(schoolId));
+    if (!school) return;
+    const isClosed = (school.status || "active").toLowerCase() === "closed";
+    school.status = isClosed ? "Active" : "Closed";
+    if (typeof App !== "undefined") {
+      if (App.updateSidebarSchoolSelector) App.updateSidebarSchoolSelector();
+      App.debounceSimulation(10);
+    }
+    if (typeof ExcelManagerView !== "undefined") {
+      ExcelManagerView.renderGrid();
+    }
+  },
+
+  zoomToSchool(schoolId) {
+    const school = (DataManager.currentSchools || []).find(s => s.school_id === Number(schoolId));
+    if (!school || !this.leafletMap) return;
+    this.leafletMap.setView([school.latitude, school.longitude], 14, { animate: true });
+    const marker = this.schoolMarkers && this.schoolMarkers[school.school_id];
+    if (marker) {
+      setTimeout(() => marker.openPopup(), 250);
+    }
   },
 
   initCanvasFallback(containerId) {
