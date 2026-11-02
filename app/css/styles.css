@@ -1013,3 +1013,26 @@ body {
     border-bottom: 1px solid #cbd5e1 !important;
   }
 }
+
+/* Excel Spreadsheet Status Selector & Holiday Indicators */
+.select-status.status-active {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid #10b981 !important;
+  color: #34d399 !important;
+}
+
+.select-status.status-holiday {
+  background: rgba(239, 68, 68, 0.18) !important;
+  border: 1px solid #ef4444 !important;
+  color: #f87171 !important;
+}
+
+.row-school-holiday {
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.row-school-holiday td:first-child {
+  border-left: 3px solid #ef4444 !important;
+  color: #ef4444 !important;
+  font-weight: 700;
+}

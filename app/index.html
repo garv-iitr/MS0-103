@@ -450,12 +450,26 @@
           </div>
         </div>
 
-        <!-- Display View Radio Filter -->
-        <div class="radio-filter-group" style="margin-top: 6px;">
-          <span>Display View:</span>
-          <label><input type="radio" name="display-view" value="all" checked> All Schools</label>
-          <label><input type="radio" name="display-view" value="active"> Active Only</label>
-          <label><input type="radio" name="display-view" value="closed"> Holidays / Closed Only</label>
+        <!-- Display View Radio Filter & Holiday Controls Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; margin-bottom: 8px;">
+          <div class="radio-filter-group" style="margin: 0;">
+            <span style="font-weight: 600; color: var(--text-white);">Display Filter:</span>
+            <label><input type="radio" name="display-view" value="all" checked> All (<span id="excel-count-all">100</span>)</label>
+            <label><input type="radio" name="display-view" value="active"> 🟢 Active (<span id="excel-count-active">100</span>)</label>
+            <label><input type="radio" name="display-view" value="closed"> 🔴 Holidays (<span id="excel-count-holiday">0</span>)</label>
+          </div>
+
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button id="btn-excel-random-holiday" class="btn-dark-secondary" style="font-size: 11.5px; padding: 4px 10px;" title="Set 5 random schools as Holiday in Excel">
+              🎲 Random 5 Holidays
+            </button>
+            <button id="btn-excel-set-all-active" class="btn-dark-secondary" style="font-size: 11.5px; padding: 4px 10px;" title="Reset all schools to Active in Excel">
+              ✓ Set All Active
+            </button>
+            <button id="btn-excel-export-csv" class="btn-dark-secondary" style="font-size: 11.5px; padding: 4px 10px; border-color: #10b981; color: #34d399;" title="Download current spreadsheet as CSV">
+              💾 Export CSV
+            </button>
+          </div>
         </div>
 
         <!-- Spreadsheet Table Grid -->
@@ -472,7 +486,7 @@
                 <th>Curd (Small)</th>
                 <th>Equivalent Demand</th>
                 <th>Student Count</th>
-                <th>Status</th>
+                <th style="min-width: 115px; text-align: center;">Holiday / Active</th>
               </tr>
             </thead>
             <tbody id="excel-grid-tbody">

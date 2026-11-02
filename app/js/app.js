@@ -458,8 +458,9 @@ const App = {
         const schoolId = parseInt(selectSchool.value, 10);
         const school = (DataManager.currentSchools || []).find(s => s.school_id === schoolId);
         if (!school) return;
-        const isClosed = (school.status || "active").toLowerCase() === "closed";
-        school.status = isClosed ? "Active" : "Closed";
+        const st = (school.status || "active").toLowerCase();
+        const isClosed = st === "closed" || st === "holiday";
+        school.status = isClosed ? "Active" : "Holiday";
         this.updateSidebarSchoolSelector();
         this.runCurrentSimulation();
         if (typeof ExcelManagerView !== "undefined") {
@@ -489,7 +490,7 @@ const App = {
         schools.forEach(s => { s.status = "Active"; });
         const shuffled = [...schools].sort(() => 0.5 - Math.random());
         for (let i = 0; i < Math.min(5, shuffled.length); i++) {
-          shuffled[i].status = "Closed";
+          shuffled[i].status = "Holiday";
         }
         this.updateSidebarSchoolSelector();
         this.runCurrentSimulation();
@@ -570,7 +571,10 @@ const App = {
     if (!allSchools || allSchools.length === 0 || !fleet || fleet.length === 0) return;
 
     // Filter for Active schools only (Closed/Holiday schools are skipped by vehicle dispatch)
-    const schools = allSchools.filter(s => (s.status || "active").toLowerCase() !== "closed");
+    const schools = allSchools.filter(s => {
+      const st = (s.status || "active").toLowerCase();
+      return st !== "closed" && st !== "holiday";
+    });
 
     // Update active file badge count
     const badgeFile = document.getElementById("badge-active-file");
@@ -656,7 +660,10 @@ const App = {
     const elCostSub = document.getElementById("kpi-cost-sub");
     const elImpact = document.getElementById("kpi-impact");
 
-    const activeSchools = DataManager.currentSchools.filter(s => (s.status || "active").toLowerCase() !== "closed");
+    const activeSchools = DataManager.currentSchools.filter(s => {
+      const st = (s.status || "active").toLowerCase();
+      return st !== "closed" && st !== "holiday";
+    });
     const totalRequiredDemand = Math.round(activeSchools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0) * 10) / 10;
     const totalServedDemand = Math.round((routes || []).reduce((acc, r) => acc + (r.total_demand || 0), 0) * 10) / 10;
     const unservedCount = summary.unassignedSchoolsCount || 0;
@@ -718,8 +725,9 @@ const App = {
     const prevVal = selectSchool.value;
 
     selectSchool.innerHTML = schools.map(s => {
-      const isClosed = (s.status || "active").toLowerCase() === "closed";
-      const statusTag = isClosed ? " [CLOSED]" : "";
+      const st = (s.status || "active").toLowerCase();
+      const isClosed = st === "closed" || st === "holiday";
+      const statusTag = isClosed ? " [HOLIDAY]" : "";
       return `<option value="${s.school_id}">${s.school_name}${statusTag}</option>`;
     }).join("");
 
@@ -741,17 +749,18 @@ const App = {
     const school = (DataManager.currentSchools || []).find(s => s.school_id === schoolId);
     if (!school) return;
 
-    const isClosed = (school.status || "active").toLowerCase() === "closed";
+    const st = (school.status || "active").toLowerCase();
+    const isClosed = st === "closed" || st === "holiday";
     if (isClosed) {
       statusDot.style.background = "#f87171";
-      statusText.textContent = "Status: Closed (Holiday)";
+      statusText.textContent = "Status: Holiday";
       if (btnToggle) {
         btnToggle.style.borderColor = "#f87171";
         btnToggle.style.color = "#f87171";
       }
     } else {
       statusDot.style.background = "#34d399";
-      statusText.textContent = "Status: Active (Dispatched)";
+      statusText.textContent = "Status: Active";
       if (btnToggle) {
         btnToggle.style.borderColor = "var(--border-card)";
         btnToggle.style.color = "var(--text-white)";

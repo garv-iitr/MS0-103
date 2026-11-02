@@ -22,6 +22,26 @@ const ExcelManagerView = {
     banner.textContent = `Connected File: data.xlsx | Last Synced: ${timeStr} | Total Schools: ${count}`;
   },
 
+  isHoliday(s) {
+    if (!s) return false;
+    const st = (s.status || "active").toLowerCase();
+    return st === "closed" || st === "holiday";
+  },
+
+  updateFilterCounts() {
+    const schools = DataManager.currentSchools || [];
+    const total = schools.length;
+    const holidays = schools.filter(s => this.isHoliday(s)).length;
+    const active = total - holidays;
+
+    const elAll = document.getElementById("excel-count-all");
+    const elActive = document.getElementById("excel-count-active");
+    const elHoliday = document.getElementById("excel-count-holiday");
+    if (elAll) elAll.textContent = total;
+    if (elActive) elActive.textContent = active;
+    if (elHoliday) elHoliday.textContent = holidays;
+  },
+
   renderGrid() {
     const tbody = document.getElementById("excel-grid-tbody");
     if (!tbody) return;
@@ -30,10 +50,12 @@ const ExcelManagerView = {
     let displayed = schools;
 
     if (this.filterMode === "active") {
-      displayed = schools.filter(s => (s.status || "active").toLowerCase() !== "closed");
+      displayed = schools.filter(s => !this.isHoliday(s));
     } else if (this.filterMode === "closed") {
-      displayed = schools.filter(s => (s.status || "active").toLowerCase() === "closed");
+      displayed = schools.filter(s => this.isHoliday(s));
     }
+
+    this.updateFilterCounts();
 
     const depot = DataManager.depot;
     const depotRowHtml = `
@@ -61,12 +83,12 @@ const ExcelManagerView = {
     `;
 
     const rowsHtml = displayed.map((s, idx) => {
-      const isClosed = (s.status || "active").toLowerCase() === "closed";
+      const isHol = this.isHoliday(s);
       const studentHeadcount = s.student_headcount || Math.round((s.equivalent_demand || 10) * 56);
       const actualIdx = schools.findIndex(item => item.school_id === s.school_id);
 
       return `
-        <tr data-school-idx="${actualIdx}">
+        <tr data-school-idx="${actualIdx}" class="${isHol ? 'row-school-holiday' : ''}">
           <td style="font-family: var(--font-mono); color: var(--text-muted); text-align: center;">${s.school_id || idx + 1}</td>
           <td>
             <input type="text" class="excel-inline-input text-school-name" value="${s.school_name}" style="width: 100%; min-width: 180px;">
@@ -93,9 +115,9 @@ const ExcelManagerView = {
             ${studentHeadcount}
           </td>
           <td style="text-align: center;">
-            <select class="excel-inline-input select-status" style="width: 75px; font-size: 11px;">
-              <option value="active" ${!isClosed ? 'selected' : ''}>Active</option>
-              <option value="closed" ${isClosed ? 'selected' : ''}>Closed</option>
+            <select class="excel-inline-input select-status ${isHol ? 'status-holiday' : 'status-active'}" style="width: 105px; font-size: 11.5px; font-weight: 700; border-radius: 4px; padding: 4px 6px; cursor: pointer; text-align: center;" title="Toggle between Active and Holiday for this school">
+              <option value="Active" ${!isHol ? 'selected' : ''}>🟢 Active</option>
+              <option value="Holiday" ${isHol ? 'selected' : ''}>🔴 Holiday</option>
             </select>
           </td>
         </tr>
@@ -190,7 +212,21 @@ const ExcelManagerView = {
 
       if (selectStatus) {
         selectStatus.addEventListener("change", (e) => {
-          school.status = e.target.value === "closed" ? "Closed" : "Active";
+          const val = e.target.value;
+          school.status = val;
+          const isNowHoliday = ExcelManagerView.isHoliday(school);
+
+          if (isNowHoliday) {
+            selectStatus.classList.remove("status-active");
+            selectStatus.classList.add("status-holiday");
+            row.classList.add("row-school-holiday");
+          } else {
+            selectStatus.classList.remove("status-holiday");
+            selectStatus.classList.add("status-active");
+            row.classList.remove("row-school-holiday");
+          }
+
+          ExcelManagerView.updateFilterCounts();
           if (typeof App !== "undefined" && App.updateSidebarSchoolSelector) {
             App.updateSidebarSchoolSelector();
           }
@@ -248,6 +284,47 @@ const ExcelManagerView = {
         this.updateStatusBar();
         this.renderGrid();
         App.runCurrentSimulation();
+      });
+    }
+
+    // Excel Toolbar Quick Holiday & Active Batch Controls
+    const btnRandHol = document.getElementById("btn-excel-random-holiday");
+    if (btnRandHol) {
+      btnRandHol.addEventListener("click", () => {
+        const schools = DataManager.currentSchools || [];
+        schools.forEach(s => { s.status = "Active"; });
+        const shuffled = [...schools].sort(() => 0.5 - Math.random());
+        for (let i = 0; i < Math.min(5, shuffled.length); i++) {
+          shuffled[i].status = "Holiday";
+        }
+        this.renderGrid();
+        if (typeof App !== "undefined" && App.updateSidebarSchoolSelector) {
+          App.updateSidebarSchoolSelector();
+        }
+        App.runCurrentSimulation();
+      });
+    }
+
+    const btnSetAllActive = document.getElementById("btn-excel-set-all-active");
+    if (btnSetAllActive) {
+      btnSetAllActive.addEventListener("click", () => {
+        const schools = DataManager.currentSchools || [];
+        schools.forEach(s => { s.status = "Active"; });
+        this.renderGrid();
+        if (typeof App !== "undefined" && App.updateSidebarSchoolSelector) {
+          App.updateSidebarSchoolSelector();
+        }
+        App.runCurrentSimulation();
+      });
+    }
+
+    const btnExportCSV = document.getElementById("btn-excel-export-csv");
+    if (btnExportCSV) {
+      btnExportCSV.addEventListener("click", () => {
+        const schools = DataManager.currentSchools || [];
+        const headers = ["school_id", "school_name", "latitude", "longitude", "rice_vessels", "sambar_vessels", "curd_vessels", "equivalent_demand", "student_headcount", "cluster_zone", "status"];
+        const csv = DataManager.toCSV(headers, schools);
+        DataManager.downloadFile(csv, `data_${schools.length}_schools.csv`);
       });
     }
   }

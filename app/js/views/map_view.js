@@ -232,7 +232,8 @@ const MapView = {
     // Render Closed/Holiday schools with distinctive dashed gray/red markers
     const allSchools = DataManager.currentSchools || [];
     allSchools.forEach(s => {
-      if ((s.status || "active").toLowerCase() === "closed") {
+      const st = (s.status || "active").toLowerCase();
+      if (st === "closed" || st === "holiday") {
         const closedMarker = L.circleMarker([s.latitude, s.longitude], {
           radius: 6,
           fillColor: "#334155",
@@ -249,7 +250,7 @@ const MapView = {
           <div style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width:215px; font-size:12px; color:#0f172a; padding:2px;">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:6px;">
               <strong style="color:#0f172a; font-size:12.5px;">${s.school_name}</strong>
-              <span style="font-size:10px; font-weight:700; padding:1px 6px; border-radius:3px; background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">CLOSED</span>
+              <span style="font-size:10px; font-weight:700; padding:1px 6px; border-radius:3px; background:#fef2f2; color:#dc2626; border:1px solid #fecaca;">HOLIDAY</span>
             </div>
             <div style="color:#ef4444; font-size:11px; font-weight:600; margin-top:2px;">Excluded from vehicle dispatch (Holiday)</div>
             <table style="width:100%; margin-top:6px; font-size:11px; border-collapse:collapse;">
@@ -320,8 +321,9 @@ const MapView = {
   toggleSchoolStatusById(schoolId) {
     const school = (DataManager.currentSchools || []).find(s => s.school_id === Number(schoolId));
     if (!school) return;
-    const isClosed = (school.status || "active").toLowerCase() === "closed";
-    school.status = isClosed ? "Active" : "Closed";
+    const st = (school.status || "active").toLowerCase();
+    const isClosed = st === "closed" || st === "holiday";
+    school.status = isClosed ? "Active" : "Holiday";
     if (typeof App !== "undefined") {
       if (App.updateSidebarSchoolSelector) App.updateSidebarSchoolSelector();
       App.debounceSimulation(10);
