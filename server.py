@@ -12,7 +12,6 @@ import csv
 import io
 import sys
 from solver_engine import AmrutaHeuristicSolver, ModernORSolver
-from export_excel_data import create_simple_xlsx
 
 PORT = 8000
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -52,6 +51,8 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
             rel_name = os.path.basename(clean_path)
             if os.path.exists(os.path.join(BASE_DIR, rel_name)):
                 return os.path.join(BASE_DIR, rel_name)
+            if os.path.exists(os.path.join(DATA_DIR, rel_name)):
+                return os.path.join(DATA_DIR, rel_name)
         
         # Route everything else through app/
         if clean_path == '/' or clean_path == '':

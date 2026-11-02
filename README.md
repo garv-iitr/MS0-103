@@ -32,32 +32,44 @@ E:\MS0-103/
 ├── app/                               # Decision Support System Web Interface
 │   ├── index.html                     # Executive Dashboard Single Page Application
 │   ├── css/
-│   │   └── styles.css                 # Clean, minimal OR Manager design system
+│   │   └── styles.css                 # Clean, minimal OR Manager dark theme
 │   └── js/
 │       ├── algorithms/
 │       │   ├── amruta_engine.js       # 3-Stage Heuristic (Modified K-Means, 2-Opt, SOM/TSP)
 │       │   └── modern_solver.js       # Modern OR Metaheuristic (Clarke-Wright + GLS + 2-Opt*)
 │       ├── models/
-│       │   ├── data_manager.js        # Coordinate math, travel/service times, Excel/CSV parser
 │       │   ├── cost_evaluator.js      # Monthly fuel, maintenance, crew wages, savings metrics
+│       │   ├── data_manager.js        # Coordinate math, travel/service times, Excel parser
 │       │   └── embedded_data.js       # Offline preloaded benchmark datasets
 │       └── views/
-│           ├── map_view.js            # Geospatial route visualizer (Leaflet + Canvas fallback)
-│           ├── trip_sheet_view.js     # Per-driver manifests with Excel export & print slips
 │           ├── comparison_view.js     # Side-by-side 4-column decision matrix
-│           └── playground_view.js     # Interactive code presentation & What-If stress lab
-├── data/                              # Local Spreadsheet & Benchmark Datasets
-│   ├── vasanthapura_schools_530.csv   # Complete 529-school benchmark demand & GPS coordinates
-│   ├── vasanthapura_demo_45.csv       # Fast 4-sector presentation dataset (117 schools)
+│           ├── excel_manager_view.js  # Spreadsheet operations management view
+│           ├── map_view.js            # Geospatial route visualizer (Leaflet + Canvas fallback)
+│           ├── playground_view.js     # Interactive code presentation & What-If stress lab
+│           └── trip_sheet_view.js     # Per-driver manifests with Excel export & print slips
+├── data/                              # Local Spreadsheet Datasets & Templates
+│   ├── data.xlsx                      # Backup copy of active operational spreadsheet
 │   ├── fleet_config.csv               # 35-vehicle heterogeneous fleet specification (Table 1b)
-│   └── vasanthapura_benchmark_metrics.json # Paper's published results (Tables 2, 3, 4)
-├── vasanthapura_schools_530.xlsx      # Microsoft Excel demand workbook for local maintenance
-├── fleet_config.xlsx                  # Microsoft Excel fleet workbook for local maintenance
-├── server.py                          # Python standard library HTTP & REST API server
+│   ├── fleet_config.xlsx              # Fleet template Excel workbook
+│   ├── vasanthapura_benchmark_metrics.json # Paper's published results (Tables 2, 3, 4)
+│   ├── vasanthapura_demo_45.csv       # Fast 4-sector presentation dataset (117 schools)
+│   ├── vasanthapura_demo_45.xlsx      # Demo template Excel workbook
+│   ├── vasanthapura_schools_530.csv   # Complete 529-school benchmark demand & GPS coordinates
+│   └── vasanthapura_schools_530.xlsx  # Complete 529-school Excel workbook
+├── docs/                              # Course Assignment, Case Paper & Team Presentation
+│   ├── Group Assignment - Instructions for IJAA presentation.docx
+│   ├── IJAA 13 VRP Akshaya Patra midday meal Genetic GA K-means.pdf
+│   └── Rice Team PPT.pptx
+├── scripts/                           # Data generator & Excel build utilities
+│   ├── export_excel_data.py           # Pure-Python Excel workbook generator
+│   ├── generate_datasets.py           # Synthetic benchmark dataset generator
+│   └── generate_embedded.py           # Standalone offline JS bundle generator
+├── .gitignore                         # Clean git configuration
+├── data.xlsx                          # Manager's primary active operational spreadsheet
+├── README.md                          # Comprehensive project documentation
+├── server.py                          # Zero-dependency Python HTTP & REST API server
 ├── solver_engine.py                   # Python implementation of AMRUTA & Modern Solvers
-├── export_excel_data.py               # Pure-Python Excel workbook generator
-├── start_app.bat                      # One-click launcher script
-└── README.md                          # Comprehensive project documentation
+└── start_app.bat                      # One-click desktop launcher
 ```
 
 ---
