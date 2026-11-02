@@ -102,6 +102,46 @@ body {
   height: 100vh;
   position: sticky;
   top: 0;
+  transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.22s ease;
+  z-index: 100;
+}
+
+.sidebar-collapsed .sidebar {
+  margin-left: -320px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-header-row .sidebar-title {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.sidebar-toggle-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.sidebar-toggle-btn:hover {
+  background: #202738;
+  border-color: #334155;
+  color: var(--text-white);
 }
 
 .sidebar-title {
@@ -109,8 +149,6 @@ body {
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: -0.02em;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .sidebar-section-title {
@@ -330,11 +368,38 @@ body {
   gap: 22px;
 }
 
-/* Top Deploy Link in upper right */
+/* Top Action Bar (Expand Toggle on Left, Deploy on Right) */
 .top-action-bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: -10px;
+  min-height: 32px;
+}
+
+.sidebar-expand-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: #1a2030;
+  border: 1px solid #2e384e;
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.sidebar-expand-btn:hover {
+  background: #242d44;
+  border-color: var(--accent-red);
+  color: var(--text-white);
+}
+
+.sidebar-collapsed .sidebar-expand-btn {
+  display: inline-flex !important;
 }
 .deploy-btn {
   background: transparent;

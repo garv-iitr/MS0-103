@@ -19,8 +19,16 @@
     <!-- =====================================================================
          LEFT SIDEBAR: Simulation Controls & Logistics Parameters
          ===================================================================== -->
-    <aside class="sidebar">
-      <div class="sidebar-title">Amruta - Rice Team</div>
+    <aside class="sidebar" id="app-sidebar">
+      <div class="sidebar-header-row">
+        <div class="sidebar-title">Amruta - Rice Team</div>
+        <button id="btn-sidebar-collapse" class="sidebar-toggle-btn" title="Collapse sidebar (Ctrl+B)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="11 17 6 12 11 7"></polyline>
+            <polyline points="18 17 13 12 18 7"></polyline>
+          </svg>
+        </button>
+      </div>
 
       <!-- Section: Interactive Simulation Controls -->
       <div class="sidebar-section">
@@ -174,6 +182,19 @@
          MAIN CONTENT AREA
          ===================================================================== -->
     <main class="main-content">
+
+      <!-- Top Action Bar (Sidebar Expand Toggle & Deploy) -->
+      <div class="top-action-bar">
+        <button id="btn-sidebar-expand" class="sidebar-expand-btn" title="Expand simulation sidebar (Ctrl+B)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+          </svg>
+          <span>Simulation Controls</span>
+        </button>
+        <div style="flex: 1;"></div>
+        <button class="deploy-btn">Deploy</button>
+      </div>
 
       <!-- Top Executive Banner Card -->
       <div class="header-banner-card">

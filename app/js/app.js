@@ -40,6 +40,7 @@ const App = {
     MapView.init("map-container");
 
     // 4. Bind Sidebar Controls & Nav Tabs
+    this.initSidebarToggle();
     this.bindSidebarControls();
     this.bindNavTabs();
     TripSheetView.bindEvents();
@@ -104,6 +105,59 @@ const App = {
 
     this.runCurrentSimulation();
     ExcelManagerView.render();
+  },
+
+  initSidebarToggle() {
+    const layout = document.querySelector(".app-layout");
+    const btnCollapse = document.getElementById("btn-sidebar-collapse");
+    const btnExpand = document.getElementById("btn-sidebar-expand");
+
+    const toggleSidebar = (forceState = null) => {
+      if (!layout) return;
+      const isCurrentlyCollapsed = layout.classList.contains("sidebar-collapsed");
+      const shouldCollapse = forceState !== null ? forceState : !isCurrentlyCollapsed;
+
+      if (shouldCollapse) {
+        layout.classList.add("sidebar-collapsed");
+        localStorage.setItem("amruta_sidebar_collapsed", "1");
+      } else {
+        layout.classList.remove("sidebar-collapsed");
+        localStorage.setItem("amruta_sidebar_collapsed", "0");
+      }
+
+      // Smoothly re-frame Leaflet map to fill newly available width
+      setTimeout(() => {
+        if (typeof MapView !== "undefined" && MapView.leafletMap) {
+          MapView.leafletMap.invalidateSize();
+        }
+      }, 310);
+    };
+
+    if (btnCollapse) {
+      btnCollapse.addEventListener("click", () => toggleSidebar(true));
+    }
+
+    if (btnExpand) {
+      btnExpand.addEventListener("click", () => toggleSidebar(false));
+    }
+
+    // Keyboard shortcut: Ctrl + B or BracketLeft
+    window.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === "b" || e.code === "BracketLeft")) {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+
+    // Restore saved state from previous session
+    if (localStorage.getItem("amruta_sidebar_collapsed") === "1" && layout) {
+      layout.classList.add("sidebar-collapsed");
+      setTimeout(() => {
+        if (typeof MapView !== "undefined" && MapView.leafletMap) {
+          MapView.leafletMap.invalidateSize();
+        }
+      }, 350);
+    }
   },
 
   bindSidebarControls() {
