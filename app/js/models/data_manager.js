@@ -54,7 +54,10 @@ const DataManager = {
     // Update Header Badge
     const badgeDepot = document.getElementById("badge-depot");
     if (badgeDepot) {
-      badgeDepot.textContent = `Depot: ${this.depot.name} (${this.depot.lat.toFixed(4)}, ${this.depot.lng.toFixed(4)})`;
+      const span = badgeDepot.querySelector("span");
+      const label = `Depot: ${this.depot.name} (${this.depot.lat.toFixed(4)}, ${this.depot.lng.toFixed(4)})`;
+      if (span) span.textContent = label;
+      else badgeDepot.textContent = label;
     }
 
     // Update Sidebar controls if not the source

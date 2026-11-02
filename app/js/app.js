@@ -100,7 +100,10 @@ const App = {
     const estChildren = Math.round(schoolCount * 328.8);
     const badgeFile = document.getElementById("badge-active-file");
     if (badgeFile) {
-      badgeFile.textContent = `Active: data.xlsx (${schoolCount} Schools, ${estChildren.toLocaleString()} Children)`;
+      const span = badgeFile.querySelector("span");
+      const label = `Active: data.xlsx (${schoolCount} Schools, ${estChildren.toLocaleString()} Children)`;
+      if (span) span.textContent = label;
+      else badgeFile.textContent = label;
     }
 
     this.runCurrentSimulation();
@@ -168,9 +171,12 @@ const App = {
         this.currentModel = e.target.value;
         const badgeEngine = document.getElementById("badge-active-engine");
         if (badgeEngine) {
-          if (this.currentModel === "modern") badgeEngine.textContent = "Google OR-Tools";
-          else if (this.currentModel === "amruta") badgeEngine.textContent = "Classical AMRUTA";
-          else badgeEngine.textContent = "Pre-AMRUTA (Ad-Hoc)";
+          let name = "Google OR-Tools";
+          if (this.currentModel === "amruta") name = "Classical AMRUTA";
+          else if (this.currentModel === "adhoc") name = "Pre-AMRUTA (Ad-Hoc)";
+          const span = badgeEngine.querySelector("span");
+          if (span) span.textContent = name;
+          else badgeEngine.textContent = name;
         }
         this.runCurrentSimulation();
       });
@@ -391,7 +397,10 @@ const App = {
       const activeCount = schools.length;
       const totalDemand = Math.round(schools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0));
       const estChildren = Math.round(totalDemand * 56);
-      badgeFile.textContent = `Active: data.xlsx (${activeCount} Schools, ${estChildren.toLocaleString()} Children)`;
+      const span = badgeFile.querySelector("span");
+      const label = `Active: data.xlsx (${activeCount} Schools, ${estChildren.toLocaleString()} Children)`;
+      if (span) span.textContent = label;
+      else badgeFile.textContent = label;
     }
 
     const options = {
@@ -473,24 +482,27 @@ const App = {
 
     if (elSchools) {
       if (unservedCount > 0) {
-        elSchools.textContent = `${summary.totalSchoolsServed} / ${activeSchools.length}`;
+        elSchools.innerHTML = `${summary.totalSchoolsServed || 0} <span class="kpi-unit-sub" style="color: #f87171;">/ ${activeSchools.length}</span>`;
       } else {
-        elSchools.textContent = `${summary.totalSchoolsServed}`;
+        elSchools.innerHTML = `${summary.totalSchoolsServed || 0} <span class="kpi-unit-sub">/ ${activeSchools.length}</span>`;
       }
     }
 
     if (elDemand) {
+      const approxMeals = Math.round(totalServedDemand * 56);
       if (unservedCount > 0) {
-        elDemand.textContent = `Demand: ${totalServedDemand} / ${totalRequiredDemand} U (${unservedCount} Unserved)`;
-        elDemand.style.color = "#f87171";
+        elDemand.innerHTML = `<span style="color: #f87171; font-weight: 600;">⚠ ${unservedCount} Unserved</span> • ${totalServedDemand} U`;
       } else {
-        elDemand.textContent = `Demand: ${totalServedDemand} Units`;
-        elDemand.style.color = "var(--text-dim)";
+        elDemand.innerHTML = `Demand: ${totalServedDemand} Units • ${approxMeals.toLocaleString()} Meals`;
       }
     }
 
-    if (elFleet) elFleet.textContent = `${summary.totalVehicles} Vans`;
-    if (elCap) elCap.textContent = `Cap: ${this.simParams.vehicle_capacity} units/van`;
+    if (elFleet) {
+      elFleet.innerHTML = `${summary.totalVehicles || 0} <span class="kpi-unit-sub">Vans Active</span>`;
+    }
+    if (elCap) {
+      elCap.textContent = `Cap: ${this.simParams.vehicle_capacity} units/van`;
+    }
 
     const totalRoutes = (routes || []).length;
     const onTimeRoutes = totalRoutes - (summary.lateRoutesCount || 0);
@@ -498,18 +510,23 @@ const App = {
 
     if (elDeadline) {
       if (onTimePct === 100) {
-        elDeadline.textContent = "100% On-Time";
-        elDeadline.style.color = "#34d399";
+        elDeadline.innerHTML = `100% <span class="kpi-status-chip chip-success">On-Time</span>`;
       } else {
-        elDeadline.textContent = `${onTimePct}% On-Time (${summary.lateRoutesCount} Late)`;
-        elDeadline.style.color = "#f87171";
+        elDeadline.innerHTML = `${onTimePct}% <span class="kpi-status-chip chip-late">${summary.lateRoutesCount} Late</span>`;
       }
     }
 
-    if (elCost) elCost.textContent = `INR ${Math.round(summary.totalMonthlyCostInr).toLocaleString()}`;
-    if (elCostSub) elCostSub.textContent = `-${summary.costReductionPct}% Savings vs Baseline`;
+    if (elCost) {
+      const costFormatted = Math.round(summary.totalMonthlyCostInr || 0).toLocaleString('en-IN');
+      elCost.innerHTML = `<span class="kpi-curr">₹</span>${costFormatted}`;
+    }
+    if (elCostSub) {
+      elCostSub.innerHTML = `<span class="kpi-trend-down">↓ ${summary.costReductionPct || 0}%</span> vs Pre-AMRUTA Baseline`;
+    }
 
-    if (elImpact) elImpact.textContent = `+${summary.additionalChildrenFed.toLocaleString()}`;
+    if (elImpact) {
+      elImpact.innerHTML = `+${(summary.additionalChildrenFed || 0).toLocaleString('en-IN')}`;
+    }
   }
 };
 

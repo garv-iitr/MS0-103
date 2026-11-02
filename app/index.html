@@ -197,52 +197,117 @@
       </div>
 
       <!-- Top Executive Banner Card -->
-      <div class="header-banner-card">
-        <h1 class="header-banner-title">AMRUTA Logistics Decision Support System</h1>
-        <div class="header-banner-sub">The Akshaya Patra Foundation — Vehicle Routing with Time Windows (VRPTW)</div>
-        <div class="header-badges-row">
-          <span id="badge-active-file" class="pill-badge pill-badge-green">Active: data.xlsx (100 Schools, 32,880 Children)</span>
-          <span id="badge-depot" class="pill-badge pill-badge-slate">Depot: Vasanthapura Central Kitchen (12.8881, 77.5484)</span>
-          <span id="badge-active-engine" class="pill-badge pill-badge-teal">Google OR-Tools</span>
+      <header class="header-banner-card">
+        <div class="header-banner-top">
+          <div class="header-meta-tag">
+            <span class="live-status-dot"></span>
+            <span class="meta-tag-text">LIVE DECISION SUPPORT SYSTEM • SOUTH BANGALORE</span>
+          </div>
+          <div class="header-academic-tag">INFORMS Interfaces Benchmark</div>
         </div>
-      </div>
+        
+        <div class="header-banner-main">
+          <div class="header-titles">
+            <h1 class="header-banner-title">AMRUTA Logistics Decision Support System</h1>
+            <div class="header-banner-sub">
+              The Akshaya Patra Foundation — Fixed Fleet Vehicle Routing with Time Windows (HFFVRPTW)
+            </div>
+          </div>
+        </div>
 
-      <!-- 5 KPI Cards Strip -->
-      <div class="kpi-cards-grid">
-        <div class="kpi-card">
-          <span class="kpi-card-label">Schools Serviced</span>
-          <div id="kpi-schools" class="kpi-card-value">100</div>
-          <div id="kpi-demand-sub" class="kpi-card-sub">Demand: 586.9 Units</div>
+        <div class="header-badges-row">
+          <div id="badge-active-file" class="pill-badge pill-badge-green">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span>Active: data.xlsx (100 Schools, 32,880 Children)</span>
+          </div>
+          <div id="badge-depot" class="pill-badge pill-badge-slate">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Depot: Vasanthapura Central Kitchen (12.8881, 77.5484)</span>
+          </div>
+          <div id="badge-active-engine" class="pill-badge pill-badge-teal">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Google OR-Tools</span>
+          </div>
         </div>
-        <div class="kpi-card">
-          <span class="kpi-card-label">Fleet Deployed</span>
-          <div id="kpi-fleet" class="kpi-card-value">10 Vans</div>
+      </header>
+
+      <!-- 5 High-Density Executive KPI Metrics Cards -->
+      <section class="kpi-cards-grid">
+        <!-- KPI 1: Schools Serviced -->
+        <div class="kpi-card kpi-card-cyan">
+          <div class="kpi-card-watermark">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div class="kpi-card-label">Schools Serviced</div>
+          <div id="kpi-schools" class="kpi-card-value">100 <span class="kpi-unit-sub">/ 100</span></div>
+          <div id="kpi-demand-sub" class="kpi-card-sub">Demand: 582.6 Units • 32,625 Meals</div>
+        </div>
+
+        <!-- KPI 2: Fleet Deployed -->
+        <div class="kpi-card kpi-card-blue">
+          <div class="kpi-card-watermark">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div class="kpi-card-label">Fleet Deployed</div>
+          <div id="kpi-fleet" class="kpi-card-value">10 <span class="kpi-unit-sub">Vans Active</span></div>
           <div id="kpi-cap-sub" class="kpi-card-sub">Cap: 65 units/van</div>
         </div>
-        <div class="kpi-card">
-          <span class="kpi-card-label">Delivery Deadline</span>
-          <div id="kpi-deadline" class="kpi-card-value" style="color: #34d399;">100% On-Time</div>
-          <div class="kpi-card-sub">Cutoff: 12:30 PM</div>
+
+        <!-- KPI 3: Delivery Deadline -->
+        <div class="kpi-card kpi-card-green">
+          <div class="kpi-card-watermark">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="kpi-card-label">Delivery Deadline</div>
+          <div id="kpi-deadline" class="kpi-card-value" style="color: #34d399;">
+            100% <span class="kpi-status-chip chip-success">On-Time</span>
+          </div>
+          <div class="kpi-card-sub">Cutoff: 12:30 PM • Peak: 10:48 AM</div>
         </div>
-        <div class="kpi-card">
-          <span class="kpi-card-label">Monthly Operating Cost</span>
-          <div id="kpi-cost" class="kpi-card-value">INR 299,290</div>
-          <div id="kpi-cost-sub" class="kpi-card-sub" style="color: #38bdf8;">-53.7% Savings vs Baseline</div>
+
+        <!-- KPI 4: Monthly Operating Cost -->
+        <div class="kpi-card kpi-card-amber">
+          <div class="kpi-card-watermark">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>
+          </div>
+          <div class="kpi-card-label">Monthly Operating Cost</div>
+          <div id="kpi-cost" class="kpi-card-value"><span class="kpi-curr">₹</span>4,73,490</div>
+          <div id="kpi-cost-sub" class="kpi-card-sub"><span class="kpi-trend-down">↓ 72.0%</span> vs Pre-AMRUTA Baseline</div>
         </div>
-        <div class="kpi-card">
-          <span class="kpi-card-label">Social Impact (SROI)</span>
-          <div id="kpi-impact" class="kpi-card-value" style="color: #34d399;">+2,628</div>
+
+        <!-- KPI 5: Social Impact (SROI) -->
+        <div class="kpi-card kpi-card-rose">
+          <div class="kpi-card-watermark">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div class="kpi-card-label">Social Impact (SROI)</div>
+          <div id="kpi-impact" class="kpi-card-value" style="color: #38bdf8;">+9,350</div>
           <div class="kpi-card-sub">Hungry Children Fed Daily</div>
         </div>
-      </div>
+      </section>
 
-      <!-- Horizontal Navigation Tabs -->
+      <!-- Horizontal Navigation Tabs with SVG Icons -->
       <nav class="nav-tabs-bar">
-        <button class="nav-tab-item active" data-tab="map">Operations Map & Routes</button>
-        <button class="nav-tab-item" data-tab="playground">Playground & Algorithm Lab</button>
-        <button class="nav-tab-item" data-tab="excel">Excel Data Manager</button>
-        <button class="nav-tab-item" data-tab="benchmarks">Algorithmic Benchmarks</button>
-        <button class="nav-tab-item" data-tab="manifests">Driver Trip Manifests</button>
+        <button class="nav-tab-item active" data-tab="map">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          <span>Operations Map & Routes</span>
+        </button>
+        <button class="nav-tab-item" data-tab="playground">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.1 19a2 2 0 0 0 1.7 3h12.4a2 2 0 0 0 1.7-3L14 9.31V2"></path><line x1="8" y1="2" x2="16" y2="2"></line></svg>
+          <span>Playground & Algorithm Lab</span>
+        </button>
+        <button class="nav-tab-item" data-tab="excel">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+          <span>Excel Data Manager</span>
+        </button>
+        <button class="nav-tab-item" data-tab="benchmarks">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>Algorithmic Benchmarks</span>
+        </button>
+        <button class="nav-tab-item" data-tab="manifests">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span>Driver Trip Manifests</span>
+        </button>
       </nav>
 
       <!-- TAB 1: OPERATIONS MAP & ROUTES -->
