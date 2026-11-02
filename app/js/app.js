@@ -378,9 +378,21 @@ const App = {
   },
 
   runCurrentSimulation() {
-    const schools = DataManager.currentSchools;
+    const allSchools = DataManager.currentSchools;
     const fleet = DataManager.currentFleet;
-    if (!schools || schools.length === 0 || !fleet || fleet.length === 0) return;
+    if (!allSchools || allSchools.length === 0 || !fleet || fleet.length === 0) return;
+
+    // Filter for Active schools only (Closed/Holiday schools are skipped by vehicle dispatch)
+    const schools = allSchools.filter(s => (s.status || "active").toLowerCase() !== "closed");
+
+    // Update active file badge count
+    const badgeFile = document.getElementById("badge-active-file");
+    if (badgeFile) {
+      const activeCount = schools.length;
+      const totalDemand = Math.round(schools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0));
+      const estChildren = Math.round(totalDemand * 56);
+      badgeFile.textContent = `Active: data.xlsx (${activeCount} Schools, ${estChildren.toLocaleString()} Children)`;
+    }
 
     const options = {
       k_vehicles: this.simParams.k_vehicles,
@@ -454,13 +466,14 @@ const App = {
     const elCostSub = document.getElementById("kpi-cost-sub");
     const elImpact = document.getElementById("kpi-impact");
 
-    const totalRequiredDemand = Math.round(DataManager.currentSchools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0) * 10) / 10;
+    const activeSchools = DataManager.currentSchools.filter(s => (s.status || "active").toLowerCase() !== "closed");
+    const totalRequiredDemand = Math.round(activeSchools.reduce((acc, s) => acc + (s.equivalent_demand || 0), 0) * 10) / 10;
     const totalServedDemand = Math.round((routes || []).reduce((acc, r) => acc + (r.total_demand || 0), 0) * 10) / 10;
     const unservedCount = summary.unassignedSchoolsCount || 0;
 
     if (elSchools) {
       if (unservedCount > 0) {
-        elSchools.textContent = `${summary.totalSchoolsServed} / ${DataManager.currentSchools.length}`;
+        elSchools.textContent = `${summary.totalSchoolsServed} / ${activeSchools.length}`;
       } else {
         elSchools.textContent = `${summary.totalSchoolsServed}`;
       }

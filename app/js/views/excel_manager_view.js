@@ -61,8 +61,8 @@ const ExcelManagerView = {
     `;
 
     const rowsHtml = displayed.map((s, idx) => {
-      const isClosed = idx % 10 === 0 && this.filterMode === "all";
-      const studentHeadcount = Math.round((s.equivalent_demand || 10) * 32);
+      const isClosed = (s.status || "active").toLowerCase() === "closed";
+      const studentHeadcount = s.student_headcount || Math.round((s.equivalent_demand || 10) * 56);
       const actualIdx = schools.findIndex(item => item.school_id === s.school_id);
 
       return `
@@ -89,7 +89,7 @@ const ExcelManagerView = {
           <td class="cell-eq-demand" style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-red); text-align: right;">
             ${Number(s.equivalent_demand || 0).toFixed(2)}
           </td>
-          <td style="font-family: var(--font-mono); text-align: right; color: var(--text-muted);">
+          <td class="cell-headcount" style="font-family: var(--font-mono); text-align: right; color: var(--text-muted);">
             ${studentHeadcount}
           </td>
           <td style="text-align: center;">
@@ -145,22 +145,27 @@ const ExcelManagerView = {
       const inputSambar = row.querySelector(".num-sambar");
       const inputCurd = row.querySelector(".num-curd");
       const cellEq = row.querySelector(".cell-eq-demand");
+      const cellHeadcount = row.querySelector(".cell-headcount");
+      const selectStatus = row.querySelector(".select-status");
 
       const updateDemand = () => {
         const r = parseFloat(inputRice.value) || 0;
         const s = parseFloat(inputSambar.value) || 0;
         const c = parseFloat(inputCurd.value) || 0;
         const eq = Number((r + 0.5 * s + 0.25 * c).toFixed(2));
+        const headcount = Math.round(eq * 56);
         
         school.school_name = inputName.value;
         school.rice_vessels = r;
         school.sambar_vessels = s;
         school.curd_vessels = c;
         school.equivalent_demand = eq;
-        cellEq.textContent = eq.toFixed(2);
+        school.student_headcount = headcount;
+        if (cellEq) cellEq.textContent = eq.toFixed(2);
+        if (cellHeadcount) cellHeadcount.textContent = headcount;
 
         // Live debounced recalculation
-        App.debounceSimulation();
+        App.debounceSimulation(30);
       };
 
       if (inputLat) {
@@ -183,10 +188,23 @@ const ExcelManagerView = {
         });
       }
 
-      inputName.addEventListener("change", updateDemand);
-      inputRice.addEventListener("input", updateDemand);
-      inputSambar.addEventListener("input", updateDemand);
-      inputCurd.addEventListener("input", updateDemand);
+      if (selectStatus) {
+        selectStatus.addEventListener("change", (e) => {
+          school.status = e.target.value;
+          App.debounceSimulation(30);
+        });
+      }
+
+      if (inputName) {
+        inputName.addEventListener("input", () => {
+          school.school_name = inputName.value;
+        });
+        inputName.addEventListener("change", updateDemand);
+      }
+
+      if (inputRice) inputRice.addEventListener("input", updateDemand);
+      if (inputSambar) inputSambar.addEventListener("input", updateDemand);
+      if (inputCurd) inputCurd.addEventListener("input", updateDemand);
     });
   },
 
