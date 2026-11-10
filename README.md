@@ -11,7 +11,7 @@ You can run the full demo in two ways. In the steps below, **the project folder*
 ### Step 0: Get the project
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/garv-iitr/MS0-103.git
 cd <cloned-folder-name>
 ```
 
