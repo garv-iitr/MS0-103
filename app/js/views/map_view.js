@@ -15,6 +15,8 @@ const MapView = {
   schoolMarkers: {},
   currentRoutes: [],
   activeModelName: "modern",
+  hasAutoFitted: false,
+  legendControl: null,
 
   // Curated 27-color palette for routes: high contrast, vibrant yet refined
   clusterColors: [
@@ -89,6 +91,43 @@ const MapView = {
     this.depotLayerGroup = L.layerGroup().addTo(this.leafletMap);
 
     this.renderDepotMarker();
+    this.renderMapLegend();
+    setTimeout(() => {
+      if (this.leafletMap) this.leafletMap.invalidateSize();
+    }, 100);
+  },
+
+  renderMapLegend() {
+    if (!this.leafletMap || this.legendControl) return;
+
+    this.legendControl = L.control({ position: "bottomleft" });
+    this.legendControl.onAdd = () => {
+      const div = L.DomUtil.create("div", "map-info-legend");
+      div.style.cssText = "background:rgba(15,23,42,0.92);color:#cbd5e1;padding:10px 14px;border-radius:6px;font-size:11px;line-height:1.6;border:1px solid #334155;max-width:260px;backdrop-filter:blur(4px);";
+      div.innerHTML = `
+        <div style="font-weight:700;color:#ffffff;margin-bottom:4px;font-size:12px;">Distance Model</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+          <span style="display:inline-block;width:18px;height:3px;background:#10b981;border-radius:2px;"></span>
+          <span>Euclidean approx. × circuity factor</span>
+        </div>
+        <div style="color:#94a3b8;font-size:10px;line-height:1.4;">
+          Routes are straight-line (Euclidean) paths, not road-following. Actual road distances are estimated by multiplying by the <strong style="color:#f59e0b;">Road Circuity Factor</strong> set in the sidebar. This is the AMRUTA case study method (Mahadevan et al. 2013).
+        </div>
+        <div style="margin-top:6px;border-top:1px solid #334155;padding-top:6px;">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+            <span style="display:inline-block;width:18px;height:3px;background:#3b82f6;border-radius:2px;"></span>
+            <span>Optimized route</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <span style="display:inline-block;width:18px;height:3px;background:#64748b;border-radius:2px;border-top:2px dashed #64748b;"></span>
+            <span>Baseline (ad-hoc) route</span>
+          </div>
+        </div>
+      `;
+      L.DomEvent.disableClickPropagation(div);
+      return div;
+    };
+    this.legendControl.addTo(this.leafletMap);
   },
 
   renderDepotMarker() {
@@ -157,6 +196,9 @@ const MapView = {
 
     if (this.leafletMap) {
       this.renderLeafletRoutes();
+      setTimeout(() => {
+        if (this.leafletMap) this.leafletMap.invalidateSize();
+      }, 50);
     } else {
       this.renderCanvasRoutes();
     }
@@ -188,10 +230,12 @@ const MapView = {
         dashArray: this.activeModelName === "baseline" ? "4, 6" : null
       }).addTo(this.routeLayerGroup);
 
+      const circuity = (typeof App !== "undefined" && App.simParams) ? App.simParams.circuity_factor : 1.35;
+      const euclideanDist = (route.distance_km / circuity).toFixed(1);
       poly.bindTooltip(`
         <strong>Route #${route.cluster_id} (${route.vehicle_type})</strong><br>
-        Distance: ${route.distance_km} km | Time: ${route.elapsed_time_min} mins<br>
-        Schools: ${route.schools_count} | Demand: ${route.total_demand} units
+        Straight-line dist: ${euclideanDist} km · Est. road dist: ${route.distance_km} km (×${circuity})<br>
+        Time: ${route.elapsed_time_min} mins | Schools: ${route.schools_count} | Demand: ${route.total_demand} units
       `, { sticky: true });
 
       // Active school circle markers
@@ -267,18 +311,21 @@ const MapView = {
       }
     });
 
-    // Auto-frame map bounds around all routes and depot for optimal presentation
-    const allCoords = [[depot.lat, depot.lng]];
-    this.currentRoutes.forEach(route => {
-      (route.stops || []).forEach(s => {
-        allCoords.push([s.latitude, s.longitude]);
+    // Auto-frame map bounds only on first render to avoid resetting user's zoom/pan
+    if (!this.hasAutoFitted) {
+      const allCoords = [[depot.lat, depot.lng]];
+      this.currentRoutes.forEach(route => {
+        (route.stops || []).forEach(s => {
+          allCoords.push([s.latitude, s.longitude]);
+        });
       });
-    });
-    if (allCoords.length > 1 && this.leafletMap) {
-      try {
-        this.leafletMap.fitBounds(allCoords, { padding: [35, 35], maxZoom: 13 });
-      } catch (e) {
-        // Safe fallback
+      if (allCoords.length > 1 && this.leafletMap) {
+        try {
+          this.leafletMap.fitBounds(allCoords, { padding: [35, 35], maxZoom: 13 });
+          this.hasAutoFitted = true;
+        } catch (e) {
+          // Safe fallback
+        }
       }
     }
   },
@@ -295,7 +342,7 @@ const MapView = {
     const rowsHtml = this.currentRoutes.map((r, idx) => {
       const isLate = !r.is_within_time_window;
       const lastStop = r.stops && r.stops.length > 1 ? r.stops[r.stops.length - 1] : null;
-      const lastETA = lastStop ? lastStop.arrival_clock : "10:30 AM";
+      const lastETA = lastStop ? lastStop.arrival_clock : "N/A";
 
       return `
         <tr>

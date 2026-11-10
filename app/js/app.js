@@ -33,8 +33,10 @@ const App = {
     await DataManager.init();
     DataManager.setDepotCoordinates(DataManager.depot.lat, DataManager.depot.lng);
 
-    // 2. Load default 100-school dataset & fleet
+    // 2. Load default 100-school dataset & fleet (without running simulation yet)
+    this._skipSimulation = true;
     await this.switchDatasetByScale(100);
+    this._skipSimulation = false;
 
     // 3. Initialize Map View
     MapView.init("map-container");
@@ -47,7 +49,7 @@ const App = {
     ExcelManagerView.bindEvents();
     this.updateSidebarSchoolSelector();
 
-    // 5. Initial Simulation Run
+    // 5. Initial Simulation Run (now that map is ready)
     this.runCurrentSimulation();
   },
 
@@ -60,6 +62,7 @@ const App = {
 
   async switchDatasetByScale(scale = 100) {
     this.currentScale = scale;
+    if (typeof MapView !== "undefined") MapView.hasAutoFitted = false;
 
     if (typeof EMBEDDED_DATA !== "undefined") {
       let selectedSchools = [];
@@ -108,7 +111,7 @@ const App = {
     }
 
     this.updateSidebarSchoolSelector();
-    this.runCurrentSimulation();
+    if (!this._skipSimulation) this.runCurrentSimulation();
     ExcelManagerView.render();
   },
 
@@ -175,7 +178,7 @@ const App = {
         if (badgeEngine) {
           let name = "Google OR-Tools";
           if (this.currentModel === "amruta") name = "Classical AMRUTA";
-          else if (this.currentModel === "adhoc") name = "Pre-AMRUTA (Ad-Hoc)";
+          else if (this.currentModel === "baseline") name = "Pre-AMRUTA (Ad-Hoc)";
           const span = badgeEngine.querySelector("span");
           if (span) span.textContent = name;
           else badgeEngine.textContent = name;
@@ -427,6 +430,7 @@ const App = {
     if (btnResetDepot) {
       btnResetDepot.addEventListener("click", () => {
         DataManager.setDepotCoordinates(12.88812, 77.54838);
+        if (typeof MapView !== "undefined") MapView.hasAutoFitted = false;
         this.debounceSimulation(20);
       });
     }
@@ -435,6 +439,7 @@ const App = {
     if (btnHkHill) {
       btnHkHill.addEventListener("click", () => {
         DataManager.setDepotCoordinates(12.99040, 77.55180);
+        if (typeof MapView !== "undefined") MapView.hasAutoFitted = false;
         this.debounceSimulation(20);
       });
     }
@@ -546,7 +551,12 @@ const App = {
     const contents = ["map", "playground", "excel", "benchmarks", "manifests"];
     contents.forEach(c => {
       const el = document.getElementById(`tab-content-${c}`);
-      if (el) el.style.display = (c === tabName) ? "flex" : "none";
+      if (!el) return;
+      if (c !== tabName) {
+        el.style.display = "none";
+      } else {
+        el.style.display = (c === "map" || c === "manifests" || c === "excel") ? "flex" : "block";
+      }
     });
 
     if (tabName === "map") {
@@ -575,6 +585,16 @@ const App = {
       const st = (s.status || "active").toLowerCase();
       return st !== "closed" && st !== "holiday";
     });
+
+    // Handle edge case: all schools are on holiday
+    if (schools.length === 0) {
+      this.results.modern = { model: "Google OR-Tools", kDeployed: 0, routes: [], summary: { totalVehicles: 0, totalDistanceKm: 0, totalSchoolsServed: 0, unassignedSchoolsCount: 0, maxElapsedMinutes: 0, avgElapsedMinutes: 0, totalMonthlyCostInr: 0, totalMonthlyCostUsd: 0, lateRoutesCount: 0, costReductionPct: 100, additionalChildrenFed: 0 } };
+      this.results.amruta = { model: "Classical AMRUTA", kDeployed: 0, routes: [], summary: this.results.modern.summary };
+      this.results.baseline = { model: "Pre-AMRUTA Baseline", kDeployed: 0, routes: [], summary: this.results.modern.summary };
+      MapView.updateRoutes([], this.currentModel);
+      this.updateKPICards(this.results.modern.summary, []);
+      return;
+    }
 
     // Update active file badge count
     const badgeFile = document.getElementById("badge-active-file");

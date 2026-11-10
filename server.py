@@ -171,7 +171,7 @@ def run_server(port=PORT):
     # Try preferred port, if in use try next
     for p in [port, 8080, 8888, 9000]:
         try:
-            with socketserver.TCPServer(("", p), CustomHandler) as httpd:
+            with http.server.ThreadingHTTPServer(("", p), CustomHandler) as httpd:
                 print(f"=== MSO-103 OR Decision Support Server Running ===")
                 print(f"URL: http://localhost:{p}")
                 print(f"Serving app from: {APP_DIR}")

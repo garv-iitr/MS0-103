@@ -34,16 +34,21 @@ const TripSheetView = {
 
     // Populate Blue Banner
     if (bannerEl) {
-      const lastStop = route.stops && route.stops.length > 0 ? route.stops[route.stops.length - 1] : null;
-      const finalReturn = lastStop ? lastStop.arrival_clock : "11:00 AM";
-      bannerEl.textContent = `Vehicle: ${route.vehicle_type || 'Max Pikup'} | Schools: ${route.schools_count} | Total Distance: ${route.distance_km} km | Final Depot Return: ${finalReturn}`;
+      const totalMins = route.elapsed_time_min || 0;
+      const returnHours = 8 + Math.floor(totalMins / 60);
+      const returnMins = Math.floor(totalMins % 60);
+      const ampm = returnHours >= 12 ? "PM" : "AM";
+      const dispH = returnHours > 12 ? returnHours - 12 : (returnHours === 0 ? 12 : returnHours);
+      const depotReturnClock = `${dispH}:${String(returnMins).padStart(2, "0")} ${ampm}`;
+      bannerEl.textContent = `Vehicle: ${route.vehicle_type || 'Max Pikup'} | Schools: ${route.schools_count} | Total Distance: ${route.distance_km} km | Final Depot Return: ${depotReturnClock}`;
     }
 
     // Populate Stops Table (Stop #, School / Stop Name, Arrival Clock, Late Status)
     if (tbodyEl) {
       const stopsHtml = (route.stops || []).map(s => {
         const isDepot = s.stop_seq === 0;
-        const isLate = s.arrival_time_min > 270;
+        const cutoff = (typeof App !== "undefined" && App.simParams) ? App.simParams.cutoff_minutes : 270;
+        const isLate = s.arrival_time_min > cutoff;
         return `
           <tr>
             <td style="font-family: var(--font-mono); font-weight: 700; color: var(--text-muted); text-align: center;">${s.stop_seq}</td>

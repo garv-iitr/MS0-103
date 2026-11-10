@@ -82,7 +82,8 @@ const CostEvaluator = {
       const elapsed = r.elapsed_time_min || 0;
       if (elapsed > maxElapsed) maxElapsed = elapsed;
       sumElapsed += elapsed;
-      if (elapsed > 270) lateRoutesCount++; // cutoff 12:30 PM (270 min from 08:00 AM)
+      const cutoffMins = customSettings.cutoffMins || 270;
+      if (elapsed > cutoffMins) lateRoutesCount++;
       
       const mileage = r.vehicle_type === "Max Pikup" ? 6.0 : (r.vehicle_type === "Tata" || r.vehicle_type === "Eicher" ? 3.0 : 4.0);
       totalDieselLitresMonth += ((r.distance_km || 0) / mileage) * workingDays;

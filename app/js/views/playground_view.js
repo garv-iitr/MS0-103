@@ -368,7 +368,8 @@ const PlaygroundView = {
       if (!activeRes) return;
 
       const s = activeRes.summary;
-      const isLate = s.maxElapsedMinutes > 270;
+      const cutoff = (typeof App !== "undefined" && App.simParams) ? App.simParams.cutoff_minutes : 270;
+      const isLate = s.maxElapsedMinutes > cutoff;
 
       const resultsBox = document.getElementById("stress-test-results-box");
       resultsBox.innerHTML = `

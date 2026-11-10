@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amruta - Rice Team | Logistics Decision Support System</title>
   
-  <!-- Leaflet CSS & JS for OpenStreetMap tile rendering -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Leaflet CSS & JS (Local zero-dependency bundle) -->
+  <link rel="stylesheet" href="css/leaflet.css">
+  <script src="js/leaflet.js"></script>
   
   <!-- Modern Dark Theme Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
@@ -52,7 +52,7 @@
               <span class="help-icon" title="Rack capacity threshold per vehicle (Units)">?</span>
             </span>
             <div class="control-input-pill">
-              <input type="number" id="input-cap-limit" min="20" max="500" step="1" value="65" class="control-num-input" title="Type to set capacity manually">
+              <input type="number" id="input-cap-limit" min="24" max="420" step="1" value="65" class="control-num-input" title="Type to set capacity manually">
               <span class="control-unit-badge">U</span>
             </div>
           </div>
@@ -72,7 +72,7 @@
               <span class="help-icon" title="Number of delivery vans deployed from the fixed fleet">?</span>
             </span>
             <div class="control-input-pill">
-              <input type="number" id="input-k-fleet" min="1" max="50" step="1" value="10" class="control-num-input" title="Type to set fleet size manually">
+              <input type="number" id="input-k-fleet" min="5" max="35" step="1" value="10" class="control-num-input" title="Type to set fleet size manually">
               <span class="control-unit-badge">vans</span>
             </div>
           </div>
@@ -97,7 +97,7 @@
               <span class="help-icon" title="Empirical road transit speed accounting for urban congestion (km/h)">?</span>
             </span>
             <div class="control-input-pill">
-              <input type="number" id="input-speed" min="10" max="60" step="0.5" value="24" class="control-num-input" title="Type to set delivery speed manually">
+              <input type="number" id="input-speed" min="15" max="40" step="0.5" value="24" class="control-num-input" title="Type to set delivery speed manually">
               <span class="control-unit-badge">km/h</span>
             </div>
           </div>
@@ -141,7 +141,7 @@
               <div class="control-header">
                 <span class="control-label">Road Circuity Multiplier</span>
                 <div class="control-input-pill">
-                  <input type="number" id="input-circuity" min="1.0" max="2.5" step="0.01" value="1.35" class="control-num-input" style="width: 44px;" title="Type to set circuity factor manually">
+                  <input type="number" id="input-circuity" min="1.0" max="1.8" step="0.01" value="1.35" class="control-num-input" style="width: 44px;" title="Type to set circuity factor manually">
                   <span class="control-unit-badge">x</span>
                 </div>
               </div>
@@ -520,7 +520,7 @@
 
         <!-- Action Buttons -->
         <div class="manifest-actions-row">
-          <button id="btn-export-trip-excel" class="btn-dark-secondary">Export to Excel (.xlsx)</button>
+          <button id="btn-export-trip-excel" class="btn-dark-secondary">Export CSV (Excel-Compatible)</button>
           <button id="btn-export-trip-csv" class="btn-dark-secondary">Export CSV</button>
           <button id="btn-print-trip-slip" class="btn-dark-secondary" style="border-color: #3b82f6; color: #93c5fd;">Print Driver Trip Sheet</button>
         </div>
