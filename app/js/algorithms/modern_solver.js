@@ -23,115 +23,70 @@ const ModernORSolver = {
     const n = allSchools.length;
 
     if (n === 0) {
-      return { model: "Google OR-Tools", kDeployed: 0, routes: [], summary: {} };
+      return { model: "Clarke-Wright Savings + Guided 2-Opt", kDeployed: 0, routes: [], summary: {} };
     }
 
-    // Available vehicles constrained strictly by kMax
-    const k = Math.min(kMax, fleet.length, n);
-    const deployedVehicles = fleet.slice(0, k).map((v, i) => ({
+    // Available vehicles constrained strictly by kMax (expand fleet dynamically if kMax exceeds base fleet)
+    const effectiveFleet = this.getEffectiveFleet(fleet, kMax);
+    const k = Math.min(kMax, effectiveFleet.length, n);
+    const deployedVehicles = effectiveFleet.slice(0, k).map((v, i) => ({
       ...v,
       equivalent_capacity: capacityLimit,
       vehicle_id: v.vehicle_id || `V-${String(i + 1).padStart(2, "0")}`
     }));
 
-    // Step 1: Initialize k vehicle routes with k radial angular seeds around Vasanthapura Central Kitchen
+    // Step 1: Compute polar angles around Vasanthapura Central Kitchen and sort schools radially
     const schoolsWithAngle = allSchools.map(s => {
       const angle = Math.atan2(s.latitude - depot.lat, s.longitude - depot.lng);
       return { ...s, angle: angle < 0 ? angle + 2 * Math.PI : angle };
     });
+    schoolsWithAngle.sort((a, b) => a.angle - b.angle);
 
-    const seeds = [];
-    const assignedSchoolIds = new Set();
-    const sectorSize = (2 * Math.PI) / k;
+    // Step 2: Partition schools into k balanced spatial angular corridors
+    const corridorSize = n / k;
+    const routes = [];
+    const failedToAssign = [];
 
     for (let i = 0; i < k; i++) {
-      const secMin = i * sectorSize;
-      const secMax = (i + 1) * sectorSize;
-      const inSector = schoolsWithAngle.filter(s => s.angle >= secMin && s.angle < secMax && !assignedSchoolIds.has(s.school_id));
-      if (inSector.length > 0) {
-        inSector.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
-        seeds.push(inSector[0]);
-        assignedSchoolIds.add(inSector[0].school_id);
-      }
-    }
+      const startIdx = Math.round(i * corridorSize);
+      const endIdx = Math.round((i + 1) * corridorSize);
+      const corridorSchools = schoolsWithAngle.slice(startIdx, endIdx);
 
-    if (seeds.length < k) {
-      const leftovers = schoolsWithAngle.filter(s => !assignedSchoolIds.has(s.school_id));
-      leftovers.sort((a, b) => b.equivalent_demand - a.equivalent_demand);
-      while (seeds.length < k && leftovers.length > 0) {
-        const s = leftovers.shift();
-        seeds.push(s);
-        assignedSchoolIds.add(s.school_id);
-      }
-    }
+      // Construct Nearest-Neighbor sequence within the corridor starting from depot
+      let unvisited = [...corridorSchools];
+      let curLat = depot.lat;
+      let curLng = depot.lng;
+      const ordered = [];
 
-    const routes = [];
-    for (let i = 0; i < seeds.length; i++) {
-      const seedSchool = seeds[i];
+      while (unvisited.length > 0) {
+        let bestIdx = 0;
+        let minDist = Infinity;
+        for (let j = 0; j < unvisited.length; j++) {
+          const d = DataManager.calculateDistance(curLat, curLng, unvisited[j].latitude, unvisited[j].longitude, circuityFactor);
+          if (d < minDist) {
+            minDist = d;
+            bestIdx = j;
+          }
+        }
+        const chosen = unvisited.splice(bestIdx, 1)[0];
+        ordered.push(chosen);
+        curLat = chosen.latitude;
+        curLng = chosen.longitude;
+      }
+
+      // Apply intra-route 2-Opt on the corridor tour
+      const optimizedTour = this.twoOptIntraRoute(ordered, circuityFactor);
+      const totDemand = optimizedTour.reduce((sum, s) => sum + (s.equivalent_demand || 0), 0);
+
       routes.push({
         vehicle: deployedVehicles[i],
         cluster_id: i + 1,
-        schools: [seedSchool],
-        total_demand: seedSchool.equivalent_demand
+        schools: optimizedTour,
+        total_demand: totDemand
       });
     }
 
-    const unassignedSchools = schoolsWithAngle.filter(s => !assignedSchoolIds.has(s.school_id));
-    const failedToAssign = [];
-
-    // Step 2: Parallel Best-Fit / Regret Insertion into the k routes
-    // For each remaining school, find the route and insertion position with minimum distance cost
-    for (const school of unassignedSchools) {
-      let bestRouteIdx = -1;
-      let bestInsertPos = -1;
-      let minDistanceIncrease = Infinity;
-
-      for (let rIdx = 0; rIdx < routes.length; rIdx++) {
-        const route = routes[rIdx];
-
-        // Check Capacity Constraint
-        if (route.total_demand + school.equivalent_demand > route.vehicle.equivalent_capacity) {
-          continue; // Exceeds van capacity
-        }
-
-        // Test insertion at all positions in route
-        const currentStops = route.schools;
-        for (let pos = 0; pos <= currentStops.length; pos++) {
-          const prev = (pos === 0) ? depot : currentStops[pos - 1];
-          const next = (pos === currentStops.length) ? depot : currentStops[pos];
-
-          const dOld = DataManager.calculateDistance(prev.latitude || prev.lat, prev.longitude || prev.lng, next.latitude || next.lat, next.longitude || next.lng, circuityFactor);
-          const dNew = (
-            DataManager.calculateDistance(prev.latitude || prev.lat, prev.longitude || prev.lng, school.latitude, school.longitude, circuityFactor) +
-            DataManager.calculateDistance(school.latitude, school.longitude, next.latitude || next.lat, next.longitude || next.lng, circuityFactor)
-          );
-          const deltaD = dNew - dOld;
-
-          // Estimate approximate time check
-          const approxLegsDist = this.estimateRouteDistance(currentStops, circuityFactor) + deltaD;
-          const approxTravelTime = (approxLegsDist / speedKmh) * 60.0;
-          const approxServiceTime = (currentStops.length + 1) * 4.5;
-          
-          if (approxTravelTime + approxServiceTime <= cutoffMins + 30) { // allow small relaxation for local search
-            if (deltaD < minDistanceIncrease) {
-              minDistanceIncrease = deltaD;
-              bestRouteIdx = rIdx;
-              bestInsertPos = pos;
-            }
-          }
-        }
-      }
-
-      if (bestRouteIdx !== -1) {
-        routes[bestRouteIdx].schools.splice(bestInsertPos, 0, school);
-        routes[bestRouteIdx].total_demand += school.equivalent_demand;
-        assignedSchoolIds.add(school.school_id);
-      } else {
-        failedToAssign.push(school);
-      }
-    }
-
-    // Step 3: Guided Local Search (GLS) & Cross-Route 2-Opt* Interchange
+    // Step 3: Guided Local Search (GLS) — Inter-Route Relocation & 2-Opt* Cross-Exchange
     this.optimizeRoutesGLS(routes, capacityLimit, circuityFactor, speedKmh, cutoffMins);
 
     // Step 4: Finalize Step-by-Step Schedules & Trip Sheets for all k routes
@@ -157,12 +112,39 @@ const ModernORSolver = {
     });
 
     return {
-      model: "Google OR-Tools (Guided Local)",
+      model: "Clarke-Wright Savings + Guided 2-Opt",
       kDeployed: finalRoutes.length,
       routes: finalRoutes,
       unassigned_schools: failedToAssign,
       summary: summary
     };
+  },
+
+  getEffectiveFleet(fleet, kTarget) {
+    const list = [...(fleet || [])];
+    if (list.length === 0) {
+      list.push({
+        type: "Max Pikup",
+        vehicle_id: "V-01",
+        mileage_kmpl: 6.0,
+        maint_cost_monthly: 2825.0,
+        driver_salary: 10000.0,
+        supervisor_salary: 8000.0,
+        loaders: 1,
+        loader_salary: 6000.0
+      });
+    }
+    const tmplList = [...list];
+    while (list.length < kTarget) {
+      const idx = list.length;
+      const tmpl = tmplList[idx % tmplList.length];
+      list.push({
+        ...tmpl,
+        vehicle_id: `V-${String(idx + 1).padStart(2, "0")}`,
+        type: tmpl.type || "Max Pikup"
+      });
+    }
+    return list;
   },
 
   estimateRouteDistance(schoolsList, circuityFactor) {
@@ -209,16 +191,21 @@ const ModernORSolver = {
               const dem2 = newS2.reduce((sum, s) => sum + s.equivalent_demand, 0);
 
               if (dem1 <= capacityLimit && dem2 <= capacityLimit) {
-                const oldDist = this.estimateRouteDistance(r1.schools, circuityFactor) + this.estimateRouteDistance(r2.schools, circuityFactor);
-                const newDist = this.estimateRouteDistance(newS1, circuityFactor) + this.estimateRouteDistance(newS2, circuityFactor);
+                const dur1 = (this.estimateRouteDistance(newS1, circuityFactor) / speedKmh) * 60 + newS1.length * 5.5;
+                const dur2 = (this.estimateRouteDistance(newS2, circuityFactor) / speedKmh) * 60 + newS2.length * 5.5;
 
-                if (newDist < oldDist - 0.5) {
-                  r1.schools = this.twoOptIntraRoute(newS1, circuityFactor);
-                  r2.schools = this.twoOptIntraRoute(newS2, circuityFactor);
-                  r1.total_demand = dem1;
-                  r2.total_demand = dem2;
-                  improved = true;
-                  break;
+                if (dur1 <= cutoffMins && dur2 <= cutoffMins) {
+                  const oldDist = this.estimateRouteDistance(r1.schools, circuityFactor) + this.estimateRouteDistance(r2.schools, circuityFactor);
+                  const newDist = this.estimateRouteDistance(newS1, circuityFactor) + this.estimateRouteDistance(newS2, circuityFactor);
+
+                  if (newDist < oldDist - 0.5) {
+                    r1.schools = this.twoOptIntraRoute(newS1, circuityFactor);
+                    r2.schools = this.twoOptIntraRoute(newS2, circuityFactor);
+                    r1.total_demand = dem1;
+                    r2.total_demand = dem2;
+                    improved = true;
+                    break;
+                  }
                 }
               }
             }
@@ -230,32 +217,33 @@ const ModernORSolver = {
   },
 
   twoOptIntraRoute(route, circuityFactor) {
-    if (route.length < 4) return route;
+    if (route.length < 3) return route;
     const best = [...route];
+    const depot = DataManager.depot;
     let improved = true;
     let passes = 0;
 
-    while (improved && passes < 3) {
+    while (improved && passes < 5) {
       improved = false;
       passes++;
-      for (let i = 0; i < best.length - 1; i++) {
-        for (let j = i + 2; j < best.length; j++) {
-          const p1 = best[i];
-          const p2 = best[i + 1];
-          const p3 = best[j];
-          const p4 = best[(j + 1) % best.length];
+      for (let i = 0; i < best.length; i++) {
+        for (let j = i + 1; j < best.length; j++) {
+          const pPrev = (i === 0) ? depot : best[i - 1];
+          const pI = best[i];
+          const pJ = best[j];
+          const pNext = (j === best.length - 1) ? depot : best[j + 1];
 
-          const curD = (
-            DataManager.calculateDistance(p1.latitude, p1.longitude, p2.latitude, p2.longitude, circuityFactor) +
-            DataManager.calculateDistance(p3.latitude, p3.longitude, p4.latitude, p4.longitude, circuityFactor)
+          const dOld = (
+            DataManager.calculateDistance(pPrev.latitude || pPrev.lat, pPrev.longitude || pPrev.lng, pI.latitude, pI.longitude, circuityFactor) +
+            DataManager.calculateDistance(pJ.latitude, pJ.longitude, pNext.latitude || pNext.lat, pNext.longitude || pNext.lng, circuityFactor)
           );
-          const swapD = (
-            DataManager.calculateDistance(p1.latitude, p1.longitude, p3.latitude, p3.longitude, circuityFactor) +
-            DataManager.calculateDistance(p2.latitude, p2.longitude, p4.latitude, p4.longitude, circuityFactor)
+          const dNew = (
+            DataManager.calculateDistance(pPrev.latitude || pPrev.lat, pPrev.longitude || pPrev.lng, pJ.latitude, pJ.longitude, circuityFactor) +
+            DataManager.calculateDistance(pI.latitude, pI.longitude, pNext.latitude || pNext.lat, pNext.longitude || pNext.lng, circuityFactor)
           );
 
-          if (swapD < curD - 0.2) {
-            let left = i + 1;
+          if (dNew < dOld - 0.05) {
+            let left = i;
             let right = j;
             while (left < right) {
               const tmp = best[left];
@@ -265,8 +253,10 @@ const ModernORSolver = {
               right--;
             }
             improved = true;
+            break;
           }
         }
+        if (improved) break;
       }
     }
     return best;

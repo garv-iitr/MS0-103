@@ -221,7 +221,7 @@ const MapView = {
             </table>
             <div style="margin-top:8px; padding-top:6px; border-top:1px solid #e2e8f0;">
               <button onclick="MapView.toggleSchoolStatusById(${stop.school_id})" style="width:100%; background:#fee2e2; border:1px solid #fca5a5; color:#991b1b; font-size:11px; font-weight:600; padding:4px 6px; border-radius:4px; cursor:pointer;">
-                ⏸ Mark as Closed (Holiday)
+                Mark as Closed (Holiday)
               </button>
             </div>
           </div>
@@ -259,7 +259,7 @@ const MapView = {
             </table>
             <div style="margin-top:8px; padding-top:6px; border-top:1px solid #e2e8f0;">
               <button onclick="MapView.toggleSchoolStatusById(${s.school_id})" style="width:100%; background:#dcfce7; border:1px solid #86efac; color:#166534; font-size:11px; font-weight:600; padding:4px 6px; border-radius:4px; cursor:pointer;">
-                ▶ Mark as Active (Include in Routes)
+                Mark as Active (Include in Routes)
               </button>
             </div>
           </div>

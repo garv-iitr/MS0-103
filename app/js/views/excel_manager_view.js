@@ -95,8 +95,8 @@ const ExcelManagerView = {
           </td>
           <td style="text-align: center;">
             <select class="excel-inline-input select-status ${isHol ? 'status-holiday' : 'status-active'}" style="width: 112px; font-size: 12px; font-weight: 700; border-radius: 4px; padding: 4px 6px; cursor: pointer; text-align: center;" title="Click to toggle between Active and Holiday for this school">
-              <option value="Active" ${!isHol ? 'selected' : ''}>🟢 Active</option>
-              <option value="Holiday" ${isHol ? 'selected' : ''}>🔴 Holiday</option>
+              <option value="Active" ${!isHol ? 'selected' : ''}>Active</option>
+              <option value="Holiday" ${isHol ? 'selected' : ''}>Holiday</option>
             </select>
           </td>
           <td class="cell-eq-demand" style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-red); text-align: right;">
@@ -287,24 +287,7 @@ const ExcelManagerView = {
       });
     }
 
-    // Excel Toolbar Quick Holiday & Active Batch Controls
-    const btnRandHol = document.getElementById("btn-excel-random-holiday");
-    if (btnRandHol) {
-      btnRandHol.addEventListener("click", () => {
-        const schools = DataManager.currentSchools || [];
-        schools.forEach(s => { s.status = "Active"; });
-        const shuffled = [...schools].sort(() => 0.5 - Math.random());
-        for (let i = 0; i < Math.min(5, shuffled.length); i++) {
-          shuffled[i].status = "Holiday";
-        }
-        this.renderGrid();
-        if (typeof App !== "undefined" && App.updateSidebarSchoolSelector) {
-          App.updateSidebarSchoolSelector();
-        }
-        App.runCurrentSimulation();
-      });
-    }
-
+    // Excel Toolbar Quick Active Batch Controls
     const btnSetAllActive = document.getElementById("btn-excel-set-all-active");
     if (btnSetAllActive) {
       btnSetAllActive.addEventListener("click", () => {

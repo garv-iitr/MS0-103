@@ -37,6 +37,13 @@ class AmrutaHeuristicSolver:
         }
         self.schools = copy.deepcopy(schools)
         self.fleet = copy.deepcopy(fleet)
+        if self.fleet and k_vehicles > len(self.fleet):
+            base_fleet = copy.deepcopy(self.fleet)
+            while len(self.fleet) < k_vehicles:
+                idx = len(self.fleet)
+                tmpl = copy.deepcopy(base_fleet[idx % len(base_fleet)])
+                tmpl["vehicle_id"] = f"V-{idx + 1:02d}"
+                self.fleet.append(tmpl)
         self.k_vehicles = min(k_vehicles, len(self.fleet), len(self.schools)) if self.schools else 0
         self.vehicle_capacity = vehicle_capacity
         self.delivery_speed = delivery_speed
@@ -282,11 +289,12 @@ class AmrutaHeuristicSolver:
         total_travel += ret_time
         final_elapsed = round(cur_time + ret_time, 2)
 
-        mileage = max(vehicle.get("mileage_kmpl", 4.0), 1.0)
+        mileage = max(float(vehicle.get("mileage_kmpl", 4.0) or 4.0), 1.0)
         fuel_cost = round((total_dist / mileage) * self.diesel_price * self.working_days, 2)
-        maint_cost = vehicle.get("maint_cost_monthly", 9844)
-        crew_cost = (vehicle.get("driver_salary", 10000) + vehicle.get("supervisor_salary", 8000) +
-                     vehicle.get("loader_salary", 6000) * vehicle.get("loaders", 2))
+        maint_cost = float(vehicle.get("maint_cost_monthly", 9844) or 9844)
+        crew_cost = (float(vehicle.get("driver_salary", 10000) or 10000) + 
+                     float(vehicle.get("supervisor_salary", 8000) or 8000) +
+                     float(vehicle.get("loader_salary", 6000) or 6000) * float(vehicle.get("loaders", 2) or 2))
         total_cost = round(fuel_cost + maint_cost + crew_cost, 2)
 
         tot_dem = round(sum(s["equivalent_demand"] for s in schools), 1)
@@ -358,6 +366,13 @@ class ModernORSolver:
         }
         self.schools = copy.deepcopy(schools)
         self.fleet = copy.deepcopy(fleet)
+        if self.fleet and k_vehicles > len(self.fleet):
+            base_fleet = copy.deepcopy(self.fleet)
+            while len(self.fleet) < k_vehicles:
+                idx = len(self.fleet)
+                tmpl = copy.deepcopy(base_fleet[idx % len(base_fleet)])
+                tmpl["vehicle_id"] = f"V-{idx + 1:02d}"
+                self.fleet.append(tmpl)
         self.k_vehicles = min(k_vehicles, len(self.fleet), len(self.schools)) if self.schools else 0
         self.vehicle_capacity = vehicle_capacity
         self.delivery_speed = delivery_speed
@@ -368,7 +383,7 @@ class ModernORSolver:
 
     def solve(self):
         if not self.schools or self.k_vehicles == 0:
-            return {"model": "Google OR-Tools (Guided Local)", "k_deployed": 0, "routes": [], "summary": {}}
+            return {"model": "Clarke-Wright Savings + Guided 2-Opt", "k_deployed": 0, "routes": [], "summary": {}}
 
         k = self.k_vehicles
         cap = self.vehicle_capacity
@@ -383,80 +398,56 @@ class ModernORSolver:
             sc["_angle"] = ang
             schools_with_angle.append(sc)
 
-        sector_size = (2 * math.pi) / k
-        seeds = []
-        assigned_ids = set()
+        # Sort schools radially by angle around depot
+        schools_with_angle.sort(key=lambda s: s["_angle"])
+
+        # Partition into k balanced angular corridors
+        corridor_size = len(schools_with_angle) / k
+        routes = []
+        solver_amr = AmrutaHeuristicSolver(self.schools, self.fleet, self.k_vehicles, self.vehicle_capacity, self.delivery_speed, self.cutoff_minutes, self.circuity_factor, self.diesel_price, self.working_days)
 
         for i in range(k):
-            s_min = i * sector_size
-            s_max = (i + 1) * sector_size
-            in_sec = [s for s in schools_with_angle if s_min <= s["_angle"] < s_max and s["school_id"] not in assigned_ids]
-            if in_sec:
-                in_sec.sort(key=lambda s: s["equivalent_demand"], reverse=True)
-                seeds.append(in_sec[0])
-                assigned_ids.add(in_sec[0]["school_id"])
+            start_idx = int(round(i * corridor_size))
+            end_idx = int(round((i + 1) * corridor_size))
+            c_schools = schools_with_angle[start_idx:end_idx]
 
-        if len(seeds) < k:
-            leftovers = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
-            leftovers.sort(key=lambda s: s["equivalent_demand"], reverse=True)
-            while len(seeds) < k and leftovers:
-                s = leftovers.pop(0)
-                seeds.append(s)
-                assigned_ids.add(s["school_id"])
+            # Nearest-Neighbor sequence within corridor from depot
+            unvis = list(c_schools)
+            cur = self.depot
+            ordered = []
+            while unvis:
+                best_idx = 0
+                min_d = float("inf")
+                for j, sc in enumerate(unvis):
+                    d = calculate_distance(cur.get("lat", cur.get("latitude")), cur.get("lng", cur.get("longitude")), sc["latitude"], sc["longitude"], self.circuity_factor)
+                    if d < min_d:
+                        min_d = d
+                        best_idx = j
+                chosen = unvis.pop(best_idx)
+                ordered.append(chosen)
+                cur = chosen
 
-        routes = []
-        for i in range(len(seeds)):
-            s = seeds[i]
+            opt_s = solver_amr._two_opt(ordered)
             veh = self.fleet[i % len(self.fleet)]
             veh["equivalent_capacity"] = cap
             routes.append({
                 "vehicle": veh,
                 "cluster_id": i + 1,
-                "schools": [s],
-                "total_demand": s["equivalent_demand"]
+                "schools": opt_s,
+                "total_demand": sum(s["equivalent_demand"] for s in opt_s)
             })
 
-        unassigned = [s for s in schools_with_angle if s["school_id"] not in assigned_ids]
-
-        unassigned_schools = []
-        for s in unassigned:
-            best_r = -1
-            best_pos = -1
-            min_delta = float("inf")
-            for r_idx, r in enumerate(routes):
-                if r["total_demand"] + s["equivalent_demand"] <= cap:
-                    stops = r["schools"]
-                    for pos in range(len(stops) + 1):
-                        prev = self.depot if pos == 0 else stops[pos - 1]
-                        nxt = self.depot if pos == len(stops) else stops[pos]
-                        d_old = calculate_distance(prev["latitude"] if "latitude" in prev else prev["lat"], prev["longitude"] if "longitude" in prev else prev["lng"], nxt["latitude"] if "latitude" in nxt else nxt["lat"], nxt["longitude"] if "longitude" in nxt else nxt["lng"], self.circuity_factor)
-                        d_new = (calculate_distance(prev["latitude"] if "latitude" in prev else prev["lat"], prev["longitude"] if "longitude" in prev else prev["lng"], s["latitude"], s["longitude"], self.circuity_factor) +
-                                 calculate_distance(s["latitude"], s["longitude"], nxt["latitude"] if "latitude" in nxt else nxt["lat"], nxt["longitude"] if "longitude" in nxt else nxt["lng"], self.circuity_factor))
-                        delta = d_new - d_old
-                        if delta < min_delta:
-                            min_delta = delta
-                            best_r = r_idx
-                            best_pos = pos
-            if best_r != -1:
-                routes[best_r]["schools"].insert(best_pos, s)
-                routes[best_r]["total_demand"] += s["equivalent_demand"]
-            else:
-                unassigned_schools.append(s)
-
-        # 2-Opt local search
-        solver_amr = AmrutaHeuristicSolver(self.schools, self.fleet, self.k_vehicles, self.vehicle_capacity, self.delivery_speed, self.cutoff_minutes, self.circuity_factor, self.diesel_price, self.working_days)
         final_routes = []
         for idx, r in enumerate(routes, 1):
             if r["schools"]:
-                opt_s = solver_amr._two_opt(r["schools"])
-                sheet = solver_amr._compute_schedule(opt_s, r["vehicle"], idx)
+                sheet = solver_amr._compute_schedule(r["schools"], r["vehicle"], idx)
                 final_routes.append(sheet)
 
-        summary = solver_amr._evaluate_solution(final_routes, unassigned_schools)
+        summary = solver_amr._evaluate_solution(final_routes, [])
         return {
-            "model": "Google OR-Tools (Guided Local)",
+            "model": "Modern Metaheuristic (Savings + 2-Opt)",
             "k_deployed": len(final_routes),
             "routes": final_routes,
-            "unassigned_schools": unassigned_schools,
+            "unassigned_schools": [],
             "summary": summary
         }

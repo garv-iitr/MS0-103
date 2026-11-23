@@ -54,7 +54,8 @@ const AmrutaEngine = {
   },
 
   stage1Clustering(schools, fleet, kRequested, capacityLimit, circuityFactor) {
-    const k = Math.min(kRequested, fleet.length, schools.length);
+    const effectiveFleet = ModernORSolver.getEffectiveFleet(fleet, kRequested);
+    const k = Math.min(kRequested, effectiveFleet.length, schools.length);
     const depot = DataManager.depot;
 
     // Calculate radial bearing from depot for each school
@@ -92,7 +93,7 @@ const AmrutaEngine = {
 
     const unassigned = schoolsWithAngle.filter(s => !assignedIds.has(s.school_id));
 
-    const sortedFleet = [...fleet].slice(0, k).map((v, i) => ({
+    const sortedFleet = effectiveFleet.slice(0, k).map((v, i) => ({
       ...v,
       equivalent_capacity: capacityLimit,
       vehicle_id: v.vehicle_id || `V-${String(i + 1).padStart(2, "0")}`
@@ -165,7 +166,8 @@ const AmrutaEngine = {
 
   stage2Refinement(clusters, fleet, capacityLimit, circuityFactor) {
     // Preserves exactly k clusters without spawning extra vehicles
-    const fleetCopy = [...fleet].slice(0, clusters.length);
+    const effectiveFleet = ModernORSolver.getEffectiveFleet(fleet, clusters.length);
+    const fleetCopy = effectiveFleet.slice(0, clusters.length);
     clusters.forEach((c, i) => {
       c.vehicle = fleetCopy[i] || fleetCopy[fleetCopy.length - 1];
       c.vehicle.equivalent_capacity = capacityLimit;

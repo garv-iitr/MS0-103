@@ -1,45 +1,46 @@
 /* ==============================================================================
-   AMRUTA Logistics Decision Support System - Dark Theme Design System
-   Exact visual replica of the authentic Streamlit/OR Manager application
+   The Akshaya Patra Foundation - Midday Meal Logistics Decision Support System
+   Pure Black & Minimalist Academic Design System (MSO-103)
    Palette:
-   - Base Background: #0e1117 (Deep matte charcoal)
-   - Sidebar Background: #161922 / #13161e (with border #262a36)
-   - Cards / Containers: #1a1f2c / #1e2330 (with border #2a3142)
-   - Header Card: #151c2c (with border #1e2b45)
-   - Primary Accent: #ff4b4b (Vibrant coral-red for sliders, values, and active tabs)
-   - Accents: #10b981 (Success/Connected), #3b82f6 (Info/Vehicle Banner)
-   - Typography: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto
-   - Strictly NO emojis!
+   - Base Background: #000000 (Pure pitch black)
+   - Sidebar Background: #0a0a0a (Carbon matte)
+   - Cards / Containers: #111111 (Neutral obsidian)
+   - Header & Toolbars: #141414 (Neutral elevated dark)
+   - Borders: #1f1f1f / #262626 (Thin, crisp, non-distracting)
+   - Primary Accent: #ef4444 (Crimson red for capacity/delays)
+   - Success Accent: #22c55e (Pure emerald for feasible cost savings)
+   - Neutral Accents: #3b82f6 (Subtle slate-blue for routes), #f59e0b (Amber for cargo)
+   - Strictly NO emojis! Strictly zero blue tint!
 ============================================================================== */
 
 :root {
-  --bg-dark-body: #0e1117;
-  --bg-sidebar: #161922;
-  --bg-card: #1a1f2c;
-  --bg-card-header: #151c2c;
-  --bg-input: #131722;
-  --bg-table-header: #161a26;
-  --bg-table-row-hover: #222838;
-  --bg-table-stripe: #171c28;
+  --bg-dark-body: #000000;
+  --bg-sidebar: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-header: #141414;
+  --bg-input: #0e0e0e;
+  --bg-table-header: #141414;
+  --bg-table-row-hover: #1a1a1a;
+  --bg-table-stripe: #0d0d0d;
 
-  --border-subtle: #262a36;
-  --border-card: #2a3142;
-  --border-header: #1e2b45;
-  --border-active: #ff4b4b;
+  --border-subtle: #1f1f1f;
+  --border-card: #262626;
+  --border-header: #222222;
+  --border-active: #ffffff;
 
   --text-white: #ffffff;
-  --text-main: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  --text-main: #e5e5e5;
+  --text-muted: #888888;
+  --text-dim: #555555;
 
-  --accent-red: #ff4b4b;
-  --accent-red-hover: #ff3333;
-  --accent-green: #10b981;
-  --accent-green-bg: rgba(16, 185, 129, 0.12);
-  --accent-green-border: rgba(16, 185, 129, 0.35);
+  --accent-red: #ef4444;
+  --accent-red-hover: #dc2626;
+  --accent-green: #22c55e;
+  --accent-green-bg: rgba(34, 197, 94, 0.10);
+  --accent-green-border: rgba(34, 197, 94, 0.35);
   --accent-blue: #3b82f6;
-  --accent-blue-bg: #172554;
-  --accent-blue-border: #1e3a8a;
+  --accent-blue-bg: #111827;
+  --accent-blue-border: #1f2937;
   --accent-amber: #f59e0b;
 
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -71,33 +72,35 @@ body {
   background: var(--bg-dark-body);
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #262626;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #383838;
 }
 
 /* App Wrapper: Fixed Sidebar + Scrollable Main Content */
 .app-layout {
   display: flex;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ==============================================================================
    SIDEBAR (Left Column)
 ============================================================================== */
 .sidebar {
-  width: 320px;
-  min-width: 320px;
-  max-width: 320px;
+  width: 290px;
+  min-width: 290px;
+  max-width: 290px;
   background-color: var(--bg-sidebar);
   border-right: 1px solid var(--border-subtle);
-  padding: 22px 20px 32px;
+  padding: 18px 16px 28px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   overflow-y: auto;
   height: 100vh;
   position: sticky;
@@ -107,7 +110,7 @@ body {
 }
 
 .sidebar-collapsed .sidebar {
-  margin-left: -320px;
+  margin-left: -290px;
   opacity: 0;
   pointer-events: none;
 }
@@ -139,8 +142,8 @@ body {
   transition: all 0.15s ease;
 }
 .sidebar-toggle-btn:hover {
-  background: #202738;
-  border-color: #334155;
+  background: #181818;
+  border-color: #2c2c2c;
   color: var(--text-white);
 }
 
@@ -152,7 +155,7 @@ body {
 }
 
 .sidebar-section-title {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 10px;
@@ -189,7 +192,8 @@ body {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: #283042;
+  background: #1c1c1c;
+  border: 1px solid #282828;
   color: var(--text-muted);
   font-size: 10px;
   font-weight: bold;
@@ -200,22 +204,22 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: #111420;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0f0f0f;
+  border: 1px solid #262626;
   border-radius: 5px;
   padding: 2px 7px;
   transition: all 0.2s ease;
 }
 
 .control-input-pill:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: #151926;
+  border-color: #383838;
+  background: #141414;
 }
 
 .control-input-pill:focus-within {
-  border-color: var(--accent-red);
-  box-shadow: 0 0 0 2px rgba(255, 75, 75, 0.2);
-  background: #161b2a;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  background: #141414;
 }
 
 .control-num-input {
@@ -287,7 +291,7 @@ body {
   width: 100%;
   height: 5px;
   border-radius: 3px;
-  background: #2a3142;
+  background: #222222;
   outline: none;
   transition: background 0.2s;
   cursor: pointer;
@@ -300,7 +304,7 @@ body {
   border-radius: 50%;
   background: var(--accent-red);
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(255, 75, 75, 0.6);
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
   border: 2px solid #ffffff;
 }
 .range-slider::-moz-range-thumb {
@@ -327,7 +331,7 @@ body {
   transition: border-color 0.15s;
 }
 .styled-select:focus {
-  border-color: var(--accent-red);
+  border-color: #ffffff;
 }
 
 /* Coordinate Inputs */
@@ -345,7 +349,7 @@ body {
   transition: border-color 0.15s;
 }
 .form-coord-input:focus {
-  border-color: var(--accent-red);
+  border-color: #ffffff;
 }
 
 /* Stepper Input */
@@ -362,8 +366,8 @@ body {
   border-color: rgba(255, 255, 255, 0.25);
 }
 .stepper-input:focus-within {
-  border-color: var(--accent-red);
-  box-shadow: 0 0 0 2px rgba(255, 75, 75, 0.2);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 .stepper-btn {
   background: transparent;
@@ -377,7 +381,7 @@ body {
   transition: background 0.15s, color 0.15s;
 }
 .stepper-btn:hover {
-  background: #262e40;
+  background: #1c1c1c;
   color: var(--text-white);
 }
 .stepper-val {
@@ -415,14 +419,14 @@ body {
   transition: background 0.15s;
 }
 .collapsible-header:hover {
-  background: #1c2233;
+  background: #181818;
 }
 .collapsible-content {
   padding: 12px 10px 4px;
   border: 1px solid var(--border-card);
   border-top: none;
   border-radius: 0 0 4px 4px;
-  background: #111520;
+  background: #0f0f0f;
 }
 
 /* Sidebar Footer Buttons */
@@ -455,11 +459,14 @@ body {
 ============================================================================== */
 .main-content {
   flex: 1;
-  padding: 24px 34px 60px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 20px 24px 50px;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 18px;
 }
 
 /* Top Action Bar (Visible only when sidebar is collapsed) */
@@ -477,8 +484,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #1a2030;
-  border: 1px solid #2e384e;
+  background: #141414;
+  border: 1px solid #262626;
   color: var(--text-main);
   font-size: 13px;
   font-weight: 600;
@@ -486,28 +493,26 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
 .sidebar-expand-btn:hover {
-  background: #242d44;
-  border-color: var(--accent-red);
+  background: #202020;
+  border-color: #ffffff;
   color: var(--text-white);
 }
 
 /* ==============================================================================
-   REDESIGNED EXECUTIVE OPERATIONS COCKPIT HEADER
+   ACADEMIC OPERATIONS COCKPIT HEADER (MSO-103)
 ============================================================================== */
 .header-banner-card {
-  background: linear-gradient(180deg, #151a27 0%, #10141f 100%);
-  border: 1px solid #232b3e;
-  border-top: 1px solid #333f5a;
-  border-radius: 8px;
-  padding: 18px 24px 16px;
+  background: #0d0d0d;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  padding: 16px 22px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  gap: 10px;
 }
 
 .header-banner-top {
@@ -522,48 +527,33 @@ body {
   gap: 8px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #64748b;
+  letter-spacing: 0.05em;
+  color: #888888;
   text-transform: uppercase;
-}
-
-.live-status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  display: inline-block;
-  animation: pulse-dot 2s infinite ease-in-out;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 .header-academic-tag {
   font-size: 11px;
   font-family: var(--font-mono);
-  color: #94a3b8;
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid #334155;
+  color: #888888;
+  background: #141414;
+  border: 1px solid #262626;
   padding: 3px 9px;
   border-radius: 4px;
 }
 
 .header-banner-title {
-  font-size: 23px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.25;
 }
 
 .header-banner-sub {
-  font-size: 13.5px;
-  color: #94a3b8;
-  margin-top: 3px;
+  font-size: 12.5px;
+  color: #888888;
+  margin-top: 2px;
 }
 
 .header-badges-row {
@@ -572,97 +562,91 @@ body {
   align-items: center;
   gap: 10px;
   padding-top: 10px;
-  border-top: 1px solid #1a2030;
+  border-top: 1px solid #1c1c1c;
 }
 
 .pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   transition: all 0.15s ease;
 }
 .pill-badge-green {
-  background: rgba(16, 185, 129, 0.12);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: #0a170f;
+  color: #4ade80;
+  border: 1px solid #166534;
 }
 .pill-badge-slate {
-  background: rgba(51, 65, 85, 0.35);
-  color: #cbd5e1;
-  border: 1px solid #334155;
+  background: #141414;
+  color: #d4d4d4;
+  border: 1px solid #262626;
 }
 .pill-badge-teal {
-  background: rgba(13, 148, 136, 0.15);
-  color: #2dd4bf;
-  border: 1px solid rgba(13, 148, 136, 0.4);
+  background: #0f172a;
+  color: #60a5fa;
+  border: 1px solid #1e3a8a;
 }
 
 /* ==============================================================================
-   5 HIGH-DENSITY EXECUTIVE KPI METRICS CARDS
+   4 BALANCED HIGH-DENSITY ACADEMIC KPI METRICS CARDS
 ============================================================================== */
 .kpi-cards-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
 .kpi-card {
-  background: linear-gradient(180deg, #171c29 0%, #111420 100%);
-  border: 1px solid #232a3c;
-  border-radius: 8px;
-  padding: 15px 16px 13px;
+  background: #0c0c0c;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: border-color 0.15s ease;
 }
 
 .kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border-color: #38435b;
+  border-color: #383838;
 }
 
 /* Distinctive Top Accent Lines */
-.kpi-card-cyan { border-top: 2.5px solid #06b6d4; }
-.kpi-card-blue { border-top: 2.5px solid #3b82f6; }
-.kpi-card-green { border-top: 2.5px solid #10b981; }
-.kpi-card-amber { border-top: 2.5px solid #f59e0b; }
-.kpi-card-rose { border-top: 2.5px solid #ec4899; }
+.kpi-card-cyan { border-top: 2px solid #38bdf8; }
+.kpi-card-blue { border-top: 2px solid #3b82f6; }
+.kpi-card-green { border-top: 2px solid #22c55e; }
+.kpi-card-amber { border-top: 2px solid #f59e0b; }
 
 .kpi-card-watermark {
   position: absolute;
   right: 12px;
   top: 12px;
-  opacity: 0.10;
+  opacity: 0.08;
   pointer-events: none;
-  color: #94a3b8;
+  color: #888888;
 }
 
 .kpi-card-label {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #94a3b8;
+  letter-spacing: 0.05em;
+  color: #888888;
   z-index: 1;
 }
 
 .kpi-card-value {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   color: #ffffff;
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   line-height: 1.2;
   z-index: 1;
   display: flex;
@@ -671,38 +655,37 @@ body {
 }
 
 .kpi-unit-sub {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  color: #94a3b8;
+  color: #888888;
 }
 
 .kpi-curr {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  color: #94a3b8;
+  color: #888888;
 }
 
 .kpi-card-sub {
-  font-size: 12px;
-  color: #64748b;
+  font-size: 11.5px;
+  color: #777777;
   z-index: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
+  margin-top: 2px;
 }
 
 .kpi-status-chip {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 4px;
+  padding: 1px 6px;
+  border-radius: 3px;
   display: inline-block;
   vertical-align: middle;
 }
 .chip-success {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 .chip-late {
   background: rgba(239, 68, 68, 0.15);
@@ -711,11 +694,11 @@ body {
 }
 
 .kpi-trend-down {
-  color: #34d399;
+  color: #4ade80;
   font-weight: 600;
 }
 .kpi-trend-up {
-  color: #38bdf8;
+  color: #60a5fa;
   font-weight: 600;
 }
 
@@ -729,6 +712,13 @@ body {
   border-bottom: 1px solid #232a3c;
   padding-bottom: 2px;
   margin-bottom: 6px;
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-tabs-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-tab-item {
@@ -1007,28 +997,277 @@ body {
   gap: 10px;
 }
 
-/* Print Stylesheet for Driver Slips */
+/* Manifest Fleet Summary Cards */
+.manifest-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Sidebar Demonstration Scenario Presets */
+.btn-preset-action {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 6px;
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.btn-preset-action:hover {
+  background: var(--bg-input);
+  border-color: #475569;
+}
+
+.btn-preset-action.active {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.10);
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25);
+}
+
+.manifest-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: border-color 0.15s ease;
+}
+
+.manifest-stat-card:hover {
+  border-color: var(--border-active);
+}
+
+.manifest-stat-card .stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.manifest-stat-card .stat-value {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-white);
+  font-family: var(--font-mono);
+}
+
+/* ==============================================================================
+   RESPONSIVE DESIGN SYSTEM (Zero Side-Scroll Guarantee)
+============================================================================== */
+.benchmark-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media screen and (max-width: 1320px) {
+  .kpi-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .benchmark-matrix-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .main-content {
+    padding: 18px 20px 40px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 270px;
+    min-width: 270px;
+    max-width: 270px;
+    padding: 14px 12px 24px;
+  }
+  .sidebar-collapsed .sidebar {
+    margin-left: -270px;
+  }
+  .header-banner-title {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .sidebar-collapsed .sidebar {
+    margin-left: 0;
+    display: none;
+  }
+  .kpi-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .benchmark-matrix-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: 14px 14px 40px;
+  }
+}
+
+/* ==============================================================================
+   OFFICIAL PRINT STYLESHEET (A4 Driver Trip Manifest)
+============================================================================== */
+.print-only-manifest {
+  display: none;
+}
+
 @media print {
-  body {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Completely hide all screen web elements */
+  .app-layout,
+  .sidebar,
+  .top-action-bar,
+  .header-banner-card,
+  .kpi-cards-grid,
+  .nav-tabs-bar,
+  .map-view-container,
+  .playground-container,
+  .excel-manager-container,
+  .comparison-container,
+  .driver-manifest-container {
+    display: none !important;
+  }
+
+  /* Display ONLY the dedicated printable manifest */
+  .print-only-manifest {
+    display: block !important;
+    width: 100% !important;
     background: #ffffff !important;
     color: #000000 !important;
   }
-  .sidebar, .top-action-bar, .header-banner-card, .kpi-cards-grid, .nav-tabs-bar, .manifest-actions-row {
-    display: none !important;
+
+  .print-header {
+    text-align: center;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
   }
-  .main-content {
-    padding: 0 !important;
+
+  .print-org-name {
+    font-size: 15pt;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #000000;
   }
-  .manifest-table-wrapper {
-    border: none !important;
+
+  .print-sub-header {
+    font-size: 9pt;
+    color: #333333;
+    margin-top: 2px;
   }
-  .dark-table th {
-    background: #f1f5f9 !important;
+
+  .print-doc-title {
+    font-size: 12pt;
+    font-weight: 700;
+    margin-top: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+  .print-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px 16px;
+    border: 1px solid #000000;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    font-size: 9.5pt;
+  }
+
+  .print-manifest-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 9pt;
+  }
+
+  .print-manifest-table th {
+    background: #f0f0f0 !important;
     color: #000000 !important;
+    border: 1px solid #000000 !important;
+    padding: 6px 4px;
+    font-weight: 700;
+    text-align: center;
   }
-  .dark-table td {
+
+  .print-manifest-table td {
+    border: 1px solid #000000 !important;
+    padding: 5px 6px;
     color: #000000 !important;
-    border-bottom: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+  }
+
+  .print-summary-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+    page-break-inside: avoid;
+  }
+
+  .print-sign-box {
+    border: 1px solid #000000;
+    padding: 8px;
+    font-size: 8.5pt;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .print-sign-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 8pt;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 3px;
+  }
+
+  .print-sign-line {
+    margin-top: 28px;
+  }
+
+  .print-sign-meta {
+    font-size: 8pt;
+    color: #444444;
   }
 }
 

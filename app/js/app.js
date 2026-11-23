@@ -7,13 +7,13 @@
 const App = {
   activeTab: "map",
   currentModel: "modern", // "modern", "amruta", "baseline"
-  currentScale: 100,
+  currentScale: 530,
   debounceTimer: null,
 
-  // Operational Simulation Parameters
+  // Operational Simulation Parameters (Default matches Published Benchmark Table 4: k=27, 530 schools)
   simParams: {
-    k_vehicles: 10,
-    vehicle_capacity: 65.0,
+    k_vehicles: 27,
+    vehicle_capacity: 280.0,
     delivery_speed: 24.0,
     cutoff_minutes: 270.0, // 12:30 PM (270 min from 08:00 AM)
     circuity_factor: 1.35,
@@ -33,8 +33,8 @@ const App = {
     await DataManager.init();
     DataManager.setDepotCoordinates(DataManager.depot.lat, DataManager.depot.lng);
 
-    // 2. Load default 100-school dataset & fleet
-    await this.switchDatasetByScale(100);
+    // 2. Load published 530-school dataset & fleet
+    await this.switchDatasetByScale(530);
 
     // 3. Initialize Map View
     MapView.init("map-container");
@@ -81,7 +81,10 @@ const App = {
           }
         }
       }
-      DataManager.currentSchools = selectedSchools.map(s => ({ ...s }));
+      DataManager.currentSchools = selectedSchools.map((s, idx) => ({
+        ...s,
+        school_id: idx + 1
+      }));
       DataManager.currentFleet = (EMBEDDED_DATA.fleet || []).map(v => ({ ...v }));
     } else {
       const filename = scale > 100 ? "vasanthapura_schools_530.csv" : "vasanthapura_demo_100.csv";
@@ -90,7 +93,10 @@ const App = {
         if (resp.ok) {
           const text = await resp.text();
           const parsed = DataManager.parseCSV(text);
-          DataManager.currentSchools = parsed.slice(0, Math.min(scale, parsed.length)).map(s => ({ ...s }));
+          DataManager.currentSchools = parsed.slice(0, Math.min(scale, parsed.length)).map((s, idx) => ({
+            ...s,
+            school_id: idx + 1
+          }));
         }
       } catch (e) {
         console.warn("Failed fetching CSV, using memory state.", e);
@@ -173,9 +179,9 @@ const App = {
         this.currentModel = e.target.value;
         const badgeEngine = document.getElementById("badge-active-engine");
         if (badgeEngine) {
-          let name = "Google OR-Tools";
-          if (this.currentModel === "amruta") name = "Classical AMRUTA";
-          else if (this.currentModel === "adhoc") name = "Pre-AMRUTA (Ad-Hoc)";
+          let name = "Clarke-Wright Savings + Guided 2-Opt";
+          if (this.currentModel === "amruta") name = "Classical AMRUTA (3-Stage)";
+          else if (this.currentModel === "adhoc" || this.currentModel === "baseline") name = "Pre-AMRUTA (Ad-Hoc)";
           const span = badgeEngine.querySelector("span");
           if (span) span.textContent = name;
           else badgeEngine.textContent = name;
@@ -185,15 +191,7 @@ const App = {
     }
 
     // Helper to format minutes from 8:00 AM into 24h & 12h clock strings
-    const formatTimeFromMins = (mins) => {
-      const hours = 8 + Math.floor(mins / 60);
-      const remMins = mins % 60;
-      const timeStr24 = `${String(hours).padStart(2, '0')}:${String(remMins).padStart(2, '0')}`;
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      const dispHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
-      const clockStr12 = `${dispHours}:${String(remMins).padStart(2, '0')} ${ampm}`;
-      return { timeStr24, clockStr12 };
-    };
+    const formatTimeFromMins = (mins) => this.formatTimeFromMins(mins);
 
     // 1. Vehicle Capacity Dual Control (Slider + Manual Input)
     const sliderCap = document.getElementById("slider-cap-limit");
@@ -212,7 +210,12 @@ const App = {
       const onCapManualChange = (e) => {
         const val = parseFloat(e.target.value);
         if (!isNaN(val) && val > 0) {
-          if (sliderCap) sliderCap.value = Math.min(Math.max(val, 24), 420);
+          if (sliderCap) {
+            if (val > parseFloat(sliderCap.max)) {
+              sliderCap.max = val;
+            }
+            sliderCap.value = val;
+          }
           if (valCap) valCap.textContent = val.toFixed(2);
           this.simParams.vehicle_capacity = val;
           this.debounceSimulation();
@@ -226,6 +229,8 @@ const App = {
     const sliderK = document.getElementById("slider-k-fleet");
     const inputK = document.getElementById("input-k-fleet");
     const valK = document.getElementById("val-k-fleet");
+    const hintKMax = document.getElementById("hint-k-max");
+
     if (sliderK) {
       sliderK.addEventListener("input", (e) => {
         const val = parseInt(e.target.value, 10);
@@ -239,7 +244,13 @@ const App = {
       const onKManualChange = (e) => {
         const val = parseInt(e.target.value, 10);
         if (!isNaN(val) && val >= 1) {
-          if (sliderK) sliderK.value = Math.min(Math.max(val, 5), 35);
+          if (sliderK) {
+            if (val > parseInt(sliderK.max, 10)) {
+              sliderK.max = val;
+              if (hintKMax) hintKMax.textContent = val;
+            }
+            sliderK.value = val;
+          }
           if (valK) valK.textContent = val;
           this.simParams.k_vehicles = val;
           this.debounceSimulation();
@@ -253,6 +264,8 @@ const App = {
     const sliderSpeed = document.getElementById("slider-speed");
     const inputSpeed = document.getElementById("input-speed");
     const valSpeed = document.getElementById("val-speed");
+    const hintSpeedMax = document.getElementById("hint-speed-max");
+
     if (sliderSpeed) {
       sliderSpeed.addEventListener("input", (e) => {
         const val = parseFloat(e.target.value);
@@ -266,7 +279,13 @@ const App = {
       const onSpeedManualChange = (e) => {
         const val = parseFloat(e.target.value);
         if (!isNaN(val) && val > 0) {
-          if (sliderSpeed) sliderSpeed.value = Math.min(Math.max(val, 15), 40);
+          if (sliderSpeed) {
+            if (val > parseFloat(sliderSpeed.max)) {
+              sliderSpeed.max = val;
+              if (hintSpeedMax) hintSpeedMax.textContent = val;
+            }
+            sliderSpeed.value = val;
+          }
           if (valSpeed) valSpeed.textContent = val.toFixed(2);
           this.simParams.delivery_speed = val;
           this.debounceSimulation();
@@ -303,7 +322,7 @@ const App = {
             const mins = (h - 8) * 60 + m;
             if (mins >= 120 && mins <= 480) {
               this.simParams.cutoff_minutes = mins;
-              if (sliderCutoff) sliderCutoff.value = Math.min(Math.max(mins, 240), 330);
+              if (sliderCutoff) sliderCutoff.value = Math.min(Math.max(mins, 180), 360);
               const t = formatTimeFromMins(mins);
               if (valCutoffText) valCutoffText.textContent = t.clockStr12;
               if (valCutoff) valCutoff.textContent = t.clockStr12;
@@ -320,6 +339,8 @@ const App = {
     const sliderCircuity = document.getElementById("slider-circuity");
     const inputCircuity = document.getElementById("input-circuity");
     const valCircuity = document.getElementById("val-circuity");
+    const hintCircuityMax = document.getElementById("hint-circuity-max");
+
     if (sliderCircuity) {
       sliderCircuity.addEventListener("input", (e) => {
         const val = parseFloat(e.target.value);
@@ -333,7 +354,13 @@ const App = {
       const onCircuityManualChange = (e) => {
         const val = parseFloat(e.target.value);
         if (!isNaN(val) && val >= 1.0) {
-          if (sliderCircuity) sliderCircuity.value = Math.min(Math.max(val, 1.0), 1.8);
+          if (sliderCircuity) {
+            if (val > parseFloat(sliderCircuity.max)) {
+              sliderCircuity.max = val;
+              if (hintCircuityMax) hintCircuityMax.textContent = `${val.toFixed(1)}x`;
+            }
+            sliderCircuity.value = val;
+          }
           if (valCircuity) valCircuity.textContent = val.toFixed(2);
           this.simParams.circuity_factor = val;
           this.debounceSimulation();
@@ -443,7 +470,6 @@ const App = {
     const selectSchool = document.getElementById("select-sidebar-school");
     const btnToggleStatus = document.getElementById("btn-toggle-school-status");
     const btnZoomSchool = document.getElementById("btn-zoom-to-school");
-    const btnHoliday5 = document.getElementById("btn-holiday-random5");
     const btnActivateAll = document.getElementById("btn-activate-all-schools");
 
     if (selectSchool) {
@@ -479,23 +505,6 @@ const App = {
         }
         if (typeof MapView !== "undefined" && MapView.zoomToSchool) {
           MapView.zoomToSchool(schoolId);
-        }
-      });
-    }
-
-    if (btnHoliday5) {
-      btnHoliday5.addEventListener("click", () => {
-        const schools = DataManager.currentSchools || [];
-        if (schools.length === 0) return;
-        schools.forEach(s => { s.status = "Active"; });
-        const shuffled = [...schools].sort(() => 0.5 - Math.random());
-        for (let i = 0; i < Math.min(5, shuffled.length); i++) {
-          shuffled[i].status = "Holiday";
-        }
-        this.updateSidebarSchoolSelector();
-        this.runCurrentSimulation();
-        if (typeof ExcelManagerView !== "undefined") {
-          ExcelManagerView.renderGrid();
         }
       });
     }
@@ -543,7 +552,7 @@ const App = {
 
   switchTab(tabName) {
     this.activeTab = tabName;
-    const contents = ["map", "playground", "excel", "benchmarks", "manifests"];
+    const contents = ["map", "excel", "manifests", "benchmarks"];
     contents.forEach(c => {
       const el = document.getElementById(`tab-content-${c}`);
       if (el) el.style.display = (c === tabName) ? "flex" : "none";
@@ -558,8 +567,6 @@ const App = {
       TripSheetView.render(activeRes ? activeRes.routes : []);
     } else if (tabName === "benchmarks") {
       ComparisonView.render("comparison-container", this.results);
-    } else if (tabName === "playground") {
-      PlaygroundView.render("playground-container");
     } else if (tabName === "excel") {
       ExcelManagerView.render();
     }
@@ -656,11 +663,11 @@ const App = {
     const elFleet = document.getElementById("kpi-fleet");
     const elCap = document.getElementById("kpi-cap-sub");
     const elDeadline = document.getElementById("kpi-deadline");
+    const elCutoffSub = document.getElementById("kpi-cutoff-sub");
     const elCost = document.getElementById("kpi-cost");
     const elCostSub = document.getElementById("kpi-cost-sub");
-    const elImpact = document.getElementById("kpi-impact");
 
-    const activeSchools = DataManager.currentSchools.filter(s => {
+    const activeSchools = (DataManager.currentSchools || []).filter(s => {
       const st = (s.status || "active").toLowerCase();
       return st !== "closed" && st !== "holiday";
     });
@@ -668,6 +675,7 @@ const App = {
     const totalServedDemand = Math.round((routes || []).reduce((acc, r) => acc + (r.total_demand || 0), 0) * 10) / 10;
     const unservedCount = summary.unassignedSchoolsCount || 0;
 
+    // Card 1: Schools Serviced
     if (elSchools) {
       if (unservedCount > 0) {
         elSchools.innerHTML = `${summary.totalSchoolsServed || 0} <span class="kpi-unit-sub" style="color: #f87171;">/ ${activeSchools.length}</span>`;
@@ -675,45 +683,67 @@ const App = {
         elSchools.innerHTML = `${summary.totalSchoolsServed || 0} <span class="kpi-unit-sub">/ ${activeSchools.length}</span>`;
       }
     }
-
     if (elDemand) {
-      const approxMeals = Math.round(totalServedDemand * 56);
       if (unservedCount > 0) {
-        elDemand.innerHTML = `<span style="color: #f87171; font-weight: 600;">⚠ ${unservedCount} Unserved</span> • ${totalServedDemand} U`;
+        elDemand.innerHTML = `<span style="color: #ef4444; font-weight: 600;">${unservedCount} Residuals</span> &bull; Demand: ${totalServedDemand} U`;
       } else {
-        elDemand.innerHTML = `Demand: ${totalServedDemand} Units • ${approxMeals.toLocaleString()} Meals`;
+        elDemand.innerHTML = `100% Fulfilled &bull; Demand: ${totalServedDemand} U`;
       }
     }
 
+    // Card 2: Fleet Deployed
     if (elFleet) {
       elFleet.innerHTML = `${summary.totalVehicles || 0} <span class="kpi-unit-sub">Vans Active</span>`;
     }
     if (elCap) {
-      elCap.textContent = `Cap: ${this.simParams.vehicle_capacity} units/van`;
+      elCap.innerHTML = `Total: ${summary.totalDistanceKm || 0} km &bull; Cap: ${this.simParams.vehicle_capacity} U`;
     }
+
+    // Card 3: Delivery Deadline & Peak Clock
+    let peakMinutes = 0;
+    (routes || []).forEach(r => {
+      if (r.last_school_arrival_min && r.last_school_arrival_min > peakMinutes) {
+        peakMinutes = r.last_school_arrival_min;
+      } else if (r.elapsed_time_min && r.elapsed_time_min > peakMinutes) {
+        peakMinutes = r.elapsed_time_min;
+      }
+    });
+    if (!peakMinutes && summary.maxElapsedMinutes) {
+      peakMinutes = summary.maxElapsedMinutes;
+    }
+
+    const cutoffClock = this.formatTimeFromMins(this.simParams.cutoff_minutes).clockStr12;
+    const peakClock = this.formatTimeFromMins(peakMinutes).clockStr12;
+    const bufferMin = Math.round(this.simParams.cutoff_minutes - peakMinutes);
 
     const totalRoutes = (routes || []).length;
     const onTimeRoutes = totalRoutes - (summary.lateRoutesCount || 0);
     const onTimePct = totalRoutes > 0 ? Math.round((onTimeRoutes / totalRoutes) * 100) : 100;
 
     if (elDeadline) {
-      if (onTimePct === 100) {
-        elDeadline.innerHTML = `100% <span class="kpi-status-chip chip-success">On-Time</span>`;
+      if (summary.lateRoutesCount === 0 && onTimePct === 100) {
+        const bufferText = bufferMin > 0 ? ` (${Math.floor(bufferMin / 60)}h ${bufferMin % 60}m buffer)` : '';
+        elDeadline.innerHTML = `100% <span class="kpi-status-chip chip-success">On-Time${bufferText}</span>`;
       } else {
         elDeadline.innerHTML = `${onTimePct}% <span class="kpi-status-chip chip-late">${summary.lateRoutesCount} Late</span>`;
       }
     }
 
+    if (elCutoffSub) {
+      elCutoffSub.innerHTML = `Cutoff: ${cutoffClock} &bull; Peak: ${peakClock}`;
+    }
+
+    // Card 4: Monthly Operating Cost
     if (elCost) {
       const costFormatted = Math.round(summary.totalMonthlyCostInr || 0).toLocaleString('en-IN');
       elCost.innerHTML = `<span class="kpi-curr">₹</span>${costFormatted}`;
     }
     if (elCostSub) {
-      elCostSub.innerHTML = `<span class="kpi-trend-down">↓ ${summary.costReductionPct || 0}%</span> vs Pre-AMRUTA Baseline`;
-    }
-
-    if (elImpact) {
-      elImpact.innerHTML = `+${(summary.additionalChildrenFed || 0).toLocaleString('en-IN')}`;
+      const savingsPct = summary.costReductionPct !== undefined ? summary.costReductionPct : 0;
+      const isSaving = savingsPct >= 0;
+      const sign = isSaving ? '-' : '+';
+      const colorCls = isSaving ? 'kpi-trend-down' : 'kpi-trend-up';
+      elCostSub.innerHTML = `<span class="${colorCls}">${sign}${Math.abs(savingsPct)}%</span> vs Baseline (₹16.9L)`;
     }
   },
 
@@ -765,6 +795,108 @@ const App = {
         btnToggle.style.borderColor = "var(--border-card)";
         btnToggle.style.color = "var(--text-white)";
       }
+    }
+  },
+
+  formatTimeFromMins(mins) {
+    const hours = 8 + Math.floor(mins / 60);
+    const remMins = mins % 60;
+    const timeStr24 = `${String(hours).padStart(2, '0')}:${String(remMins).padStart(2, '0')}`;
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const dispHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+    const clockStr12 = `${dispHours}:${String(remMins).padStart(2, '0')} ${ampm}`;
+    return { timeStr24, clockStr12 };
+  },
+
+  async switchPreset(presetName) {
+    if (presetName === "published_27") {
+      this.simParams.k_vehicles = 27;
+      this.simParams.vehicle_capacity = 280.0;
+      this.simParams.delivery_speed = 24.0;
+      this.simParams.cutoff_minutes = 270.0;
+      this.currentModel = "modern";
+      this.syncControlsToState();
+      await this.switchDatasetByScale(530);
+    } else if (presetName === "baseline_35") {
+      this.simParams.k_vehicles = 35;
+      this.simParams.vehicle_capacity = 280.0;
+      this.simParams.delivery_speed = 24.0;
+      this.simParams.cutoff_minutes = 310.0;
+      this.currentModel = "baseline";
+      this.syncControlsToState();
+      await this.switchDatasetByScale(530);
+    } else if (presetName === "demo_100") {
+      this.simParams.k_vehicles = 10;
+      this.simParams.vehicle_capacity = 65.0;
+      this.simParams.delivery_speed = 24.0;
+      this.simParams.cutoff_minutes = 270.0;
+      this.currentModel = "modern";
+      this.syncControlsToState();
+      await this.switchDatasetByScale(100);
+    }
+    // Update scenario button styling
+    const btnPresetPublished = document.getElementById("btn-preset-published");
+    const btnPresetBaseline = document.getElementById("btn-preset-baseline");
+    const btnPresetDemo100 = document.getElementById("btn-preset-demo100");
+    [btnPresetPublished, btnPresetBaseline, btnPresetDemo100].forEach(b => {
+      if (b) b.classList.remove("active");
+    });
+    if (presetName === "published_27" && btnPresetPublished) btnPresetPublished.classList.add("active");
+    if (presetName === "baseline_35" && btnPresetBaseline) btnPresetBaseline.classList.add("active");
+    if (presetName === "demo_100" && btnPresetDemo100) btnPresetDemo100.classList.add("active");
+
+    // Sync excel scale buttons
+    const scaleBtns = document.querySelectorAll(".btn-scale-template");
+    scaleBtns.forEach(b => {
+      const s = Number(b.getAttribute("data-scale"));
+      if (s === this.currentScale) b.classList.add("active");
+      else b.classList.remove("active");
+    });
+  },
+
+  syncControlsToState() {
+    const sliderK = document.getElementById("slider-k-fleet");
+    const inputK = document.getElementById("input-k-fleet");
+    const valK = document.getElementById("val-k-fleet");
+    if (sliderK) sliderK.value = this.simParams.k_vehicles;
+    if (inputK) inputK.value = this.simParams.k_vehicles;
+    if (valK) valK.textContent = this.simParams.k_vehicles;
+
+    const sliderCap = document.getElementById("slider-cap-limit");
+    const inputCap = document.getElementById("input-cap-limit");
+    const valCap = document.getElementById("val-cap-limit");
+    if (sliderCap) sliderCap.value = this.simParams.vehicle_capacity;
+    if (inputCap) inputCap.value = this.simParams.vehicle_capacity;
+    if (valCap) valCap.textContent = this.simParams.vehicle_capacity.toFixed(2);
+
+    const sliderSpeed = document.getElementById("slider-speed");
+    const inputSpeed = document.getElementById("input-speed");
+    const valSpeed = document.getElementById("val-speed");
+    if (sliderSpeed) sliderSpeed.value = this.simParams.delivery_speed;
+    if (inputSpeed) inputSpeed.value = this.simParams.delivery_speed;
+    if (valSpeed) valSpeed.textContent = this.simParams.delivery_speed.toFixed(2);
+
+    const sliderCutoff = document.getElementById("slider-cutoff");
+    const inputCutoff = document.getElementById("input-cutoff");
+    const valCutoffText = document.getElementById("val-cutoff-text");
+    const valCutoff = document.getElementById("val-cutoff");
+    if (sliderCutoff) sliderCutoff.value = this.simParams.cutoff_minutes;
+    const t = this.formatTimeFromMins(this.simParams.cutoff_minutes);
+    if (inputCutoff) inputCutoff.value = t.timeStr24;
+    if (valCutoffText) valCutoffText.textContent = t.clockStr12;
+    if (valCutoff) valCutoff.textContent = t.clockStr12;
+
+    const selectEngine = document.getElementById("sidebar-engine");
+    if (selectEngine) selectEngine.value = this.currentModel;
+
+    const badgeEngine = document.getElementById("badge-active-engine");
+    if (badgeEngine) {
+      let name = "Google OR-Tools";
+      if (this.currentModel === "amruta") name = "Classical AMRUTA";
+      else if (this.currentModel === "baseline") name = "Pre-AMRUTA (Ad-Hoc)";
+      const span = badgeEngine.querySelector("span");
+      if (span) span.textContent = name;
+      else badgeEngine.textContent = name;
     }
   }
 };
