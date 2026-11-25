@@ -16,10 +16,9 @@ const ExcelManagerView = {
     const banner = document.getElementById("excel-status-banner");
     if (!banner) return;
 
-    const count = DataManager.currentSchools.length;
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    banner.textContent = `Connected File: data.xlsx | Last Synced: ${timeStr} | Total Schools: ${count}`;
+    const count = (DataManager.currentSchools || []).length;
+    const totDemand = (DataManager.currentSchools || []).reduce((acc, s) => acc + (s.equivalent_demand || 0), 0);
+    banner.textContent = `Active Dataset: Vasanthapura Benchmark | Total Schools: ${count} | Demand: ${totDemand.toFixed(1)} U`;
   },
 
   isHoliday(s) {
@@ -270,20 +269,51 @@ const ExcelManagerView = {
       });
     });
 
-    // Action buttons
-    const btnOpen = document.getElementById("btn-excel-open-direct");
-    if (btnOpen) {
-      btnOpen.addEventListener("click", () => {
-        window.location.href = "/data.xlsx";
+    // Real CSV File Upload
+    const inputUpload = document.getElementById("input-upload-excel");
+    const btnUpload = document.getElementById("btn-excel-upload-file");
+    if (btnUpload && inputUpload) {
+      btnUpload.addEventListener("click", () => inputUpload.click());
+      inputUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const text = evt.target.result;
+          const parsed = DataManager.parseCSV(text);
+          if (parsed && parsed.length > 0) {
+            parsed.forEach((s, i) => {
+              s.school_id = s.school_id || i + 1;
+              s.school_name = s.school_name || `School #${s.school_id}`;
+              s.latitude = parseFloat(s.latitude) || DataManager.depot.lat;
+              s.longitude = parseFloat(s.longitude) || DataManager.depot.lng;
+              s.rice_vessels = parseFloat(s.rice_vessels) || 0;
+              s.sambar_vessels = parseFloat(s.sambar_vessels) || 0;
+              s.curd_vessels = parseFloat(s.curd_vessels) || 0;
+              s.equivalent_demand = DataManager.calculateEquivalentDemand(s.rice_vessels, s.sambar_vessels, s.curd_vessels);
+              s.student_headcount = s.student_headcount || Math.round(s.equivalent_demand * 56);
+              s.status = s.status || "Active";
+            });
+            DataManager.currentSchools = parsed;
+            ExcelManagerView.render();
+            if (typeof App !== "undefined") {
+              if (App.updateSidebarSchoolSelector) App.updateSidebarSchoolSelector();
+              App.runCurrentSimulation();
+            }
+          }
+        };
+        reader.readAsText(file);
       });
     }
 
-    const btnReload = document.getElementById("btn-excel-reload-direct");
-    if (btnReload) {
-      btnReload.addEventListener("click", () => {
-        this.updateStatusBar();
-        this.renderGrid();
-        App.runCurrentSimulation();
+    // Download Benchmark CSV Template
+    const btnDownloadTemplate = document.getElementById("btn-excel-download-template");
+    if (btnDownloadTemplate) {
+      btnDownloadTemplate.addEventListener("click", () => {
+        const schools = (typeof EMBEDDED_DATA !== "undefined" && EMBEDDED_DATA.fullSchools) ? EMBEDDED_DATA.fullSchools : DataManager.currentSchools;
+        const headers = ["school_id", "school_name", "latitude", "longitude", "rice_vessels", "sambar_vessels", "curd_vessels", "equivalent_demand", "student_headcount", "cluster_zone", "status"];
+        const csv = DataManager.toCSV(headers, schools);
+        DataManager.downloadFile(csv, "vasanthapura_schools_530.csv");
       });
     }
 

@@ -28,6 +28,42 @@ const CostEvaluator = {
   },
 
   /**
+   * Computes dynamic baseline cost scaled by active schools count, diesel price, and working days.
+   * At N=530, Diesel=45, Days=22, this returns exactly INR 16,90,900 (16.9L, Table 4 match).
+   */
+  getDynamicBaseline(numSchools = 530, dieselPriceInr = 45.0, workingDays = 22) {
+    const scaleRatio = Math.max(1, numSchools) / 530.0;
+    const baseFleetCount = Math.min(35, Math.max(1, Math.round(35 * scaleRatio)));
+    const baseDistanceKm = 1400.0 * scaleRatio;
+
+    const fleet = (typeof DataManager !== "undefined" && DataManager.currentFleet && DataManager.currentFleet.length > 0)
+      ? DataManager.currentFleet
+      : (typeof EMBEDDED_DATA !== "undefined" ? EMBEDDED_DATA.fleet : []);
+
+    let fixedCost = 0;
+    for (let i = 0; i < baseFleetCount; i++) {
+      const v = (fleet && fleet.length > 0) ? (fleet[i % fleet.length] || fleet[0]) : {};
+      const maint = Number(v.maint_cost_monthly || 9844);
+      const crew = Number(v.driver_salary || 10000) + Number(v.supervisor_salary || 8000) + Number(v.loader_salary || 6000) * Number(v.loaders !== undefined ? v.loaders : 2);
+      fixedCost += (maint + crew);
+    }
+
+    const avgMileage = 3.7145; // Weighted average mileage of Table 1(b) 35-vehicle fleet
+    const fuelCost = (baseDistanceKm / avgMileage) * dieselPriceInr * workingDays;
+    const totalCost = Math.round(fixedCost + fuelCost);
+
+    return {
+      vehicles: baseFleetCount,
+      distanceKm: Number(baseDistanceKm.toFixed(1)),
+      fixedCostInr: Math.round(fixedCost),
+      fuelCostInr: Math.round(fuelCost),
+      monthlyCostInr: totalCost,
+      monthlyCostUsd: Number((totalCost / this.settings.inrPerUsd).toFixed(0)),
+      formattedLakhs: (totalCost / 100000).toFixed(1) + "L"
+    };
+  },
+
+  /**
    * Evaluates cost for a single vehicle route
    */
   evaluateVehicleRoute(routeDistanceKm, vehicle, customSettings = {}) {

@@ -333,7 +333,26 @@ class AmrutaHeuristicSolver:
         avg_el = (sum(r["elapsed_time_min"] for r in routes) / len(routes)) if routes else 0.0
         late = len([r for r in routes if not r["is_within_time_window"]])
 
-        base = 1690900.0
+        tot_nodes = served + len(unclustered)
+        scale = max(1, tot_nodes) / 530.0
+        k_base = min(35, max(1, round(35 * scale)))
+        dist_base = 1400.0 * scale
+        
+        # Fixed cost for k_base vehicles
+        fixed_base = 0.0
+        for i in range(k_base):
+            v = self.fleet[i % len(self.fleet)] if self.fleet else {}
+            maint = float(v.get("maint_cost_monthly", 9844) or 9844)
+            crew = (float(v.get("driver_salary", 10000) or 10000) + 
+                    float(v.get("supervisor_salary", 8000) or 8000) +
+                    float(v.get("loader_salary", 6000) or 6000) * float(v.get("loaders", 2) or 2))
+            fixed_base += (maint + crew)
+        
+        avg_kmpl = 3.7145
+        fuel_base = (dist_base / avg_kmpl) * self.diesel_price * self.working_days
+        base = round(fixed_base + fuel_base)
+        base_lakhs = f"{base/100000:.1f}L"
+
         sav = base - total_cost
         red_pct = round((sav / base) * 100.0, 1)
         kids = max(0, round((sav / 50.0 * 12) / 31.25))
@@ -349,7 +368,9 @@ class AmrutaHeuristicSolver:
             "total_monthly_cost_usd": round(total_cost / 50.0, 2),
             "late_routes_count": late,
             "cost_reductionPct": red_pct,
-            "additionalChildrenFed": kids
+            "additionalChildrenFed": kids,
+            "baseline_cost_inr": base,
+            "baseline_lakhs": base_lakhs
         }
 
 # ==============================================================================

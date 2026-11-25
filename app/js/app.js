@@ -743,7 +743,8 @@ const App = {
       const isSaving = savingsPct >= 0;
       const sign = isSaving ? '-' : '+';
       const colorCls = isSaving ? 'kpi-trend-down' : 'kpi-trend-up';
-      elCostSub.innerHTML = `<span class="${colorCls}">${sign}${Math.abs(savingsPct)}%</span> vs Baseline (₹16.9L)`;
+      const baseLabel = summary.baselineLakhs ? `₹${summary.baselineLakhs}` : '₹16.9L';
+      elCostSub.innerHTML = `<span class="${colorCls}">${sign}${Math.abs(savingsPct)}%</span> vs Baseline (${baseLabel})`;
     }
   },
 
@@ -891,9 +892,8 @@ const App = {
 
     const badgeEngine = document.getElementById("badge-active-engine");
     if (badgeEngine) {
-      let name = "Google OR-Tools";
+      let name = "Modern Metaheuristic (Savings + 2-Opt)";
       if (this.currentModel === "amruta") name = "Classical AMRUTA";
-      else if (this.currentModel === "baseline") name = "Pre-AMRUTA (Ad-Hoc)";
       const span = badgeEngine.querySelector("span");
       if (span) span.textContent = name;
       else badgeEngine.textContent = name;

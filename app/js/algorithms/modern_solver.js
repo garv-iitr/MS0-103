@@ -404,8 +404,13 @@ const ModernORSolver = {
     const avgElapsed = kDeployed > 0 ? sumElapsed / kDeployed : 0;
     const totalMonthlyCostUsd = totalMonthlyCostInr / 50.0;
 
-    // Savings vs Baseline
-    const baselineCost = 1690900.0;
+    // Dynamic Baseline calculation
+    const totalActiveSchools = totalSchoolsServed + (unassigned ? unassigned.length : 0);
+    const dynamicBase = (typeof CostEvaluator !== "undefined" && CostEvaluator.getDynamicBaseline)
+      ? CostEvaluator.getDynamicBaseline(totalActiveSchools || 530, options.dieselPriceInr || 45.0, options.workingDaysPerMonth || 22)
+      : { monthlyCostInr: 1690900.0, formattedLakhs: "16.9L" };
+
+    const baselineCost = dynamicBase.monthlyCostInr;
     const monthlySavingsInr = baselineCost - totalMonthlyCostInr;
     const costReductionPct = Number(((monthlySavingsInr / baselineCost) * 100).toFixed(1));
     const additionalChildrenFed = Math.max(0, Math.round((monthlySavingsInr / 50.0 * 12) / 31.25));
@@ -421,7 +426,9 @@ const ModernORSolver = {
       totalMonthlyCostUsd: Number(totalMonthlyCostUsd.toFixed(2)),
       lateRoutesCount,
       costReductionPct,
-      additionalChildrenFed
+      additionalChildrenFed,
+      baselineCostInr: baselineCost,
+      baselineLakhs: dynamicBase.formattedLakhs
     };
   }
 };

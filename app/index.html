@@ -369,20 +369,21 @@
       <!-- TAB 2: EXCEL DATA MANAGER -->
       <div id="tab-content-excel" class="excel-manager-container" style="display: none;">
         <div>
-          <div class="section-heading">Spreadsheet Operations Management</div>
+          <div class="section-heading">Spreadsheet Operations & Data Management</div>
           <p class="text-muted" style="font-size: 12px; margin-bottom: 14px;">
-            Operations managers maintain daily demand in <code style="color: #34d399; font-family: var(--font-mono);">data.xlsx</code>. You can edit records directly in the table below and click <strong>Save Changes</strong>, or open <code style="color: #34d399; font-family: var(--font-mono);">data.xlsx</code> in Excel, make edits, and save.
+            Manage daily meal demands, vessel allocations (Rice, Sambar, Curd), and operational status. Edit any record directly in the interactive grid below, or upload a custom CSV dataset.
           </p>
         </div>
 
-        <!-- Green Connection Status Bar -->
+        <!-- Operations Data Toolbar -->
         <div class="connected-status-banner">
           <span id="excel-status-banner" class="connected-status-text">
-            Connected File: data.xlsx | Last Synced: 05:01:02 PM | Total Schools: 100
+            Active Dataset: Vasanthapura Benchmark | Total Schools: 530 | In-Memory Live Sync
           </span>
           <div class="connected-actions">
-            <button id="btn-excel-open-direct" class="btn-dark-secondary">Open data.xlsx in Excel</button>
-            <button id="btn-excel-reload-direct" class="btn-dark-secondary">Reload from data.xlsx</button>
+            <input type="file" id="input-upload-excel" accept=".csv,.txt" style="display: none;">
+            <button id="btn-excel-upload-file" class="btn-dark-secondary" title="Upload a custom school CSV dataset">Upload Custom CSV</button>
+            <button id="btn-excel-download-template" class="btn-dark-secondary" title="Download official 530-school benchmark template CSV">Download Benchmark CSV</button>
           </div>
         </div>
 
